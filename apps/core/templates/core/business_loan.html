@@ -1,0 +1,827 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+
+
+<style>
+    /* Reveal Animation Styles */
+    .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        /* Pushes the section 50px down */
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        /* Controls the slide-up speed & curve */
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+        /* Glides back to its natural position */
+    }
+
+
+
+    .overview-section {
+        position: relative;
+        background: #0f172a;
+        overflow: hidden;
+    }
+
+    .vertical-marquee-container {
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .marquee-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        white-space: nowrap;
+        font-size: 5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px #d4af37;
+        opacity: 0.3;
+        animation: scrollUp 15s linear infinite;
+    }
+
+    @keyframes scrollUp {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+
+    .handshake-bg {
+        position: absolute;
+        right: -2%;
+        top: 5%;
+        width: 35%;
+        max-width: 450px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 0;
+        transform-origin: top right;
+        animation: subtleNod 6s ease-in-out infinite;
+    }
+
+    @keyframes subtleNod {
+
+        0%,
+        100% {
+            transform: rotate(0deg) scale(1);
+        }
+
+        50% {
+            transform: rotate(-3deg) scale(1.05);
+        }
+    }
+
+    .navy-gradient-section {
+        position: relative;
+        /* Replaced static tag with high-quality stock photo URL for background */
+        background: linear-gradient(to right, rgba(2, 6, 23, 0.5) 0%, rgba(2, 6, 23, 1) 100%),
+            url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+    }
+
+    .arrow-btn:hover i {
+        transform: translateX(8px);
+        transition: transform 0.3s ease;
+    }
+
+    /* OVERLAPPING GLOBE STYLING */
+    #globe-overlap-container {
+        position: absolute;
+        right: -50px;
+        bottom: -200px;
+        width: 450px;
+        height: 450px;
+        z-index: 5;
+        /* lowered to avoid covering content */
+        cursor: crosshair;
+        pointer-events: auto;
+    }
+
+    .relative-host {
+        position: relative;
+        z-index: 10;
+        /* ensure it sits above the globe */
+    }
+
+    /* SCROLL REVEAL ANIMATIONS */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, opacity;
+    }
+
+    .reveal-active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    /* Stagger delays for content */
+    .delay-200 {
+        transition-delay: 200ms;
+    }
+
+    /* Slide in from Left side (Box 1) */
+    .reveal-left {
+        opacity: 0;
+        transform: translateX(-150px);
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, opacity;
+    }
+
+    .reveal-left.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Slide in from Right side (Box 2) */
+    .reveal-right {
+        opacity: 0;
+        transform: translateX(150px);
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, opacity;
+    }
+
+    .reveal-right.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* UAE Map Dot Pulse fallback styles */
+    .dot-map-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background-image: radial-gradient(#1e3a8a 1px, transparent 1px);
+        background-size: 24px 24px;
+        pointer-events: none;
+    }
+
+    .uae-pointer {
+        position: absolute;
+        top: 60%;
+        left: 65%;
+        width: 16px;
+        height: 16px;
+    }
+
+    .uae-pulse {
+        width: 100%;
+        height: 100%;
+        background: #d4af37;
+        border-radius: 50%;
+        animation: pulse-ring 1.5s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+    }
+
+    /* Gradient CTA button */
+    .btn-pop1 {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-pop1:hover {
+        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+        transform: scale(1.04) translateY(-2px);
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
+
+{% block content %}
+
+
+<!-- 1st Section: Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80');">
+    </div>
+    <div class="page-banner-content page-banner-animation">
+        <h1 class="page-banner-title">Business loan</h1>
+        <p class="page-banner-subtitle">
+            Our consultants understands the importance of maintaining a long lasting business relationships with
+            clients to deliver specific solutions.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-10 text-white font-bold tracking-widest text-sm uppercase">
+            <span class="flex items-center gap-2"><i data-lucide="briefcase" class="text-blue-400"></i> Corporate
+                Solutions</span>
+            <span class="flex items-center gap-2"><i data-lucide="bar-chart-3" class="text-blue-400"></i> Scalable
+                Credit</span>
+            <span class="flex items-center gap-2"><i data-lucide="globe" class="text-blue-400"></i> International
+                Trade</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="#"
+                class="btn-pop px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                About us
+            </a>
+            <a href="#"
+                class="btn-pop1 px-12 py-4  text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 2nd Section: Overview (Completely Transparent Cards entering from Left & Right) -->
+<section class="overview-section py-20 px-6 overflow-hidden">
+    <!-- Scrolling background elements -->
+    <div class="vertical-marquee-container">
+        <div class="marquee-text">15+ years of Corporate Excellence & Trust</div>
+    </div>
+
+    <!-- Animated Gold Handshake Line-Art SVG Background -->
+    <div class="handshake-bg">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 100C40 100 60 80 85 100C110 120 130 100 130 100" stroke="#d4af37" stroke-width="2"
+                stroke-linecap="round" />
+            <path d="M70 120C70 120 90 140 115 120C140 100 160 120 160 120" stroke="#d4af37" stroke-width="2"
+                stroke-linecap="round" />
+            <circle cx="100" cy="100" r="80" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" />
+            <path d="M60 80L40 100L60 120" stroke="#d4af37" stroke-width="2" stroke-linejoin="round" />
+            <path d="M140 80L160 100L140 120" stroke="#d4af37" stroke-width="2" stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Static Intro Header fades up normally -->
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-2">Overview</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Empower Your Business Financials</h3>
+            <p class="text-slate-300 text-lg max-w-3xl mx-auto leading-relaxed">
+                At Excellence Financing Broker (EFB), we understand that every business needs financial support to grow,
+                expand, or manage cash flow. Our business loan solutions are designed to provide flexible financing
+                options, whether you need capital for expansion, inventory, equipment, or working capital.
+            </p>
+        </div>
+
+        <!-- Sleek Permanent Grid Cards (Completely Transparent, sliding left and right) -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Box 1: Why Choose a Business Loan (Slides in from Left, completely transparent background) -->
+            <div
+                class="reveal-left border border-slate-700/80 rounded-2xl p-8 backdrop-blur-md bg-transparent hover:border-blue-400/50 transition-all duration-300 shadow-lg">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="p-3 rounded-lg bg-blue-500/10 text-blue-400">
+                        <i data-lucide="help-circle" class="w-6 h-6"></i>
+                    </span>
+                    <h4 class="text-xl font-bold text-white">Why Choose a Business Loan?</h4>
+                </div>
+                <ul class="space-y-4 text-slate-300 leading-relaxed text-sm">
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-400 font-bold mt-0.5">•</span>
+                        <span><strong>Expand & Grow:</strong> Invest in new opportunities, scale your operations, or
+                            enter new markets.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-400 font-bold mt-0.5">•</span>
+                        <span><strong>Flexible Financing:</strong> Access working capital to manage cash flow, purchase
+                            inventory, or upgrade equipment.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-400 font-bold mt-0.5">•</span>
+                        <span><strong>Quick Approval Process:</strong> Fast application and approval process to meet
+                            urgent financial needs.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-400 font-bold mt-0.5">•</span>
+                        <span><strong>Competitive Interest Rates:</strong> Get the best financing rates and repayment
+                            plans suited to your business model.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-400 font-bold mt-0.5">•</span>
+                        <span><strong>Customized Loan Options:</strong> Choose from term loans, working capital loans,
+                            equipment financing, and more.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Box 2: Types of Business Loans We Offer (Slides in from Right, completely transparent background) -->
+            <div
+                class="reveal-right border border-slate-700/80 rounded-2xl p-8 backdrop-blur-md bg-transparent hover:border-amber-400/50 transition-all duration-300 shadow-lg">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="p-3 rounded-lg bg-amber-500/10 text-amber-400">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </span>
+                    <h4 class="text-xl font-bold text-white">Types of Business Loans We Offer</h4>
+                </div>
+                <p class="text-slate-300 mb-4 text-sm">Business loans are flexible and can be used for various purposes,
+                    including:</p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-slate-800">
+                        <span class="text-emerald-400 text-sm">✔</span>
+                        <span class="text-sm font-semibold text-slate-200">Working Capital Loan</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-slate-800">
+                        <span class="text-emerald-400 text-sm">✔</span>
+                        <span class="text-sm font-semibold text-slate-200">Equipment Financing</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-slate-800">
+                        <span class="text-emerald-400 text-sm">✔</span>
+                        <span class="text-sm font-semibold text-slate-200">Business Expansion Loan</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-slate-800">
+                        <span class="text-emerald-400 text-sm">✔</span>
+                        <span class="text-sm font-semibold text-slate-200">Invoice Financing</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-slate-800">
+                        <span class="text-emerald-400 text-sm">✔</span>
+                        <span class="text-sm font-semibold text-slate-200">Trade Finance Solutions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Advisory Box -->
+        <div class="mt-12 p-6 bg-white/5 border-l-4 border-blue-400 rounded-r-lg italic text-slate-300 reveal">
+            "Before proceeding with a business loan, it's advisable to consult with a financial advisor or
+            thoroughly research to ensure it aligns with your financial situation and business goals."
+        </div>
+    </div>
+</section>
+
+<!-- 3rd Section: Navy Gradient CTA -->
+<section class="navy-gradient-section py-24 px-6 text-center text-white">
+    <div
+        class="max-w-4xl mx-auto relative z-10 bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/20 shadow-2xl">
+        <h2 class="text-5xl font-extrabold mb-6 text-blue-400 uppercase tracking-tight"
+            style="background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Business Loan</h2>
+        <p class="text-2xl text-white font-medium mb-12 max-w-2xl mx-auto leading-snug">Get hassle-free business loans
+            to grow, expand, or manage your working capital needs efficiently.</p>
+        <button
+            class="arrow-btn group inline-flex items-center gap-3 px-10 py-5  text-white font-bold rounded-full btn-pop1 shadow-2xl transition-all">
+            Contact Us to know more
+            <i data-lucide="arrow-right" class="w-6 h-6 transition-transform"></i>
+        </button>
+    </div>
+</section>
+
+<!-- 4th Section: Key Benefits (Host for Junction Globe) -->
+<section class="py-24 px-4 md:px-8 bg-slate-50 relative relative-host reveal">
+    <!-- THE GLOBE ANIMATION (Positioned at bottom right to overlap with Our Strategy) -->
+    <!-- <div id="globe-overlap-container"></div> -->
+
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-12 border-l-8 border-red-700 pl-4 uppercase">Key Benefits</h2>
+        <div class="space-y-10 text-slate-700">
+            <p>At Excellence Financing Broker (EFB), we understand that every business needs financial support to grow,
+                expand, or manage cash flow. Our business loan solutions are designed to provide flexible financing
+                options, whether you need capital for expansion, inventory, equipment, or working capital. With over 16
+                years of expertise, we help businesses secure tailored funding solutions with competitive interest rates
+                and easy repayment options.</p>
+
+            <!-- Custom Elegant Accordions to style FAQ elements cleanly -->
+            <div class="space-y-4">
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">Who is eligible for a business loan?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p class="mb-3">Eligibility criteria vary by bank but generally include:</p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Startups, SMEs, and established businesses in need of financial support.</li>
+                            <li>Businesses with a valid trade license operating for at least 6 months to 1 year (varies
+                                by lender).</li>
+                            <li>Must meet the minimum revenue criteria set by banks and financial institutions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">What documents do I need to apply for a business
+                            loan?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Business license and registration documents.</li>
+                            <li>Emirates ID and passport copies of business owners.</li>
+                            <li>Bank statements (last 6-12 months).</li>
+                            <li>Audited financial statements (if applicable).</li>
+                            <li>Business plan and cash flow projections.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">How much loan can my business get?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>The loan amount depends on factors such as revenue, business history, financial statements,
+                            and creditworthiness. Our team will help assess and secure the best loan for your business
+                            needs.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">What is the repayment tenure for business
+                            loans?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>Repayment terms typically range from 12 months to 60 months, depending on the loan type and
+                            lender’s terms.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">Can I apply for a business loan if my company is
+                            new?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>Yes, start-ups can apply for specific business loans, but approval depends on factors such as
+                            the business plan, financial projections, and collateral.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">How long does it take to get loan
+                            approval?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>Loan approval times vary depending on the financial institution, but it can take anywhere
+                            from a few days to a few weeks. We help expedite the process by ensuring all documentation
+                            is in order.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">Do I need collateral for a business loan?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>Some loans, like unsecured business loans, do not require collateral. However, for larger
+                            amounts, banks may request collateral in the form of assets, property, or bank guarantees.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">Can I apply for multiple business loans at
+                            once?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>Yes, but it depends on your creditworthiness and the policies of the lending institutions.
+                            Having multiple loans may affect your approval chances.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">Do you offer Sharia-compliant business
+                            loans?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>Yes, we provide Sharia-compliant financing options tailored to businesses that follow Islamic
+                            financial principles.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="border border-slate-200 rounded-lg bg-white overflow-hidden shadow-sm hover:shadow transition-all">
+                    <button onclick="toggleAccordion(this)"
+                        class="w-full text-left px-6 py-4 flex justify-between items-center bg-slate-100 hover:bg-slate-200 transition-colors">
+                        <span class="font-bold text-slate-800 text-lg">How can EFB help me secure a business
+                            loan?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-600 transition-transform"></i>
+                    </button>
+                    <div class="p-6 text-slate-600 border-t border-slate-100 hidden">
+                        <p>At EFB, we provide expert guidance, assess your business needs, and connect you with the best
+                            financial institutions offering tailored business loan solutions with competitive interest
+                            rates and flexible repayment options. Our team ensures a smooth and quick loan application
+                            process, helping you secure the funds you need to grow your business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5th Section: Our Strategy (Animated) -->
+<section class="py-24 px-4 bg-white relative overflow-hidden reveal" id="strategy-section">
+    <!-- Dot Map Background Container -->
+    <div class="dot-map-container" id="dot-map-bg">
+        <div class="uae-pointer">
+            <div class="uae-pulse"></div>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-16 relative z-10">
+        <div class="relative">
+            <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-100 rounded-full z-0"></div>
+            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Business Strategy" class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+        </div>
+
+        <div class="space-y-8 relative z-10">
+            <div>
+                <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-2">Our Strategy</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-6 leading-tight">Tailored Digital Services for
+                    Enterprise Security</h3>
+                <p class="text-slate-600 text-lg leading-relaxed mb-4">
+                    Our complete, tailored digital services help you to save effort and money & stay financially secure.
+                </p>
+                <p class="text-slate-600 text-md">
+                    Our team works across markets and capabilities to help you establish a strategy that addresses the
+                    realities of your business. Whether you want to improve the performance of work or mitigate the
+                    risks of mergers and acquisitions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center"><i
+                            data-lucide="check" class="w-4 h-4"></i></div>
+                    <span class="font-semibold text-slate-800">Fast & Hassle-Free Process</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center"><i
+                            data-lucide="check" class="w-4 h-4"></i></div>
+                    <span class="font-semibold text-slate-800">Trusted by Thousands</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center"><i
+                            data-lucide="check" class="w-4 h-4"></i></div>
+                    <span class="font-semibold text-slate-800">Transparent & Secure</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#"
+                    class="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white text-center font-bold rounded-lg transition-all">About
+                    Us</a>
+                <a href="#"
+                    class="px-8 py-3 border-2 border-slate-900 text-slate-900 text-center font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-all">Contact
+                    Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+    lucide.createIcons();
+
+    // Custom Toggle Accordion Logic for FAQs
+    function toggleAccordion(element) {
+        const container = element.nextElementSibling;
+        const icon = element.querySelector('[data-lucide="chevron-down"]');
+
+        if (container.classList.contains('hidden')) {
+            container.classList.remove('hidden');
+            if (icon) icon.style.transform = 'rotate(180deg)';
+        } else {
+            container.classList.add('hidden');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // --- SCROLL REVEAL LOGIC ---
+    const setupScrollReveal = () => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Activate general reveal sections
+                    entry.target.classList.add('active');
+
+                    // Handle side reveal cards inside sections
+                    const revealsLeft = entry.target.querySelectorAll('.reveal-left');
+                    revealsLeft.forEach(el => el.classList.add('active'));
+
+                    const revealsRight = entry.target.querySelectorAll('.reveal-right');
+                    revealsRight.forEach(el => el.classList.add('active'));
+
+                    const scrollReveals = entry.target.querySelectorAll('.reveal-on-scroll');
+                    scrollReveals.forEach(el => el.classList.add('reveal-active'));
+                } else {
+                    // Optional: Reset element state on scrolling out to let it re-animate
+                    entry.target.classList.remove('active');
+
+                    const revealsLeft = entry.target.querySelectorAll('.reveal-left');
+                    revealsLeft.forEach(el => el.classList.remove('active'));
+
+                    const revealsRight = entry.target.querySelectorAll('.reveal-right');
+                    revealsRight.forEach(el => el.classList.remove('active'));
+
+                    const scrollReveals = entry.target.querySelectorAll('.reveal-on-scroll');
+                    scrollReveals.forEach(el => el.classList.remove('reveal-active'));
+                }
+            });
+        }, observerOptions);
+
+        // Observe all interactive layout components
+        const sections = document.querySelectorAll('.reveal, #strategy-section, .overview-section');
+        sections.forEach(sec => observer.observe(sec));
+    };
+
+    // --- ENHANCED WIREFRAME GLOBE WITH GOLDEN UAE BORDER ---
+    function initGlobe() {
+        const container = document.getElementById('globe-overlap-container');
+        if (!container) return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
+
+        // Interaction state
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+
+        function latLongToVector3(lat, lon, radius) {
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+            const x = -(radius * Math.sin(phi) * Math.cos(theta));
+            const z = (radius * Math.sin(phi) * Math.sin(theta));
+            const y = (radius * Math.cos(phi));
+            return new THREE.Vector3(x, y, z);
+        }
+
+        const radius = 2.3;
+
+        // 1. CREATE CONTINENT BORDERS USING FALLBACK GENERATIVE POINTS
+        // To bypass CORS or offline loading issues in previews, we procedurally generate continent shapes
+        const linePositions = [];
+        const uaePositions = [];
+
+        // Helper to generate a rough layout of continents
+        for (let lat = -80; lat < 80; lat += 2.5) {
+            for (let lon = -180; lon < 180; lon += 2.5) {
+                // Procedural continental simulation algorithm
+                const noise = Math.sin(lon * 0.05) * Math.cos(lat * 0.05) + Math.sin(lon * 0.01) * Math.sin(lat * 0.1);
+                if (noise > -0.2) {
+                    const inUAE = (lat > 22.6 && lat < 26.1 && lon > 51.4 && lon < 56.6);
+                    const current = latLongToVector3(lat, lon, radius);
+
+                    // Connect lines horizontally
+                    const nextLon = latLongToVector3(lat, lon + 2.5, radius);
+                    if (inUAE) {
+                        uaePositions.push(current.x, current.y, current.z, nextLon.x, nextLon.y, nextLon.z);
+                    } else {
+                        linePositions.push(current.x, current.y, current.z, nextLon.x, nextLon.y, nextLon.z);
+                    }
+                }
+            }
+        }
+
+        // World Lines (Dark Slate Blue / Dark Outline)
+        const worldGeom = new THREE.BufferGeometry();
+        worldGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+        const worldLines = new THREE.LineSegments(worldGeom, new THREE.LineBasicMaterial({
+            color: 0x475569,
+            transparent: true,
+            opacity: 0.6
+        }));
+        globeGroup.add(worldLines);
+
+        // UAE Lines (Golden Glow)
+        const uaeGeom = new THREE.BufferGeometry();
+        uaeGeom.setAttribute('position', new THREE.Float32BufferAttribute(uaePositions, 3));
+        const uaeLines = new THREE.LineSegments(uaeGeom, new THREE.LineBasicMaterial({
+            color: 0xd4af37,
+            transparent: true,
+            opacity: 1.0,
+            linewidth: 2
+        }));
+        globeGroup.add(uaeLines);
+
+        // Center of UAE coordinates
+        const uaeCenter = latLongToVector3(24.4, 54.3, radius + 0.05);
+        const glowSprite = new THREE.Mesh(
+            new THREE.SphereGeometry(0.08, 16, 16),
+            new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.8 })
+        );
+        glowSprite.position.copy(uaeCenter);
+        globeGroup.add(glowSprite);
+
+        const pulse = () => {
+            const s = 1 + Math.sin(Date.now() * 0.005) * 0.4;
+            glowSprite.scale.set(s, s, s);
+            glowSprite.material.opacity = 0.8 - (s - 1);
+            requestAnimationFrame(pulse);
+        };
+        pulse();
+
+        const sphere = new THREE.Mesh(
+            new THREE.SphereGeometry(radius * 0.99, 64, 64),
+            new THREE.MeshBasicMaterial({ color: 0x0f172a, transparent: true, opacity: 0.25 })
+        );
+        globeGroup.add(sphere);
+
+        camera.position.z = 7;
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / container.offsetWidth;
+            const y = (e.clientY - rect.top) / container.offsetHeight;
+            targetRotationY = (x - 0.5) * 1.8;
+            targetRotationX = (y - 0.5) * 1.5;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            targetRotationX = 0;
+            targetRotationY = 0;
+        });
+
+        // Completed the truncated render loop:
+        function animate() {
+            requestAnimationFrame(animate);
+            globeGroup.rotation.y += 0.003;
+            globeGroup.rotation.y += (targetRotationY * 0.05);
+            globeGroup.rotation.x += (targetRotationX * 0.05 - globeGroup.rotation.x) * 0.1;
+            renderer.render(scene, camera);
+        }
+        animate();
+    }
+
+    // Run functions immediately on windows initialization
+    window.onload = function () {
+        initGlobe();
+        setupScrollReveal();
+    };
+</script>
+
+{% endblock %}

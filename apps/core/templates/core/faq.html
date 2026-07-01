@@ -1,0 +1,1070 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<title>FAQs | Excellence Financing Broker</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts: Inter & Playfair Display for premium UAE styling -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+<!-- Font Awesome for sleek financial icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Custom Tailwind Configuration for Premium Theme -->
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    efbNavy: '#0F172A',     // Deep Premium Navy
+                    efbSlate: '#1E293B',    // Dark Accent Slate
+                    efbGold: '#D4AF37',     // Pure Metallic Gold
+                    efbGoldHover: '#F3E5AB',// Champagne Gold
+                    efbCream: '#FDFBF7',    // Light background beige
+                    efbTextDark: '#0F172A', // Primary dark text
+                    efbTextLight: '#64748B' // Secondary muted text
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    serif: ['Playfair Display', 'serif'],
+                }
+            }
+        }
+    }
+</script>
+
+<!-- Custom Style Injection for Animations & Accordions -->
+<style>
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        80% {
+            transform: translateX(5%);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-slide-left-center {
+        animation: slideInFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Accordion transition utility */
+    .accordion-content {
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .accordion-content.active {
+        max-height: 500px;
+        /* High enough to fit the content dynamically */
+    }
+
+    /* Custom scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #F1F5F9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #D4AF37;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #B8932C;
+    }
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<body1 class="bg-efbCream text-efbNavy font-sans leading-relaxed selection:bg-efbGold selection:text-efbNavy">
+
+
+
+    <header
+        class="relative bg-gradient-to-b from-efbNavy via-efbNavy to-efbSlate text-white py-24 px-6 overflow-hidden border-b-4 border-efbGold">
+        <!-- Floating patterns for middle eastern aesthetic visual depth -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute top-10 left-10 w-96 h-96 rounded-full border border-efbGold/40 animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-[500px] h-[500px] rounded-full border border-efbGold/30"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px]">
+            </div>
+        </div>
+
+        <!-- Animated Container -->
+        <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
+            <!-- Badge -->
+            <div
+                class="inline-block bg-efbGold/20 text-efbGold text-xs uppercase tracking-widest font-bold px-4 py-1.5 rounded-full mb-6 border border-efbGold/30 animate-bounce">
+                UAE Financial Insights
+            </div>
+
+            <!-- Left to center animated header and subtext -->
+            <div class="animate-slide-left-center flex flex-col items-center">
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md">
+                    FAQ’s
+                </h1>
+
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-efbGold to-transparent mb-8"></div>
+
+                <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-light max-w-3xl drop-shadow">
+                    "Our consultants understands the importance of maintaining a long lasting business relationships
+                    with clients to deliver specific investment solutions for a long success."
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-16">
+
+        <!-- Intro Card with Double Primary Action Buttons -->
+        <div
+            class="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8 transform -translate-y-24 relative z-20">
+            <div class="flex-1">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="p-2.5 bg-amber-50 rounded-lg text-efbGold">
+                        <i class="fa-solid fa-circle-question text-2xl"></i>
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-efbNavy">
+                        Frequently Asked Questions (FAQs)
+                    </h2>
+                </div>
+                <p class="text-efbTextLight text-base max-w-2xl">
+                    At Excellence Financing Broker (EFB), we help you find the best financial solutions tailored to your
+                    needs. Below are some common questions about our services in Dubai, Abu Dhabi, and across the UAE.
+                </p>
+            </div>
+
+            <!-- Quick Link Buttons requested by user -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                <button onclick="openModal('consultation-modal')"
+                    class="w-full sm:w-auto bg-gradient-to-r from-efbNavy to-efbSlate hover:bg-slate-800 text-white font-semibold px-6 py-4 rounded-xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-efbGold"></i>
+                    Request A Free Consultation
+                </button>
+                <a href="{% url 'core:about_us' %}"
+                    class="w-full sm:w-auto bg-white hover:bg-slate-50 text-efbNavy border border-slate-300 font-semibold px-6 py-4 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-info text-efbGold"></i>
+                    About Us
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 -mt-10">
+            <!-- Dynamic Search Engine -->
+            <div class="relative w-full md:w-96">
+                <input type="text" id="faq-search" onkeyup="filterFAQs()"
+                    placeholder="Search FAQs by keywords (e.g. Loan, Salary)..."
+                    class="w-full pl-11 pr-4 py-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbGold focus:border-transparent text-sm transition-all shadow-inner">
+                <span class="absolute left-4 top-3.5 text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </div>
+
+            <!-- Category Fast Filters -->
+            <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
+                <button onclick="filterCategory('all')" id="btn-all"
+                    class="category-btn active px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all bg-efbGold text-efbNavy shadow-sm">All
+                    Questions</button>
+                <button onclick="filterCategory('loans')" id="btn-loans"
+                    class="category-btn px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all bg-white text-efbTextLight hover:text-efbNavy shadow-sm border border-slate-200">Loans
+                    & Financing</button>
+                <button onclick="filterCategory('credit')" id="btn-credit"
+                    class="category-btn px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all bg-white text-efbTextLight hover:text-efbNavy shadow-sm border border-slate-200">Credit
+                    Cards & Score</button>
+                <button onclick="filterCategory('mortgage')" id="btn-mortgage"
+                    class="category-btn px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all bg-white text-efbTextLight hover:text-efbNavy shadow-sm border border-slate-200">Mortgage
+                    & Wealth</button>
+            </div>
+        </div>
+
+        <!-- Active Search Summary -->
+        <div id="search-info" class="hidden text-sm text-efbTextLight mb-6 italic">
+            Showing matching questions for "<span id="search-query" class="font-bold text-efbNavy"></span>"
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Accordion FAQ Column (Takes 2/3 space on larger screens) -->
+            <div class="lg:col-span-2 space-y-4" id="faq-container">
+
+                <!-- FAQ Item 1 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="loans">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(1)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">What services does
+                                Excellence Financing Broker offer?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-1" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight mb-4">We provide high-grade professional advisory and facilitate
+                                fast financial solutions including:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg border-l-4 border-emerald-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Personal & Business Loans
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg border-l-4 border-emerald-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Credit Cards & Credit
+                                    Score Improvement
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg border-l-4 border-emerald-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Mortgage & Home Financing
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg border-l-4 border-emerald-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Car Loans
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg border-l-4 border-emerald-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Business Financing
+                                    Solutions
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg border-l-4 border-emerald-500">
+                                    <i class="fa-solid fa-circle-check text-emerald-500"></i> Investment & Wealth
+                                    Management
+                                </div>
+                            </div>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Ready to explore premium
+                                    options?</span>
+                                <a href="#services"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Explore
+                                    All Services <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="loans">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(2)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">Who is eligible to
+                                apply for a personal loan in the UAE?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-2" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight mb-4">To qualify for a personal loan in the United Arab
+                                Emirates, banking authorities and institutions typically require:</p>
+                            <ul class="space-y-3.5 mb-6 text-sm text-slate-700">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-wallet text-efbGold mt-0.5 shrink-0"></i>
+                                    <span><strong>Minimum Monthly Salary:</strong> AED 3,000 – AED 10,000 (differs by
+                                        bank and listing status of the employer).</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-passport text-efbGold mt-0.5 shrink-0"></i>
+                                    <span><strong>Legal Status:</strong> Must possess a valid UAE residence visa and
+                                        Emirates ID.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-file-invoice text-efbGold mt-0.5 shrink-0"></i>
+                                    <span><strong>Documentation:</strong> A Salary Transfer Letter is standard, though
+                                        non-transfer products exist.</span>
+                                </li>
+                            </ul>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium font-sans">Calculate your loan range
+                                    eligibility instantly</span>
+                                <a href="#calculator"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Check
+                                    Eligibility <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="loans">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(3)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">Can I get a loan
+                                without a salary transfer?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-3" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight leading-relaxed mb-4">
+                                <strong>Yes!</strong> Several premier banks in the UAE offer personal loans without
+                                requiring a salary transfer. These packages are highly beneficial and optimized for
+                                self-employed individuals, business owners, and corporate employees meeting standard
+                                income thresholds.
+                            </p>
+                            <p class="text-efbTextLight leading-relaxed mb-6">
+                                The terms might include minor interest rate variation compared to salary-transfer
+                                options. Reach out with your current status to get mapped.
+                            </p>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Verify your non-transfer
+                                    eligibility</span>
+                                <button onclick="openModal('consultation-modal')"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Speak
+                                    To A Consultant <i class="fa-solid fa-arrow-right-long"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="credit">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(4)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">What credit score is
+                                required to get a loan or credit card?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-4" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight leading-relaxed mb-4">
+                                Banks in the UAE typically query the Al Etihad Credit Bureau (AECB). Generally, a score
+                                of <strong>580 or higher</strong> is standard for approval processing.
+                            </p>
+                            <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-efbGold mb-6">
+                                <p class="text-sm text-slate-700">
+                                    💡 <strong>Pro Tip:</strong> Achieving a score above 700 greatly amplifies approval
+                                    speed, gives negotiation power on interest rates, and allows access to higher
+                                    limits.
+                                </p>
+                            </div>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Learn more about AECB ratings</span>
+                                <a href="#aecb-guide"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Read
+                                    AECB Score Guide <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="credit">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(5)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">5</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">What is a credit card
+                                balance transfer, and how does it work?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-5" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight leading-relaxed mb-4">
+                                A balance transfer allows you to relocate outstanding high-interest credit card debt
+                                from your current bank to a new bank, often securing an initial <strong>0% interest
+                                    rate</strong> promotional timeline of 3 to 12 months.
+                            </p>
+                            <p class="text-efbTextLight leading-relaxed mb-6">
+                                This effectively stops compounding interest, giving you absolute runway to pay off the
+                                capital principal easily and regain clear debt status.
+                            </p>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Consolidate card debt today</span>
+                                <a href="#balance-transfer"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Initiate
+                                    Balance Transfer <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="loans">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(6)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">6</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">How long does it take
+                                for a loan or credit card to get approved?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-6" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-efbNavy text-sm mb-1 flex items-center gap-2">
+                                        <i class="fa-solid fa-hand-holding-dollar text-efbGold"></i> Personal Loans
+                                    </h4>
+                                    <p class="text-xs text-efbTextLight">Typically takes <strong>3 to 7 working
+                                            days</strong> depending on clear documentation matching internal policy
+                                        limits of the bank.</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-efbNavy text-sm mb-1 flex items-center gap-2">
+                                        <i class="fa-solid fa-credit-card text-efbGold"></i> Credit Cards
+                                    </h4>
+                                    <p class="text-xs text-efbTextLight">Typically processed and approved within
+                                        <strong>1 to 5 working days</strong> upon full digital submission of residency
+                                        details.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Want absolute express handling?</span>
+                                <button onclick="openModal('consultation-modal')"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Request
+                                    Fast Track Processing <i class="fa-solid fa-arrow-right-long"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="credit">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(7)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">7</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">How can I improve my
+                                credit score in the UAE?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-7" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight mb-4">You can steadily grow your AECB credit reputation by
+                                following key practices:</p>
+                            <ul class="space-y-3.5 mb-6 text-sm text-slate-700">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-regular fa-clock text-emerald-500 mt-0.5 shrink-0"></i>
+                                    <span><strong>Punctuality:</strong> Pay phone bills, utilities, and EMI amounts on
+                                        or before dates.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-chart-line text-emerald-500 mt-0.5 shrink-0"></i>
+                                    <span><strong>Utilization:</strong> Do not pass 30% of your maximum allotted credit
+                                        limit.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-compress text-emerald-500 mt-0.5 shrink-0"></i>
+                                    <span><strong>Consolidation:</strong> Minimize active loans and multi-bank small
+                                        debts.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-shield-halved text-emerald-500 mt-0.5 shrink-0"></i>
+                                    <span><strong>Verification:</strong> Query your score routinely to correct
+                                        administrative errors.</span>
+                                </li>
+                            </ul>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Access dedicated advisory
+                                    planning</span>
+                                <a href="#credit-builder"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Learn
+                                    Credit Repair Options <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="loans">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(8)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">8</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">How much can I borrow
+                                with a personal loan?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-8" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight leading-relaxed mb-4">
+                                Maximum borrowing capability is based on employment status and monthly revenue streams:
+                            </p>
+                            <ul class="space-y-3.5 mb-6 text-sm text-slate-700">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-user-tie text-efbGold mt-0.5 shrink-0"></i>
+                                    <span><strong>Salaried Individuals:</strong> Generally, you can borrow a sum up to
+                                        <strong>20 times</strong> your regular verified salary.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-building text-efbGold mt-0.5 shrink-0"></i>
+                                    <span><strong>SMEs & Businesses:</strong> Limits scale according to annual business
+                                        revenues, audited financials, and business vintage.</span>
+                                </li>
+                            </ul>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Request custom loan calculation
+                                    model</span>
+                                <button onclick="openModal('consultation-modal')"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Calculate
+                                    Custom Limit <i class="fa-solid fa-arrow-right-long"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="credit">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(9)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">9</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">What documents do I
+                                need to apply for a credit card?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-9" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight mb-4">Prepare the following official documents to expedite your
+                                card processing pipeline:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-circle-chevron-right text-efbGold text-xs"></i> Passport &
+                                    Valid Visa Copy
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-circle-chevron-right text-efbGold text-xs"></i> Emirates ID
+                                    Copy
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-circle-chevron-right text-efbGold text-xs"></i> Salary
+                                    Certificate (Salaried)
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 text-sm text-slate-700 bg-slate-50 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-circle-chevron-right text-efbGold text-xs"></i> Bank Statement
+                                    (Last 3-6 months)
+                                </div>
+                            </div>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Instantly upload documents to our
+                                    secure gateway</span>
+                                <a href="#upload-portal"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Go
+                                    to Portal <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-card bg-white rounded-xl border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    data-category="credit">
+                    <button
+                        class="accordion-trigger w-full text-left p-6 flex justify-between items-center gap-4 hover:bg-slate-50/50 transition-colors"
+                        onclick="toggleAccordion(10)">
+                        <div class="flex items-start gap-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-amber-50 text-efbGold font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">10</span>
+                            <span class="font-serif font-bold text-efbNavy text-base md:text-lg">Can I apply for
+                                multiple loans or credit cards at the same time?</span>
+                        </div>
+                        <span
+                            class="chevron w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-xs shrink-0 text-slate-400 transition-transform duration-300"><i
+                                class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+                    <div id="content-10" class="accordion-content">
+                        <div class="p-6 pt-0 border-t border-slate-50">
+                            <p class="text-efbTextLight leading-relaxed mb-4">
+                                Yes, technically you can submit multiple packages, but doing so is <strong>strongly
+                                    discouraged</strong>.
+                            </p>
+                            <p class="text-efbTextLight leading-relaxed mb-6">
+                                Multiple credit pulls in short intervals trigger "Hard Enquiries" on your credit
+                                profile, potentially downgrading your AECB status score. Banks may tag this pattern as
+                                credit-seeking behavior, marking you as a high-risk borrower. Let EFB perform
+                                pre-qualification matches to protect your rating.
+                            </p>
+                            <div
+                                class="flex flex-wrap items-center justify-between gap-4 p-4 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <span class="text-xs text-amber-800 font-medium">Protect your credit file score
+                                    today</span>
+                                <button onclick="openModal('consultation-modal')"
+                                    class="text-xs font-bold text-efbGold hover:text-amber-600 flex items-center gap-1 transition-colors">Discuss
+                                    Application Strategy <i class="fa-solid fa-arrow-right-long"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State Block -->
+                <div id="no-results-card"
+                    class="hidden text-center py-16 px-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                    <span
+                        class="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center text-red-500 text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </span>
+                    <h3 class="text-lg font-serif font-bold text-efbNavy mb-1">No FAQs Found</h3>
+                    <p class="text-efbTextLight text-sm max-w-sm mx-auto mb-6">We couldn't find any financial questions
+                        matching your search. Try search terms like "loan", "score", or "AED".</p>
+                    <button onclick="clearSearch()"
+                        class="bg-efbGold hover:bg-amber-500 text-efbNavy text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-lg transition-all shadow-md">Clear
+                        Filter Search</button>
+                </div>
+
+            </div>
+
+            <div class="space-y-8">
+                <!-- EFB Office Details -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-md p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-efbGold/10 rounded-full blur-2xl -mr-6 -mt-6"></div>
+                    <h3
+                        class="font-serif font-bold text-lg text-efbNavy mb-4 flex items-center gap-2 pb-3 border-b border-slate-100">
+                        <i class="fa-solid fa-building-columns text-efbGold"></i> Fast Contact
+                    </h3>
+                    <ul class="space-y-4 text-sm text-efbTextLight">
+                        <li class="flex items-start gap-3">
+                            <span class="text-efbGold mt-0.5"><i class="fa-solid fa-location-dot"></i></span>
+                            <span>Bur Dubai, Dubai, United Arab Emirates</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-efbGold mt-0.5"><i class="fa-solid fa-phone"></i></span>
+                            <span>+971 525263838</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-efbGold mt-0.5"><i class="fa-solid fa-envelope"></i></span>
+                            <span>info@efb.ae</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CTA Banner -->
+                <div
+                    class="bg-gradient-to-tr from-efbNavy to-slate-800 text-white rounded-2xl shadow-xl p-6 relative overflow-hidden border-t-4 border-efbGold">
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-efbGold/10 rounded-full"></div>
+                    <span
+                        class="text-[10px] uppercase bg-efbGold/20 text-efbGold px-3 py-1 rounded-full font-bold tracking-widest inline-block mb-3">VIP
+                        Advisory</span>
+                    <h3 class="text-xl font-serif font-bold mb-2">Need Bespoke Solutions?</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed mb-6">Our senior banking consultants offer
+                        confidential corporate and private consultations.</p>
+                    <button onclick="openModal('consultation-modal')"
+                        class="w-full text-center bg-efbGold hover:bg-amber-400 text-efbNavy font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition-colors">
+                        Book VIP Advisory Session
+                    </button>
+                </div>
+
+                <!-- UAE AECB Score Indicator Widget -->
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-md p-6">
+                    <h4 class="font-serif font-bold text-base text-efbNavy mb-3">AECB Score Range Check</h4>
+                    <p class="text-xs text-efbTextLight mb-4">Evaluate where you stand inside the UAE credit grid
+                        profile:</p>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="font-semibold text-emerald-600">Excellent Range</span>
+                                <span class="text-slate-500 font-bold">700 - 900</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full w-[85%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="font-semibold text-blue-600">Good Range</span>
+                                <span class="text-slate-500 font-bold">580 - 699</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 rounded-full w-[65%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="font-semibold text-red-500">Below Standard</span>
+                                <span class="text-slate-500 font-bold">300 - 579</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-red-400 rounded-full w-[35%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="about-section" class="bg-white border-t border-slate-100 py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span
+                    class="text-xs uppercase bg-amber-50 text-efbGold px-3 py-1 rounded-full font-bold tracking-widest inline-block mb-4">Our
+                    Integrity Standard</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-efbNavy mb-6">About Excellence Financing
+                    Broker</h2>
+                <p class="text-efbTextLight leading-relaxed mb-6 text-sm">
+                    Excellence Financing Broker (EFB) stands at the pinnacle of UAE's elite financial consulting sector.
+                    Based out of Dubai, we bridge the gap between regional premier banking networks and ambitious
+                    residents, expats, and business entities looking to optimize leverage.
+                </p>
+                <p class="text-efbTextLight leading-relaxed mb-8 text-sm">
+                    Our tailored advisory pathways handle intricate loan setups, luxury mortgages, structural commercial
+                    lines, and card allocations ensuring our clients always receive the optimal terms, minimal interest
+                    thresholds, and accelerated turnaround.
+                </p>
+                <div class="grid grid-cols-3 gap-6 text-center">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span class="block text-2xl font-serif font-bold text-efbGold mb-1">5K+</span>
+                        <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Clients
+                            Served</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span class="block text-2xl font-serif font-bold text-efbGold mb-1">15+ years</span>
+                        <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Experience</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <span class="block text-2xl font-serif font-bold text-efbGold mb-1">95%</span>
+                        <span class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Less
+                            Paperwork</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-efbNavy to-transparent rounded-2xl opacity-10 pointer-events-none">
+                </div>
+                <img src="{%static 'images/banner-1.avif' %}" alt="EFB Corporate HQ"
+                    class="rounded-2xl shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 w-full"
+                    onerror="this.src='https://placehold.co/600x400/0f172a/d4af37?text=EFB+Headquarters'">
+                <div
+                    class="absolute -bottom-6 -left-6 bg-white shadow-xl p-4 rounded-xl border border-slate-100 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-bold text-efbNavy">Regulated Entity</span>
+                        <span class="block text-[10px] text-slate-400">Licensed UAE Financial Advisory</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Modal Backdrop -->
+    <div id="consultation-modal"
+        class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 transform scale-95 transition-all duration-300"
+            id="modal-container">
+            <!-- Modal Header -->
+            <div class="bg-efbNavy p-6 text-white relative">
+                <h3 class="text-xl font-serif font-bold">Free Financial Consultation</h3>
+                <p class="text-xs text-slate-300 mt-1">Submit your parameters. An EFB senior advisor will follow up.</p>
+                <button onclick="closeModal('consultation-modal')"
+                    class="absolute top-5 right-5 text-slate-300 hover:text-efbGold transition-colors text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body Form -->
+            <form id="consultation-form" onsubmit="handleConsultationSubmit(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-efbNavy uppercase mb-1.5">Full Legal Name</label>
+                    <input type="text" required
+                        class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-1 focus:ring-efbGold focus:border-efbGold focus:outline-none"
+                        placeholder="e.g. Abdullah bin Zayed">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-efbNavy uppercase mb-1.5">Email Address</label>
+                        <input type="email" required
+                            class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-1 focus:ring-efbGold focus:border-efbGold focus:outline-none"
+                            placeholder="e.g. client@domain.ae">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-efbNavy uppercase mb-1.5">UAE Mobile Number</label>
+                        <input type="tel" required
+                            class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-1 focus:ring-efbGold focus:border-efbGold focus:outline-none"
+                            placeholder="e.g. +971 50 123 4567">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-efbNavy uppercase mb-1.5">Requested Financial
+                        Segment</label>
+                    <select
+                        class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-1 focus:ring-efbGold focus:border-efbGold focus:outline-none bg-white">
+                        <option value="Personal Loans">Personal Loan Facilitation</option>
+                        <option value="Business Financing">Business & SME Financing</option>
+                        <option value="Credit Card Solutions">Credit Card & Debt Consolidation</option>
+                        <option value="Mortgages">Premium Mortgages & Wealth Management</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-efbNavy uppercase mb-1.5">Current Monthly Salary
+                        (AED)</label>
+                    <input type="number" required
+                        class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-1 focus:ring-efbGold focus:border-efbGold focus:outline-none"
+                        placeholder="e.g. 15000">
+                </div>
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-efbNavy to-slate-800 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider hover:opacity-95 transition-all mt-2">
+                    Submit Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast message box (replacement for forbidden alerts) -->
+    <div id="toast-message"
+        class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white rounded-xl shadow-2xl p-4 max-w-sm hidden flex items-center gap-3 border border-efbGold animate-bounce">
+        <span class="text-xl text-emerald-400"><i class="fa-solid fa-circle-check"></i></span>
+        <div>
+            <span class="block text-xs font-bold">Successfully Submitted</span>
+            <span class="block text-[10px] text-slate-300">An EFB Senior Officer is reviewing your file.</span>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block extra_js %}
+
+    <script>
+        // Smoothly control single-card active state accordions
+        function toggleAccordion(id) {
+            const accordionContent = document.getElementById(`content-${id}`);
+            const card = accordionContent.closest('.faq-card');
+            const chevron = card.querySelector('.chevron');
+
+            // Check if active
+            const isActive = accordionContent.classList.contains('active');
+
+            // Collapse all accordions for a sleek polished interface
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.classList.remove('active');
+                content.closest('.faq-card').querySelector('.chevron').style.transform = 'rotate(0deg)';
+                content.closest('.faq-card').classList.remove('border-efbGold', 'ring-1', 'ring-efbGold/30');
+            });
+
+            // If it was not active, open it
+            if (!isActive) {
+                accordionContent.classList.add('active');
+                chevron.style.transform = 'rotate(180deg)';
+                card.classList.add('border-efbGold', 'ring-1', 'ring-efbGold/30');
+            }
+        }
+
+        // Search engine filter processing algorithm
+        function filterFAQs() {
+            const query = document.getElementById('faq-search').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.faq-card');
+            const searchInfo = document.getElementById('search-info');
+            const searchQuerySpan = document.getElementById('search-query');
+            const noResultsCard = document.getElementById('no-results-card');
+
+            let matchCount = 0;
+
+            if (query !== "") {
+                searchInfo.classList.remove('hidden');
+                searchQuerySpan.textContent = query;
+            } else {
+                searchInfo.classList.add('hidden');
+            }
+
+            // Loop cards and look for matches in title and text fields
+            cards.forEach(card => {
+                const question = card.querySelector('.accordion-trigger').textContent.toLowerCase();
+                const answer = card.querySelector('.accordion-content').textContent.toLowerCase();
+
+                if (question.includes(query) || answer.includes(query)) {
+                    card.classList.remove('hidden');
+                    matchCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Display fallback state if no matches
+            if (matchCount === 0) {
+                noResultsCard.classList.remove('hidden');
+            } else {
+                noResultsCard.classList.add('hidden');
+            }
+        }
+
+        // Category click filters
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.faq-card');
+            const buttons = document.querySelectorAll('.category-btn');
+            const noResultsCard = document.getElementById('no-results-card');
+
+            // Reset Search bar value
+            document.getElementById('faq-search').value = "";
+            document.getElementById('search-info').className = "hidden text-sm text-efbTextLight mb-6 italic";
+
+            // Toggle category active buttons aesthetics
+            buttons.forEach(btn => {
+                btn.className = "category-btn px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all bg-white text-efbTextLight hover:text-efbNavy shadow-sm border border-slate-200";
+            });
+
+            const activeBtn = document.getElementById(`btn-${category}`);
+            activeBtn.className = "category-btn active px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all bg-efbGold text-efbNavy shadow-sm";
+
+            // Filter logic implementation
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResultsCard.classList.remove('hidden');
+            } else {
+                noResultsCard.classList.add('hidden');
+            }
+        }
+
+        // Reset search states
+        function clearSearch() {
+            document.getElementById('faq-search').value = "";
+            filterCategory('all');
+        }
+
+        // Smooth Scroll triggers
+        // function scrollToAbout() {
+        //     document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+        // }
+
+        // Manage clean immersive modal actions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const container = document.getElementById('modal-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const container = document.getElementById('modal-container');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+        }
+
+        // Form Submit flow without prohibited Alerts
+        function handleConsultationSubmit(e) {
+            e.preventDefault();
+            closeModal('consultation-modal');
+
+            // Show custom premium toast notification
+            const toast = document.getElementById('toast-message');
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+
+            // Reset form status
+            document.getElementById('consultation-form').reset();
+        }
+
+        // Handle off-click close window bindings
+        window.onclick = function (event) {
+            const modal = document.getElementById('consultation-modal');
+            if (event.target == modal) {
+                closeModal('consultation-modal');
+            }
+        }
+    </script>
+
+</body1>
+
+{% endblock %}

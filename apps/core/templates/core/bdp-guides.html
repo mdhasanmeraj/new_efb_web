@@ -1,0 +1,1243 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    efbBlue: {
+                        DEFAULT: '#0066CC',
+                        dark: '#0052a3',
+                        light: '#e6f0fa',
+                        slate: '#003366'
+                    },
+                    efbRed: {
+                        DEFAULT: '#E52E2E',
+                        hover: '#c42020',
+                        light: '#fdf2f2'
+                    }
+                },
+                fontFamily: {
+                    sans: ['Arial', 'Helvetica', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    body {
+        font-family: 'Arial', 'Helvetica', sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    .accordion-content.open {
+        max-height: 500px;
+        padding-bottom: 1.5rem;
+    }
+
+    /* Custom Keyframe Animations for Entrance */
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-80px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(80px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-slide-left {
+        animation: slideInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-slide-right {
+        animation: slideInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Glassmorphism custom enhancements */
+    .glass-container {
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .dark .glass-container {
+        background: rgba(15, 23, 42, 0.55);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .dark ::-webkit-scrollbar-track {
+        background: #1e293b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+        background: #475569;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col selection:bg-efbBlue selection:text-white relative">
+
+    <!-- Floating Theme Toggle Action -->
+    <button id="theme-toggle"
+        class="fixed top-6 right-6 z-50 p-3 rounded-xl text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-xl hover:scale-105 transition-all focus:outline-none"
+        aria-label="Toggle dark mode">
+        <i id="theme-icon-light" class="fa-solid fa-sun hidden"></i>
+        <i id="theme-icon-dark" class="fa-solid fa-moon"></i>
+    </button>
+
+    <section
+        class="relative overflow-hidden pt-20 pb-24 border-b border-slate-150 dark:border-slate-850 transition-colors duration-300 min-h-[85vh] flex items-center bg-cover bg-center font-sans"
+        style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');">
+        <!-- Overlay without harsh white colors for natural dark & light transitions -->
+        <div
+            class="absolute inset-0 bg-slate-100/90 dark:bg-slate-950/90 backdrop-blur-[2px] transition-colors duration-300">
+        </div>
+        <div
+            class="absolute inset-0 bg-gradient-to-tr from-slate-100 dark:from-slate-950 via-slate-100/80 dark:via-slate-950/85 to-transparent">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Textual Content Column (Coming from Left) -->
+                <div class="lg:col-span-7 text-left space-y-6 opacity-0 animate-slide-left">
+
+                    <!-- Integrated Corporate Branding Badge -->
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-efbBlue to-blue-800 shadow-md">
+                            <i class="fa-solid fa-briefcase text-white text-base"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <span
+                                    class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-efbBlue to-blue-800 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">EXCELLENCE</span>
+                                <span
+                                    class="text-[10px] font-bold text-efbRed px-1.5 py-0.5 rounded bg-efbRed-light dark:bg-red-950/40 border border-efbRed/20">BDP</span>
+                            </div>
+                            <span
+                                class="text-[9px] font-bold tracking-[0.2em] text-slate-400 dark:text-slate-500 block -mt-1 uppercase">Financing
+                                Broker</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-200/50 dark:border-blue-900/50">
+                        <span class="w-2 h-2 rounded-full bg-efbBlue animate-pulse"></span>
+                        <span
+                            class="text-xs font-semibold uppercase tracking-wider text-efbBlue dark:text-blue-400">Official
+                            Partner Library</span>
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                        BDP Referral Program <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-efbBlue to-blue-500 dark:from-blue-400 dark:to-cyan-300">Resource
+                            Center</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                        Everything you need to understand the BDP Referral Program—from enrollment to payouts. Browse
+                        our official premium documentation below, evaluate active payouts, and download critical guide
+                        resources to begin monetizing your professional network.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#guides-hub"
+                            class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-efbBlue hover:bg-efbBlue-dark rounded-xl shadow-lg shadow-efbBlue/25 transition-all transform hover:-translate-y-0.5">
+                            Browse Guides <i class="fa-solid fa-download ml-2 text-sm"></i>
+                        </a>
+                        <a href="#faq"
+                            class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-slate-700 dark:text-slate-200 bg-slate-250 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl transition-all">
+                            Read FAQs
+                        </a>
+                    </div>
+
+                    <!-- Live indicators -->
+                    <div class="flex items-center gap-6 pt-4 border-t border-slate-200/60 dark:border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-down text-efbBlue text-lg"></i>
+                            <div>
+                                <span class="block text-sm font-bold text-slate-800 dark:text-slate-200"
+                                    id="total-downloads-count">21.3k+</span>
+                                <span class="block text-xs text-slate-500 dark:text-slate-400">Total Downloads</span>
+                            </div>
+                        </div>
+                        <div class="w-px h-8 bg-slate-200 dark:bg-slate-800"></div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-users text-green-500 text-lg"></i>
+                            <div>
+                                <span class="block text-sm font-bold text-slate-800 dark:text-slate-200">2,500+</span>
+                                <span class="block text-xs text-slate-500 dark:text-slate-400">Active BDP Members</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphic Illustration Column (Coming from Right) -->
+                <div class="lg:col-span-5 relative flex justify-center opacity-0 animate-slide-right">
+                    <div class="relative w-full max-w-[420px] aspect-square">
+                        <!-- Background rings -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-efbBlue/10 to-efbRed/10 rounded-full animate-pulse">
+                        </div>
+                        <div
+                            class="absolute inset-4 border-2 border-dashed border-slate-300 dark:border-slate-800 rounded-full">
+                        </div>
+
+                        <!-- Core graphic representing files -->
+                        <div
+                            class="absolute inset-12 bg-slate-50/95 dark:bg-slate-800/95 rounded-3xl shadow-2xl border border-slate-250 dark:border-slate-700 flex flex-col justify-between p-6 overflow-hidden">
+                            <div
+                                class="flex items-center justify-between border-b border-slate-200 dark:border-slate-750 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                </div>
+                                <span
+                                    class="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">BDP_GUIDE_VAULT</span>
+                            </div>
+
+                            <div class="flex flex-col items-center justify-center py-6 space-y-4">
+                                <div class="relative">
+                                    <div
+                                        class="absolute -inset-1.5 bg-gradient-to-r from-efbBlue to-blue-500 rounded-full blur opacity-40">
+                                    </div>
+                                    <div
+                                        class="relative bg-gradient-to-br from-efbBlue to-efbBlue-slate w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+                                        <i class="fa-solid fa-file-pdf text-white text-3xl"></i>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-bold text-slate-800 dark:text-slate-100 text-sm">BDP Information Hub
+                                    </p>
+                                    <p class="text-xs text-slate-400">Verbatim Verified Documents</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="bg-slate-100 dark:bg-slate-900/60 rounded-xl p-3 flex items-center justify-between">
+                                <span class="text-xs text-slate-500 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-network-wired text-efbBlue"></i> Program Commission
+                                </span>
+                                <span
+                                    class="text-xs font-bold text-efbBlue dark:text-blue-400 bg-blue-100 dark:bg-blue-950/80 px-2 py-0.5 rounded-full">Up
+                                    to 0.80%</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Micro-widgets -->
+                        <div class="absolute top-4 left-4 bg-slate-50/95 dark:bg-slate-800/95 px-3.5 py-2 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-750 flex items-center gap-2.5 animate-bounce"
+                            style="animation-duration: 4s;">
+                            <span
+                                class="flex items-center justify-center w-8 h-8 rounded-full bg-green-500/10 text-green-600">
+                                <i class="fa-solid fa-coins"></i>
+                            </span>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-medium">Standard Commission</p>
+                                <p class="text-xs font-bold text-slate-800 dark:text-slate-100">0.80% Personal Loan</p>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-6 right-2 bg-slate-50/95 dark:bg-slate-800/95 px-3.5 py-2.5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-750 flex items-center gap-2.5 animate-bounce"
+                            style="animation-duration: 5s;">
+                            <span
+                                class="flex items-center justify-center w-8 h-8 rounded-full bg-efbRed/10 text-efbRed">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </span>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-medium">Sub-BDP Referral</p>
+                                <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Earn 5% Recurring</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="why-guides" class="py-20 bg-[#003366] text-white transition-colors duration-300 font-sans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span
+                    class="text-xs font-bold uppercase tracking-wider text-white bg-white/10 px-3.5 py-1.5 rounded-full border border-white/10">Maximize
+                    Success</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Why Should You Read These Guides?</h2>
+                <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+                    Our reference manuals are compiled with professional clarity to guide you through the active
+                    referral process, explain tiered payouts, and prevent administrative errors.
+                </p>
+            </div>
+
+            <!-- Benefit Grid (Premium White/Transparent Glass Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-sm hover:shadow-lg border border-white/20 transition-all duration-300 hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#003366] transition-all duration-300 mb-5">
+                        <i class="fa-solid fa-diagram-project text-xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Understand Process</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Step-by-step layout of how EFB guides prospects across UAE financial solutions cleanly.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-sm hover:shadow-lg border border-white/20 transition-all duration-300 hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#003366] transition-all duration-300 mb-5">
+                        <i class="fa-solid fa-calculator text-xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Commissions Plan</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        A detailed view of loan slabs, cards, accounts, and extra performance bonuses.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-sm hover:shadow-lg border border-white/20 transition-all duration-300 hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#003366] transition-all duration-300 mb-5">
+                        <i class="fa-solid fa-id-card text-xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Onboarding Steps</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Step-by-step manual on Emirates ID submission, bank account connection, and portal use.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-sm hover:shadow-lg border border-white/20 transition-all duration-300 hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#003366] transition-all duration-300 mb-5">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Avoid Mistakes</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        Submit clean registration paperwork to prevent processing holds or lead cancellation issues.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-sm hover:shadow-lg border border-white/20 transition-all duration-300 hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#003366] transition-all duration-300 mb-5">
+                        <i class="fa-solid fa-database text-xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Complete Database</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">
+                        A centralized point of reference with official terms and procedures for broker partners.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guides-hub" class="py-24 relative overflow-hidden transition-colors duration-300 font-sans">
+        <!-- Colorful blur points in background behind the Glass section -->
+        <div
+            class="absolute top-20 left-10 w-80 h-80 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-10 right-10 w-96 h-96 bg-efbRed/10 dark:bg-efbRed/5 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- Glassmorphism Section Background -->
+            <div class="glass-container rounded-3xl p-8 md:p-12 shadow-2xl">
+                <!-- Section Header -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-efbBlue">BDP Official
+                            Library</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Program
+                            Guidelines & Verified Downloads</h2>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-xl">
+                            Filter and search through our verified database of manuals. Each file is complete and ready
+                            for deployment.
+                        </p>
+                    </div>
+                    <!-- Categories filter -->
+                    <div class="flex flex-wrap gap-2" id="category-filter-container">
+                        <button
+                            class="px-4 py-2 rounded-xl text-xs font-bold border border-efbBlue bg-efbBlue text-white hover:opacity-90 transition-all filter-pill"
+                            data-category="all">
+                            All Guides
+                        </button>
+                        <button
+                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill"
+                            data-category="overview">
+                            Overviews
+                        </button>
+                        <button
+                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill"
+                            data-category="payout">
+                            Payouts
+                        </button>
+                        <button
+                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill"
+                            data-category="enrollment">
+                            Enrollments
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search and Controls Bar -->
+                <div
+                    class="bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 mb-8 flex flex-col md:flex-row items-center gap-4 justify-between transition-colors">
+                    <div class="relative w-full md:max-w-md">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        </div>
+                        <input type="text" id="guide-search"
+                            placeholder="Search guides by title, keywords, or details..."
+                            class="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue focus:border-efbBlue text-sm transition-all shadow-sm">
+                    </div>
+                    <div class="flex items-center gap-4 text-xs font-medium text-slate-500 dark:text-slate-400">
+                        <span id="results-count"
+                            class="bg-blue-50/70 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">Showing
+                            5 guides</span>
+                        <button id="reset-filters"
+                            class="hover:text-efbBlue dark:hover:text-blue-400 transition-colors font-semibold hidden flex items-center gap-1.5">
+                            <i class="fa-solid fa-rotate"></i> Reset filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Guide Grid Hub -->
+                <div id="guides-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Content Hydrated via JavaScript -->
+                </div>
+
+                <!-- Empty Results Template -->
+                <div id="no-results"
+                    class="hidden text-center py-16 bg-white/40 dark:bg-slate-800/20 rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 max-w-md mx-auto space-y-4">
+                    <div
+                        class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-slate-450 mx-auto">
+                        <i class="fa-solid fa-folder-open text-2xl"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">No matching resources</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+                        We couldn't find any guides that matched your search terms. Try searching for "commission",
+                        "enrollment", or resetting your filters.
+                    </p>
+                    <button onclick="resetFiltersAndSearch()"
+                        class="px-4 py-2 bg-efbBlue text-white text-xs font-semibold rounded-lg hover:bg-efbBlue-dark transition-all">
+                        Reset search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq"
+        class="py-20 bg-slate-50 dark:bg-slate-900/40 border-t border-b border-slate-200 dark:border-slate-800/60 transition-colors duration-300 font-sans">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+                <span
+                    class="text-xs font-bold uppercase tracking-wider text-efbBlue bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1.5 rounded-full border border-efbBlue/10">Clarifying
+                    Doubts</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Frequently Asked
+                    Questions</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+                    Everything you need to know about payouts, eligibility, program details, and manual download setups.
+                </p>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="space-y-4" id="faq-accordion-group">
+                <!-- FAQ Item 1 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
+                        aria-expanded="false">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">How do I join
+                            the BDP Program?</span>
+                        <span
+                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </span>
+                    </button>
+                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+                            <p>To register, visit the Excellence Financing Broker partner page (available via <a
+                                    href="https://app.efb.ae/auth/become-partner" target="_blank"
+                                    class="text-efbBlue hover:underline font-semibold">app.efb.ae/auth/become-partner</a>)
+                                and complete the online registration form in approximately 1 minute.</p>
+                            <p>You will need to verify your email, supply accurate contact details, and input UAE
+                                residential address and bank credentials for payout distributions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
+                        aria-expanded="false">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">Who is eligible
+                            for the BDP Referral Program?</span>
+                        <span
+                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </span>
+                    </button>
+                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+                            <p>The EFB BDP Program is open to everyone residing in the UAE. Requirement criteria are
+                                basic:</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Valid Emirates ID (Residency identification)</li>
+                                <li>Verified UAE Mobile Number & Email Address</li>
+                                <li>Personal UAE Bank Account to receive commissions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
+                        aria-expanded="false">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">How are
+                            commissions calculated?</span>
+                        <span
+                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </span>
+                    </button>
+                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+                            <p>Commissions follow a lucrative standard payout structure based on finalized
+                                disbursements:</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><strong>Personal Loan:</strong> 0.80% of disbursed loan value</li>
+                                <li><strong>Mortgage Loan:</strong> 0.35% of disbursed loan value</li>
+                                <li><strong>Business Loan:</strong> 0.50% of disbursed loan value</li>
+                                <li><strong>Credit Card:</strong> AED 400 per approved credit card</li>
+                                <li><strong>Business Account:</strong> AED 500 per approved account activation</li>
+                            </ul>
+                            <p class="pt-2">Active partners are structured under badge levels (Silver, Gold, Diamond)
+                                adding up to an extra 10% bonus on top of payouts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
+                        aria-expanded="false">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">When do payouts
+                            happen?</span>
+                        <span
+                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </span>
+                    </button>
+                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Standard disbursements are tracked inside your CRM workspace and validated dynamically upon
+                            successful completion. Monthly campaigns and volume-slab bonuses are accumulated and paid
+                            directly on every 5th of the succeeding month.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
+                        aria-expanded="false">
+                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">Can I track
+                            Sub-BDP referrals?</span>
+                        <span
+                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </span>
+                    </button>
+                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Yes! EFB offers a multi-tier referral multiplier. When your referred partners join, they
+                            become your Sub-BDP. You earn 5% of your Sub-BDP's payouts on every successful disbursement
+                            they perform. Additionally, you earn monthly bonus payouts of up to AED 100 per active
+                            Sub-BDP.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More FAQs Button at Bottom Extreme Left -->
+            <div class="flex justify-start mt-8">
+                <a href="https://efb.ae/faqs" target="_blank"
+                    class="inline-flex items-center gap-2 text-sm font-bold text-efbBlue dark:text-blue-400 hover:text-efbBlue-dark dark:hover:text-blue-300 transition-colors group">
+                    More FAQs <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="help-section" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300 font-sans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-gradient-to-r from-efbBlue to-efbBlue-slate dark:from-slate-800 dark:to-slate-900/80 rounded-3xl p-8 sm:p-12 shadow-xl shadow-efbBlue/10 border border-slate-100 dark:border-slate-800 relative overflow-hidden text-white">
+                <div class="absolute -right-16 -top-16 w-60 h-60 bg-white/5 rounded-full pointer-events-none"></div>
+                <div class="absolute -left-16 -bottom-16 w-60 h-60 bg-blue-500/10 rounded-full pointer-events-none">
+                </div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Heading Area -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/15 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-blue-200">
+                            <i class="fa-solid fa-headset"></i> Support Desk
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Need Assistance?</h2>
+                        <p class="text-blue-100 text-sm sm:text-base max-w-xl leading-relaxed">
+                            If you have comprehensive questions regarding the BDP Referral Program, custom enrollment
+                            procedures, payout schedules, or need help downloading resources, our support desk is
+                            standing by.
+                        </p>
+                        <!-- Contact details -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4">
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white font-semibold">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <div>
+                                    <p class="text-[10px] text-blue-200">EMAIL SUPPORT</p>
+                                    <a href="mailto:support@efb.ae"
+                                        class="text-sm font-bold text-white hover:underline">support@efb.ae</a>
+                                </div>
+                            </div>
+                            <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white font-semibold">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <div>
+                                    <p class="text-[10px] text-blue-200">PHONE SUPPORT</p>
+                                    <a href="tel:+971525263838"
+                                        class="text-sm font-bold text-white hover:underline">+971 525263838</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div
+                        class="lg:col-span-5 bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-850 text-slate-800 dark:text-slate-100">
+                        <h3 class="text-base font-bold mb-4 dark:text-white flex items-center gap-2">
+                            <i class="fa-regular fa-envelope text-efbBlue"></i> Quick Inquiry
+                        </h3>
+                        <form id="contact-support-form" class="space-y-3" onsubmit="handleFormSubmit(event)">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
+                                    for="user-name">Your Full Name</label>
+                                <input type="text" id="user-name" required placeholder="Hasan Bin Mohammad"
+                                    class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
+                                    for="user-email">Email Address</label>
+                                <input type="email" id="user-email" required placeholder="name@email.ae"
+                                    class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
+                                    for="user-message">Inquiry Message</label>
+                                <textarea id="user-message" rows="3" required
+                                    placeholder="How do payout structures operate for business accounts..."
+                                    class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue resize-none"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full py-3 bg-gradient-to-r from-efbBlue to-blue-600 text-white font-semibold text-xs rounded-xl hover:opacity-95 shadow transition-all">
+                                Send Inquiry <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top"
+        class="fixed bottom-6 right-6 p-3.5 bg-efbBlue text-white rounded-xl shadow-lg shadow-efbBlue/25 border border-white/10 opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1 hover:bg-efbBlue-dark z-50">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Global Simulated Toast Notification System -->
+    <div id="toast-container" class="fixed bottom-6 left-6 z-50 flex flex-col gap-2.5 max-w-sm pointer-events-none">
+    </div>
+
+    <!-- Premium Interactive Guide Preview / Download Sim Modal -->
+    <div id="download-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div
+            class="bg-white dark:bg-slate-850 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-700 flex flex-col">
+            <!-- Modal Header -->
+            <div
+                class="p-6 border-b border-slate-100 dark:border-slate-700/60 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <span
+                        class="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/40 text-efbRed flex items-center justify-center">
+                        <i class="fa-solid fa-file-pdf text-lg"></i>
+                    </span>
+                    <div>
+                        <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">PREVIEW FILE
+                            RESOURCE</span>
+                        <h3 id="modal-file-title"
+                            class="font-extrabold text-sm text-slate-800 dark:text-slate-100 leading-tight">BDP Guide
+                        </h3>
+                    </div>
+                </div>
+                <button onclick="closeModal()"
+                    class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-600 transition-all text-slate-400 hover:text-slate-600 dark:hover:text-slate-100">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content / Simulation Details -->
+            <div class="p-6 space-y-4 text-slate-850 dark:text-slate-200">
+                <p id="modal-file-desc" class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Description of the guide.
+                </p>
+
+                <!-- Information stats table -->
+                <div
+                    class="grid grid-cols-3 gap-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                    <div>
+                        <span class="block text-[10px] text-slate-400 font-bold uppercase">FILE SIZE</span>
+                        <span id="modal-file-size" class="text-xs font-bold text-slate-700 dark:text-slate-200">2.4
+                            MB</span>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-slate-400 font-bold uppercase">FORMAT</span>
+                        <span class="text-xs font-bold text-slate-700 dark:text-slate-200">PDF Document</span>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-slate-400 font-bold uppercase">READ TIME</span>
+                        <span id="modal-file-time" class="text-xs font-bold text-slate-700 dark:text-slate-200">5
+                            Mins</span>
+                    </div>
+                </div>
+
+                <!-- Verified Verbatim Path Placeholder badge -->
+                <div
+                    class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-xl border border-blue-100 dark:border-blue-900/40">
+                    <span class="block text-[9px] text-blue-500 dark:text-blue-400 font-bold uppercase">VERBATIM
+                        REFERENCED FILE</span>
+                    <span id="modal-file-path"
+                        class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-300 select-all block mt-0.5">path_placeholder.pdf</span>
+                </div>
+
+                <!-- Simulation progress widget -->
+                <div id="download-progress-container" class="hidden space-y-2">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-spinner animate-spin text-efbBlue"></i> Preparing document...</span>
+                        <span id="download-progress-val">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 dark:bg-slate-900 rounded-full h-2 overflow-hidden">
+                        <div id="download-progress-bar"
+                            class="bg-gradient-to-r from-efbBlue to-blue-500 h-full w-0 transition-all"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div
+                class="p-6 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-end gap-3 bg-slate-50/50 dark:bg-slate-800/20">
+                <button onclick="closeModal()"
+                    class="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl text-slate-600 dark:text-slate-300 text-xs font-semibold transition-all">
+                    Cancel
+                </button>
+                <button id="modal-download-btn"
+                    class="px-5 py-2.5 bg-efbBlue hover:bg-efbBlue-dark text-white rounded-xl text-xs font-bold shadow-lg shadow-efbBlue/15 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-circle-down"></i> Confirm Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block extra_js %}
+
+    <script>
+        // Array holding verified verbatim reference PDFs mapping directly to files.
+        const guidesData = [
+            {
+                id: 'bdp-program-details',
+                title: 'BDP Program Details',
+                description: 'Comprehensive manual describing what the Business Development Partner program is, core benefits, Emirates ID prerequisites, and verified contact guidelines.',
+                category: 'overview',
+                fileType: 'PDF Document',
+                fileSize: '2.1 MB',
+                readingTime: '4 mins',
+                lastUpdated: 'Updated June 2026',
+                downloadCount: 3892,
+                path: 'BDP_Program_details.pdf' // Verbatim reference
+            },
+            {
+                id: 'bdp-enrollment-3',
+                title: 'BDP Enrollment Roadmap',
+                description: 'Step-by-step register workflow covering compliance data, submitting Emirates verification, terms acceptance, and connecting bank account details.',
+                category: 'enrollment',
+                fileType: 'PDF Document',
+                fileSize: '1.9 MB',
+                readingTime: '5 mins',
+                lastUpdated: 'Updated June 2026',
+                downloadCount: 4120,
+                path: 'BDP_ENROLLMENT_3.pdf' // Verbatim reference
+            },
+            {
+                id: 'explanation-of-bdp-1',
+                title: 'Explanation of BDP Program',
+                description: 'Overview explaining client connection guidelines, lead transparency, relationship manager support, and submission steps via portal.',
+                category: 'overview',
+                fileType: 'PDF Document',
+                fileSize: '2.8 MB',
+                readingTime: '6 mins',
+                lastUpdated: 'Updated June 2026',
+                downloadCount: 3215,
+                path: 'EXPLANATION OF BDP_1.pdf' // Verbatim reference
+            },
+            {
+                id: 'payout-structure-bdp-2',
+                title: 'Payout Structure Guide',
+                description: 'Detailed analysis of personal loan percentages, business accounts, sub-BDP referral commissions, and standard recurring monthly volume slab payouts.',
+                category: 'payout',
+                fileType: 'PDF Document',
+                fileSize: '1.5 MB',
+                readingTime: '7 mins',
+                lastUpdated: 'Updated June 2026',
+                downloadCount: 5290,
+                path: 'PAYOUT_STRUCTURE_BDP_2.pdf' // Verbatim reference
+            },
+            {
+                id: 'bdp-onboarding-guide',
+                title: 'BDP Onboarding Guide',
+                description: 'Complete user guide walking you through activating your partner profile, accessing the CRM portal, and tracking active disbursement operations.',
+                category: 'enrollment',
+                fileType: 'PDF Document',
+                fileSize: '3.4 MB',
+                readingTime: '8 mins',
+                lastUpdated: 'Updated June 2026',
+                downloadCount: 4780,
+                path: 'BDP_Onboarding_Guide.pdf' // Verbatim reference
+            }
+        ];
+
+        let selectedCategory = 'all';
+        let searchQuery = '';
+        let activeDownloadId = null;
+
+        window.addEventListener('load', () => {
+            initializeTheme();
+            renderGuides();
+            setupAccordions();
+            setupScrollToTop();
+            setupSearchAndFilters();
+        });
+
+        function initializeTheme() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIconLight = document.getElementById('theme-icon-light');
+            const themeIconDark = document.getElementById('theme-icon-dark');
+
+            // Set dark theme as default or trace storage preference
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                themeIconLight.classList.remove('hidden');
+                themeIconDark.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIconLight.classList.add('hidden');
+                themeIconDark.classList.remove('hidden');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    themeIconLight.classList.add('hidden');
+                    themeIconDark.classList.remove('hidden');
+                    showToast('Switched to Light Mode', 'info');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    themeIconLight.classList.remove('hidden');
+                    themeIconDark.classList.add('hidden');
+                    showToast('Switched to Dark Mode', 'info');
+                }
+            });
+        }
+
+        function renderGuides() {
+            const grid = document.getElementById('guides-grid');
+            const resultsCount = document.getElementById('results-count');
+            const noResults = document.getElementById('no-results');
+
+            const filtered = guidesData.filter(guide => {
+                const matchesCategory = selectedCategory === 'all' || guide.category === selectedCategory;
+                const matchesSearch = guide.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    guide.description.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            resultsCount.textContent = `Showing ${filtered.length} guide${filtered.length !== 1 ? 's' : ''}`;
+            const resetBtn = document.getElementById('reset-filters');
+            if (selectedCategory !== 'all' || searchQuery !== '') {
+                resetBtn.classList.remove('hidden');
+            } else {
+                resetBtn.classList.add('hidden');
+            }
+
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(guide => {
+                return `
+                <div class="bg-white/95 dark:bg-slate-800/95 p-6 rounded-3xl shadow-md hover:shadow-xl border border-slate-200/60 dark:border-slate-700/85 hover:border-efbBlue/30 dark:hover:border-blue-400/30 transform hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <!-- Card Header details -->
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center justify-center w-11 h-11 rounded-2xl bg-red-50 dark:bg-red-950/40 text-efbRed group-hover:scale-110 transition-transform">
+                                <i class="fa-regular fa-file-pdf text-xl"></i>
+                            </span>
+                            <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+                                <span class="bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded-md border border-slate-200 dark:border-slate-800 uppercase tracking-wider">${guide.fileType.split(' ')[0]}</span>
+                                <span>&bull;</span>
+                                <span>${guide.fileSize}</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-efbBlue dark:group-hover:text-blue-400 transition-colors leading-snug">${guide.title}</h3>
+                            <p class="text-xs text-slate-550 dark:text-slate-400 leading-relaxed line-clamp-3">${guide.description}</p>
+                        </div>
+                    </div>
+
+                    <!-- Meta specifications & actions -->
+                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-700/60 space-y-4">
+                        <div class="flex items-center justify-between text-[11px] font-medium text-slate-400">
+                            <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> ${guide.readingTime} read</span>
+                            <span class="flex items-center gap-1"><i class="fa-regular fa-calendar-check"></i> ${guide.lastUpdated}</span>
+                        </div>
+
+                        <div class="bg-slate-50/70 dark:bg-slate-900/60 p-2.5 rounded-xl flex items-center justify-between border border-slate-200/60 dark:border-slate-850 text-[10px] font-semibold text-slate-400">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-down text-efbBlue"></i> Downloads:</span>
+                            <span class="text-slate-700 dark:text-slate-300 font-bold" id="dl-count-${guide.id}">${guide.downloadCount.toLocaleString()}</span>
+                        </div>
+
+                        <button onclick="triggerDownloadModal('${guide.id}')" class="w-full inline-flex items-center justify-center px-4 py-3 bg-slate-50 hover:bg-efbBlue dark:bg-slate-900 dark:hover:bg-efbBlue text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-efbBlue hover:shadow-lg hover:shadow-efbBlue/15 font-bold text-xs rounded-xl transition-all">
+                            Download Guide <i class="fa-solid fa-arrow-down ml-2 text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function setupSearchAndFilters() {
+            const searchInput = document.getElementById('guide-search');
+            const categoryFilterContainer = document.getElementById('category-filter-container');
+
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderGuides();
+            });
+
+            categoryFilterContainer.addEventListener('click', (e) => {
+                const clickedButton = e.target.closest('.filter-pill');
+                if (!clickedButton) return;
+
+                const allPills = categoryFilterContainer.querySelectorAll('.filter-pill');
+                allPills.forEach(pill => {
+                    pill.className = "px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill";
+                });
+
+                clickedButton.className = "px-4 py-2 rounded-xl text-xs font-bold border border-efbBlue bg-efbBlue text-white hover:opacity-90 transition-all filter-pill";
+
+                selectedCategory = clickedButton.getAttribute('data-category');
+                renderGuides();
+                showToast(`Filter applied: ${selectedCategory.toUpperCase()}`, 'info');
+            });
+        }
+
+        function resetFiltersAndSearch() {
+            const searchInput = document.getElementById('guide-search');
+            searchInput.value = '';
+            searchQuery = '';
+            selectedCategory = 'all';
+
+            const pills = document.querySelectorAll('.filter-pill');
+            pills.forEach(pill => {
+                if (pill.getAttribute('data-category') === 'all') {
+                    pill.className = "px-4 py-2 rounded-xl text-xs font-bold border border-efbBlue bg-efbBlue text-white hover:opacity-90 transition-all filter-pill";
+                } else {
+                    pill.className = "px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill";
+                }
+            });
+
+            renderGuides();
+            showToast('Search filters reset successfully', 'success');
+        }
+
+        function setupAccordions() {
+            const triggers = document.querySelectorAll('.accordion-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const expanded = trigger.getAttribute('aria-expanded') === 'true';
+                    const content = trigger.nextElementSibling;
+                    const chevron = trigger.querySelector('.fa-chevron-down');
+
+                    triggers.forEach(otherTrigger => {
+                        if (otherTrigger !== trigger) {
+                            otherTrigger.setAttribute('aria-expanded', 'false');
+                            otherTrigger.nextElementSibling.classList.remove('open');
+                            const otherChevron = otherTrigger.querySelector('.fa-chevron-down');
+                            if (otherChevron) otherChevron.classList.remove('rotate-180');
+                        }
+                    });
+
+                    trigger.setAttribute('aria-expanded', !expanded);
+                    if (!expanded) {
+                        content.classList.add('open');
+                        chevron.classList.add('rotate-180');
+                    } else {
+                        content.classList.remove('open');
+                        chevron.classList.remove('rotate-180');
+                    }
+                });
+            });
+        }
+
+        function triggerDownloadModal(guideId) {
+            const guide = guidesData.find(g => g.id === guideId);
+            if (!guide) return;
+
+            activeDownloadId = guideId;
+
+            document.getElementById('modal-file-title').textContent = guide.title;
+            document.getElementById('modal-file-desc').textContent = guide.description;
+            document.getElementById('modal-file-size').textContent = guide.fileSize;
+            document.getElementById('modal-file-time').textContent = guide.readingTime;
+            document.getElementById('modal-file-path').textContent = guide.path;
+
+            const progressContainer = document.getElementById('download-progress-container');
+            const confirmBtn = document.getElementById('modal-download-btn');
+
+            progressContainer.classList.add('hidden');
+            confirmBtn.disabled = false;
+            confirmBtn.className = "px-5 py-2.5 bg-efbBlue hover:bg-efbBlue-dark text-white rounded-xl text-xs font-bold shadow-lg shadow-efbBlue/15 transition-all flex items-center gap-2";
+            confirmBtn.innerHTML = `<i class="fa-solid fa-circle-down"></i> Confirm Download`;
+
+            const modal = document.getElementById('download-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+
+            confirmBtn.onclick = () => executeDownloadSimulation(guide);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('download-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            activeDownloadId = null;
+        }
+
+        function executeDownloadSimulation(guide) {
+            const progressContainer = document.getElementById('download-progress-container');
+            const progressVal = document.getElementById('download-progress-val');
+            const progressBar = document.getElementById('download-progress-bar');
+            const confirmBtn = document.getElementById('modal-download-btn');
+
+            progressContainer.classList.remove('hidden');
+            confirmBtn.disabled = true;
+            confirmBtn.className = "px-5 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-450 dark:text-slate-500 rounded-xl text-xs font-bold cursor-not-allowed flex items-center gap-2";
+            confirmBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Downloading...`;
+
+            let progress = 0;
+            progressBar.style.width = '0%';
+            progressVal.textContent = '0%';
+
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 25) + 8;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+
+                    progressBar.style.width = '100%';
+                    progressVal.textContent = '100%';
+
+                    setTimeout(() => {
+                        closeModal();
+
+                        guide.downloadCount += 1;
+                        const individualCounter = document.getElementById(`dl-count-${guide.id}`);
+                        if (individualCounter) individualCounter.textContent = guide.downloadCount.toLocaleString();
+
+                        // Simulated downloading trigger using verbatim filename
+                        const dummyElement = document.createElement('a');
+                        dummyElement.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent("EFB Referral Program Resource File: " + guide.title)}`);
+                        dummyElement.setAttribute('download', guide.path);
+                        document.body.appendChild(dummyElement);
+                        dummyElement.click();
+                        document.body.removeChild(dummyElement);
+
+                        showToast(`"${guide.title}" downloaded successfully!`, 'success');
+                    }, 500);
+                } else {
+                    progressBar.style.width = `${progress}%`;
+                    progressVal.textContent = `${progress}%`;
+                }
+            }, 120);
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+
+            const toast = document.createElement('div');
+            toast.className = "flex items-center gap-3 p-4 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-750 pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300 max-w-sm";
+
+            let icon = '<i class="fa-solid fa-info text-blue-500"></i>';
+            if (type === 'success') {
+                icon = '<i class="fa-solid fa-circle-check text-green-500 text-lg"></i>';
+            } else if (type === 'error') {
+                icon = '<i class="fa-solid fa-circle-exclamation text-efbRed text-lg"></i>';
+            }
+
+            toast.innerHTML = `
+                <div class="flex-shrink-0">${icon}</div>
+                <p class="text-xs font-semibold leading-relaxed">${message}</p>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3500);
+        }
+
+        function setupScrollToTop() {
+            const btn = document.getElementById('scroll-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    btn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            btn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const message = document.getElementById('user-message').value;
+
+            if (name && email && message) {
+                showToast(`Thank you, ${name}! Your inquiry has been sent to our CRM helpdesk.`, 'success');
+                document.getElementById('contact-support-form').reset();
+            } else {
+                showToast('Please fill out all the fields in the support form.', 'error');
+            }
+        }
+    </script>
+</body>
+{% endblock %}

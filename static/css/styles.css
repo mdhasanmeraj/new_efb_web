@@ -1,0 +1,280 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(12, 28, 42, 0.7);
+    /* Matching #0c1c2a with transparency */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.7rem 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.navbar-logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-family: 'Newsreader', serif;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.7rem 1.3rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 2px solid transparent;
+}
+
+/* Hover shadow effect */
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Click effect: surrounded with different color box */
+.nav-link:focus,
+.nav-link:active {
+    outline: none;
+    border-color: #e9c176;
+    /* gold-light */
+    background: rgba(233, 193, 118, 0.1);
+    color: #e9c176;
+}
+
+/* Dropdown styling */
+.nav-item {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: rgba(12, 28, 42, 0.95);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    min-width: 240px;
+    list-style: none;
+    padding: 0.8rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.9rem 1.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(233, 193, 118, 0.1);
+    color: #e9c176;
+    padding-left: 2.2rem;
+}
+
+/* Shiny "Become Partner" Button */
+.partner-btn {
+    background: linear-gradient(135deg, #775a19 0%, #e9c176 100%);
+    color: #fff !important;
+    border: none !important;
+    margin-left: 1rem;
+    box-shadow: 0 4px 15px rgba(119, 90, 25, 0.4);
+    overflow: hidden;
+    padding: 0.8rem 1.6rem !important;
+}
+
+.partner-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    transform: rotate(45deg);
+    transition: all 0.7s;
+    pointer-events: none;
+}
+
+.partner-btn:hover::before {
+    left: 150%;
+}
+
+.partner-btn:hover {
+    box-shadow: 0 10px 30px rgba(119, 90, 25, 0.6);
+    transform: scale(1.05) translateY(-3px) !important;
+    color: #fff !important;
+}
+
+/* Adjust main content padding for fixed navbar */
+body {
+    padding-top: 80px;
+}
+
+
+/* 
+main {
+    padding: 2rem;
+} */
+
+h1 {
+    color: #333;
+}
+
+/* ==========================================================================
+   Standardized Hero / Banner System
+   ========================================================================== */
+
+/* Zoom Background Animation */
+@keyframes zoomBg {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Slide In from Left Animation */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Banner Container */
+.page-banner {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    overflow: hidden;
+}
+
+/* Banner Background Image Wrapper */
+.page-banner-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: zoomBg 20s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+/* Specific background overlay to match mortgage and about us (Linear gradient overlay + bg image) */
+.page-banner-bg.dark-overlay {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+/* Content Container Animation */
+.page-banner-animation {
+    animation: slideInFromLeft 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Common Content Wrapper */
+.page-banner-content {
+    max-width: 64rem; /* 1024px max-w-5xl */
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Banner Title */
+.page-banner-title {
+    font-size: 3.5rem; /* text-5xl md:text-8xl */
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.025em; /* tracking-tight */
+}
+@media (min-width: 768px) {
+    .page-banner-title {
+        font-size: 6rem;
+    }
+}
+
+/* Banner Subtitle */
+.page-banner-subtitle {
+    font-size: 1.125rem; /* text-lg md:text-2xl */
+    color: #f1f5f9; /* slate-100 */
+    margin-bottom: 2.5rem;
+    line-height: 1.625;
+    font-weight: 300;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 768px) {
+    .page-banner-subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+/* Reusable pop-out buttons */
+.btn-pop {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-pop:hover {
+    transform: scale(1.05);
+}

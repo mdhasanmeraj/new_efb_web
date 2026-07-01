@@ -1,0 +1,904 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    /* Accordion transition styles for Key Benefits Section */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 800px;
+    }
+
+    .accordion-item.active .accordion-chevron {
+        transform: rotate(180deg);
+    }
+
+    /* Overview Section – dark dark style matching Personal Loan */
+    .overview-section {
+        position: relative;
+        background: #0f172a;
+        overflow: hidden;
+    }
+
+    /* Vertical marquee watermark – mirroring Personal Loan */
+    .vertical-marquee-container {
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .marquee-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        white-space: nowrap;
+        font-size: 5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px #d4af37;
+        opacity: 0.3;
+        animation: scrollUp 15s linear infinite;
+    }
+
+    @keyframes scrollUp {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(-100%); }
+    }
+
+    /* Decorative background shape */
+    .handshake-bg {
+        position: absolute;
+        right: -2%;
+        top: 5%;
+        width: 35%;
+        max-width: 450px;
+        opacity: 0.12;
+        pointer-events: none;
+        z-index: 0;
+        transform-origin: top right;
+        animation: subtleNod 6s ease-in-out infinite;
+    }
+
+    @keyframes subtleNod {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(-3deg) scale(1.05); }
+    }
+
+    /* CTA Section */
+    .navy-gradient-section {
+        position: relative;
+        background: linear-gradient(to right, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.95) 100%),
+        url('{% static 'images/holding-home.avif' %}');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+    }
+
+    /* Arrow button hover animation */
+    .arrow-btn:hover i {
+        transform: translateX(8px);
+        transition: transform 0.3s ease;
+    }
+
+    /* Custom dark background for Key Benefits section */
+    .black-blend-benefits-bg {
+        background: linear-gradient(135deg, #111827 25%, #1e293b 50%, #111827 70%);
+        position: relative;
+    }
+
+    /* Hand-drawn sketches placement & animation */
+    .sketch-background-asset {
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: lighten;
+        opacity: 0.55;
+        transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Golden shimmer on scroll */
+    .home-sketch-asset {
+        transition: filter 1.5s cubic-bezier(0.4, 0, 0.2, 1) 3s, opacity 1s ease-in-out;
+    }
+
+    .is-visible .home-sketch-asset {
+        filter: sepia(100%) saturate(800%) hue-rotate(15deg) brightness(1.2) drop-shadow(0 0 15px rgba(251, 191, 36, 0.7));
+        opacity: 0.95;
+    }
+
+    /* Dynamic connector energy lines */
+    .energy-connector-path {
+        stroke: rgba(255, 255, 255, 0.08);
+        stroke-width: 2.5;
+        stroke-dasharray: 8 8;
+        fill: none;
+    }
+
+    .gold-energy-beam {
+        fill: #fbbf24;
+        filter: drop-shadow(0 0 6px #f59e0b) drop-shadow(0 0 12px #fbbf24);
+        opacity: 0;
+    }
+
+    .is-visible .gold-energy-beam {
+        animation: flowEnergyAlongPath 4.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s infinite;
+    }
+
+    @keyframes flowEnergyAlongPath {
+        0% { offset-distance: 0%; opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    /* Gradient CTA button */
+    .btn-gradient-navy {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-gradient-navy:hover {
+        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+        transform: scale(1.04) translateY(-2px);
+    }
+
+    /* Scroll Reveal Animations – matching Personal Loan */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, opacity;
+    }
+
+    .reveal-active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    .delay-200 { transition-delay: 200ms; }
+
+    /* Globe container */
+    #globe-overlap-container {
+        position: absolute;
+        right: -50px;
+        bottom: -200px;
+        width: 450px;
+        height: 450px;
+        z-index: 5;
+        cursor: crosshair;
+        pointer-events: auto;
+    }
+
+    .relative-host {
+        position: relative;
+        z-index: 10;
+    }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- 1st Section: Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('{% static 'images/mortgage-card-bg.avif' %}');">
+    </div>
+    <div class="page-banner-content page-banner-animation">
+        <h1 class="page-banner-title">Mortgage</h1>
+        <p class="page-banner-subtitle">
+            Our consultants understands the importance of maintaining a long lasting business relationships with clients
+            to deliver specific solutions.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-10 text-white font-bold tracking-widest text-sm">
+            <span class="flex items-center gap-2"><i data-lucide="home" class="text-blue-400"></i> TAILORED SOLUTIONS</span>
+            <span class="flex items-center gap-2"><i data-lucide="key" class="text-blue-400"></i> FAST APPROVAL</span>
+            <span class="flex items-center gap-2"><i data-lucide="percent" class="text-blue-400"></i> MARKET-LEADING RATES</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="#"
+                class="btn-pop px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                About us
+            </a>
+            <a href="#"
+                class="btn-pop btn-gradient-navy px-12 py-4 text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-xl">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 2nd Section: Overview – Dark theme matching Personal Loan -->
+<section class="overview-section py-20 px-6">
+    <div class="vertical-marquee-container">
+        <div class="marquee-text">15+ years of trust and values</div>
+    </div>
+
+    <!-- Decorative home SVG watermark -->
+    <div class="handshake-bg">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 30 L160 80 L160 170 L40 170 L40 80 Z" stroke="#d4af37" stroke-width="2"
+                stroke-linejoin="round" />
+            <path d="M80 170 L80 120 L120 120 L120 170" stroke="#d4af37" stroke-width="2"
+                stroke-linejoin="round" />
+            <path d="M100 30 L180 100" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M100 30 L20 100" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="100" cy="100" r="80" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 4"
+                opacity="0.5" />
+        </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-2">Property Financing</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Overview</h3>
+            <p class="text-slate-300 text-lg max-w-4xl mx-auto leading-relaxed">
+                A mortgage, known locally as a home loan, is a financial agreement where a bank or financial institution
+                provides funds to purchase property. The property serves as collateral until the loan is fully repaid.
+            </p>
+        </div>
+
+        <!-- Box-Type Cards Grid -->
+        <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <!-- Card 1: Eligibility -->
+            <div class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span class="flex items-center gap-3">
+                        <i data-lucide="user-check" class="text-blue-400 w-5 h-5"></i>
+                        Who is Eligible?
+                    </span>
+                    <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        Eligibility criteria vary among lenders but generally prioritize financial stability and stable
+                        local employment history:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li>Both UAE nationals and expatriates can apply.</li>
+                            <li>Age requirements: Usually between 21 and 65 years.</li>
+                            <li>Minimum monthly salary starting at AED 15,000 for expats.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Property Types -->
+            <div class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span class="flex items-center gap-3">
+                        <i data-lucide="building" class="text-blue-400 w-5 h-5"></i>
+                        Properties Financed
+                    </span>
+                    <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        UAE lenders finance a wide range of verified real estate products in recognized freehold
+                        developments:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li>Ready apartments, penthouses, and private duplexes.</li>
+                            <li>Villas and residential townhouses.</li>
+                            <li>Selected commercial retail spaces and corporate offices.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Borrowing Capacity -->
+            <div class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span class="flex items-center gap-3">
+                        <i data-lucide="wallet" class="text-blue-400 w-5 h-5"></i>
+                        Borrowing Capacity
+                    </span>
+                    <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        The ultimate mortgage amount depends on monthly debt obligations, income size, and individual
+                        profile:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li>Loans up to AED 15 million are widely available for expatriates.</li>
+                            <li>Subject to valuation assessment of the target property.</li>
+                            <li>Flexibility depending on the partner banking channels.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Down Payment -->
+            <div class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span class="flex items-center gap-3">
+                        <i data-lucide="piggy-bank" class="text-blue-400 w-5 h-5"></i>
+                        Required Down Payment
+                    </span>
+                    <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        Central Bank guidelines dictate minimum equity contribution brackets according to buyer nationality:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li><span class="font-bold text-white">For UAE Nationals:</span> A down payment of 20% is typical.</li>
+                            <li><span class="font-bold text-white">For Expatriates:</span> Down payment requirement of 25% to 30%.</li>
+                            <li>Reduced downpayment options available under special bank portfolios.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 p-6 bg-white/5 border-l-4 border-blue-400 rounded-r-lg italic text-slate-300">
+            "Before proceeding with a mortgage, it's advisable to consult with a financial advisor or thoroughly
+            research to ensure it aligns with your financial situation and long-term goals."
+        </div>
+    </div>
+</section>
+
+<!-- 3rd Section: High-Impact Call to Action -->
+<section class="navy-gradient-section py-32 px-6 text-center text-white">
+    <div
+        class="max-w-5xl mx-auto relative z-10 bg-white/5 backdrop-blur-xl p-12 md:p-20 rounded-[3rem] border border-white/20 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)]">
+        <h2 class="text-5xl md:text-7xl font-black mb-8 uppercase tracking-tighter"
+            style="background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Mortgage
+        </h2>
+        <p class="text-2xl md:text-3xl text-blue-100 font-light mb-14 max-w-3xl mx-auto leading-tight italic">
+            Get instant Mortgage for your urgent needs without any collateral.
+        </p>
+        <button
+            class="arrow-btn group inline-flex items-center gap-4 px-14 py-6 btn-gradient-navy text-white font-black rounded-full btn-pop shadow-2xl transition-all text-lg uppercase tracking-widest">
+            Contact Us to know more
+            <i data-lucide="arrow-right" class="w-7 h-7 transition-transform"></i>
+        </button>
+    </div>
+</section>
+
+<!-- 4th Section: Key Benefits & Deep-Dive FAQ -->
+<div id="scroll-animation-zone" class="relative overflow-hidden black-blend-benefits-bg pt-28 pb-36">
+
+    <!-- Background Asset 1: Dirhams at Top-Left -->
+    <img src="{% static 'images/bundle-dirham1.png' %}" alt="UAE Dirhams Stack Sketch"
+        class="sketch-background-asset top-6 left-6 w-[280px] md:w-[480px] opacity-40 hover:opacity-60 transition-opacity duration-700">
+
+    <!-- Background Asset 2: Home at Bottom-Right with Golden Filter -->
+    <img src="{% static 'images/complex-home.png' %}" alt="Dream Home Sketch"
+        class="sketch-background-asset home-sketch-asset bottom-6 right-6 w-[280px] md:w-[480px]">
+
+    <!-- Interactive Animated Vector Beam overlays -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1200 900"
+        preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <path id="energy-connection-track" d="M 180 180 Q 420 300, 520 480 T 920 720" />
+        </defs>
+        <path class="energy-connector-path" d="M 180 180 Q 420 300, 520 480 T 920 720" />
+        <circle r="9" class="gold-energy-beam">
+            <animateMotion href="#energy-connection-track" dur="4.2s" repeatCount="indefinite" />
+        </circle>
+        <circle r="7" class="gold-energy-beam" style="animation-delay: 1.4s;">
+            <animateMotion href="#energy-connection-track" dur="4.2s" repeatCount="indefinite" />
+        </circle>
+        <circle r="5" class="gold-energy-beam" style="animation-delay: 2.8s;">
+            <animateMotion href="#energy-connection-track" dur="4.2s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+
+    <section class="px-6 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-center gap-6 mb-16">
+                <div class="h-16 w-3 rounded-full" style="background: linear-gradient(180deg, #1e3a8a, #2563eb);"></div>
+                <h2 class="text-white uppercase font-black text-4xl tracking-tighter">Key Benefits &amp; FAQs</h2>
+            </div>
+
+            <!-- Frosted Dark Glassmorphism main overview card -->
+            <div class="bg-black/60 backdrop-blur-lg p-10 rounded-3xl shadow-xl border border-white/10 mb-16">
+                <p class="text-slate-200 text-lg leading-relaxed italic">
+                    Securing property financing goes beyond standard numbers. Understanding these primary financial
+                    indicators and repayment variables ensures a seamless, long-term real estate experience.
+                </p>
+            </div>
+
+            <!-- FAQ Accordions -->
+            <div class="grid gap-6 max-w-4xl mx-auto">
+                <!-- Accordion Item 1: Debt Burden Ratio -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="bar-chart-3" class="text-blue-400 w-6 h-6"></i>
+                            What is the Debt Burden Ratio (DBR)?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            The Debt Burden Ratio is the percentage of your monthly income that goes toward servicing
+                            debts. In the UAE, the central bank mandates that the DBR should generally be less than 50%
+                            to qualify for any new real estate mortgage. Keeping your current credit card limits and
+                            running loans low will help maximize your eligible borrowing power.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2: Interest Rate Options -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="percent" class="text-blue-400 w-6 h-6"></i>
+                            What are my Interest Rate options?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            <p class="mb-4">You have three main options to customize how you finance your premium
+                                property acquisition:</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-2"><strong class="text-white">Fixed Rate:</strong>
+                                    Constant interest for a selected term (e.g., 3 or 5 years), offering repayment
+                                    certainty.</li>
+                                <li class="flex items-start gap-2"><strong class="text-white">Variable Rate:</strong>
+                                    Fluctuate alongside the Central Bank's EIBOR index depending on general market
+                                    status.</li>
+                                <li class="flex items-start gap-2"><strong class="text-white">Hybrid Rate:</strong>
+                                    Combination terms, starting fixed and smoothly transitioning into floating.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3: Additional Costs -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="plus-circle" class="text-blue-400 w-6 h-6"></i>
+                            What additional costs should I expect?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            Beyond the standard purchase down payment, home purchase processes include essential
+                            transactional fees:
+                            <div class="grid grid-cols-2 gap-4 mt-4 font-semibold text-sm text-slate-200">
+                                <div class="flex items-center gap-2"><span
+                                        class="w-2 h-2 bg-blue-500 rounded-full"></span> Bank Processing Fees (1%)
+                                </div>
+                                <div class="flex items-center gap-2"><span
+                                        class="w-2 h-2 bg-blue-500 rounded-full"></span> Valuation Fees</div>
+                                <div class="flex items-center gap-2"><span
+                                        class="w-2 h-2 bg-blue-500 rounded-full"></span> Home &amp; Life Insurance</div>
+                                <div class="flex items-center gap-2"><span
+                                        class="w-2 h-2 bg-blue-500 rounded-full"></span> Registration Fees (DLD /
+                                    Trustee)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4: Approval Tips -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="trending-up" class="text-blue-400 w-6 h-6"></i>
+                            What are your top tips for mortgage approval?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            Improve your prospects of getting approved for home loans by securing a clean credit score
+                            via the AECB registry, keeping consistent income records, minimizing running loans to fit
+                            well within DBR guidelines, and saving for a larger initial down payment.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 5: MOU -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="file-text" class="text-blue-400 w-6 h-6"></i>
+                            What is a Memorandum of Understanding (MOU) in the mortgage process?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            An MOU is a preliminary agreement outlining the terms and conditions between the buyer and
+                            seller before finalizing the sale and mortgage.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 6: Early Repayment -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="clock" class="text-blue-400 w-6 h-6"></i>
+                            Can I repay my mortgage early?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            <p class="mb-4">Early repayment is possible; however, some banks may impose early settlement
+                                fees. It's advisable to review the terms and conditions with your lender before making
+                                additional payments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 7: Processing Time -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="timer" class="text-blue-400 w-6 h-6"></i>
+                            How long does it take to process a mortgage application?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            The processing time varies by lender but generally ranges from a few days to several weeks,
+                            depending on the completeness of your application and verification requirements.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 8: Life Insurance -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="shield-check" class="text-blue-400 w-6 h-6"></i>
+                            Is life insurance mandatory for mortgage applicants?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            Many banks require life insurance to cover the loan amount in case of unforeseen events.
+                            It's essential to confirm insurance requirements with your chosen lender.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 9: Self-Employed -->
+                <div
+                    class="accordion-item border border-white/10 rounded-2xl overflow-hidden shadow-lg backdrop-blur-md bg-black/60 hover:border-blue-500/30 transition-all duration-300">
+                    <button
+                        class="w-full flex items-center justify-between p-8 bg-transparent text-left font-bold text-white text-lg"
+                        onclick="toggleAccordion(this)">
+                        <span class="flex items-center gap-4">
+                            <i data-lucide="briefcase" class="text-blue-400 w-6 h-6"></i>
+                            Can I apply for a mortgage if I am self-employed?
+                        </span>
+                        <i data-lucide="chevron-down" class="accordion-chevron transition-transform w-6 h-6 text-amber-500"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-8 text-slate-300 leading-relaxed border-t border-white/10 bg-slate-950/70">
+                            Self-employed individuals can apply for mortgages; however, they may need to provide
+                            additional documentation, such as audited financial statements and proof of consistent
+                            income.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- 5th Section: Digital Strategy & Pillars – matching Personal Loan's strategy section -->
+<section id="strategy-section" class="py-24 px-4 bg-white relative overflow-hidden relative-host">
+    <!-- Globe animation at bottom right, overlapping -->
+    <div id="globe-overlap-container"></div>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-16">
+        <div class="relative reveal-on-scroll">
+            <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-100 rounded-full z-0"></div>
+            <img src="{% static 'images/about.webp' %}"
+                alt="Mortgage Consultation"
+                class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+
+            <div
+                class="absolute bottom-10 -right-8 bg-blue-600 p-6 rounded-2xl text-white shadow-xl z-20 hidden lg:block">
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl font-bold">4.9/5</div>
+                    <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Customer
+                        Satisfaction<br>Rating in UAE</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8 relative z-10 reveal-on-scroll delay-200">
+            <div>
+                <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-2">Tailored Digital Services</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-6 leading-tight">Save effort and money while
+                    staying secure.</h3>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Our team works across markets and capabilities to help you establish a strategy that addresses the
+                    realities of your business. Whether you want to improve the performance of work or mitigate the
+                    risks of mergers and acquisitions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 py-4">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-semibold text-slate-800 text-lg">Fast &amp; Hassle-Free Process</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-semibold text-slate-800 text-lg">Trusted by Thousands</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-semibold text-slate-800 text-lg">Transparent &amp; Secure</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#"
+                    class="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white text-center font-bold rounded-lg transition-all">
+                    About Us
+                </a>
+                <a href="#"
+                    class="px-8 py-3 btn-gradient-navy text-white text-center font-bold rounded-lg transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+{% endblock %}
+
+{% block extra_js %}
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // FAQ Accordion Logic
+    function toggleAccordion(element) {
+        const item = element.parentElement;
+
+        const siblings = item.parentElement.querySelectorAll('.accordion-item');
+        siblings.forEach(sibling => {
+            if (sibling !== item) sibling.classList.remove('active');
+        });
+
+        item.classList.toggle('active');
+    }
+
+    // SCROLL REVEAL LOGIC – matching Personal Loan page
+    const setupScrollReveal = () => {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const reveals = entry.target.querySelectorAll('.reveal-on-scroll');
+                    reveals.forEach(el => el.classList.add('reveal-active'));
+                } else {
+                    const reveals = entry.target.querySelectorAll('.reveal-on-scroll');
+                    reveals.forEach(el => el.classList.remove('reveal-active'));
+                }
+            });
+        }, observerOptions);
+
+        const strategySection = document.getElementById('strategy-section');
+        if (strategySection) observer.observe(strategySection);
+    };
+
+    // SCROLL REVEAL / INTERACTIVE SKETCH OBSERVER
+    const sketchObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            } else {
+                entry.target.classList.remove('is-visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    const zone = document.getElementById('scroll-animation-zone');
+    if (zone) {
+        sketchObserver.observe(zone);
+    }
+
+    // ENHANCED WIREFRAME GLOBE WITH GOLDEN UAE BORDER – matching Personal Loan page
+    window.onload = function () {
+        setupScrollReveal();
+
+        const container = document.getElementById('globe-overlap-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
+
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+
+        function latLongToVector3(lat, lon, radius) {
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+            const x = -(radius * Math.sin(phi) * Math.cos(theta));
+            const z = (radius * Math.sin(phi) * Math.sin(theta));
+            const y = (radius * Math.cos(phi));
+            return new THREE.Vector3(x, y, z);
+        }
+
+        const radius = 2.3;
+
+        const loader = new THREE.TextureLoader();
+        loader.load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_specular_2048.jpg', (texture) => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 512;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(texture.image, 0, 0, 1024, 512);
+            const imgData = ctx.getImageData(0, 0, 1024, 512).data;
+
+            const isLand = (x, y) => {
+                const i = (y * 1024 + x) * 4;
+                return imgData[i] > 140;
+            };
+
+            const linePositions = [];
+            const uaePositions = [];
+
+            for (let y = 0; y < 512; y += 4) {
+                for (let x = 0; x < 1024; x += 4) {
+                    if (isLand(x, y)) {
+                        const lat = 90 - (y / 512) * 180;
+                        const lon = (x / 1024) * 360 - 180;
+                        const inUAE = (lat > 22.6 && lat < 26.1 && lon > 51.4 && lon < 56.6);
+                        const current = latLongToVector3(lat, lon, radius);
+
+                        if (x + 4 < 1024 && isLand(x + 4, y)) {
+                            const next = latLongToVector3(lat, ((x + 4) / 1024) * 360 - 180, radius);
+                            if (inUAE) uaePositions.push(current.x, current.y, current.z, next.x, next.y, next.z);
+                            else linePositions.push(current.x, current.y, current.z, next.x, next.y, next.z);
+                        }
+                        if (y + 4 < 512 && isLand(x, y + 4)) {
+                            const next = latLongToVector3(90 - ((y + 4) / 512) * 180, lon, radius);
+                            if (inUAE) uaePositions.push(current.x, current.y, current.z, next.x, next.y, next.z);
+                            else linePositions.push(current.x, current.y, current.z, next.x, next.y, next.z);
+                        }
+                    }
+                }
+            }
+
+            const worldGeom = new THREE.BufferGeometry();
+            worldGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+            const worldLines = new THREE.LineSegments(worldGeom, new THREE.LineBasicMaterial({
+                color: 0x000000,
+                transparent: true,
+                opacity: 0.35
+            }));
+            globeGroup.add(worldLines);
+
+            const uaeGeom = new THREE.BufferGeometry();
+            uaeGeom.setAttribute('position', new THREE.Float32BufferAttribute(uaePositions, 3));
+            const uaeLines = new THREE.LineSegments(uaeGeom, new THREE.LineBasicMaterial({
+                color: 0xd4af37,
+                linewidth: 2,
+                transparent: true,
+                opacity: 1.0
+            }));
+            globeGroup.add(uaeLines);
+
+            const uaeCenter = latLongToVector3(24.4, 54.3, radius + 0.05);
+            const glowSprite = new THREE.Mesh(
+                new THREE.SphereGeometry(0.08, 16, 16),
+                new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.8 })
+            );
+            glowSprite.position.copy(uaeCenter);
+            globeGroup.add(glowSprite);
+
+            const pulse = () => {
+                const s = 1 + Math.sin(Date.now() * 0.005) * 0.4;
+                glowSprite.scale.set(s, s, s);
+                glowSprite.material.opacity = 0.8 - (s - 1);
+                requestAnimationFrame(pulse);
+            };
+            pulse();
+        });
+
+        const sphere = new THREE.Mesh(
+            new THREE.SphereGeometry(radius * 0.99, 64, 64),
+            new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.03 })
+        );
+        globeGroup.add(sphere);
+
+        camera.position.z = 7;
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / container.offsetWidth;
+            const y = (e.clientY - rect.top) / container.offsetHeight;
+            targetRotationY = (x - 0.5) * 1.8;
+            targetRotationX = (y - 0.5) * 1.5;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            targetRotationX = 0;
+            targetRotationY = 0;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            globeGroup.rotation.y += 0.003;
+            globeGroup.rotation.y += (targetRotationY * 0.05);
+            globeGroup.rotation.x += (targetRotationX * 0.05 - globeGroup.rotation.x) * 0.1;
+            renderer.render(scene, camera);
+        }
+        animate();
+    }
+</script>
+{% endblock %}

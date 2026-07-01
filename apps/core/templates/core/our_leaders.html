@@ -1,0 +1,358 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<title>Leadership | Elite Investment Advisory UAE</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts: Inter & Playfair Display -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    uaeGold: '#D4AF37', // Premium Desert Gold
+                    uaeGoldDark: '#AA841C',
+                    uaeNavy: '#0F1E36', // Deep Luxury Navy Blue
+                    uaeNavyLight: '#1D2E4D',
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    serif: ['Playfair Display', 'serif'],
+                }
+            }
+        }
+    }
+</script>
+<style>
+    /* Slide in from left and stop at center animation */
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-slide-left {
+        animation: slideInFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Subtle glow effects */
+    .gold-glow:hover {
+        box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.3);
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<body1 class="bg-[#F9FBFC] text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+
+    <!-- Header Section -->
+    <header
+        class="relative bg-gradient-to-b from-uaeNavy to-[#162742] text-white py-24 px-6 md:px-12 overflow-hidden border-b border-uaeGold/20">
+        <!-- Abstract Background Lines -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <!-- Animated Container -->
+        <div
+            class="relative max-w-4xl mx-auto text-center flex flex-col items-center justify-center animate-slide-left">
+            <div
+                class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1.5 rounded-full mb-6 border border-white/20">
+                <span class="w-2 h-2 rounded-full bg-uaeGold animate-pulse"></span>
+                <span class="text-xs font-semibold tracking-widest uppercase text-uaeGold">Meet Our Directors</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 tracking-wide leading-tight">
+                Leadership
+            </h1>
+
+            <div class="w-24 h-1 bg-gradient-to-r from-transparent via-uaeGold to-transparent mb-8"></div>
+
+            <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed max-w-3xl">
+                "Our consultants understands the importance of maintaining a long lasting business relationships with
+                clients to deliver specific investment solutions for a long success."
+            </p>
+        </div>
+    </header>
+
+    <!-- Section 2: Our Leaders -->
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-20 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-uaeNavy mb-4">Our Visionaries & Experts</h2>
+            <p class="text-slate-500 max-w-2xl mx-auto">Guiding your wealth journey with localized regulatory expertise,
+                international experience, and bespoke advisory services in Dubai, Abu Dhabi, and beyond.</p>
+        </div>
+
+        <!-- Leaders Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Leader 1 -->
+            <div
+                class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
+                <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
+                    <!-- Clean styled placeholder since real photos aren't loaded -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
+                    </div>
+                    <img src="{% static 'images/shiv-sir1.jpg' %}" alt="Shiv Sir"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Hassan+Al-Mansoori';">
+                </div>
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                        <h3
+                            class="text-xl font-serif font-semibold text-uaeNavy group-hover:text-uaeGold transition-colors">
+                            Shiv Sunder Sareen</h3>
+                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Founder</p>
+                        <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
+                            With over 20 years in sovereign wealth allocation and strategic regional development, Hassan
+                            guides corporate structuring and local market partnerships.
+                        </p> -->
+                    </div>
+                    <!-- Social icons border & container -->
+                    <div
+                        class="pt-4 border-t border-slate-100 flex items-center justify-around text-slate-400 group-hover:text-uaeNavy transition-all">
+                        <a href="mailto:shiv.sareen@efb.ae"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Email Shiv">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Follow on Instagram">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Connect on LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leader 2 -->
+            <div
+                class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
+                <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
+                    </div>
+                    <img src="{% static 'images/pawan-sir1.png' %}" alt="Pawan Sir"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Sarah+Jenkins';">
+
+                    <!-- <span
+                        class="absolute top-4 right-4 bg-uaeNavy/80 backdrop-blur-sm text-uaeGold border border-uaeGold/30 text-xs font-semibold uppercase px-3 py-1 rounded tracking-wider z-20">
+                        Dubai Office
+                    </span> -->
+                </div>
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                        <h3
+                            class="text-xl font-serif font-semibold text-uaeNavy group-hover:text-uaeGold transition-colors">
+                            Pawan Sekhri</h3>
+                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Head of Sales</p>
+                        <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
+                            Sarah directs high-net-worth individual asset management and cross-border legacy wealth
+                            creation with precision from our Dubai financial center base.
+                        </p> -->
+                    </div>
+                    <div
+                        class="pt-4 border-t border-slate-100 flex items-center justify-around text-slate-400 group-hover:text-uaeNavy transition-all">
+                        <a href="mailto:pawan.sekhri@efb.ae"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Email Pawan">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Follow on Instagram">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Connect on LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leader 3 -->
+            <div
+                class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
+                <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
+                    </div>
+                    <img src="{% static 'images/sonali-madam1.png' %}" alt="Sonal"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Tariq+Al-Sayegh';">
+
+                    <!-- <span
+                        class="absolute top-4 right-4 bg-uaeNavy/80 backdrop-blur-sm text-uaeGold border border-uaeGold/30 text-xs font-semibold uppercase px-3 py-1 rounded tracking-wider z-20">
+                        Abu Dhabi Office
+                    </span> -->
+                </div>
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                        <h3
+                            class="text-xl font-serif font-semibold text-uaeNavy group-hover:text-uaeGold transition-colors">
+                            Sonali Pawar</h3>
+                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Business Development Manager
+                        </p>
+                        <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
+                            Tariq has facilitated over $4B in MENA infrastructure, technology, and real estate
+                            placements, providing vital structural advice to GCC family offices.
+                        </p> -->
+                    </div>
+                    <div
+                        class="pt-4 border-t border-slate-100 flex items-center justify-around text-slate-400 group-hover:text-uaeNavy transition-all">
+                        <a href="mailto:sonali.pawar@efb.ae"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Email Sonali">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Follow on Instagram">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Connect on LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leader 4 -->
+            <div
+                class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
+                <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
+                    </div>
+                    <img src="{% static 'images/mai-hu-hasan.jpg' %}" alt="Elena Rostova"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Elena+Rostova';">
+
+                    <!-- <span
+                        class="absolute top-4 right-4 bg-uaeNavy/80 backdrop-blur-sm text-uaeGold border border-uaeGold/30 text-xs font-semibold uppercase px-3 py-1 rounded tracking-wider z-20">
+                        Dubai Office
+                    </span> -->
+                </div>
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                        <h3
+                            class="text-xl font-serif font-semibold text-uaeNavy group-hover:text-uaeGold transition-colors">
+                            Md Hasan Meraj</h3>
+                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Data Analyst & IT Manager
+                        </p>
+                        <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
+                            Elena ensures all strategic initiatives adhere to DFSA, ADGM, and global institutional
+                            regulations while safeguarding ethical partnership values.
+                        </p> -->
+                    </div>
+                    <div
+                        class="pt-4 border-t border-slate-100 flex items-center justify-around text-slate-400 group-hover:text-uaeNavy transition-all">
+                        <a href="mailto:mdhasanmeraj01@gmail.com"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Email Hasan">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Follow on Instagram">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
+                            title="Connect on LinkedIn">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Core Principles / Leadership Philosophy Section -->
+    <section class="bg-uaeNavy text-white py-16 px-6 lg:px-8 border-t border-uaeGold/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                <div class="lg:col-span-1">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-uaeGold">Our Foundation</span>
+                    <h3 class="text-3xl font-serif font-bold mt-2 mb-4">The Leadership Standard</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        To succeed in the dynamic landscapes of the Middle East and global financial markets, foresight
+                        requires strong foundations. Our management practices combine rigorous quantitative metrics with
+                        unparalleled loyalty.
+                    </p>
+                </div>
+                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <!-- Value 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-white/5 rounded border border-white/10 text-uaeGold">
+                            <i class="fa-solid fa-handshake text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-serif font-medium mb-1">Unwavering Integrity</h4>
+                            <p class="text-slate-400 text-xs">We protect client interests with robust compliance and
+                                transparent reporting standards.</p>
+                        </div>
+                    </div>
+                    <!-- Value 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-white/5 rounded border border-white/10 text-uaeGold">
+                            <i class="fa-solid fa-gem text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-serif font-medium mb-1">Bespoke Solutions</h4>
+                            <p class="text-slate-400 text-xs">No two investments are identical. We construct frameworks
+                                tailored for client goals.</p>
+                        </div>
+                    </div>
+                    <!-- Value 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-white/5 rounded border border-white/10 text-uaeGold">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-serif font-medium mb-1">Long-term Success</h4>
+                            <p class="text-slate-400 text-xs">Prioritizing continuous resilience over transient,
+                                high-risk, volatile market gains.</p>
+                        </div>
+                    </div>
+                    <!-- Value 4 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-white/5 rounded border border-white/10 text-uaeGold">
+                            <i class="fa-solid fa-earth-asia text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-serif font-medium mb-1">Global Horizon</h4>
+                            <p class="text-slate-400 text-xs">Empowering local enterprise values to successfully expand
+                                globally with ease.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body1>
+
+{% endblock %}

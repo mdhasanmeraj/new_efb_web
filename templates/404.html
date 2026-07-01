@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    .page-404-container {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background-color: #f8fafc;
+    }
+
+    .page-404-card {
+        max-width: 48rem;
+        width: 100%;
+        text-align: center;
+        padding: 4rem 2rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border: 1px solid #f1f5f9;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .page-404-number {
+        font-size: 8rem;
+        line-height: 1;
+        font-weight: 800;
+        color: #e2e8f0;
+        margin-bottom: 1rem;
+        letter-spacing: -0.05em;
+    }
+
+    .page-404-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+    }
+
+    .page-404-text {
+        font-size: 1.125rem;
+        color: #475569;
+        margin-bottom: 2.5rem;
+        max-width: 32rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-404-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background-color: #cc0022;
+        color: white;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 15px -3px rgba(204, 0, 34, 0.3);
+    }
+
+    .btn-404-home:hover {
+        background-color: #b3001e;
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(204, 0, 34, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="page-404-container">
+    <div class="page-404-card">
+        <div class="page-404-number">404</div>
+        <h2 class="page-404-title">Oops! Page Not Found</h2>
+        <p class="page-404-text">
+            The page you are looking for may have been moved, deleted, or does not exist.
+        </p>
+        <a href="{% url 'core:home' %}" class="btn-404-home">
+            <i data-lucide="home" class="w-5 h-5"></i>
+            Back to Home
+        </a>
+    </div>
+</section>
+{% endblock %}

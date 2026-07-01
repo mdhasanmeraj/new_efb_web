@@ -1,0 +1,456 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    /* Section 2: Overview Theme */
+    .diagonal-bg-section {
+        position: relative;
+        background: #f8fafc;
+        overflow: hidden;
+    }
+
+    /* Section 3: CTA */
+    .navy-gradient-section {
+        position: relative;
+        background: linear-gradient(to right, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.9) 100%),
+        url("{% static 'images/Businessman_person.avif' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    /* Combined Container for Benefits & Strategy */
+    .combined-wave-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Background Underlay - Fixed to height of parent */
+    .wave-bg-underlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bg-part-4 {
+        flex: 1;
+        /* Grows with Benefits section */
+        background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    }
+
+    .bg-part-5 {
+        flex: 0 0 auto;
+        /* Maintains natural height of Strategy section */
+        min-height: 600px;
+        background: #f1f5f9;
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 30px 30px;
+    }
+
+    /* Diagonal Sea Wave Animation (Z-index between BG and Content) */
+    .sea-waves {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0.25;
+    }
+
+    .wave-line {
+        fill: none;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-dasharray: 1500;
+        stroke-dashoffset: 1500;
+        animation: waveFlow 12s linear infinite;
+    }
+
+    @keyframes waveFlow {
+        to {
+            stroke-dashoffset: -1500;
+        }
+    }
+
+    .content-layer {
+        position: relative;
+        z-index: 3;
+        /* Above waves */
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 1000px;
+        /* Increased for safety */
+    }
+
+    .accordion-item.active .chevron-icon {
+        transform: rotate(180deg);
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 3D Cards */
+    .card-carousel {
+        perspective: 1200px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-spinner {
+        width: 300px;
+        height: 180px;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCards 25s infinite linear;
+    }
+
+    .card-3d {
+        position: absolute;
+        width: 300px;
+        height: 180px;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        color: white;
+        backface-visibility: visible;
+    }
+
+    .card-3d-1 {
+        transform: rotateY(0deg) translateZ(250px);
+        background: linear-gradient(135deg, #0f172a, #334155);
+    }
+
+    .card-3d-2 {
+        transform: rotateY(120deg) translateZ(250px);
+        background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+    }
+
+    .card-3d-3 {
+        transform: rotateY(240deg) translateZ(250px);
+        background: linear-gradient(135deg, #075985, #0369a1);
+    }
+
+    @keyframes rotateCards {
+        from {
+            transform: rotateY(0deg);
+        }
+
+        to {
+            transform: rotateY(360deg);
+        }
+    }
+
+    /* Gradient CTA button */
+    .btn-pop1 {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-pop1:hover {
+        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+        transform: scale(1.04) translateY(-2px);
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
+
+{% block content %}
+<!-- 1st Section: Header -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{% static 'images/credit_card_image.jpg' %}');">
+    </div>
+    <div class="page-banner-content page-banner-animation">
+        <h1 class="page-banner-title">Credit Card</h1>
+        <p class="page-banner-subtitle">
+            Our consultants understands the importance of maintaining a long lasting business relationships with
+            clients to deliver specific solutions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <button
+                class="btn-pop px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-2xl">About
+                us</button>
+            <button
+                class="btn-pop1 px-12 py-4 text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-2xl">Contact
+                Us</button>
+        </div>
+    </div>
+</section>
+
+<!-- 2nd Section: Overview -->
+<section class="diagonal-bg-section py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-4">Overview</h2>
+            <h3 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8">Guided Selection for Your Lifestyle
+            </h3>
+            <p class="text-slate-600 text-lg max-w-4xl mx-auto leading-relaxed">
+                At Excellence Financing Broker (EFB), we help you find the best credit card that matches your
+                financial needs and lifestyle. Whether you're looking for cashback, travel rewards, or exclusive
+                privileges, we guide you to the perfect credit card in the UAE.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6"><i
+                        data-lucide="shopping-cart"></i></div>
+                <h5 class="font-bold text-xl text-slate-900 mb-4">Convenient Payments</h5>
+                <p class="text-slate-600 leading-relaxed">Shop online or in-store, pay bills, and access cash
+                    anytime.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+                <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6">
+                    <i data-lucide="line-chart"></i>
+                </div>
+                <h5 class="font-bold text-xl text-slate-900 mb-4">Build Your Credit Score</h5>
+                <p class="text-slate-600 leading-relaxed">A well-managed credit card helps improve your credit
+                    score.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+                <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mb-6">
+                    <i data-lucide="award"></i>
+                </div>
+                <h5 class="font-bold text-xl text-slate-900 mb-4">Earn Rewards & Cashback</h5>
+                <p class="text-slate-600 leading-relaxed">Get discounts, cashback, and travel rewards with every
+                    transaction.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-6"><i
+                        data-lucide="shield-alert"></i></div>
+                <h5 class="font-bold text-xl text-slate-900 mb-4">Emergency Support</h5>
+                <p class="text-slate-600 leading-relaxed">Cover unexpected expenses without affecting your savings.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3rd Section: CTA -->
+<section class="navy-gradient-section py-24 px-6 text-center text-white">
+    <div class="max-w-4xl mx-auto relative z-10">
+        <h2 class="text-5xl md:text-6xl font-black mb-8 text-red-500 uppercase"
+            style="background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Credit Card</h2>
+        <p class="text-2xl text-white/90 font-light mb-12 max-w-2xl mx-auto">Get instant credit card for your
+            urgent needs without any collateral.</p>
+        <button
+            class="group inline-flex items-center gap-4 px-12 py-5  text-white font-bold rounded-full shadow-2xl transition-all btn-pop1">
+            Contact Us to know more
+            <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition-transform"></i>
+        </button>
+    </div>
+</section>
+
+<!-- Unified Container for Benefits & Strategy -->
+<div class="combined-wave-container">
+    <!-- Background Layers -->
+    <div class="wave-bg-underlay">
+        <div class="bg-part-4"></div>
+        <div class="bg-part-5"></div>
+    </div>
+
+    <!-- Wave SVG Layer - Using absolute coordinates for diagonal flow -->
+    <svg class="sea-waves" preserveAspectRatio="none" viewBox="0 0 1000 1000">
+        <!-- Diagonal paths created by rotating and offsetting lines -->
+        <g transform="rotate(-15, 500, 500)">
+            <path class="wave-line" d="M-500,100 Q0,50 500,100 T1500,100" style="animation-delay: 0s; stroke: #3b82f6;">
+            </path>
+            <path class="wave-line" d="M-500,300 Q0,250 500,300 T1500,300"
+                style="animation-delay: -3s; stroke: #ef4444;"></path>
+            <path class="wave-line" d="M-500,500 Q0,450 500,500 T1500,500"
+                style="animation-delay: -6s; stroke: #3b82f6;"></path>
+            <path class="wave-line" d="M-500,700 Q0,650 500,700 T1500,700"
+                style="animation-delay: -9s; stroke: #ef4444;"></path>
+            <path class="wave-line" d="M-500,900 Q0,850 500,900 T1500,900"
+                style="animation-delay: -12s; stroke: #3b82f6;"></path>
+        </g>
+    </svg>
+
+    <!-- Content Layer -->
+    <div class="content-layer">
+        <!-- 4th Section: Key Benefits -->
+        <section class="py-24 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-16">
+                    <h2
+                        class="text-white text-4xl font-bold uppercase tracking-tight border-l-4 border-red-600 pl-6 mb-2">
+                        Key Benefits</h2>
+                    <p class="text-slate-400 pl-6">Everything you need to know about credit cards in the UAE.</p>
+                </div>
+
+                <div id="accordion-container" class="space-y-3">
+                    <!-- Data populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 5th Section: Strategy -->
+        <section class="py-24 px-6 overflow-hidden">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 items-center gap-20">
+                <div class="card-carousel">
+                    <div class="card-spinner">
+                        <div class="card-3d card-3d-1">
+                            <div class="flex justify-between items-start"><i data-lucide="cpu"
+                                    class="w-8 h-8 opacity-40"></i><span class="text-xs font-bold tracking-widest">VISA
+                                    PLATINUM</span></div>
+                            <div class="text-xl tracking-[0.2em] font-mono">**** **** **** 8842</div>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <div class="text-[8px] uppercase opacity-50 mb-1">Card Holder</div>EXCELLENCE
+                                    CLIENT
+                                </div>
+                                <div class="w-10 h-6 bg-white/20 rounded-md"></div>
+                            </div>
+                        </div>
+                        <div class="card-3d card-3d-2">
+                            <div class="flex justify-between items-start"><i data-lucide="cpu"
+                                    class="w-8 h-8 opacity-40"></i><span
+                                    class="text-xs font-bold tracking-widest">MASTERCARD WORLD</span></div>
+                            <div class="text-xl tracking-[0.2em] font-mono">**** **** **** 1109</div>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <div class="text-[8px] uppercase opacity-50 mb-1">Card Holder</div>EXCELLENCE
+                                    CLIENT
+                                </div>
+                                <div class="w-10 h-6 bg-white/20 rounded-md"></div>
+                            </div>
+                        </div>
+                        <div class="card-3d card-3d-3">
+                            <div class="flex justify-between items-start"><i data-lucide="cpu"
+                                    class="w-8 h-8 opacity-40"></i><span class="text-xs font-bold tracking-widest">VISA
+                                    INFINITE</span></div>
+                            <div class="text-xl tracking-[0.2em] font-mono">**** **** **** 4452</div>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <div class="text-[8px] uppercase opacity-50 mb-1">Card Holder</div>EXCELLENCE
+                                    CLIENT
+                                </div>
+                                <div class="w-10 h-6 bg-white/20 rounded-md"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-blue-400 font-bold uppercase tracking-widest mb-4">Our Strategy</h2>
+                    <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-8 leading-tight">Tailored
+                        Financial Solutions for Excellence</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        Our experts ensure a long-lasting relationship to deliver specific solutions for your needs.
+                        We analyze every detail of your financial profile to match you with a card that doesn't just
+                        work, but works for you.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="check-circle-2"
+                                class="text-blue-500"></i> Expert Advice</div>
+                        <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="check-circle-2"
+                                class="text-blue-500"></i> Fast Processing</div>
+                        <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="check-circle-2"
+                                class="text-blue-500"></i> High Approval</div>
+                        <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="check-circle-2"
+                                class="text-blue-500"></i> Transparent Fees</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    const benefitsData = [
+        { q: "Who can apply for a credit card in the UAE?", a: "• You must be at least 21 years old.<br>• Minimum monthly salary requirements vary by bank, typically between AED 3,000 to AED 15,000.<br>• Employed individuals: Need to provide a salary certificate, Emirates ID, and passport copy.<br>• Self-employed individuals: Require a valid trade license and bank statements." },
+        { q: "What are the types of credit cards available?", a: "• Cashback Credit Cards – Earn a percentage of your spending back as cashback.<br>• Travel Credit Cards – Accumulate air miles for flights and hotel discounts.<br>• Rewards Credit Cards – Earn points redeemable for shopping, flights, or other rewards.<br>• Lifestyle Credit Cards – Get discounts on dining, shopping, and entertainment.<br>• Business Credit Cards – Designed for entrepreneurs to manage company expenses." },
+        { q: "Do I need to transfer my salary to get a credit card?", a: "• No salary transfer required: ADCB, RAKBANK, Emirates Islamic, FAB.<br>• Salary transfer required: Emirates NBD, ADIB (for specific credit cards)." },
+        { q: "What is the minimum salary required to apply for a credit card?", a: "The minimum salary depends on the bank and card type:<br>• RAKBANK: AED 3,000<br>• ADCB: AED 5,000<br>• Emirates NBD: AED 8,000<br>• First Abu Dhabi Bank (FAB): AED 10,000+<br>• Emirates Islamic Bank: AED 5,000 – AED 8,000" },
+        { q: "What are the interest rates on credit cards?", a: "• Interest rates range from 2.5% to 3.75% per month (or 30% to 40% annually).<br>• Banks offer interest-free periods of up to 55 days for timely full payments." },
+        { q: "What are the common fees associated with credit cards?", a: "• Annual Fees: Ranges from AED 0 to AED 2,500 based on card benefits.<br>• Late Payment Fees: Typically AED 200 – AED 250.<br>• Over-limit Fees: Around AED 250 if you exceed your credit limit.<br>• Foreign Transaction Fees: Ranges from 1.99% to 3.5% for transactions in foreign currencies." },
+        { q: "Can I get a credit card without a salary?", a: "• Yes, some banks offer secured credit cards where you provide a fixed deposit as collateral. This is ideal for self-employed individuals, students, or those with no salary transfer." },
+        { q: "What are the benefits of cashback credit cards?", a: "• Earn a percentage of cashback (up to 10%) on grocery, fuel, dining, and online purchases.<br>• Cashback can be redeemed to pay outstanding balances or used for future purchases.<br>• Some banks offer higher cashback for online shopping, fuel purchases, or travel bookings." },
+        { q: "How can I increase my credit limit?", a: "Banks may increase your credit limit if you:<br>• Have a good credit repayment history.<br>• Increase your salary or provide additional income proof.<br>• Have a strong credit score (650+)." },
+        { q: "What is a balance transfer?", a: "• Balance transfer allows you to move your outstanding balance from another bank’s credit card to your new card, often with lower interest rates for a promotional period (e.g., 0% interest for 6–12 months)." },
+        { q: "Can I convert my purchases into easy monthly installments (EMI)?", a: "• Yes, most banks offer 0% installment plans for 3 to 12 months on purchases made with selected retailers. Some even offer cash installment plans for other transactions." },
+        { q: "What is a credit card cash advance?", a: "• A credit card cash advance allows you to withdraw cash from an ATM using your credit card. However, cash advance fees (usually 2%-3% of the withdrawn amount) and higher interest rates apply." },
+        { q: "How do I increase my credit limit?", a: "• Contact your bank and provide updated income documents to request a credit limit increase. Approval depends on your salary, credit score, and repayment history." },
+        { q: "How can I check my credit card balance and transactions?", a: "• You can check your balance and transactions via online banking, mobile banking apps, ATMs, or monthly statements." },
+        { q: "What happens if I exceed my credit limit?", a: "• You may incur an over-limit fee (AED 200–250), and your credit score may be affected. It’s advisable to stay within your assigned limit." },
+        { q: "Can I increase or decrease my credit limit?", a: "• Yes, you can request an increase by providing proof of a higher salary or improved financial stability. Some banks also allow you to request a temporary limit increase for specific needs." },
+        { q: "What is a credit score, and how does it affect my credit card approval?", a: "• Your credit score (650+ recommended) plays a key role in determining approval and credit limits. A higher score improves your chances of getting better interest rates and higher limits." },
+        { q: "Are there any special credit cards for travelers?", a: "Yes, travel credit cards offer benefits like:<br>• Airline miles & travel rewards (Emirates NBD Skywards, ADIB Etihad Guest, etc.).<br>• Free airport lounge access at global locations.<br>• Complimentary travel insurance.<br>• Hotel discounts & upgrades." },
+        { q: "Are there credit cards for people with low salaries in the UAE?", a: "Yes, some banks offer low-income credit cards for those earning as low as AED 3,000 – AED 5,000, such as:<br>• Dubai Islamic Bank (DIB) – Min salary AED 3,000<br>• Emirates Islamic – Min salary AED 5,000<br>• ADCB SimplyLife – Min salary AED 5,000" },
+        { q: "What is a secured credit card?", a: "•A secured credit card requires a fixed deposit as collateral. It is ideal for individuals with no credit history or those who need to improve their credit score." },
+        { q: "Can I get a supplementary credit card for my family members?", a: "• Yes, most banks allow adding supplementary cardholders, typically for family members (spouse, children, or parents)." },
+        { q: "What is the best credit card for salary transfers?", a: "Some banks require salary transfers for specific cards:<br>• FAB Platinum Card (Min salary: AED 8,000)<br>• Emirates NBD Infinite Credit Card (Min salary: AED 25,000)" },
+        { q: "What happens if I exceed my credit limit?", a: "• You may incur an over-limit fee (typically AED 250). It can also negatively impact your credit score." },
+        { q: "Can I use my credit card for international transactions?", a: "• Yes, most credit cards are accepted internationally, but foreign transaction fees may apply (typically 1.5% to 3.5%). Some premium cards offer zero foreign transaction fees." },
+        { q: "How long does it take to get a credit card approved?", a: "• Approval can take 1 to 5 days, depending on the bank and whether all required documents are submitted." }
+    ];
+
+    const container = document.getElementById('accordion-container');
+    benefitsData.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = "accordion-item glass-card rounded-2xl overflow-hidden";
+        div.innerHTML = `
+                <button class="w-full flex items-center justify-between p-6 text-left font-bold text-white/90" onclick="toggleAccordion(this)">
+                    <span>${index + 1}. ${item.q}</span>
+                    <i data-lucide="chevron-down" class="chevron-icon transition-transform w-5 h-5 text-red-500"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-white/10 bg-black/20">
+                        ${item.a}
+                    </div>
+                </div>
+            `;
+        container.appendChild(div);
+    });
+
+    lucide.createIcons();
+
+    function toggleAccordion(element) {
+        const item = element.parentElement;
+        const isActive = item.classList.contains('active');
+        // Allow multiple open if needed, or close others
+        document.querySelectorAll('.accordion-item').forEach(acc => acc.classList.remove('active'));
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    }
+</script>
+{% endblock %}

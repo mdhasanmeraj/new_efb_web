@@ -1,0 +1,1294 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    :root {
+        --navy: #0c1c3c;
+        --navy-fade: #1a2a4d;
+        /* Faded Navy for Section 6 */
+        --gold: #c5a059;
+        --text: #333333;
+        --light-grey: #f8f9fb;
+        --border: #e1e4e8;
+        --white: #ffffff;
+        --whatsapp: #25D366;
+    }
+
+
+    /* --- 1st Section: Animated Hero --- */
+    .hero {
+        position: relative;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(rgba(12, 28, 60, 0.7), rgba(12, 28, 60, 0.7)),
+        url("{% static 'images/can-be-contact-us.png' %}") center/cover no-repeat;
+        color: var(--white);
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero-content {
+        opacity: 0;
+        transform: translateX(-100%);
+        animation: slideInLeft 1.2s forwards ease-out;
+    }
+
+    @keyframes slideInLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 300;
+    }
+
+    /* --- 2nd Section: Contact Cards --- */
+    .details-section {
+        padding: 100px 20px;
+        background: var(--light-grey);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .card {
+        background: var(--white);
+        padding: 40px 30px;
+        text-align: center;
+        border-bottom: 4px solid transparent;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        border-bottom-color: var(--gold);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    .card i {
+        font-size: 30px;
+        color: var(--navy);
+        margin-bottom: 25px;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        color: var(--navy);
+    }
+
+    .card p,
+    .card a {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.95rem;
+        display: block;
+    }
+
+    /* --- 3rd Section: Sticky Image Background --- */
+    .interaction-section {
+        padding: 120px 20px;
+        position: relative;
+        background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+            url('https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&q=80&w=2000') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .social-sticky-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .social-link {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 15px 25px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        color: var(--navy);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .social-link i {
+        font-size: 1.5rem;
+        width: 30px;
+        text-align: center;
+    }
+
+    .social-link:hover {
+        background: var(--navy);
+        color: var(--white);
+        transform: translateX(10px);
+    }
+
+    .whatsapp-col {
+        background: var(--navy);
+        color: var(--white);
+        padding: 60px 40px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .whatsapp-col h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .whatsapp-col p {
+        margin-bottom: 30px;
+        opacity: 0.8;
+    }
+
+    .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--whatsapp);
+        color: white;
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+        transform: scale(1.05);
+    }
+
+    /* --- 4th Section: Map --- */
+    .map-section {
+        height: 500px;
+        width: 100%;
+    }
+
+    /* --- STREAMING_CHUNK:Styling marquee elements... --- */
+    /* --- Testimonials Marquee Section --- */
+    .testimonials-section {
+        padding: 100px 0;
+        background-color: var(--light-grey);
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .testimonials-section h2 {
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: var(--navy);
+        margin-bottom: 10px;
+    }
+
+    .testimonials-section p.subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 50px;
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+
+    .marquee-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 20px 0;
+    }
+
+    /* Fade overlay effects for modern edge blending */
+    .marquee-container::before,
+    .marquee-container::after {
+        content: "";
+        height: 100%;
+        width: 150px;
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+        top: 0;
+    }
+
+    .marquee-container::before {
+        left: 0;
+        background: linear-gradient(to right, var(--light-grey) 0%, rgba(248, 249, 251, 0) 100%);
+    }
+
+    .marquee-container::after {
+        right: 0;
+        background: linear-gradient(to left, var(--light-grey) 0%, rgba(248, 249, 251, 0) 100%);
+    }
+
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 30px;
+        animation: scrollMarquee 70s linear infinite;
+    }
+
+    .marquee-container:hover .marquee-track {
+        animation-play-state: paused;
+    }
+
+    @keyframes scrollMarquee {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+
+        100% {
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+
+    .review-card {
+        width: 420px;
+        background: var(--white);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(12, 28, 60, 0.04);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(12, 28, 60, 0.08);
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .reviewer-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .reviewer-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        border: 2px solid var(--gold);
+    }
+
+    .reviewer-details h4 {
+        font-size: 1rem;
+        color: var(--navy);
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .reviewer-details span {
+        font-size: 0.8rem;
+        color: var(--gold);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .review-stars {
+        color: #ffc107;
+        font-size: 0.95rem;
+        display: flex;
+        gap: 2px;
+    }
+
+    .review-body p {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.6;
+        font-style: italic;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* --- 5th Section: Sticky Image Background --- */
+    .rating-section {
+        padding: 120px 20px;
+        position: relative;
+        background: linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000') no-repeat center center fixed;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    .rating-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .image-container {
+        position: relative;
+        border-radius: 12px;
+        overflow: visible;
+        opacity: 0;
+        transform: translateX(-100px);
+        transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+
+    .image-container.animate {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Pop-out effect on hover for the image container */
+    .image-container:hover {
+        transform: scale(1.05);
+        z-index: 10;
+    }
+
+    .main-office-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .image-container:hover .main-office-img {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Jumping animation for the Rate Us card */
+    @keyframes jump {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    .overlap-card {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: var(--gold);
+        color: var(--white);
+        padding: 25px 35px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: jump 2s infinite ease-in-out;
+        z-index: 5;
+    }
+
+    .overlap-card span {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .stars {
+        color: #ffeb3b;
+        font-size: 1.2rem;
+    }
+
+    .rating-content-col {
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 1.2s ease-out;
+    }
+
+    .rating-content-col.animate {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .rating-content-col h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: var(--navy);
+        margin-bottom: 20px;
+    }
+
+    .rating-content-col p {
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .google-rate-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--navy);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 4px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+    .google-rate-btn:hover {
+        background: var(--gold);
+    }
+
+    /* --- 6th Section: Fade Navy Background --- */
+    .subscribe-section {
+        padding: 100px 20px;
+        background-color: var(--navy-fade);
+        color: var(--white);
+        text-align: center;
+    }
+
+    .subscribe-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .subscribe-section p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 35px;
+    }
+
+    .subscribe-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .subscribe-form-row {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .subscribe-form input[type="email"] {
+        flex: 1;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 4px;
+        outline: none;
+        font-size: 1rem;
+    }
+
+    .subscribe-form input[type="email"]::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .subscribe-form button {
+        background: var(--gold);
+        color: white;
+        border: none;
+        padding: 0 40px;
+        border-radius: 4px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .subscribe-form button:hover {
+        background: #b08d4a;
+    }
+
+    /* Privacy Policy Consent styling */
+    .privacy-consent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .privacy-consent input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--gold);
+        cursor: pointer;
+    }
+
+    .privacy-consent label {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .privacy-link {
+        color: var(--gold);
+        text-decoration: underline;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .privacy-link:hover {
+        color: #b08d4a;
+    }
+
+    /* --- Mobile Compatibility Enhancements --- */
+    @media (max-width: 992px) {
+        .hero {
+            height: 400px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .details-section {
+            padding: 60px 20px;
+        }
+
+        .two-col,
+        .rating-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .interaction-section,
+        .rating-section {
+            padding: 60px 20px;
+            background-attachment: scroll;
+            /* Better performance on mobile */
+        }
+
+        .social-sticky-col {
+            order: 2;
+        }
+
+        .whatsapp-col {
+            order: 1;
+            padding: 40px 20px;
+        }
+
+        /* Image Section Mobile Fixes */
+        .image-container {
+            transform: translateX(0);
+            opacity: 1;
+            margin-bottom: 40px;
+        }
+
+        .rating-content-col {
+            transform: translateX(0);
+            opacity: 1;
+            text-align: center;
+        }
+
+        .rating-content-col h2 {
+            font-size: 2rem;
+        }
+
+        .main-office-img {
+            height: 300px;
+        }
+
+        .overlap-card {
+            position: relative;
+            right: 0;
+            bottom: 0;
+            margin: -40px auto 0;
+            width: 80%;
+            animation: jump 2s infinite ease-in-out;
+        }
+
+        .subscribe-section {
+            padding: 60px 20px;
+        }
+
+        .subscribe-form-row {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .subscribe-form button {
+            padding: 18px;
+            width: 100%;
+        }
+
+        .privacy-consent {
+            justify-content: flex-start;
+        }
+
+        /* Marquee Mobile Overrides */
+        .testimonials-section h2 {
+            font-size: 2rem;
+        }
+
+        .review-card {
+            width: 320px;
+            padding: 20px;
+        }
+
+        .marquee-container::before,
+        .marquee-container::after {
+            width: 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        .card {
+            padding: 30px 20px;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 15px 20px;
+        }
+
+        .social-link {
+            padding: 12px 20px;
+        }
+
+        .modal-box {
+            padding: 30px 20px;
+            margin: 0 20px;
+        }
+    }
+
+    /* Modal */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(12, 28, 60, 0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .modal-box {
+        background: white;
+        padding: 50px;
+        border-radius: 8px;
+        text-align: center;
+        max-width: 400px;
+        color: var(--text);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1st Section: Header/Hero -->
+<header class="hero">
+    <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p>We’re here to assist you with your financial needs. Get in touch with our experts to discuss your
+            requirements.</p>
+    </div>
+</header>
+
+<div class="container-fluid">
+    <!-- 2nd Section: Contact Details -->
+    <section class="details-section">
+        <div class="container">
+            <div class="details-grid">
+                <div class="card">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <h3>Email Address</h3>
+                    <a href="mailto:info@efb.ae">info@efb.ae</a>
+                    <a href="mailto:support@efb.ae">support@efb.ae</a>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <h3>Phone Numbers</h3>
+                    <a href="tel:+971525263838">+971 52 526 3838</a>
+
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-building-user"></i>
+                    <h3>Office Address</h3>
+                    <p>Office 302, Floor 3, Al Riffa Plaza,<br>Bur Dubai, UAE</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h3>Working Hours</h3>
+                    <p>Mon – Fri: 09:00 AM – 05:00 PM</p>
+                    <p>Sat - Sun: Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3rd Section: Social & WhatsApp Two Column (Sticky Background) -->
+    <section class="interaction-section">
+        <div class="container">
+            <div class="two-col">
+                <div class="social-sticky-col">
+                    <h3 style="margin-bottom: 10px; color: var(--navy); text-align: center;">Connect With Us</h3>
+                    <a href="https://www.facebook.com/profile.php?id=61585197215653" target="_blank"
+                        class="social-link"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                    <a href="https://www.instagram.com/efb.ae/?hl=en" target="_blank" class="social-link"><i
+                            class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/company/excellencefinancingbroker/" target="_blank"
+                        class="social-link"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://www.youtube.com/@Efb_uae" target="_blank" class="social-link"><i
+                            class="fa-brands fa-youtube"></i> YouTube</a>
+                </div>
+                <div class="whatsapp-col">
+                    <h2>Need a Fast Response?</h2>
+                    <p>Connect with our financing specialists instantly via WhatsApp for a quick consultation.</p>
+                    <a href="https://wa.me/971525263838?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20financial%20services."
+                        target="_blank" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Chat with us on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4th Section: Map -->
+    <section class="map-section">
+        <iframe width="100%" height="100%" frameborder="0"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14434.909477610626!2d55.2963244!3d25.2592291!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4332581a8e07%3A0x85616dcdb210897d!2sEXCELLENCE%20FINANCING+BROKER!5e0!3m2!1sen!2sae!4v1711200000000!5m2!1sen!2sae"
+            allowfullscreen="" loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- NEW TESTIMONIAL MARQUEE SECTION -->
+    <section class="testimonials-section">
+        <h2>What Our Clients Say</h2>
+        <p class="subtitle">Experience Excellence through the eyes of our satisfied clients</p>
+
+        <div class="marquee-container">
+            <div class="marquee-track">
+
+                <!-- Card 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">RA</div>
+                            <div class="reviewer-details">
+                                <h4>Rajeena Asharaf</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“I had an excellent experience working with the team during my loan process. From the very
+                            beginning, they were knowledgeable, transparent and extremely supportive especially Ms
+                            Sonal. I highly recommend their services to anyone looking for reliable and professional
+                            financial guidance.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MA</div>
+                            <div class="reviewer-details">
+                                <h4>Mohd Aejaz Mohiuddin</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“My experience with Excellence Financial Broker has been nothing short of exceptional. From
+                            the outset, their team demonstrated unparalleled professionalism and dedication, providing
+                            clear guidance at every stage of the loan process... In particular, I would like to commend
+                            Mr. Vishal Singh for his remarkable expertise and personal commitment.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MI</div>
+                            <div class="reviewer-details">
+                                <h4>Mohamed Ibrahim</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“I had a very bad experience earlier with another agency... After that, Manish Gupta
+                            contacted me and patiently built trust. My salary was irregular and my credit score was low,
+                            but he guided me properly and stayed in touch for almost 4 months. Then he applied for me,
+                            finally loan disbursed successfully.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">CT</div>
+                            <div class="reviewer-details">
+                                <h4>Charles Michael T. C.</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>"My experience with Excellence Financial Broker was truly exceptional. From start to finish,
+                            their team guided me through every step of the loan process with meticulous attention to
+                            detail. Special recognition goes to Mr. Vishal Singh, whose expertise and personal
+                            dedication made a significant difference."</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MD</div>
+                            <div class="reviewer-details">
+                                <h4>Muhammed Dilshad</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“Wonderful service, I have tried many banks directly and got rejected before reaching out to
+                            this team, and they set everything up for me, thanks for the wonderful customer service,
+                            especially Mr. Vidul Arora for the outstanding service.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">VR</div>
+                            <div class="reviewer-details">
+                                <h4>Vinoth Rajasekaran</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“A big thank you to the team for their outstanding service! The loan process was so easy and
+                            smooth, completed within just a week. I really appreciate their expertise and the wonderful
+                            service they provided. Truly impressed!”</p>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MZ</div>
+                            <div class="reviewer-details">
+                                <h4>Mohamed Zidan</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“Ms. Nawal assisted me professionally and efficiently in arranging my banking transaction.
+                            She guided me step by step and made the process easy. I highly recommend her to anyone
+                            needing financing or a credit card. Thank you Nawal and Excellence Finance! 🌟”</p>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">SD</div>
+                            <div class="reviewer-details">
+                                <h4>Saied EL Daly</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“I had a great experience dealing with Excellence Financing Broker with Mr. Tarun. The team
+                            was professional, responsive, and very helpful throughout the entire process. They explained
+                            all details clearly and helped me choose the best option.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MD</div>
+                            <div class="reviewer-details">
+                                <h4>Murali Dharan</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“Thanks to Excellence team. I was suffering from low DBR. This team did a smart work and I
+                            overcame from my all credit cards issues. Special thanks to Mr Kamlesh and Uttam. Thank you
+                            guys!”</p>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">HJ</div>
+                            <div class="reviewer-details">
+                                <h4>Hanadi Jarad</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“I would like to thank this company and I really recommend them... Ms Shweta Suryavanshi was
+                            so helpful on my case and really her assistance to me was so great and she gave all her
+                            effort and time to finish my process and get the loan.”</p>
+                    </div>
+                </div>
+
+                <!-- Duplicate Cards for Seamless Infinite Scroll -->
+                <!-- Card 1 (Dup) -->
+                <div class="review-card" aria-hidden="true">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">RA</div>
+                            <div class="reviewer-details">
+                                <h4>Rajeena Asharaf</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“I had an excellent experience working with the team during my loan process. From the very
+                            beginning, they were knowledgeable, transparent and extremely supportive especially Ms
+                            Sonal. I highly recommend their services to anyone looking for reliable and professional
+                            financial guidance.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 (Dup) -->
+                <div class="review-card" aria-hidden="true">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MA</div>
+                            <div class="reviewer-details">
+                                <h4>Mohd Aejaz Mohiuddin</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“My experience with Excellence Financial Broker has been nothing short of exceptional. From
+                            the outset, their team demonstrated unparalleled professionalism and dedication, providing
+                            clear guidance at every stage of the loan process... In particular, I would like to commend
+                            Mr. Vishal Singh for his remarkable expertise and personal commitment.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Dup) -->
+                <div class="review-card" aria-hidden="true">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MI</div>
+                            <div class="reviewer-details">
+                                <h4>Mohamed Ibrahim</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“I had a very bad experience earlier with another agency... After that, Manish Gupta
+                            contacted me and patiently built trust. My salary was irregular and my credit score was low,
+                            but he guided me properly and stayed in touch for almost 4 months. Then he applied for me,
+                            finally loan disbursed successfully.”</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 (Dup) -->
+                <div class="review-card" aria-hidden="true">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">CT</div>
+                            <div class="reviewer-details">
+                                <h4>Charles Michael T. C.</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>"My experience with Excellence Financial Broker was truly exceptional. From start to finish,
+                            their team guided me through every step of the loan process with meticulous attention to
+                            detail. Special recognition goes to Mr. Vishal Singh, whose expertise and personal
+                            dedication made a significant difference."</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Dup) -->
+                <div class="review-card" aria-hidden="true">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MD</div>
+                            <div class="reviewer-details">
+                                <h4>Muhammed Dilshad</h4>
+                                <span>Client Review</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>“Wonderful service, I have tried many banks directly and got rejected before reaching out to
+                            this team, and they set everything up for me, thanks for the wonderful customer service,
+                            especially Mr. Vidul Arora for the outstanding service.”</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5th Section: Image & Rate Us Two Column (Sticky Background + Content Animation + Hover Pop + Jumping Card) -->
+    <section class="rating-section" id="ratingSection">
+        <div class="container">
+            <div class="rating-grid">
+                <div class="image-container" id="ratingImage">
+                    <!-- Using image from provided screenshots context logic -->
+                    <img src="{% static 'images/efb-search.png' %}" alt="EFB Office" class="main-office-img">
+                    <div class="overlap-card">
+                        <span>Rate Us:</span>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="rating-content-col" id="ratingContent">
+                    <h2>Your Feedback Matters</h2>
+                    <p>At Excellence Financing Broker, we strive for excellence in every client interaction. If we've
+                        helped you secure your financial future, please share your experience with others on Google
+                        Business page.</p>
+                    <a href="https://www.google.com/search?q=EXCELLENCE+FINANCING+BROKER+Reviews" target="_blank"
+                        class="google-rate-btn">
+                        <i class="fa-brands fa-google"></i> Rate Us on Google
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6th Section: Subscribe (Fade Navy Background) with Mandatory Privacy Checkbox -->
+    <section class="subscribe-section">
+        <div class="container">
+            <h2>Subscribe for Updates</h2>
+            <p>Stay updated with latest financial trends and our exclusive services.</p>
+            <form class="subscribe-form" id="subForm">
+                <div class="subscribe-form-row">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">SUBSCRIBE</button>
+                </div>
+                <div class="privacy-consent">
+                    <input type="checkbox" id="privacyPolicy" required>
+                    <label for="privacyPolicy">I accept the <a href="#" class="privacy-link">Data Privacy
+                            Policy</a></label>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- Success Modal -->
+<div class="modal" id="modal">
+    <div class="modal-box">
+        <i class="fa-solid fa-circle-check" style="font-size: 50px; color: var(--gold); margin-bottom: 20px;"></i>
+        <h3>Successfully Subscribed!</h3>
+        <p style="margin-top: 10px; color: #666;">Thank you for joining our community.</p>
+        <button onclick="document.getElementById('modal').style.display='none'"
+            style="margin-top: 25px; background: var(--navy); color: white; border: none; padding: 10px 30px; border-radius: 4px; cursor: pointer;">Close</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    // Newsletter form handling
+    document.getElementById('subForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        document.getElementById('modal').style.display = 'flex';
+        this.reset();
+    });
+
+    // Close modal on click outside
+    window.onclick = function (event) {
+        const modal = document.getElementById('modal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Scroll Intersection Observer for Section 5 Entrance Animations
+    const observerOptions = {
+        root: null,
+        threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.getElementById('ratingImage').classList.add('animate');
+                document.getElementById('ratingContent').classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    if (window.innerWidth > 992) {
+        observer.observe(document.getElementById('ratingSection'));
+    } else {
+        // Instant show on mobile to avoid scroll lag issues
+        document.getElementById('ratingImage').style.opacity = '1';
+        document.getElementById('ratingImage').style.transform = 'none';
+        document.getElementById('ratingContent').style.opacity = '1';
+        document.getElementById('ratingContent').style.transform = 'none';
+    }
+</script>
+{% endblock %}

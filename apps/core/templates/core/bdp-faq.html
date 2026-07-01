@@ -1,0 +1,882 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+
+<title>BDP Partner Program FAQs | Excellence Financing Broker UAE</title>
+<meta name="description"
+    content="Find comprehensive answers about the Business Development Partner (BDP) Referral Program by Excellence Financing Broker UAE. Learn about payouts, eligibility, CRM tools, and sub-BDP bonuses.">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="BDP Partner Program Frequently Asked Questions - EFB UAE">
+<meta property="og:description"
+    content="Discover how to monetize your professional network in the UAE. Zero fees, up to 10% performance bonuses, and fully transparent real-time tracking dashboards.">
+<meta property="og:image" content="squared_efb_logo_copy-removebg-preview.png">
+<meta property="og:type" content="website">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Custom Tailwind Configuration with Arial and Red-free palette -->
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    efbBlue: {
+                        50: '#f2f7fc',
+                        100: '#e1eef9',
+                        200: '#cbdff4',
+                        600: '#005fa8',
+                        700: '#004b87', // Primary Deep Blue
+                        800: '#023c6d',
+                        900: '#052a4b',
+                        950: '#02162b',
+                    },
+                    slate: {
+                        50: '#f8fafc',
+                        100: '#f1f5f9',
+                        800: '#1e293b',
+                        900: '#0f172a'
+                    }
+                },
+                fontFamily: {
+                    sans: ['Arial', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>
+
+<!-- Structured Data (JSON-LD FAQ Schema for SEO Performance) -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the BDP Referral Program?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The BDP Referral Program is a partnership opportunity that allows individuals to connect people from their network with financial solutions. Partners earn performance-based commissions for successful referrals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does BDP stand for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BDP stands for Business Development Partner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is eligible to join the BDP program?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The program is open to everyone residing in the UAE."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I register to become a BDP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You start by visiting the EFB partner portal at app.efb.ae/auth/become-partner. Complete the online registration form, provide your KYC information, add your bank details, and accept the terms of service."
+          }
+        }
+      ]
+    }
+    </script>
+
+<style>
+    .hero-animation-left {
+        animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .accordion-active .accordion-content {
+        max-height: 500px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col">
+
+    <main class="flex-grow">
+        <!-- Hero Section with Centered Layout and No Partner Portal Card -->
+        <section
+            class="relative bg-gradient-to-br from-efbBlue-950 to-efbBlue-900 text-white overflow-hidden py-20 lg:py-28 text-center"
+            aria-labelledby="hero-title">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-efbBlue-800/40 via-transparent to-transparent opacity-60">
+            </div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="hero-animation-left space-y-8 flex flex-col items-center">
+                    <span
+                        class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-efbBlue-800/40 text-efbBlue-200 border border-efbBlue-700/50">
+                        <span class="w-1.5 h-1.5 rounded-full bg-efbBlue-400 animate-pulse"></span>
+                        UAE's Leading Referral Initiative
+                    </span>
+                    <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                        BDP FAQs
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                        Welcome to the official FAQ hub for the Business Development Partner (BDP) Referral Program by
+                        Excellence Financing Broker.
+                        This portal details eligibility, fast enrollment pathways, payouts, CRM mechanics, and
+                        promotional rules.
+                        We encourage exploring these resources before getting in touch with your assigned Relationship
+                        Manager.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <a href="#faq-section"
+                            class="bg-white hover:bg-slate-100 text-efbBlue-950 font-semibold px-8 py-3.5 rounded-full transition shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm">
+                            Browse Questions
+                        </a>
+                        <a href="/contact-us"
+                            class="border border-white/30 hover:border-white bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-3.5 rounded-full transition text-sm">
+                            Contact Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Categorization Area -->
+        <section id="faq-section" class="py-12 bg-white border-b border-slate-100 scroll-mt-20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Search Input Form Box -->
+                <div class="relative max-w-2xl mx-auto mb-10 group">
+                    <label for="search-input" class="sr-only">Search BDP Frequently Asked Questions</label>
+                    <div
+                        class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-efbBlue-700 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="text" id="search-input" placeholder="Search questions, payouts, CRM mechanics..."
+                        class="w-full pl-12 pr-4 py-4 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-efbBlue-700 focus:border-transparent shadow-sm text-slate-700 placeholder-slate-400 transition"
+                        aria-controls="faq-accordion-container">
+                    <button id="clear-search"
+                        class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 hidden"
+                        aria-label="Clear Search Input">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 mb-8" id="category-filters-container">
+                    <!-- Dynamic Buttons with JS injection for flexibility -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Accordion Grid System -->
+        <section class="py-12 lg:py-16 bg-slate-50 min-h-[400px]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Display status text for Search matching -->
+                <div id="search-feedback" class="text-sm text-slate-500 mb-6 text-center hidden"></div>
+
+                <!-- No Results fallback -->
+                <div id="no-results"
+                    class="hidden text-center py-12 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h3 class="text-lg font-bold text-slate-800">No FAQs found</h3>
+                    <p class="text-slate-500 text-sm mt-1 max-w-sm mx-auto">We couldn't find matches for your current
+                        keyword or filters. Please try another term or look at a different category.</p>
+                </div>
+
+                <!-- Accordions Container -->
+                <div id="faq-accordion-container" class="space-y-4">
+                    <!-- Dynamically rendered via robust vanilla Javascript -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Centered Blue Corporate Call to Action Section (Red color accents removed) -->
+        <section
+            class="bg-gradient-to-r from-efbBlue-950 to-efbBlue-900 text-white py-20 text-center relative overflow-hidden"
+            aria-labelledby="cta-heading">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-efbBlue-700/15 via-transparent to-transparent">
+            </div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+                <h2 id="cta-heading" class="text-3xl sm:text-4xl font-extrabold tracking-tight">BDP's Frequently Asked
+                    Questions (FAQ)</h2>
+                <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Leverage our 15+ years of industry experience and dedicated partner support to maximize the value of
+                    your referrals. Join our BDP Referral Program and grow with confidence.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="/become-bdp"
+                        class="bg-efbBlue-700 hover:bg-efbBlue-600 text-white font-bold px-8 py-3.5 rounded-full transition shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform tracking-wide text-sm sm:text-base">
+                        Become BDP
+                    </a>
+                    <a href="/about-us"
+                        class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full transition border border-white/20 hover:border-white/40 text-sm sm:text-base">
+                        About Us
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% endblock %}
+
+    {% block extra_js %}
+
+    <script>
+        // Complete structured FAQ dataset parsed exactly from source content
+        const faqData = [
+            // Category: General
+            {
+                id: "q1",
+                category: "general",
+                question: "What is the BDP Referral Program?",
+                answer: "The BDP Referral Program is a partnership opportunity that allows individuals to connect people from their network with financial solutions. Partners earn performance-based commissions for successful referrals."
+            },
+            {
+                id: "q2",
+                category: "general",
+                question: "What does BDP stand for?",
+                answer: "BDP stands for Business Development Partner."
+            },
+            {
+                id: "q3",
+                category: "general",
+                question: "What is a Business Development Partner (BDP)?",
+                answer: "A Business Development Partner is a specialized referral partner who acts as the bridge between their network and financial solutions."
+            },
+            {
+                id: "q4",
+                category: "general",
+                question: "What are the key benefits of joining the BDP program?",
+                answer: "Key benefits include needing zero prior experience, performance-based payouts where higher successful referrals mean higher earnings, and a non-exclusive setup allowing you to work from anywhere. You also get full CRM access, 100% transparency with zero referral leakage, and dedicated relationship manager support."
+            },
+            {
+                id: "q5",
+                category: "general",
+                question: "Is there a fee to join the BDP program?",
+                answer: "This information is not available in the provided documentation."
+            },
+            {
+                id: "q6",
+                category: "general",
+                question: "Can I work in this program alongside my regular job?",
+                answer: "Yes, the program is non-exclusive and designed to let you work alongside your current commitments from anywhere."
+            },
+            // Category: Eligibility
+            {
+                id: "q7",
+                category: "eligibility",
+                question: "Who is eligible to join the BDP program?",
+                answer: "The program is open to everyone residing in the UAE."
+            },
+            {
+                id: "q8",
+                category: "eligibility",
+                question: "What specific documents or credentials are required to be eligible?",
+                answer: "You must have a valid UAE mobile number, and a verified email ID."
+            },
+            {
+                id: "q9",
+                category: "eligibility",
+                question: "Do I need previous experience in finance or brokerage to apply?",
+                answer: "No, zero experience is needed to start. Excellence Financing Broker (EFB) provides all the necessary tools and training from day one."
+            },
+            {
+                id: "q10",
+                category: "eligibility",
+                question: "Can non-UAE residents apply to become a BDP?",
+                answer: "No, the program requires a valid Emirates ID for residency identification and is explicitly open to everyone in the UAE."
+            },
+            // Category: Enrollment
+            {
+                id: "q11",
+                category: "enrollment",
+                question: "How do I register to become a BDP?",
+                answer: "You start by visiting the EFB partner portal at app.efb.ae/auth/become-partner. Complete the online registration form, provide your KYC information, add your bank details, and accept the terms of service."
+            },
+            {
+                id: "q12",
+                category: "enrollment",
+                question: "How long does the online registration form take to complete?",
+                answer: "The registration form takes approximately 1 minute to complete."
+            },
+            {
+                id: "q13",
+                category: "enrollment",
+                question: "Can I use a registration link provided by a friend or an employee?",
+                answer: "Yes, you can open the registration link shared by a friend, an EFB employee, or an existing BDP."
+            },
+            {
+                id: "q14",
+                category: "enrollment",
+                question: "What basic details are required on the initial registration form?",
+                answer: "You must fill in your Name, UAE Mobile Number, Email ID and created password."
+            },
+            {
+                id: "q15",
+                category: "enrollment",
+                question: "Is providing bank information mandatory during the initial registration step?",
+                answer: "No, filling in your bank details during the registration form stage is optional."
+            },
+            {
+                id: "q16",
+                category: "enrollment",
+                question: "What addresses must be provided during the registration process?",
+                answer: "The form requests a Residential Address (including Emirate) and an Office Address, with an option to copy the residential address to the office address field."
+            },
+            {
+                id: "q17",
+                category: "enrollment",
+                question: "What happens immediately after I submit my registration form?",
+                answer: "You will receive a 'Registration Received' email from Excellence Financing Broker confirming that your application has been received and is under review."
+            },
+            {
+                id: "q18",
+                category: "enrollment",
+                question: "How will I know if my application to become a BDP is approved?",
+                answer: "Once approved, you will receive two emails: a welcome email containing your BDP onboarding confirmation and a separate notification that your login details for the CRM dashboard are active."
+            },
+            // Category: KYC & Verification
+            {
+                id: "q19",
+                category: "kyc",
+                question: "What specific KYC information is collected during registration?",
+                answer: "The platform collects your full name, UAE mobile number, and verified email address."
+            },
+            {
+                id: "q20",
+                category: "kyc",
+                question: "Who reviews my BDP application and KYC documentation?",
+                answer: "The application and KYC details are reviewed by the internal compliance team."
+            },
+            // Category: Onboarding & CRM Activation
+            {
+                id: "q23",
+                category: "onboarding",
+                question: "What do I receive upon successful activation of my BDP account?",
+                answer: "You will receive a unique BDP ID via email, get full access to the CRM dashboard to manage your portfolio, and be assigned a dedicated relationship manager."
+            },
+            {
+                id: "q24",
+                category: "onboarding",
+                question: "What website address do I use to log into the CRM dashboard?",
+                answer: "You can log into the CRM dashboard directly at app.efb.ae."
+            },
+            {
+                id: "q25",
+                category: "onboarding",
+                question: "What credentials do I use to access the CRM portal?",
+                answer: "You must log in using your registered email address and the password you created during the registration process."
+            },
+            {
+                id: "q26",
+                category: "onboarding",
+                question: "Are there any mandatory onboarding steps after receiving CRM access?",
+                answer: "Yes, step 3 of the enrollment roadmap requires you to complete onboarding training for the smooth usage of the platform."
+            },
+            {
+                id: "q27",
+                category: "onboarding",
+                question: "What tools are available to me inside the CRM dashboard?",
+                answer: "The CRM dashboard includes referral submission tools, real-time referral tracking, a 'My Task & Follow ups' tracker, and payout visibility features."
+            },
+            // Category: Referrals
+            {
+                id: "q28",
+                category: "referrals",
+                question: "How do I submit potential customer referral to EFB?",
+                answer: "You submit referrals online via the CRM dashboard at app.efb.ae/auth/become-partner using the dedicated referral submission tools."
+            },
+            {
+                id: "q29",
+                category: "referrals",
+                question: "What type of financial solutions can I refer my network to?",
+                answer: "You can refer clients to Personal Loans, Mortgage Loans, Credit Cards, Business Loans, and Business Accounts."
+            },
+            {
+                id: "q30",
+                category: "referrals",
+                question: "How do I track the progress and activities of my submitted referrals?",
+                answer: "You can track all activities, updates, and task follow-ups in real-time through the 'My Referrals' and referral tracking sections of your CRM dashboard."
+            },
+            {
+                id: "q31",
+                category: "referrals",
+                question: "Can I track my referrals without using the CRM dashboard?",
+                answer: "The documentation indicates that tracking activities and referrals is done in real-time through the portal at app.efb.ae. Alternative tracking methods are not specified."
+            },
+            // Category: Commission & Payout Structure
+            {
+                id: "q32",
+                category: "payouts",
+                question: "What is the standard payout commission for a Personal Loan referral?",
+                answer: "The standard payout is 0.80% of the disbursed loan amount."
+            },
+            {
+                id: "q33",
+                category: "payouts",
+                question: "What is the standard payout commission for a Mortgage Loan referral?",
+                answer: "The standard payout is 0.35% of the disbursed loan amount."
+            },
+            {
+                id: "q34",
+                category: "payouts",
+                question: "What is the standard commission structure for a Business Loan referral?",
+                answer: "The standard payout is 0.50% of the disbursed loan amount."
+            },
+            {
+                id: "q35",
+                category: "payouts",
+                question: "How much commission do I earn for an approved Credit Card referral?",
+                answer: "You earn a flat commission of AED 400 per approved credit card."
+            },
+            {
+                id: "q36",
+                category: "payouts",
+                question: "What is the standard payout for a successfully opened Business Account?",
+                answer: "You earn a flat commission of AED 500 per approved business account."
+            },
+            {
+                id: "q37",
+                category: "payouts",
+                question: "What are the three partner performance tiers in the BDP program?",
+                answer: "The three performance tiers are:<ul class='list-disc pl-5 mt-2 space-y-1'><li><strong>Tier 1: Silver Badge Partner</strong></li><li><strong>Tier 2: Gold Badge Partner</strong></li><li><strong>Tier 3: Diamond Badge Partner</strong></li></ul>"
+            },
+            {
+                id: "q38",
+                category: "payouts",
+                question: "How do I qualify for the Silver Badge Partner tier and what are its benefits?",
+                answer: "You are placed in Tier 1 (Silver Badge) when you have between 1 and 10 disbursed referrals. It grants you the standard base commission on all products and access to the CRM dashboard."
+            },
+            {
+                id: "q39",
+                category: "payouts",
+                question: "How do I reach the Gold Badge Partner tier and what extra incentives do I get?",
+                answer: "You reach Tier 2 (Gold Badge) when you achieve 11 to 20 disbursed referrals. This tier awards you the standard payout plus an extra 5% bonus commission on top of your standard payout, along with a dedicated Account Manager."
+            },
+            {
+                id: "q40",
+                category: "payouts",
+                question: "How do I qualify for the Diamond Badge Partner tier and what are its perks?",
+                answer: "You qualify for Tier 3 (Diamond Badge) when you achieve 20+ disbursed referrals. This tier grants you the standard payout plus an extra 10% bonus commission on top of the standard payout, alongside priority support and exclusive benefits."
+            },
+            // Category: Sub-BDP Network
+            {
+                id: "q41",
+                category: "subbdp",
+                question: "What is a Sub-BDP?",
+                answer: "When you refer someone to join the BDP Program and they successfully onboard, they become your Sub-BDP."
+            },
+            {
+                id: "q42",
+                category: "subbdp",
+                question: "How much commission do I earn from my Sub-BDP's successful referrals?",
+                answer: "You earn a 5% referral commission on every Sub-BDP payout for every successful disbursement they make."
+            },
+            {
+                id: "q43",
+                category: "subbdp",
+                question: "What is the definition of an 'Active Sub-BDP' under the bonus campaigns?",
+                answer: "An Active Sub-BDP is defined as a Sub-BDP whose first referral is successfully disbursed."
+            },
+            {
+                id: "q44",
+                category: "subbdp",
+                question: "What monthly bonus do I earn if I have 1 to 5 Active Sub-BDPs?",
+                answer: "You earn a Program Launching Bonus of AED 50 per active Sub-BDP per month."
+            },
+            {
+                id: "q45",
+                category: "subbdp",
+                question: "What monthly bonus do I receive if I have 6 or more Active Sub-BDPs?",
+                answer: "You earn an enhanced Program Launching Bonus of AED 100 per active Sub-BDP per month."
+            },
+            // Category: Volume Slab Bonuses
+            {
+                id: "q46",
+                category: "slabs",
+                question: "What are Monthly Volume Slabs?",
+                answer: "Volume Slabs are extra monthly incentives paid out when you achieve higher total disbursed volume (for loans/mortgages) or a high total count of approved cards/accounts within a single calendar month."
+            },
+            {
+                id: "q47",
+                category: "slabs",
+                question: "How are the volume slab bonuses calculated across different products?",
+                answer: "Slab amounts are calculated strictly per individual product, per month, based on total disbursed volume in AED (for loans and mortgages) or the precise count of approved cards or accounts."
+            },
+            {
+                id: "q48",
+                category: "slabs",
+                question: "What are the Volume Slab bonus tiers for Personal Loans?",
+                answer: "The Personal Loans Volume Slabs are:<ul class='list-disc pl-5 mt-2 space-y-1'><li>Slab 1 (800K - 1M volume): <strong>AED 1,000 bonus</strong></li><li>Slab 2 (1M+ - 1.5M volume): <strong>AED 2,000 bonus</strong></li><li>Slab 3 (1.5M+ - 2M volume): <strong>AED 4,000 bonus</strong></li><li>Slab 4 (2M+ volume): <strong>AED 6,000 bonus</strong></li></ul>"
+            },
+            {
+                id: "q49",
+                category: "slabs",
+                question: "What are the Volume Slab bonus tiers for Credit Cards?",
+                answer: "The Credit Cards Volume Slabs are:<ul class='list-disc pl-5 mt-2 space-y-1'><li>Slab 1 (11 - 15 approved cards): <strong>AED 1,000 bonus</strong></li><li>Slab 2 (16 - 20 approved cards): <strong>AED 2,000 bonus</strong></li><li>Slab 3 (21 - 25 approved cards): <strong>AED 4,000 bonus</strong></li><li>Slab 4 (25+ approved cards): <strong>AED 6,000 bonus</strong></li></ul>"
+            },
+            {
+                id: "q50",
+                category: "slabs",
+                question: "What are the Volume Slab bonus tiers for Mortgage Loans?",
+                answer: "The Mortgage Loans Volume Slabs are:<ul class='list-disc pl-5 mt-2 space-y-1'><li>Slab 1 (1M - 1.5M volume): <strong>AED 1,000 bonus</strong></li><li>Slab 2 (1.5M+ - 2.5M volume): <strong>AED 2,000 bonus</strong></li><li>Slab 3 (2.5M+ - 4M volume): <strong>AED 4,000 bonus</strong></li><li>Slab 4 (4M+ volume): <strong>AED 6,000 bonus</strong></li></ul>"
+            },
+            {
+                id: "q51",
+                category: "slabs",
+                question: "What are the Volume Slab bonus tiers for Business Loans?",
+                answer: "The Business Loans Volume Slabs are:<ul class='list-disc pl-5 mt-2 space-y-1'><li>Slab 1 (1M - 1.5M volume): <strong>AED 1,000 bonus</strong></li><li>Slab 2 (1.5M+ - 2.5M volume): <strong>AED 2,000 bonus</strong></li><li>Slab 3 (21 - 25 count): <strong>AED 4,000 bonus</strong> (Note: The documentation shows a metric transition to count for Slab 3)</li><li>Slab 4 (4M+ volume): <strong>AED 6,000 bonus</strong></li></ul>"
+            },
+            {
+                id: "q52",
+                category: "slabs",
+                question: "What are the Volume Slab bonus tiers for Business Accounts?",
+                answer: "The Business Accounts Volume Slabs are:<ul class='list-disc pl-5 mt-2 space-y-1'><li>Slab 1 (11 - 15 approved accounts): <strong>AED 1,000 bonus</strong></li><li>Slab 2 (16 - 20 approved accounts): <strong>AED 2,000 bonus</strong></li><li>Slab 3 (2.5M+ - 4M volume): <strong>AED 4,000 bonus</strong> (Note: The documentation shows a metric transition to volume for Slab 3)</li><li>Slab 4 (25+ approved accounts): <strong>AED 6,000 bonus</strong></li></ul>"
+            },
+            // Category: Banking & Payments
+            {
+                id: "q53",
+                category: "banking",
+                question: "When are the Monthly Campaign Slabs and Sub-BDP bonuses paid out?",
+                answer: "Monthly Bonuses accumulated from your campaigns are paid out on every 5th of the month."
+            },
+            {
+                id: "q54",
+                category: "banking",
+                question: "How do I receive my standard referral commission payouts?",
+                answer: "Standard payouts are tracked via the 'Payout Visibility' tool and sent to the personal bank details you provide. The documentation references 'Instant Payout' functionality for core partner operations."
+            },
+            {
+                id: "q55",
+                category: "banking",
+                question: "What specific banking details must I enter into the portal for payouts?",
+                answer: "You need to provide your Bank Account Name, Bank Account Number, and your Bank Account IBAN code."
+            },
+            // Category: Rules & Policies
+            {
+                id: "q56",
+                category: "rules",
+                question: "Can I refer myself to earn commission on my own financial products?",
+                answer: "Yes. You are fully permitted to refer yourself to the program and earn commissions on any qualifying financial products you successfully close for your own use."
+            },
+            {
+                id: "q57",
+                category: "rules",
+                question: "What happens if multiple partners submit the exact same referral?",
+                answer: "We operate on a strict first-come, first-served tracking system. The first partner to successfully log the lead into the CRM will be recognized as the referring partner; any subsequent identical submissions by other partners are automatically filtered out by our system."
+            },
+            {
+                id: "q58",
+                category: "rules",
+                question: "What happens if a referral I referred already exists in the EFB database?",
+                answer: "If your submitted lead is already registered in our system, you will receive an automatic email notification from our support team informing you of the duplication. This email will outline any necessary next steps or clarification procedures you can follow."
+            },
+            {
+                id: "q59",
+                category: "rules",
+                question: "Can I update my personal bank account details after submitting the form?",
+                answer: "Yes, you can update your banking details at any time through the CRM dashboard. Simply navigate to Profile > Profile > Bank Details to modify your payout information securely."
+            },
+            {
+                id: "q61",
+                category: "rules",
+                question: "What if I enter incorrect information on the sign-up form?",
+                answer: "The most critical details during registration are your primary mobile number and email address. If these are accurate, our verification and compliance team will easily be able to reach out to you directly to correct any minor errors in your registration profile."
+            },
+            // Category: Support & Tech
+            {
+                id: "q62",
+                category: "support",
+                question: "How do I contact the support team or my assigned representative?",
+                answer: "You can connect with EFB via phone at +971 525263838, view details on their website at efb.ae, or find information within your CRM account dashboard. You can receive dedicated RM for your every referral."
+            },
+            {
+                id: "q63",
+                category: "support",
+                question: "What should I do if I forget my CRM account password?",
+                answer: "You can easily restore access by navigating to the CRM login page and clicking on the 'Forgot Password' hyperlink. Follow the on-screen prompts sent to your registered email address to securely reset your credentials."
+            },
+            {
+                id: "q64",
+                category: "support",
+                question: "Can my BDP partner account become inactive due to low volume?",
+                answer: "No, we will never deactivate or penalize your account for low referral volume or periods of inactivity. However, please note that Excellence Financing Broker reserves the right to suspend any partner account found in direct violation of our Privacy Policy or baseline Terms and Conditions."
+            },
+            {
+                id: "q65",
+                category: "support",
+                question: "Do I need to provide a VAT number when signing up?",
+                answer: "The registration portal features an optional field for your VAT number ('Enter VAT no.'). It is not marked as mandatory for initial entry."
+            },
+            {
+                id: "q66",
+                category: "support",
+                question: "What is the 'RERA No.' field on the registration page used for?",
+                answer: "The portal contains an entry field for a 'RERA No.'. Its exact mandatory status or use cases for non-real estate operations are not elaborated upon in the documentation."
+            },
+            // Suggested FAQs with unprovided content
+            {
+                id: "q_extra1",
+                category: "rules",
+                question: "Can I register as a corporate entity or corporate business broker, or is it strictly for individuals?",
+                answer: "This information is not available in the provided documentation."
+            },
+            {
+                id: "q_extra2",
+                category: "referrals",
+                question: "How long does a referral remain uniquely assigned to my BDP profile after initial submission?",
+                answer: "This information is not available in the provided documentation."
+            },
+            {
+                id: "q_extra3",
+                category: "referrals",
+                question: "Is there an expiration window for a customer referral if their loan disbursement takes several months?",
+                answer: "This information is not available in the provided documentation."
+            },
+            {
+                id: "q_extra4",
+                category: "rules",
+                question: "Are there any restrictions on marketing methods I can use to generate referrals in the UAE?",
+                answer: "This information is not available in the provided documentation."
+            }
+        ];
+
+        const categoryMap = {
+            "all": "All FAQs",
+            "general": "General",
+            "eligibility": "Eligibility",
+            "enrollment": "Enrollment",
+            "referrals": "Referrals",
+            "payouts": "Payout Tiers",
+            "subbdp": "Sub-BDP Network",
+            "slabs": "Volume Slabs",
+            "banking": "Payments & Banking",
+            "rules": "Policies & Rules",
+            "support": "Support"
+        };
+
+        let currentCategory = "all";
+        let searchQuery = "";
+
+        const searchInput = document.getElementById("search-input");
+        const clearSearchBtn = document.getElementById("clear-search");
+        const faqContainer = document.getElementById("faq-accordion-container");
+        const categoryFiltersContainer = document.getElementById("category-filters-container");
+        const searchFeedback = document.getElementById("search-feedback");
+        const noResultsDiv = document.getElementById("no-results");
+
+        // Convert references into clean, internal placeholder links dynamically (Red accents removed)
+        function autoLink(text) {
+            const mappings = [
+                { pattern: /Enrollment Guide/gi, url: "/bdp-enrollment" },
+                { pattern: /Payout Structure/gi, url: "/bdp-payout-structure" },
+                { pattern: /About Us/gi, url: "/about-us" },
+                { pattern: /Contact Us/gi, url: "/contact-us" },
+                { pattern: /Contact Support/gi, url: "/contact-us" },
+                { pattern: /contact our support/gi, url: "/contact-us" },
+                { pattern: /BDP Registration/gi, url: "/become-bdp" },
+                { pattern: /become-partner/gi, url: "/become-bdp" },
+                { pattern: /Terms and Conditions/gi, url: "/terms-and-conditions" },
+                { pattern: /Terms & Conditions/gi, url: "/terms-and-conditions" },
+                { pattern: /Privacy Policy/gi, url: "/privacy-policy" }
+            ];
+
+            let parsedText = text;
+            mappings.forEach(item => {
+                parsedText = parsedText.replace(item.pattern, (match) => {
+                    return `<a href="${item.url}" class="text-efbBlue-700 hover:text-efbBlue-800 underline font-semibold inline-flex items-center gap-0.5">${match}</a>`;
+                });
+            });
+
+            // Format special external domain links mentioned to secure internal placeholders/direct portals
+            parsedText = parsedText.replace(/app\.efb\.ae/g, `<a href="/become-bdp" class="text-efbBlue-700 hover:underline font-semibold">app.efb.ae</a>`);
+            parsedText = parsedText.replace(/efb\.ae/g, `<a href="https://efb.ae" target="_blank" class="text-efbBlue-700 hover:underline font-semibold">efb.ae</a>`);
+
+            return parsedText;
+        }
+
+        // Highlights keywords found within searches safely inside text nodes
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(`(${escapedQuery})`, 'gi');
+            return text.replace(regex, `<mark class="bg-blue-100 text-slate-900 rounded-sm px-0.5 font-medium">$1</mark>`);
+        }
+
+        function renderFilters() {
+            categoryFiltersContainer.innerHTML = "";
+            Object.keys(categoryMap).forEach(key => {
+                const button = document.createElement("button");
+                button.textContent = categoryMap[key];
+                button.className = `px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${currentCategory === key
+                        ? "bg-efbBlue-700 text-white shadow-md shadow-efbBlue-700/20"
+                        : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-800 border border-slate-200/60"
+                    }`;
+                button.setAttribute("role", "tab");
+                button.setAttribute("aria-selected", currentCategory === key ? "true" : "false");
+                button.addEventListener("click", () => {
+                    currentCategory = key;
+                    renderFilters();
+                    renderFAQs();
+                });
+                categoryFiltersContainer.appendChild(button);
+            });
+        }
+
+        function renderFAQs() {
+            faqContainer.innerHTML = "";
+
+            // Filter the master list
+            let filtered = faqData.filter(faq => {
+                const matchesCategory = currentCategory === "all" || faq.category === currentCategory;
+
+                const query = searchQuery.toLowerCase();
+                const matchesSearch = faq.question.toLowerCase().includes(query) ||
+                    faq.answer.toLowerCase().includes(query);
+
+                return matchesCategory && matchesSearch;
+            });
+
+            // Toggle No Results View
+            if (filtered.length === 0) {
+                noResultsDiv.classList.remove("hidden");
+                searchFeedback.classList.add("hidden");
+                return;
+            } else {
+                noResultsDiv.classList.add("hidden");
+            }
+
+            // Display Feedback info if searching
+            if (searchQuery) {
+                searchFeedback.textContent = `Showing ${filtered.length} results matching "${searchQuery}"`;
+                searchFeedback.classList.remove("hidden");
+            } else {
+                searchFeedback.classList.add("hidden");
+            }
+
+            // Render Accordion elements
+            filtered.forEach(faq => {
+                const safeAnswer = autoLink(faq.answer);
+                const highlightedQuestion = highlightMatch(faq.question, searchQuery);
+
+                const faqCard = document.createElement("div");
+                faqCard.className = "bg-white rounded-xl border border-slate-200/60 hover:border-slate-300 transition-all duration-200 shadow-sm overflow-hidden";
+                faqCard.id = `accordion-item-${faq.id}`;
+
+                faqCard.innerHTML = `
+                    <button class="w-full text-left px-5 sm:px-6 py-5 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-efbBlue-700 transition" 
+                            aria-expanded="false" 
+                            aria-controls="content-${faq.id}"
+                            id="btn-${faq.id}">
+                        <div class="flex items-start space-x-3 pr-4">
+                            <span class="text-[10px] font-bold text-efbBlue-700/85 bg-efbBlue-50 px-2 py-0.5 rounded-md mt-0.5 uppercase tracking-wide shrink-0">
+                                ${faq.category === 'rules' ? 'Policy' : faq.category}
+                            </span>
+                            <h3 class="font-bold text-slate-800 text-sm sm:text-base leading-tight">${highlightedQuestion}</h3>
+                        </div>
+                        <span class="p-1.5 rounded-full bg-slate-100 text-slate-500 transition-transform duration-300 transform shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div id="content-${faq.id}" class="accordion-content border-t border-slate-100 bg-slate-50/50" role="region" aria-labelledby="btn-${faq.id}">
+                        <div class="px-5 sm:px-6 py-5 text-sm sm:text-base text-slate-600 leading-relaxed">
+                            ${safeAnswer}
+                        </div>
+                    </div>
+                `;
+
+                const btn = faqCard.querySelector("button");
+                const content = faqCard.querySelector(".accordion-content");
+                const icon = faqCard.querySelector("svg");
+
+                btn.addEventListener("click", () => {
+                    const isExpanded = btn.getAttribute("aria-expanded") === "true";
+
+                    // Close all other accordions first
+                    const allButtons = faqContainer.querySelectorAll("button[aria-expanded='true']");
+                    allButtons.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.setAttribute("aria-expanded", "false");
+                            const otherContent = otherBtn.nextElementSibling;
+                            otherContent.style.maxHeight = null;
+                            const otherIcon = otherBtn.querySelector("svg");
+                            if (otherIcon) otherIcon.style.transform = "rotate(0deg)";
+                            otherBtn.parentElement.classList.remove("border-efbBlue-700/50", "ring-1", "ring-efbBlue-700/30");
+                        }
+                    });
+
+                    // Toggle active state on clicked element
+                    if (isExpanded) {
+                        btn.setAttribute("aria-expanded", "false");
+                        content.style.maxHeight = null;
+                        icon.style.transform = "rotate(0deg)";
+                        faqCard.classList.remove("border-efbBlue-700/50", "ring-1", "ring-efbBlue-700/30");
+                    } else {
+                        btn.setAttribute("aria-expanded", "true");
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.style.transform = "rotate(180deg)";
+                        faqCard.classList.add("border-efbBlue-700/50", "ring-1", "ring-efbBlue-700/30");
+                    }
+                });
+
+                faqContainer.appendChild(faqCard);
+            });
+        }
+
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            if (searchQuery.trim().length > 0) {
+                clearSearchBtn.classList.remove("hidden");
+            } else {
+                clearSearchBtn.classList.add("hidden");
+            }
+            renderFAQs();
+        });
+
+        clearSearchBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            searchQuery = "";
+            clearSearchBtn.classList.add("hidden");
+            renderFAQs();
+            searchInput.focus();
+        });
+
+        // Initialize application visual loads on page load
+        window.addEventListener("DOMContentLoaded", () => {
+            renderFilters();
+            renderFAQs();
+        });
+    </script>
+</body>
+{% endblock %}

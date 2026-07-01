@@ -1,0 +1,429 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excellence Financing Broker - Nav Preview</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Ultra-Premium Glass Island Shimmer Background */
+        .shining-nav {
+            background: linear-gradient(135deg,
+                    rgba(11, 15, 25, 0.8) 0%,
+                    rgba(23, 31, 50, 0.85) 40%,
+                    rgba(255, 255, 255, 0.08) 50%,
+                    rgba(23, 31, 50, 0.85) 60%,
+                    rgba(11, 15, 25, 0.8) 100%);
+
+            background-size: 250% 100%;
+
+            animation: premiumShine 2.5s ease-out forwards;
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        @keyframes premiumShine {
+            0% {
+                background-position: 250% 0;
+            }
+
+            100% {
+                background-position: -250% 0;
+            }
+        }
+
+        .glowing-border {
+
+            border: 1.5px solid transparent;
+
+            background-image:
+
+                linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)),
+
+                linear-gradient(90deg, rgba(239, 68, 68, 0.25), rgba(59, 130, 246, 0.35), rgba(239, 68, 68, 0.25));
+
+            background-origin: border-box;
+
+            background-clip: padding-box, border-box;
+
+        }
+
+        /* Modern Active/Hover Underline effect for the links */
+        .nav-link-effect {
+            position: relative;
+        }
+
+        .nav-link-effect::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link-effect:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Refined, high-end Partner Button */
+        .partner-btn {
+            background: linear-gradient(270deg,
+                    #d4af37,
+                    #f59e0b,
+                    #ef4444,
+                    #f59e0b,
+                    #d4af37);
+            background-size: 400% 400%;
+            animation: partnerGradient 8s ease infinite;
+            box-shadow:
+                0 0 12px rgba(212, 175, 55, 0.3),
+                0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .partner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 25px rgba(212, 175, 55, 0.6),
+                0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        @keyframes partnerGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#070a13] min-h-screen text-slate-100 relative overflow-x-hidden">
+
+    <!-- Ambient Background Glows: Blends Blue and Red elements into the page canvas dynamically -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        <!-- Blue Ambient Glow (Top Left) -->
+        <div
+            class="absolute -top-[10%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-blue-600/10 to-transparent blur-[120px]">
+        </div>
+        <!-- Red Ambient Glow (Top Right) -->
+        <div
+            class="absolute -top-[15%] -right-[10%] w-[55vw] h-[55vw] rounded-full bg-gradient-to-bl from-red-600/8 to-transparent blur-[120px]">
+        </div>
+    </div>
+
+    <!-- Floating Island Header Wrapper -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-4">
+        <nav class="max-w-7xl mx-auto rounded-full shining-nav glowing-border shadow-2xl transition-all duration-300">
+            <div class="px-6 sm:px-8">
+                <div class="flex justify-between items-center h-16 lg:h-20">
+
+                    <!-- Logo with micro-scale interaction -->
+                    <div class="flex-shrink-0 flex items-center z-10">
+                        <a href="{% url 'core:home' %}" class="transition-transform hover:scale-105 duration-300">
+                            <img src="{% static 'images/squared_efb_logo_copy-removebg-preview.png' %}"
+                                alt="Excellence Financing Broker Logo" class="h-9 lg:h-11 w-auto object-contain"
+                                onerror="this.src='https://placehold.co/200x60/0f172a/d4af37?text=EXCELLENCE%20FINANCING%20BROKER'">
+                        </a>
+                    </div>
+
+                    <!-- Desktop Links (Premium typography, rich interactive colors) -->
+                    <div class="hidden lg:flex space-x-10 items-center z-10">
+
+                        <!-- Home Link: Highly aesthetic Bold Blue -->
+                        <a href="{% url 'core:home' %}"
+                            class="nav-link-effect text-blue-400 hover:text-blue-300 font-bold text-[15px] tracking-wide transition-colors duration-200">
+                            Home
+                        </a>
+
+                        <!-- About Us Link: Highly aesthetic Bold Blue -->
+                        <a href="{% url 'core:about_us' %}"
+                            class="nav-link-effect text-blue-400 hover:text-blue-300 font-bold text-[15px] tracking-wide transition-colors duration-200">
+                            About Us
+                        </a>
+
+                        <!-- Services Dropdown with smooth slide-up animation and micro-interactions -->
+                        <div class="relative group">
+                            <button
+                                class="text-blue-400 group-hover:text-blue-300 font-bold text-[15px] tracking-wide transition-colors duration-200 flex items-center gap-1.5 py-4">
+                                Services
+                                <svg class="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-transform duration-300 group-hover:rotate-180"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 mt-1 w-60 rounded-2xl shadow-2xl bg-slate-900/95 border border-slate-800/80 p-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 backdrop-blur-lg">
+                                <div class="space-y-1">
+                                    <a href="{% url 'core:personal_loan' %}"
+                                        class="block px-4 py-3 text-sm font-medium text-slate-300 hover:bg-blue-600/10 hover:text-blue-400 rounded-xl transition-all">
+                                        Personal Loan
+                                    </a>
+                                    <a href="{% url 'core:business_loan' %}"
+                                        class="block px-4 py-3 text-sm font-medium text-slate-300 hover:bg-blue-600/10 hover:text-blue-400 rounded-xl transition-all">
+                                        Business Loan
+                                    </a>
+                                    <a href="{% url 'core:mortgage' %}"
+                                        class="block px-4 py-3 text-sm font-medium text-slate-300 hover:bg-blue-600/10 hover:text-blue-400 rounded-xl transition-all">
+                                        Mortgage
+                                    </a>
+                                    <a href="{% url 'core:business_account' %}"
+                                        class="block px-4 py-3 text-sm font-medium text-slate-300 hover:bg-blue-600/10 hover:text-blue-400 rounded-xl transition-all">
+                                        Business Account
+                                    </a>
+                                    <a href="{% url 'core:credit_card' %}"
+                                        class="block px-4 py-3 text-sm font-medium text-slate-300 hover:bg-blue-600/10 hover:text-blue-400 rounded-xl transition-all">
+                                        Credit Card
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side Actions (Clean proportions, custom button frames) -->
+                    <div class="hidden lg:flex items-center space-x-6 z-10">
+                        <!-- Partner Launch Banner / Button -->
+                        <div class="relative">
+                            <span
+                                class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gradient-to-r from-red-500 to-pink-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full shadow-lg animate-bounce z-20 uppercase tracking-widest">
+                                🚀 JUST LAUNCHED
+                            </span>
+
+                            <a href="{% url 'core:become_partner' %}"
+                                class="partner-btn relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[13px] text-white tracking-wider uppercase overflow-hidden">
+                                <span>Become Partner</span>
+                                <span
+                                    class="bg-white/20 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full animate-pulse">
+                                    NEW
+                                </span>
+                            </a>
+                        </div>
+
+                        <!-- Contact Us: Styled like a high-end luxury portal call-to-action -->
+                        <a href="{% url 'core:contact_us' %}"
+                            class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-[14px] rounded-full transition-all duration-300 shadow-lg shadow-amber-500/10 hover:shadow-amber-500/20 hover:-translate-y-0.5">
+                            Contact Us
+                        </a>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="flex lg:hidden z-10">
+                        <button id="mobile-menu-btn" class="text-blue-400 hover:text-blue-300 p-2 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu: Floating slide-down container -->
+
+
+
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998] hidden lg:hidden">
+
+        <div id="mobile-drawer" class="absolute left-0 top-0 h-full w-[85%] max-w-[340px]
+               bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950
+               border-r border-blue-500/20
+               shadow-2xl
+               transform -translate-x-full
+               transition-transform duration-300
+               overflow-y-auto">
+
+            <!-- HEADER -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+
+                <img src="{% static 'images/squared_efb_logo_copy-removebg-preview.png' %}" class="h-10 w-auto">
+
+                <button id="mobile-close-btn"
+                    class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-white">
+
+                    ✕
+                </button>
+
+            </div>
+
+            <!-- MENU ITEMS -->
+            <div class="py-3">
+
+                <a href="{% url 'core:home' %}" class="block px-6 py-4 text-blue-300 font-medium">
+                    Home
+                </a>
+
+                <a href="{% url 'core:about_us' %}" class="block px-6 py-4 text-blue-300 font-medium">
+                    About Us
+                </a>
+
+                <!-- SERVICES -->
+
+                <button id="mobile-services-btn"
+                    class="w-full flex justify-between items-center px-6 py-4 text-blue-300 font-medium">
+
+                    <span>Services</span>
+
+                    <svg id="services-arrow" class="w-4 h-4 transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                        </path>
+
+                    </svg>
+
+                </button>
+
+                <div id="services-dropdown" class="hidden">
+
+                    <a href="{% url 'core:personal_loan' %}" class="block px-10 py-3 text-slate-300">
+                        Personal Loan
+                    </a>
+
+                    <a href="{% url 'core:business_loan' %}" class="block px-10 py-3 text-slate-300">
+                        Business Loan
+                    </a>
+
+                    <a href="{% url 'core:mortgage' %}" class="block px-10 py-3 text-slate-300">
+                        Mortgage
+                    </a>
+
+                    <a href="{% url 'core:business_account' %}" class="block px-10 py-3 text-slate-300">
+                        Business Account
+                    </a>
+
+                    <a href="{% url 'core:credit_card' %}" class="block px-10 py-3 text-slate-300">
+                        Credit Card
+                    </a>
+
+                </div>
+
+                <!-- BUTTONS -->
+
+                <div class="px-5 pt-6">
+
+                    <div class="relative">
+
+                        <span class="absolute -top-3 right-3 bg-red-500 text-white text-[10px] px-2 py-1 rounded-full">
+
+                            🚀 NEW
+
+                        </span>
+
+                        <a href="{% url 'core:become_partner' %}" class="flex justify-center items-center h-12 rounded-xl
+                               bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600
+                               text-white font-bold">
+
+                            Become Partner
+
+                        </a>
+
+                    </div>
+
+                    <a href="{% url 'core:contact_us' %}" class="mt-4 flex justify-center items-center h-12 rounded-xl
+                           bg-gradient-to-r from-blue-500 to-cyan-500
+                           text-white font-bold">
+
+                        Contact Us
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- JavaScript to power Mobile Menu toggle -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const menuBtn = document.getElementById('mobile-menu-btn');
+
+            const overlay = document.getElementById('mobile-overlay');
+
+            const drawer = document.getElementById('mobile-drawer');
+
+            const closeBtn = document.getElementById('mobile-close-btn');
+
+            const servicesBtn = document.getElementById('mobile-services-btn');
+
+            const servicesDropdown = document.getElementById('services-dropdown');
+
+            const servicesArrow = document.getElementById('services-arrow');
+
+            function openDrawer() {
+
+                overlay.classList.remove('hidden');
+
+                setTimeout(() => {
+                    drawer.classList.remove('-translate-x-full');
+                }, 10);
+
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeDrawer() {
+
+                drawer.classList.add('-translate-x-full');
+
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openDrawer);
+
+            closeBtn.addEventListener('click', closeDrawer);
+
+            overlay.addEventListener('click', function (e) {
+
+                if (e.target === overlay) {
+                    closeDrawer();
+                }
+
+            });
+
+            servicesBtn.addEventListener('click', function () {
+
+                servicesDropdown.classList.toggle('hidden');
+
+                servicesArrow.classList.toggle('rotate-180');
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,640 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<title>Business Solutions | Excellence Financing Broker</title>
+
+<!-- Lucide Icons -->
+
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* Reveal Animation Styles */
+    .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+
+    /* Accordion Functionality Styles */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 800px;
+    }
+
+    .accordion-item.active i,
+    .accordion-item.active svg {
+        transform: rotate(180deg);
+    }
+
+    .overview-section {
+        position: relative;
+        background: #0f172a;
+        overflow: hidden;
+    }
+
+    .vertical-marquee-container {
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .marquee-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        white-space: nowrap;
+        font-size: 5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px #d4af37;
+        opacity: 0.3;
+        animation: scrollUp 15s linear infinite;
+    }
+
+    @keyframes scrollUp {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+
+    .handshake-bg {
+        position: absolute;
+        right: -2%;
+        top: 5%;
+        width: 35%;
+        max-width: 450px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 0;
+        transform-origin: top right;
+        animation: subtleNod 6s ease-in-out infinite;
+    }
+
+    @keyframes subtleNod {
+
+        0%,
+        100% {
+            transform: rotate(0deg) scale(1);
+        }
+
+        50% {
+            transform: rotate(-3deg) scale(1.05);
+        }
+    }
+
+    .navy-gradient-section {
+        position: relative;
+        background: linear-gradient(to right, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 1) 100%),
+            url('https://images.unsplash.com/photo-1454165833767-027ffea9e755?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+    }
+
+    .arrow-btn:hover i {
+        transform: translateX(8px);
+        transition: transform 0.3s ease;
+    }
+
+    .relative-host {
+        position: relative;
+    }
+
+    /* Gradient CTA button */
+    .btn-pop1 {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-pop1:hover {
+        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+        transform: scale(1.04) translateY(-2px);
+</style>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- 1st Section: Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+    </div>
+    <div class="page-banner-content page-banner-animation">
+        <h1 class="page-banner-title">Business Accounts</h1>
+        <p class="page-banner-subtitle">
+            Our consultants understands the importance of maintaining a long lasting business relationships with clients
+            to deliver specific solutions.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-10 text-white font-bold tracking-widest text-sm uppercase">
+            <span class="flex items-center gap-2"><i data-lucide="briefcase" class="text-blue-400"></i> Corporate
+                Solutions</span>
+            <span class="flex items-center gap-2"><i data-lucide="bar-chart-3" class="text-blue-400"></i> Scalable
+                Credit</span>
+            <span class="flex items-center gap-2"><i data-lucide="globe" class="text-blue-400"></i> International
+                Trade</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="#"
+                class="btn-pop px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                About us
+            </a>
+            <a href="#"
+                class="btn-pop1 px-12 py-4 text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 2nd Section: Overview (Animated - Static Grid Design) -->
+<section class="overview-section py-20 px-6 reveal">
+    <div class="vertical-marquee-container">
+        <div class="marquee-text">Corporate Excellence & Trust</div>
+    </div>
+
+    <div class="handshake-bg">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 100C40 100 60 80 85 100C110 120 130 100 130 100" stroke="#d4af37" stroke-width="2"
+                stroke-linecap="round" />
+            <path d="M70 120C70 120 90 140 115 120C140 100 160 120 160 120" stroke="#d4af37" stroke-width="2"
+                stroke-linecap="round" />
+            <circle cx="100" cy="100" r="80" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" />
+        </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-2">Overview</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Empower Your Business Financials</h3>
+            <p class="text-slate-300 text-lg max-w-3xl mx-auto">
+                A business bank account is an essential financial tool that helps separate your personal and business
+                finances, ensuring organized accounting, simplified tax filing, and enhanced business credibility.
+            </p>
+        </div>
+
+        <!-- Premium 3-Column Grid representing original Overview information -->
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Card 1: Why Open a Business Bank Account -->
+            <div
+                class="bg-white/5 backdrop-blur-md border border-slate-700/80 p-8 rounded-2xl flex flex-col justify-between hover:border-blue-400/50 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="help-circle" class="text-blue-400 w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">Why Open a Business Account?</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-blue-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Financial
+                                    Clarity:</strong> Separation of personal & business assets.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-blue-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Tax
+                                    Efficiency:</strong> Simplified, highly compliant accounting.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-blue-400 w-4 h-4 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Professionalism:</strong> Boosts trust with clients and providers.</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-blue-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Seamless
+                                    Tracking:</strong> Easy record keeping of operational cash flow.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Requirements to Open a Business Account -->
+            <div
+                class="bg-white/5 backdrop-blur-md border border-slate-700/80 p-8 rounded-2xl flex flex-col justify-between hover:border-red-400/50 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="file-text" class="text-red-400 w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">Requirements to Open</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-red-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Business
+                                    license:</strong> Proof of complete registration.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-red-400 w-4 h-4 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Identification:</strong> Passports & Emirates IDs of owners.</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-red-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Trade
+                                    License:</strong> Essential operative and regulatory proof.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-red-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Company
+                                    Docs:</strong> Articles of Association, Resolutions, etc.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-red-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Proof of
+                                    Address:</strong> Lease contract or commercial utility bills.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Key Features & Benefits -->
+            <div
+                class="bg-white/5 backdrop-blur-md border border-slate-700/80 p-8 rounded-2xl flex flex-col justify-between hover:border-yellow-400/50 transition-all">
+                <div>
+                    <div class="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="sparkles" class="text-yellow-400 w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">Features & Benefits</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-yellow-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Account
+                                    Types:</strong> Dynamic checking, savings, or merchant profiles.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-yellow-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Digital
+                                    Platforms:</strong> Secure 24/7 web & smartphone banking interface.</span></li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-yellow-400 w-4 h-4 flex-shrink-0 mt-0.5"></i>
+                            <span><strong>Cost-Effective:</strong> Highly competitive rates & minimized
+                                overheads.</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check"
+                                class="text-yellow-400 w-4 h-4 flex-shrink-0 mt-0.5"></i> <span><strong>Financial
+                                    Advisory:</strong> Tailored support structure for scale.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 p-6 bg-white/5 border-l-4 border-blue-400 rounded-r-lg text-slate-300">
+            <strong>How Long Does It Take to Open a Business Account?</strong> Opening a business account is a quick and
+            straightforward process. Most banks complete the process within a few hours to a few days, depending on the
+            required documentation.
+        </div>
+    </div>
+</section>
+
+<!-- 3rd Section: Business Loan CTA -->
+<section class="navy-gradient-section py-24 px-6 text-center text-white">
+    <div
+        class="max-w-4xl mx-auto relative z-10 bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/20 shadow-2xl">
+        <h2 class="text-5xl font-extrabold mb-6 text-blue-400 uppercase tracking-tight"
+            style="background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Business Accounts</h2>
+        <p class="text-2xl text-white font-medium mb-12 max-w-2xl mx-auto leading-snug">Access flexible business
+            financing to grow, expand, and manage your cash flow with confidence.</p>
+        <button
+            class="arrow-btn group inline-flex items-center gap-3 px-10 py-5 btn-pop1 text-white font-bold rounded-full btn-pop shadow-2xl transition-all">
+            Contact Us to Know More
+            <i data-lucide="arrow-right" class="w-6 h-6 transition-transform"></i>
+        </button>
+    </div>
+</section>
+
+<!-- 4th Section: Key Benefits & FAQ (Animated - Accordion Design) -->
+<section class="py-24 px-4 md:px-8 bg-slate-50 relative relative-host reveal">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 border-l-8 border-red-700 pl-4 uppercase">Key Benefits & FAQ
+        </h2>
+        <p class="text-slate-600 mb-12">A business bank account is an essential financial tool that helps separate your
+            personal and business finances, ensuring organized accounting, simplified tax filing, and enhanced business
+            credibility. It allows you to manage transactions, accept payments, and maintain a professional financial
+            presence.</p>
+
+        <!-- Accordion Design with All 10 Questions -->
+        <div class="space-y-4">
+
+            <!-- Q1 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>1. Can I open a business account for an online business?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Yes, online businesses can open a business account. You will likely need to provide proof of
+                        your online operations, such as a website, sales records, and business registration.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>2. Can I open a business account without a physical office?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Yes, a business account can be opened without a physical office as long as you can provide proof
+                        of your business registration, trade license, and other necessary documentation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>3. How can I integrate my business account with accounting software?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Many banks offer integrations with popular accounting software like QuickBooks, Xero, or Sage,
+                        making it easier to track your finances directly from the bank's platform.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>4. Can I get a business loan through my business account?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Yes, having a business account can improve your chances of getting a loan as it shows the bank
+                        your financial history and operations. Some banks offer specialized loans for business account
+                        holders.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>5. What happens if I overdraw my business account?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Overdrawing your account can result in fees, and repeated overdrafts may impact your
+                        relationship with the bank. It’s important to keep track of your account balance to avoid this.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>6. How can I set up a business credit card linked to my business account?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        You can apply for a business credit card through your bank or other financial institutions.
+                        You'll need to provide proof of business activity, financials, and potentially a personal
+                        guarantee if your business is new.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>7. What should I consider when choosing a business bank?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Factors include fees, online banking features, customer support, credit options, and the bank's
+                        experience working with businesses of your size and type.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>8. Can I set up multiple business accounts with the same bank?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Yes, many businesses have multiple accounts for different purposes, such as separating payroll
+                        funds, operating funds, or savings.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q9 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>9. Are international transactions supported with a business account?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Yes, many business accounts support international transfers and payments. However, there might
+                        be additional fees or requirements for such transactions.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q10 -->
+            <div
+                class="accordion-item border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm transition-all">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-slate-900"
+                    onclick="toggleAccordion(this)">
+                    <span>10. Can I use my business account to accept cryptocurrency payments?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-[#0099cc]"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-600 border-t border-slate-100 leading-relaxed">
+                        Some banks support cryptocurrency transactions for businesses, but this is relatively new and
+                        not offered by all institutions. You'll need to confirm with the bank whether they support such
+                        payments.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 5th Section: Our Strategy (Animated - Optimized for UAE Onboarding Aesthetics) -->
+<section class="py-24 px-4 bg-slate-900 relative overflow-hidden reveal" id="strategy-section">
+    <!-- Styled UAE Background Pattern representing dynamic regional development -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none z-0">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+            <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.3" />
+                <stop offset="100%" style="stop-color:#0f172a;stop-opacity:0" />
+            </radialGradient>
+            <circle cx="500" cy="500" r="400" fill="url(#grad1)" />
+            <path d="M 100,500 L 900,500 M 500,100 L 500,900" stroke="#d4af37" stroke-width="1"
+                stroke-dasharray="10 10" />
+            <text x="510" y="490" fill="#d4af37" font-size="12" letter-spacing="4">UAE COMPLIANCE GRID</text>
+        </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-16 relative z-10">
+        <div class="relative">
+            <div class="absolute -top-4 -left-4 w-24 h-24 bg-amber-500/10 rounded-full z-0"></div>
+            <!-- Premium High-Quality Image depicting UAE Business & Financial Center Onboarding Setup -->
+            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="UAE Corporate Onboarding Consultation"
+                class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px] border border-slate-700/50">
+
+            <div
+                class="absolute -bottom-6 -right-6 bg-[#0099cc] p-6 rounded-2xl text-white shadow-xl z-20 hidden lg:block border border-cyan-400/20">
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl font-bold tracking-tight">100%</div>
+                    <div class="text-xs uppercase tracking-wider font-semibold opacity-90">Corporate Compliance<br>for
+                        Mainland & Freezones</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8 relative z-10">
+            <div>
+                <h2 class="text-[#d4af37] font-bold tracking-widest uppercase mb-2">Our Strategy</h2>
+                <h3 class="text-4xl font-bold text-white mb-6 leading-tight">Fast-Track Corporate Account Opening in the
+                    UAE</h3>
+                <p class="text-slate-300 text-lg leading-relaxed mb-4">
+                    Our complete, tailored digital services help you establish secure multi-currency business accounts
+                    across Dubai, Abu Dhabi, and premium UAE Freezones.
+                </p>
+                <p class="text-slate-400 text-md">
+                    We specialize in coordinating with top-tier local and international banks to structure your
+                    corporate profile. Whether you run a local UAE mainland enterprise, a Freezone startup, or an
+                    offshore commercial entity, we fast-track your approval process seamlessly.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-8 h-8 bg-amber-500/10 text-[#d4af37] rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-semibold text-slate-200">Mainland, Freezone & Offshore Bank Coverage</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-8 h-8 bg-amber-500/10 text-[#d4af37] rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-semibold text-slate-200">100% Central Bank Regulated Security Standards</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-8 h-8 bg-amber-500/10 text-[#d4af37] rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-semibold text-slate-200">Fast Multi-Currency Setups (AED, USD, EUR, GBP)</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#"
+                    class="px-8 py-3 bg-[#0099cc] hover:bg-[#0080b3] text-white text-center font-bold rounded-lg transition-all shadow-lg">About
+                    Us</a>
+                <a href="#"
+                    class="px-8 py-3 border-2 border-slate-600 text-slate-200 text-center font-bold rounded-lg hover:bg-white hover:text-slate-900 hover:border-white transition-all">Contact
+                    Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+    lucide.createIcons();
+
+    function toggleAccordion(element) {
+        const item = element.parentElement;
+        item.classList.toggle('active');
+    }
+
+    // Optimized intersection observer reveal trigger
+    function initRevealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        reveals.forEach(reveal => {
+            observer.observe(reveal);
+        });
+    }
+
+    window.onload = function () {
+        initRevealOnScroll();
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Excellence Financing Broker{% endblock %}</title>
+    <!-- Global Fonts: Newsreader & Manrope -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Optional: Global FontAwesome or Icons if needed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loan_calculator.css' %}">
+    <style>
+        body {
+            font-family: "Manrope", sans-serif !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-headline {
+            font-family: "Newsreader", serif !important;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+        }
+
+        .whatsapp-button {
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            animation: whatsappPulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.12);
+        }
+
+        .whatsapp-button i {
+            color: white;
+            font-size: 34px;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 80px;
+            bottom: 10px;
+            background: white;
+            color: #0f172a;
+            padding: 12px 18px;
+            border-radius: 50px;
+            white-space: nowrap;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+            animation: tooltipFloat 2s ease-in-out infinite;
+        }
+
+        .whatsapp-tooltip::after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 10px solid white;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @keyframes tooltipFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width:768px) {
+
+            .whatsapp-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-button {
+                width: 58px;
+                height: 58px;
+            }
+
+            .whatsapp-button i {
+                font-size: 30px;
+            }
+
+            .whatsapp-tooltip {
+                right: 70px;
+                font-size: 13px;
+                padding: 10px 14px;
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="bg-white text-slate-900 overflow-x-hidden">
+    {% include 'core/navbar.html' %}
+
+    <main class="-mt-20">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% include 'core/footer.html' %}
+
+    <!-- Floating WhatsApp -->
+    <div class="whatsapp-container">
+
+        <div class="whatsapp-tooltip">
+            Chat with expert!
+        </div>
+
+        <a href="https://wa.me/+971525263838?text=Hello!%20I%20need%20expert%20help" target="_blank"
+            class="whatsapp-button" aria-label="WhatsApp Chat">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Floating UAE Loan Calculator Widget -->
+    {% include 'core/partials/loan_calculator.html' %}
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/loan_calculator.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,697 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-item.active .accordion-content {
+        max-height: 500px;
+    }
+
+    .accordion-item.active i {
+        transform: rotate(180deg);
+    }
+
+    .overview-section {
+        position: relative;
+        background: #0f172a;
+        overflow: hidden;
+    }
+
+    .vertical-marquee-container {
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .marquee-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        white-space: nowrap;
+        font-size: 5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1.5px #d4af37;
+        opacity: 0.3;
+        animation: scrollUp 15s linear infinite;
+    }
+
+    @keyframes scrollUp {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+
+    .handshake-bg {
+        position: absolute;
+        right: -2%;
+        top: 5%;
+        width: 35%;
+        max-width: 450px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 0;
+        transform-origin: top right;
+        animation: subtleNod 6s ease-in-out infinite;
+    }
+
+    @keyframes subtleNod {
+
+        0%,
+        100% {
+            transform: rotate(0deg) scale(1);
+        }
+
+        50% {
+            transform: rotate(-3deg) scale(1.05);
+        }
+    }
+
+    .navy-gradient-section {
+        position: relative;
+        background: linear-gradient(to right, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 1) 100%),
+        url("{% static 'images/sp-image-bg.avif' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+    }
+
+    .arrow-btn:hover i {
+        transform: translateX(8px);
+        transition: transform 0.3s ease;
+    }
+
+    /* GLOBE STYLING */
+    #globe-overlap-container {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 420px;
+        height: 420px;
+        z-index: 2;
+        cursor: crosshair;
+        pointer-events: auto;
+    }
+
+    /* Gradient CTA button */
+    .btn-pop1 {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-pop1:hover {
+        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+        transform: scale(1.04) translateY(-2px);
+
+        @media (max-width: 1024px) {
+            #globe-overlap-container {
+                display: none;
+            }
+        }
+
+        .relative-host {
+            position: relative;
+            overflow: visible;
+        }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal-active {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Stagger delays for content */
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}
+
+{% block content %}
+<!-- 1st Section: Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{% static 'images/for-pl-header.avif' %}');">
+    </div>
+    <div class="page-banner-content page-banner-animation">
+        <h1 class="page-banner-title">Personal loan</h1>
+        <p class="page-banner-subtitle">
+            Our consultants understands the importance of maintaining a long lasting business relationships with
+            clients to deliver specific solutions.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-10 text-white font-bold tracking-widest text-sm">
+            <span class="flex items-center gap-2"><i data-lucide="shield-check" class="text-blue-400"></i> 100%
+                SECURE</span>
+            <span class="flex items-center gap-2"><i data-lucide="zap" class="text-blue-400"></i> QUICK
+                APPROVAL</span>
+            <span class="flex items-center gap-2"><i data-lucide="trending-down" class="text-blue-400"></i> BEST
+                RATES</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="#"
+                class="btn-pop px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                About us
+            </a>
+            <a href="#"
+                class="btn-pop1 px-12 py-4 text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 2nd Section: Overview -->
+<section class="overview-section py-20 px-6">
+    <div class="vertical-marquee-container">
+        <div class="marquee-text">15+ years of trust and values</div>
+    </div>
+
+    <div class="handshake-bg">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 100C40 100 60 80 85 100C110 120 130 100 130 100" stroke="#d4af37" stroke-width="2"
+                stroke-linecap="round" />
+            <path d="M70 120C70 120 90 140 115 120C140 100 160 120 160 120" stroke="#d4af37" stroke-width="2"
+                stroke-linecap="round" />
+            <circle cx="100" cy="100" r="80" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" />
+            <path d="M60 80L40 100L60 120" stroke="#d4af37" stroke-width="2" stroke-linejoin="round" />
+            <path d="M140 80L160 100L140 120" stroke="#d4af37" stroke-width="2" stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-2">Overview</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Comprehensive Loan Guide</h3>
+            <p class="text-slate-300 text-lg max-w-3xl mx-auto">
+                Personal loans are versatile financial tools that can help you meet various needs, from consolidating
+                debt to funding major purchases. Here's a comprehensive overview addressing frequently asked questions:
+            </p>
+        </div>
+
+        <div class="grid gap-4">
+            <!-- FAQ Item 1 -->
+            <div
+                class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span>What is a personal loan?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        A personal loan is a type of installment loan that provides a lump sum of money, which you repay
+                        over a set period through fixed monthly payments. These loans can be unsecured (not requiring
+                        collateral) or secured (requiring collateral).
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div
+                class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span>How can I use a personal loan?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        Personal loans are flexible and can be used for various purposes, including:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li>Debt consolidation</li>
+                            <li>Home renovations</li>
+                            <li>Medical expenses</li>
+                            <li>Major life events (e.g., weddings)</li>
+                            <li>Purchasing a vehicle</li>
+                        </ul>
+                        However, it's essential to use the funds responsibly and ensure you can meet the repayment
+                        terms.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div
+                class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span>How do I apply for a personal loan?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        The application process varies by lender but generally involves:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li>Checking your credit score: A higher score can qualify you for better rates.</li>
+                            <li>Comparing lenders: Look at interest rates, fees, and terms.</li>
+                            <li>Gathering necessary documents: This may include identification, proof of income, and
+                                employment verification.</li>
+                            <li>Submitting an application: Many lenders offer online applications for convenience.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div
+                class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span>What factors affect my eligibility and interest rate?</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        Lenders consider several factors:
+                        <ul class="list-disc ml-5 mt-3 space-y-1">
+                            <li>Credit score and history: A strong credit profile can lead to lower interest rates.</li>
+                            <li>Income and employment status: Stable income assures lenders of your repayment ability.
+                            </li>
+                            <li>Existing debt: High debt levels may affect approval chances.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div
+                class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span>Banks vs. Credit Unions</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        Both banks and credit unions offer personal loans, but there are differences:
+                        <p class="mt-2"><strong>Banks:</strong> Often have more stringent credit requirements and may
+                            offer higher loan amounts.</p>
+                        <p class="mt-2"><strong>Credit unions:</strong> As not-for-profit institutions, they often
+                            provide lower interest rates and may be more willing to work with borrowers with
+                            less-than-perfect credit. Membership is typically required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div
+                class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+                <button
+                    class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
+                    onclick="toggleAccordion(this)">
+                    <span>Repayment and Early Settlement</span>
+                    <i data-lucide="chevron-down" class="transition-transform text-blue-400"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+                        Repayment is typically done through fixed monthly installments. Many lenders allow early
+                        repayment without penalties, but it's essential to check your loan agreement. Paying off a loan
+                        early can save on interest costs.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 p-6 bg-white/5 border-l-4 border-blue-400 rounded-r-lg italic text-slate-300">
+            "Before proceeding with a personal loan, it's advisable to consult with a financial advisor or thoroughly
+            research to ensure it aligns with your financial situation and goals."
+        </div>
+    </div>
+</section>
+
+<!-- 3rd Section: Navy Gradient CTA -->
+<section class="navy-gradient-section py-24 px-6 text-center text-white">
+    <div
+        class="max-w-4xl mx-auto relative z-10 bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/20 shadow-2xl">
+        <h2 class="text-5xl font-extrabold mb-6 text-red-500 uppercase tracking-tight"
+            style="background: linear-gradient(135deg, #d4af37, #f0d060, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Personal Loan</h2>
+        <p class="text-2xl text-white font-medium mb-12 max-w-2xl mx-auto leading-snug">Get instant personal loans
+            for your urgent needs without any collateral.</p>
+        <button
+            class="arrow-btn group inline-flex items-center gap-3 px-10 py-5 text-white font-bold rounded-full btn-pop1 shadow-2xl transition-all">
+            Contact Us to know more
+            <i data-lucide="arrow-right" class="w-6 h-6 transition-transform"></i>
+        </button>
+    </div>
+</section>
+
+<!-- 4th Section: Key Benefits (Host for Junction Globe) -->
+<section class="py-24 px-4 md:px-8 bg-slate-50 relative relative-host">
+    <!-- THE GLOBE ANIMATION -->
+    <div id="globe-overlap-container" style="width:420px;height:420px;"></div>
+
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-12 border-l-8 border-red-700 pl-4 uppercase">Key Benifits</h2>
+        <div class="space-y-10 text-slate-700">
+            <p>Personal loans in the United Arab Emirates (UAE) are offered by various banks, each with its own terms
+                and conditions. Below are common frequently asked questions (FAQs) regarding personal loans from
+                different UAE banks:</p>
+
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-[#0099cc]">What are the eligibility criteria for obtaining a personal
+                    loan?</h3>
+                <p>Eligibility criteria vary by bank but generally include:</p>
+                <ul class="space-y-2">
+                    <li><span class="font-bold">Employment Status:</span> Applicants should be employed in the UAE with
+                        a valid residence visa.</li>
+                    <li><span class="font-bold">Salary Transfer:</span> Some banks require salary transfer to the bank
+                        where the loan is availed.</li>
+                    <li><span class="font-bold">Employer Listing:</span> The applicant's company may need to be listed
+                        with the bank to avail the personal loan.</li>
+                </ul>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold text-[#0099cc]">What is the repayment period for personal loans?</h3>
+                <p>According to the Central Bank of the UAE, the repayment period for personal loans must not exceed 48
+                    months, with a monthly deduction of no more than half the borrower’s salary.</p>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold text-[#0099cc]">Are there any processing fees associated with personal
+                    loans?</h3>
+                <p>Every bank has different Charges an additional one-time upfront processing fee on the loan amount. A
+                    life insurance fee may also apply.</p>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold text-[#0099cc]">What are the interest rates for personal loans?</h3>
+                <p>Interest rates vary by bank and are subject to change. For example, FAB offers low interest rates
+                    starting from 4.74% per year.</p>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold text-[#0099cc]">Is there a penalty for early settlement of the loan?</h3>
+                <p>Early settlement charges may apply and vary by bank. For instance, some banks may charge 1% of the
+                    outstanding principal at the time of foreclosure.</p>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-[#0099cc]">What documents are required to apply for a personal loan?
+                </h3>
+                <p>Required documents typically include:</p>
+                <ul class="space-y-2">
+                    <li><span class="font-bold">Identification:</span> Valid passport and residence visa copies.</li>
+                    <li><span class="font-bold">Employment Proof:</span> Salary certificate or letter from employer.
+                    </li>
+                    <li><span class="font-bold">Bank Statements:</span> Recent bank statements showing salary credits.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold text-[#0099cc]">How long does the loan approval process take?</h3>
+                <p>The approval process duration varies by bank. For example, some banks may process the loan within
+                    five working days.</p>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold text-[#0099cc]">Are there any restrictions on the loan amount relative to
+                    my salary?</h3>
+                <p>Yes, personal loans should not exceed 20 times the salary value or the total income of the borrower.
+                    Banks and finance companies must ensure that this limit is not exceeded.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5th Section: Our Strategy / About & Trust (Animated Reveal) -->
+<section id="strategy-section" class="py-24 px-4 bg-white relative overflow-hidden">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-16">
+        <div class="relative reveal-on-scroll">
+            <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-100 rounded-full z-0"></div>
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Financial Consultation" class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+
+            <div
+                class="absolute bottom-10 -right-8 bg-blue-600 p-6 rounded-2xl text-white shadow-xl z-20 hidden lg:block">
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl font-bold">4.9/5</div>
+                    <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Customer
+                        Satisfaction<br>Rating in UAE</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8 relative z-10 reveal-on-scroll delay-200">
+            <div>
+                <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-2">Our Strategy</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-6 leading-tight">Tailored Financial Services for
+                    Your Security</h3>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Our complete, tailored digital services help you to save effort and money & stay financially
+                    secure.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 py-4">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-semibold text-slate-800 text-lg">Fast & Hassle-Free Process</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-semibold text-slate-800 text-lg">Trusted by Thousands</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-semibold text-slate-800 text-lg">Transparent & Secure</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#"
+                    class="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white text-center font-bold rounded-lg transition-all">
+                    About Us
+                </a>
+                <a href="#"
+                    class="px-8 py-3 border-2 border-slate-900 text-slate-900 text-center font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script>
+    lucide.createIcons();
+
+    function toggleAccordion(element) {
+        const item = element.parentElement;
+        item.classList.toggle('active');
+    }
+
+    // --- SCROLL REVEAL LOGIC ---
+    const setupScrollReveal = () => {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const reveals = entry.target.querySelectorAll('.reveal-on-scroll');
+                    reveals.forEach(el => el.classList.add('reveal-active'));
+                    // Once animated, we can unobserve if we only want it to happen once, 
+                    // but user said "whenever scroll to the section", suggesting it can repeat.
+                    // However, standard UI practice is one-time reveal for "emerging" effect.
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Reset if we want it to re-animate when scrolling back
+                    const reveals = entry.target.querySelectorAll('.reveal-on-scroll');
+                    reveals.forEach(el => el.classList.remove('reveal-active'));
+                }
+            });
+        }, observerOptions);
+
+        const strategySection = document.getElementById('strategy-section');
+        if (strategySection) observer.observe(strategySection);
+    };
+
+    // --- WIREFRAME GLOBE WITH GOLDEN UAE HIGHLIGHT (No external assets — CORS-safe) ---
+    window.onload = function () {
+        setupScrollReveal();
+
+        const container = document.getElementById('globe-overlap-container');
+        if (!container) return;
+
+        // Use explicit pixel size to prevent 0x0 canvas
+        const SIZE = 420;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(SIZE, SIZE);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
+        camera.position.z = 6.5;
+
+        const R = 2.3;
+
+        // Helper: lat/lon (degrees) → 3D point on sphere
+        function ll2v(lat, lon, r) {
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+            return new THREE.Vector3(
+                -r * Math.sin(phi) * Math.cos(theta),
+                r * Math.cos(phi),
+                r * Math.sin(phi) * Math.sin(theta)
+            );
+        }
+
+        // --- 1. Transparent sphere shell ---
+        globeGroup.add(new THREE.Mesh(
+            new THREE.SphereGeometry(R, 64, 64),
+            new THREE.MeshBasicMaterial({ color: 0xdbeafe, transparent: true, opacity: 0.06 })
+        ));
+
+        // --- 2. Latitude lines ---
+        const latMat = new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.4 });
+        for (let lat = -75; lat <= 75; lat += 15) {
+            const pts = [];
+            for (let lon = -180; lon <= 180; lon += 3) pts.push(ll2v(lat, lon, R));
+            const g = new THREE.BufferGeometry().setFromPoints(pts);
+            globeGroup.add(new THREE.Line(g, latMat));
+        }
+
+        // --- 3. Longitude lines ---
+        const lonMat = new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.4 });
+        for (let lon = -180; lon < 180; lon += 20) {
+            const pts = [];
+            for (let lat = -90; lat <= 90; lat += 3) pts.push(ll2v(lat, lon, R));
+            const g = new THREE.BufferGeometry().setFromPoints(pts);
+            globeGroup.add(new THREE.Line(g, lonMat));
+        }
+
+        // --- 4. Equator highlight ---
+        const eqPts = [];
+        for (let lon = -180; lon <= 180; lon += 2) eqPts.push(ll2v(0, lon, R * 1.002));
+        globeGroup.add(new THREE.Line(
+            new THREE.BufferGeometry().setFromPoints(eqPts),
+            new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.6 })
+        ));
+
+        // --- 5. UAE bounding box highlight (golden) ---
+        // UAE approx: lat 22.6–26.1, lon 51.4–56.6
+        const uaeMat = new THREE.LineBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.9 });
+        const uaeBorders = [
+            // bottom edge
+            [22.6, 51.4], [22.6, 56.6],
+            // top edge
+            [26.1, 51.4], [26.1, 56.6],
+            // left edge
+            [22.6, 51.4], [26.1, 51.4],
+            // right edge
+            [22.6, 56.6], [26.1, 56.6]
+        ];
+        // Draw each edge as a curved line along the sphere
+        function arcEdge(lat1, lon1, lat2, lon2, steps) {
+            const pts = [];
+            for (let i = 0; i <= steps; i++) {
+                const t = i / steps;
+                const lt = lat1 + (lat2 - lat1) * t;
+                const ln = lon1 + (lon2 - lon1) * t;
+                pts.push(ll2v(lt, ln, R * 1.004));
+            }
+            return pts;
+        }
+        const uaeEdges = [
+            arcEdge(22.6, 51.4, 22.6, 56.6, 30),
+            arcEdge(26.1, 51.4, 26.1, 56.6, 30),
+            arcEdge(22.6, 51.4, 26.1, 51.4, 20),
+            arcEdge(22.6, 56.6, 26.1, 56.6, 20),
+        ];
+        uaeEdges.forEach(pts => {
+            globeGroup.add(new THREE.Line(
+                new THREE.BufferGeometry().setFromPoints(pts),
+                uaeMat
+            ));
+        });
+
+        // --- 6. UAE pulsing dot ---
+        const uaeDot = new THREE.Mesh(
+            new THREE.SphereGeometry(0.07, 16, 16),
+            new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.9 })
+        );
+        uaeDot.position.copy(ll2v(24.35, 54.0, R + 0.04));
+        globeGroup.add(uaeDot);
+
+        // --- Mouse interaction ---
+        let targetRotX = 0, targetRotY = 0;
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            targetRotY = ((e.clientX - rect.left) / SIZE - 0.5) * 1.8;
+            targetRotX = ((e.clientY - rect.top) / SIZE - 0.5) * 1.5;
+        });
+        container.addEventListener('mouseleave', () => { targetRotX = 0; targetRotY = 0; });
+
+        // --- Animation loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+            // UAE dot pulse
+            const s = 1 + Math.sin(Date.now() * 0.004) * 0.45;
+            uaeDot.scale.set(s, s, s);
+            uaeDot.material.opacity = 0.9 - (s - 1) * 0.5;
+            // Rotation
+            globeGroup.rotation.y += 0.003 + targetRotY * 0.04;
+            globeGroup.rotation.x += (targetRotX * 0.04 - globeGroup.rotation.x) * 0.08;
+            renderer.render(scene, camera);
+        }
+        animate();
+    };
+</script>
+{% endblock %}
