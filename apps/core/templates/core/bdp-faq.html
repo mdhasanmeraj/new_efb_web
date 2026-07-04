@@ -155,7 +155,7 @@
                             class="bg-white hover:bg-slate-100 text-efbBlue-950 font-semibold px-8 py-3.5 rounded-full transition shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm">
                             Browse Questions
                         </a>
-                        <a href="/contact-us"
+                        <a href="{% url 'core:contact_us' %}"
                             class="border border-white/30 hover:border-white bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-3.5 rounded-full transition text-sm">
                             Contact Support
                         </a>
@@ -235,11 +235,11 @@
                     your referrals. Join our BDP Referral Program and grow with confidence.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 pt-4">
-                    <a href="/become-bdp"
+                    <a href="https://app.efb.ae/auth/become-partner"
                         class="bg-efbBlue-700 hover:bg-efbBlue-600 text-white font-bold px-8 py-3.5 rounded-full transition shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform tracking-wide text-sm sm:text-base">
-                        Become BDP
+                        Register Now!
                     </a>
-                    <a href="/about-us"
+                    <a href="{% url 'core:about_us' %}"
                         class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3.5 rounded-full transition border border-white/20 hover:border-white/40 text-sm sm:text-base">
                         About Us
                     </a>
@@ -703,8 +703,8 @@
                 { pattern: /Payout Structure/gi, url: "/bdp-payout-structure" },
                 { pattern: /About Us/gi, url: "/about-us" },
                 { pattern: /Contact Us/gi, url: "/contact-us" },
-                { pattern: /Contact Support/gi, url: "/contact-us" },
-                { pattern: /contact our support/gi, url: "/contact-us" },
+                { pattern: /Contact Support/gi, url: "/core:contact-us" },
+                { pattern: /contact our support/gi, url: "/core:contact-us" },
                 { pattern: /BDP Registration/gi, url: "/become-bdp" },
                 { pattern: /become-partner/gi, url: "/become-bdp" },
                 { pattern: /Terms and Conditions/gi, url: "/terms-and-conditions" },
@@ -740,8 +740,8 @@
                 const button = document.createElement("button");
                 button.textContent = categoryMap[key];
                 button.className = `px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${currentCategory === key
-                        ? "bg-efbBlue-700 text-white shadow-md shadow-efbBlue-700/20"
-                        : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-800 border border-slate-200/60"
+                    ? "bg-efbBlue-700 text-white shadow-md shadow-efbBlue-700/20"
+                    : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-800 border border-slate-200/60"
                     }`;
                 button.setAttribute("role", "tab");
                 button.setAttribute("aria-selected", currentCategory === key ? "true" : "false");

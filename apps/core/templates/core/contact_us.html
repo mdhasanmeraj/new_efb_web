@@ -8,7 +8,7 @@
 <style>
     :root {
         --navy: #0c1c3c;
-        --navy-fade: #1a2a4d;
+        --navy-fade: #003366;
         /* Faded Navy for Section 6 */
         --gold: #c5a059;
         --text: #333333;
@@ -19,45 +19,7 @@
     }
 
 
-    /* --- 1st Section: Animated Hero --- */
-    .hero {
-        position: relative;
-        height: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(rgba(12, 28, 60, 0.7), rgba(12, 28, 60, 0.7)),
-        url("{% static 'images/can-be-contact-us.png' %}") center/cover no-repeat;
-        color: var(--white);
-        text-align: center;
-        padding: 20px;
-    }
-
-    .hero-content {
-        opacity: 0;
-        transform: translateX(-100%);
-        animation: slideInLeft 1.2s forwards ease-out;
-    }
-
-    @keyframes slideInLeft {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .hero h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 3.5rem;
-        margin-bottom: 20px;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        max-width: 800px;
-        margin: 0 auto;
-        font-weight: 300;
-    }
+    /* --- 1st Section: Animated Hero CSS removed to use global page-banner class --- */
 
     /* --- 2nd Section: Contact Cards --- */
     .details-section {
@@ -112,6 +74,282 @@
         text-decoration: none;
         font-size: 0.95rem;
         display: block;
+    }
+
+    /* --- STREAMING_CHUNK: Adding glassmorphism layout styles... --- */
+    /* --- 2nd Section Custom Split Grid --- */
+    .details-split-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: stretch;
+    }
+
+    .details-2x2-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .advisory-card {
+        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-fade) 100%);
+        color: var(--white);
+        padding: 40px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 2px solid var(--gold);
+        box-shadow: 0 15px 35px rgba(12, 28, 60, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .advisory-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .advisory-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(197, 160, 89, 0.25);
+    }
+
+    .advisory-card h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.2rem;
+        color: var(--gold);
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .advisory-card p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.05rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .advisory-btn {
+        background: var(--gold);
+        color: var(--white);
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+    }
+
+    .advisory-btn:hover {
+        background: #b08d4a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(197, 160, 89, 0.6);
+    }
+
+    /* Glassmorphic Modal & Overlay Styles */
+    .glass-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(12, 28, 60, 0.65);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+    }
+
+    .glass-modal-overlay.show {
+        display: flex;
+        opacity: 1;
+    }
+
+    .glass-modal-box {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 500px;
+        padding: 35px;
+        position: relative;
+        color: var(--white);
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-modal-overlay.show .glass-modal-box {
+        transform: scale(1);
+    }
+
+    .glass-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        line-height: 1;
+    }
+
+    .glass-close-btn:hover {
+        color: var(--gold);
+    }
+
+    .glass-modal-box h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: var(--gold);
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .glass-form-group {
+        margin-bottom: 18px;
+        text-align: left;
+    }
+
+    .glass-form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 0.5px;
+    }
+
+    .glass-input,
+    .glass-select {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+        outline: none;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .glass-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .glass-input:focus,
+    .glass-select:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--gold);
+        box-shadow: 0 0 12px rgba(197, 160, 89, 0.4);
+    }
+
+    .glass-select option {
+        background: var(--navy);
+        color: white;
+    }
+
+    .glass-disclaimer {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.4;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .glass-disclaimer a {
+        color: var(--gold);
+        text-decoration: underline;
+    }
+
+    .glass-submit-btn {
+        width: 100%;
+        background: var(--gold);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+    }
+
+    .glass-submit-btn:hover {
+        background: #b08d4a;
+        transform: translateY(-1px);
+    }
+
+    /* Glassmorphic Success Pop-up Styles */
+    .glass-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(12, 28, 60, 0.75);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+    }
+
+    .glass-popup-overlay.show {
+        display: flex;
+        opacity: 1;
+    }
+
+    .glass-popup-box {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        text-align: center;
+        color: white;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-popup-overlay.show .glass-popup-box {
+        transform: scale(1);
+    }
+
+    .glass-popup-icon {
+        font-size: 4rem;
+        color: var(--gold);
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.5));
     }
 
     /* --- 3rd Section: Sticky Image Background --- */
@@ -601,6 +839,11 @@
             padding: 60px 20px;
         }
 
+        .details-split-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
         .two-col,
         .rating-grid {
             grid-template-columns: 1fr;
@@ -740,42 +983,58 @@
 
 {% block content %}
 
-<!-- 1st Section: Header/Hero -->
-<header class="hero">
-    <div class="hero-content">
-        <h1>Contact Us</h1>
-        <p>We’re here to assist you with your financial needs. Get in touch with our experts to discuss your
-            requirements.</p>
+<!-- 1st Section: Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('{% static 'images/can-be-contact-us.png' %}');">
     </div>
-</header>
+    <div class="page-banner-content page-banner-animation">
+        <h1 class="page-banner-title">Contact Us</h1>
+        <p class="page-banner-subtitle">
+            We’re here to assist you with your financial needs. Get in touch with our experts to discuss your
+            requirements.
+        </p>
+    </div>
+</section>
 
 <div class="container-fluid">
-    <!-- 2nd Section: Contact Details -->
+    <!-- 2nd Section: Contact Details & 1:1 Advisory Session -->
     <section class="details-section">
         <div class="container">
-            <div class="details-grid">
-                <div class="card">
-                    <i class="fa-solid fa-envelope-open-text"></i>
-                    <h3>Email Address</h3>
-                    <a href="mailto:info@efb.ae">info@efb.ae</a>
-                    <a href="mailto:support@efb.ae">support@efb.ae</a>
+            <div class="details-split-container">
+                <!-- Left 50% Section: 2x2 Contact Info Grid -->
+                <div class="details-2x2-grid">
+                    <div class="card">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <h3>Email Address</h3>
+                        <a href="mailto:info@efb.ae">info@efb.ae</a>
+                        <a href="mailto:support@efb.ae">support@efb.ae</a>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <h3>Phone Number</h3>
+                        <a href="tel:+971525263838">+971 52 526 3838</a>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-building-user"></i>
+                        <h3>Office Address</h3>
+                        <p>Office 302, Floor 3, Al Riffa Plaza,<br>Bur Dubai, UAE</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h3>Working Hours</h3>
+                        <p>Mon – Fri: 09:00 AM – 05:00 PM</p>
+                        <p>Sat - Sun: Closed</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <i class="fa-solid fa-phone-volume"></i>
-                    <h3>Phone Numbers</h3>
-                    <a href="tel:+971525263838">+971 52 526 3838</a>
 
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-building-user"></i>
-                    <h3>Office Address</h3>
-                    <p>Office 302, Floor 3, Al Riffa Plaza,<br>Bur Dubai, UAE</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <h3>Working Hours</h3>
-                    <p>Mon – Fri: 09:00 AM – 05:00 PM</p>
-                    <p>Sat - Sun: Closed</p>
+                <!-- Right 50% Section: Schedule free 1:1 Session Card -->
+                <div class="advisory-card">
+                    <i class="fa-solid fa-handshake-angle mb-5" style="font-size: 3.5rem; color: var(--gold);"></i>
+                    <h2>Free 1:1 Advisory</h2>
+                    <p>Schedule a complimentary diagnostic consultation with an expert financial advisor to evaluate
+                        your portfolios and fast-track your wealth journey.</p>
+                    <button class="advisory-btn" id="openAdvisoryBtn">Schedule Free Session</button>
                 </div>
             </div>
         </div>
@@ -1234,6 +1493,60 @@
     </section>
 </div>
 
+<!-- Glassmorphism 1:1 Advisory Consultation Modal Form -->
+<div class="glass-modal-overlay" id="advisoryModal">
+    <div class="glass-modal-box">
+        <span class="glass-close-btn" id="closeAdvisoryModal">&times;</span>
+        <h3>Book Free Session</h3>
+        <form id="advisoryForm">
+            <div class="glass-form-group">
+                <label for="advName">Name *</label>
+                <input type="text" id="advName" class="glass-input" placeholder="Enter your full name" required>
+            </div>
+            <div class="glass-form-group">
+                <label for="advService">Service *</label>
+                <select id="advService" class="glass-select" required>
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Business Loan">Business Loan</option>
+                    <option value="Business Account">Business Account</option>
+                    <option value="Mortgage">Mortgage</option>
+                    <option value="Credit Card">Credit Card</option>
+                </select>
+            </div>
+            <div class="glass-form-group">
+                <label for="advPhone">Mobile Number *</label>
+                <input type="tel" id="advPhone" class="glass-input" placeholder="971XXXXXXXXX" required>
+                <p id="phoneErrorMsg" class="text-xs text-rose-400 mt-1.5 hidden"><i
+                        class="fa-solid fa-triangle-exclamation mr-1"></i>Mobile number must start with 971 (e.g.,
+                    971525263838).</p>
+            </div>
+            <div class="glass-form-group">
+                <label for="advEmail">Email address *</label>
+                <input type="email" id="advEmail" class="glass-input" placeholder="name@domain.com" required>
+            </div>
+            <div class="glass-disclaimer">
+                By clicking this, You are Agree with our <a href="#" class="privacy-link">Privacy policy</a> and <a
+                    href="#" class="privacy-link">Terms & Conditions</a>
+            </div>
+            <button type="submit" class="glass-submit-btn">SUBMIT REQUEST</button>
+        </form>
+    </div>
+</div>
+
+<!-- Glassmorphism Success Pop-up -->
+<div class="glass-popup-overlay" id="advisorySuccessPopup">
+    <div class="glass-popup-box">
+        <div class="glass-popup-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gold">Request Submitted!</h3>
+        <p class="mb-6 text-sm text-gray-200">Your advisory request has been submitted successfully. One of our expert
+            advisors will contact you shortly.</p>
+        <button class="glass-submit-btn" id="closeSuccessPopup">OKAY</button>
+    </div>
+</div>
+
 <!-- Success Modal -->
 <div class="modal" id="modal">
     <div class="modal-box">
@@ -1250,6 +1563,70 @@
 {% block extra_js %}
 
 <script>
+    // 1:1 Advisory Modal Handlers
+    const advisoryModal = document.getElementById('advisoryModal');
+    const openAdvisoryBtn = document.getElementById('openAdvisoryBtn');
+    const closeAdvisoryModal = document.getElementById('closeAdvisoryModal');
+    const advisoryForm = document.getElementById('advisoryForm');
+    const phoneInput = document.getElementById('advPhone');
+    const phoneError = document.getElementById('phoneErrorMsg');
+
+    // Glass Success Popup Handlers
+    const advisorySuccessPopup = document.getElementById('advisorySuccessPopup');
+    const closeSuccessPopup = document.getElementById('closeSuccessPopup');
+
+    openAdvisoryBtn.addEventListener('click', () => {
+        advisoryModal.classList.add('show');
+    });
+
+    closeAdvisoryModal.addEventListener('click', () => {
+        advisoryModal.classList.remove('show');
+        phoneError.classList.add('hidden');
+        phoneInput.classList.remove('border-red-500');
+    });
+
+    closeSuccessPopup.addEventListener('click', () => {
+        advisorySuccessPopup.classList.remove('show');
+    });
+
+    // Close overlays when clicking outside the boxes
+    window.addEventListener('click', function (event) {
+        if (event.target === advisoryModal) {
+            advisoryModal.classList.remove('show');
+            phoneError.classList.add('hidden');
+            phoneInput.classList.remove('border-red-500');
+        }
+        if (event.target === advisorySuccessPopup) {
+            advisorySuccessPopup.classList.remove('show');
+        }
+    });
+
+    // Handle Form Submit & Validation
+    advisoryForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const phoneVal = phoneInput.value.trim();
+
+        // Must start with 971 followed only by digits (minimum 7 and maximum 11 digits after prefix)
+        const uaeRegex = /^971\d{7,11}$/;
+
+        if (!uaeRegex.test(phoneVal)) {
+            phoneError.classList.remove('hidden');
+            phoneInput.style.borderColor = '#fb7185'; // Rose color indicator
+            phoneInput.focus();
+            return;
+        }
+
+        // Reset styling
+        phoneError.classList.add('hidden');
+        phoneInput.style.borderColor = '';
+
+        // Transition modals
+        advisoryModal.classList.remove('show');
+        advisorySuccessPopup.classList.add('show');
+
+        advisoryForm.reset();
+    });
+
     // Newsletter form handling
     document.getElementById('subForm').addEventListener('submit', function (e) {
         e.preventDefault();

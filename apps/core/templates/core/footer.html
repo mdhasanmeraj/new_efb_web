@@ -234,12 +234,12 @@
             <div>
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="space-y-4">
-                    <li><a href="/contact" class="link-item">Contact Us</a></li>
-                    <li><a href="/about" class="link-item">About Us</a></li>
-                    <li><a href="/privacy" class="link-item">Privacy Policy</a></li>
-                    <li><a href="/terms" class="link-item">Terms and Conditions</a></li>
-                    <li><a href="/faq" class="link-item">FAQs</a></li>
-                    <li><a href="/our-leaders" class="link-item">Our Leaders</a></li>
+                    <li><a href="{% url 'core:contact_us' %}" class="link-item">Contact Us</a></li>
+                    <li><a href="{% url 'core:about_us' %}" class="link-item">About Us</a></li>
+                    <li><a href="{% url 'core:home' %}" class="link-item">Privacy Policy</a></li>
+                    <li><a href="{% url 'core:home' %}" class="link-item">Terms and Conditions</a></li>
+                    <li><a href="{% url 'core:faq' %}" class="link-item">FAQs</a></li>
+                    <li><a href="{% url 'core:our_leaders' %}" class="link-item">Our Leaders</a></li>
                 </ul>
             </div>
 
@@ -247,11 +247,11 @@
             <div>
                 <h3 class="footer-heading">Services</h3>
                 <ul class="space-y-4">
-                    <li><a href="/personal-loan" class="link-item">Personal Loan</a></li>
-                    <li><a href="/mortgage" class="link-item">Mortgage</a></li>
-                    <li><a href="/credit-card" class="link-item">Credit Cards</a></li>
-                    <li><a href="/business-loan" class="link-item">Business Loan</a></li>
-                    <li><a href="/business-account" class="link-item">Business Account</a></li>
+                    <li><a href="{% url 'core:personal_loan' %}" class="link-item">Personal Loan</a></li>
+                    <li><a href="{% url 'core:mortgage' %}" class="link-item">Mortgage</a></li>
+                    <li><a href="{% url 'core:credit_card' %}" class="link-item">Credit Cards</a></li>
+                    <li><a href="{% url 'core:business_loan' %}" class="link-item">Business Loan</a></li>
+                    <li><a href="{% url 'core:business_account' %}" class="link-item">Business Account</a></li>
                 </ul>
             </div>
 
@@ -259,10 +259,10 @@
             <div>
                 <h3 class="footer-heading">Our Partner</h3>
                 <ul class="space-y-4">
-                    <li><a href="/become-bdp" class="link-item">Become our BDP</a></li>
+                    <li><a href="{% url 'core:become_partner' %}" class="link-item">Become our BDP</a></li>
                     <li><a href="https://app.efb.ae" class="link-item">Login to CRM</a></li>
-                    <li><a href="/bdp-guides" class="link-item">BDP Guides</a></li>
-                    <li><a href="/bdp-faq" class="link-item">BDP's FAQs</a></li>
+                    <li><a href="{% url 'core:bdp_guides' %}" class="link-item">BDP Guides</a></li>
+                    <li><a href="{% url 'core:bdp_faq' %}" class="link-item">BDP's FAQs</a></li>
                 </ul>
             </div>
 

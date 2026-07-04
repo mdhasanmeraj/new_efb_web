@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 app_name = 'core'
@@ -22,4 +22,7 @@ urlpatterns = [
     path('subscribe-newsletter/', views.subscribe_newsletter, name='subscribe_newsletter'),
     path('bdp-guides/', views.bdp_guides, name='bdp_guides'), 
     path('bdp-faq/', views.bdp_faq, name='bdp_faq'), 
+    re_path(r'^download-guide/(?P<filename>[\w\s\.\-_%]+)/?$', views.download_guide, name='download_guide'),
+    
+
 ]

@@ -184,6 +184,36 @@ def track_calculator_event(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
 
+from django.http import FileResponse, Http404
+from django.conf import settings
+import os
+
+def download_guide(request, filename):
+
+    import urllib.parse
+    filename = urllib.parse.unquote(filename)
+
+    print("=" * 50)
+    print("BASE_DIR =", settings.BASE_DIR)
+
+    guide_path = os.path.join(
+        settings.BASE_DIR,
+        "guides",
+        filename
+    )
+
+    print("Guide Path =", guide_path)
+    print("Exists =", os.path.exists(guide_path))
+    print("=" * 50)
+
+    if not os.path.exists(guide_path):
+        raise Http404("File not found")
+
+    return FileResponse(
+        open(guide_path, "rb"),
+        as_attachment=True,
+        filename=filename
+    )
 
 @require_POST
 def track_ui_movement(request):
@@ -228,3 +258,6 @@ def subscribe_newsletter(request):
         form.save()
         return JsonResponse({'success': True})
     return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+
+
+    

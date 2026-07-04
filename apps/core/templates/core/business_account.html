@@ -167,12 +167,13 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="#"
-                class="btn-pop px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
-                About us
+            <a href="{% url 'core:about_us' %}"
+                class="btn-pop inline-block px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-2xl">
+                About Us
             </a>
-            <a href="#"
-                class="btn-pop1 px-12 py-4 text-white font-bold rounded-sm transition-all uppercase text-sm tracking-widest shadow-xl">
+
+            <a href="{% url 'core:contact_us' %}"
+                class="btn-pop1 inline-block px-12 py-4 text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-2xl">
                 Contact Us
             </a>
         </div>
@@ -309,11 +310,11 @@
             Business Accounts</h2>
         <p class="text-2xl text-white font-medium mb-12 max-w-2xl mx-auto leading-snug">Access flexible business
             financing to grow, expand, and manage your cash flow with confidence.</p>
-        <button
+        <a href="{% url 'core:contact_us' %}"
             class="arrow-btn group inline-flex items-center gap-3 px-10 py-5 btn-pop1 text-white font-bold rounded-full btn-pop shadow-2xl transition-all">
             Contact Us to Know More
             <i data-lucide="arrow-right" class="w-6 h-6 transition-transform"></i>
-        </button>
+        </a>
     </div>
 </section>
 
@@ -582,10 +583,10 @@
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="#"
+                <a href="{% url 'core:about_us' %}"
                     class="px-8 py-3 bg-[#0099cc] hover:bg-[#0080b3] text-white text-center font-bold rounded-lg transition-all shadow-lg">About
                     Us</a>
-                <a href="#"
+                <a href="{% url 'core:contact_us' %}"
                     class="px-8 py-3 border-2 border-slate-600 text-slate-200 text-center font-bold rounded-lg hover:bg-white hover:text-slate-900 hover:border-white transition-all">Contact
                     Us</a>
             </div>
