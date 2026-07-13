@@ -18,11 +18,11 @@ urlpatterns = [
     path('generate-loan-quotation/', views.generate_loan_quotation, name='generate_loan_quotation'),
     path('track-calculator-event/', views.track_calculator_event, name='track_calculator_event'),
     path('track-ui-movement/', views.track_ui_movement, name='track_ui_movement'),
-    path('submit-contact-us/', views.submit_contact_us, name='submit_contact_us'),
     path('subscribe-newsletter/', views.subscribe_newsletter, name='subscribe_newsletter'),
     path('bdp-guides/', views.bdp_guides, name='bdp_guides'), 
     path('bdp-faq/', views.bdp_faq, name='bdp_faq'), 
     re_path(r'^download-guide/(?P<filename>[\w\s\.\-_%]+)/?$', views.download_guide, name='download_guide'),
-    
+    path("submit-enquiry/",views.submit_enquiry,name="submit_enquiry",),
+    path("submit-consultation/",views.submit_consultation,name="submit_consultation",),
 
 ]

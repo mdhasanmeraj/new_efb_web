@@ -1,7 +1,12 @@
 import re
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import LoanQuotationLead, ContactUsLead, NewsletterSubscriber
+from .models import (
+    LoanQuotationLead,
+    NewsletterSubscriber,
+    EnquiryLead,
+    ConsultationLead,
+)
 
 class LoanQuotationLeadForm(forms.ModelForm):
     class Meta:
@@ -16,12 +21,53 @@ class LoanQuotationLeadForm(forms.ModelForm):
             raise ValidationError("Invalid UAE Mobile Number. Must be +971XXXXXXXXX or 05XXXXXXXX")
         return mobile
 
-class ContactUsLeadForm(forms.ModelForm):
-    class Meta:
-        model = ContactUsLead
-        fields = ['name', 'email', 'phone', 'message']
 
 class NewsletterSubscriberForm(forms.ModelForm):
     class Meta:
         model = NewsletterSubscriber
         fields = ['email']
+
+
+# ==========================================================
+# BDP Guide Enquiry Form
+# ==========================================================
+
+class EnquiryLeadForm(forms.ModelForm):
+
+    class Meta:
+        model = EnquiryLead
+        fields = [
+            "name",
+            "email",
+            "message",
+        ]
+
+
+# ==========================================================
+# Consultation Form
+# ==========================================================
+
+class ConsultationLeadForm(forms.ModelForm):
+
+    class Meta:
+        model = ConsultationLead
+
+        fields = [
+            "name",
+            "email",
+            "phone",
+            "financial_segment",
+            "monthly_salary",
+        ]
+
+    def clean_phone(self):
+        phone = self.cleaned_data["phone"].strip()
+
+        pattern = r'^(\+9715\d{8}|05\d{8})$'
+
+        if not re.match(pattern, phone):
+            raise ValidationError(
+                "Please enter a valid UAE mobile number."
+            )
+
+        return phone

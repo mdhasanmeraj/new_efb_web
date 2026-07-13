@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Free Consultation Request Has Been Received</title>
+</head>
+
+<body style="margin:0;padding:0;background:#f5f7fb;font-family:Arial,Helvetica,sans-serif;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f7fb;padding:40px 0;">
+
+        <tr>
+            <td align="center">
+
+                <table width="650" cellpadding="0" cellspacing="0"
+                    style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.08);">
+
+                    <!-- ================= HEADER ================= -->
+
+                    <tr>
+
+                        <td align="center" style="background:#0c1c3c;padding:30px;">
+
+                            <img src="https://efb.pythonanywhere.com/static/images/logo.png"
+                                alt="Excellence Financing Broker" style="max-width:220px;height:auto;display:block;">
+
+                        </td>
+
+                    </tr>
+
+                    <!-- ================= TITLE ================= -->
+
+                    <tr>
+
+                        <td style="padding:40px 50px 10px;">
+
+                            <h1 style="
+margin:0;
+color:#0c1c3c;
+font-size:28px;
+font-weight:700;
+line-height:38px;">
+
+                                Your Free Consultation Request Has Been Received
+
+                            </h1>
+
+                            <p style="
+margin-top:8px;
+color:#c5a059;
+font-size:16px;
+font-weight:bold;">
+
+                                Excellence Financing Broker
+
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    <!-- ================= BODY ================= -->
+
+                    <tr>
+
+                        <td style="padding:10px 50px;">
+
+                            <p style="font-size:16px;color:#444;line-height:30px;">
+
+                                Dear <strong>{{ lead.name }}</strong>,
+
+                            </p>
+
+                            <p style="font-size:16px;color:#444;line-height:30px;">
+
+                                Thank you for requesting a
+                                <strong>Free Consultation</strong>
+                                with
+                                <strong>Excellence Financing Broker.</strong>
+
+                            </p>
+
+                            <p style="font-size:16px;color:#444;line-height:30px;">
+
+                                We have successfully received your request.
+
+                                One of our financial experts will carefully review your details and contact you shortly
+                                to discuss your requirements and recommend the most suitable financing solution.
+
+                            </p>
+
+                            <p style="font-size:16px;color:#444;line-height:30px;">
+
+                                If you have any questions or need immediate assistance, you can connect with us
+                                instantly through our official WhatsApp.
+
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    <!-- ================= BUTTON ================= -->
+
+                    <tr>
+
+                        <td align="center" style="padding-bottom:40px;">
+
+                            <a href="https://wa.me/971525263838?text=I%20need%20instant%20help" style="
+background:#25D366;
+color:white;
+text-decoration:none;
+padding:16px 34px;
+border-radius:8px;
+display:inline-block;
+font-size:16px;
+font-weight:bold;">
+
+                                💬 Need Instant Support
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    <!-- ================= DETAILS TABLE ================= -->
+
+                    <tr>
+
+                        <td style="padding:0 50px 35px;">
+
+                            <h2 style="
+margin-bottom:18px;
+color:#0c1c3c;
+font-size:22px;">
+
+                                Your Submitted Details
+
+                            </h2>
+
+                            <table width="100%" cellpadding="12" cellspacing="0" style="
+border-collapse:collapse;
+font-size:15px;">
+
+                                <tr style="background:#f3f5f8;">
+                                    <td style="border:1px solid #e6e6e6;font-weight:bold;width:40%;">
+                                        Name
+                                    </td>
+
+                                    <td style="border:1px solid #e6e6e6;">
+                                        {{ lead.name }}
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td style="border:1px solid #e6e6e6;font-weight:bold;">
+                                        Email
+                                    </td>
+
+                                    <td style="border:1px solid #e6e6e6;">
+                                        {{ lead.email }}
+                                    </td>
+
+                                </tr>
+
+                                <tr style="background:#f3f5f8;">
+
+                                    <td style="border:1px solid #e6e6e6;font-weight:bold;">
+                                        Phone
+                                    </td>
+
+                                    <td style="border:1px solid #e6e6e6;">
+                                        {{ lead.phone }}
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td style="border:1px solid #e6e6e6;font-weight:bold;">
+                                        Financial Segment
+                                    </td>
+
+                                    <td style="border:1px solid #e6e6e6;">
+                                        {{ lead.financial_segment }}
+                                    </td>
+
+                                </tr>
+
+                                <tr style="background:#f3f5f8;">
+
+                                    <td style="border:1px solid #e6e6e6;font-weight:bold;">
+                                        Monthly Salary
+                                    </td>
+
+                                    <td style="border:1px solid #e6e6e6;">
+                                        AED {{ lead.monthly_salary }}
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                    <!-- ================= THANK YOU ================= -->
+
+                    <tr>
+
+                        <td style="padding:0 50px 40px;">
+
+                            <p style="font-size:16px;color:#444;line-height:30px;">
+
+                                Thank you for choosing
+                                <strong>Excellence Financing Broker.</strong>
+
+                                We appreciate the opportunity to assist you and look forward to speaking with you soon.
+
+                            </p>
+
+                            <p style="font-size:16px;color:#444;line-height:30px;">
+
+                                Warm regards,
+
+                                <br><br>
+
+                                <strong>
+
+                                    Excellence Financing Broker Team
+
+                                </strong>
+
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    <!-- ================= FOOTER BANNER ================= -->
+
+                    <tr>
+
+                        <td>
+
+                            <a href="https://efb.ae" target="_blank">
+
+                                <img src="https://efb.pythonanywhere.com/static/images/banner.png"
+                                    alt="Excellence Financing Broker" width="650" style="
+display:block;
+width:100%;
+max-width:650px;
+height:auto;
+border:0;
+outline:none;
+text-decoration:none;">
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

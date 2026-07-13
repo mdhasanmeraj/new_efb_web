@@ -705,22 +705,23 @@
                             <i class="fa-regular fa-envelope text-efbBlue"></i> Quick Inquiry
                         </h3>
                         <form id="contact-support-form" class="space-y-3" onsubmit="handleFormSubmit(event)">
+                            {% csrf_token %}
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
                                     for="user-name">Your Full Name</label>
-                                <input type="text" id="user-name" required placeholder="Hasan Bin Mohammad"
+                                <input type="text" id="user-name" name="name" required placeholder="Hasan Bin Mohammad"
                                     class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
                                     for="user-email">Email Address</label>
-                                <input type="email" id="user-email" required placeholder="name@email.ae"
+                                <input type="email" id="user-email" name="email" required placeholder="name@email.ae"
                                     class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
                                     for="user-message">Inquiry Message</label>
-                                <textarea id="user-message" rows="3" required
+                                <textarea id="user-message" name="message" rows="3" required
                                     placeholder="How do payout structures operate for business accounts..."
                                     class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue resize-none"></textarea>
                             </div>
@@ -1223,18 +1224,52 @@
             });
         }
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('user-name').value;
-            const email = document.getElementById('user-email').value;
-            const message = document.getElementById('user-message').value;
+        async function handleFormSubmit(event) {
 
-            if (name && email && message) {
-                showToast(`Thank you, ${name}! Your inquiry has been sent to our CRM helpdesk.`, 'success');
-                document.getElementById('contact-support-form').reset();
-            } else {
-                showToast('Please fill out all the fields in the support form.', 'error');
+            event.preventDefault();
+
+            const form = document.getElementById("contact-support-form");
+
+            const formData = new FormData(form);
+
+            const response = await fetch("{% url 'core:submit_enquiry' %}", {
+
+                method: "POST",
+
+                body: formData,
+
+                headers: {
+
+                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+
+                }
+
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+
+                showToast(
+                    "Thank you! Your enquiry has been submitted successfully.",
+                    "success"
+                );
+
+                form.reset();
+
             }
+
+            else {
+
+                showToast(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+
+                console.log(data.errors);
+
+            }
+
         }
     </script>
 </body>

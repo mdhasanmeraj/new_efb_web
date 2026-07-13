@@ -1,0 +1,11 @@
+New Enquiry
+
+Name:
+{{ lead.name }}
+
+Email:
+{{ lead.email }}
+
+Message:
+
+{{ lead.message }}

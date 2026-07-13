@@ -124,3 +124,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "mail.efb.ae"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+
+EMAIL_HOST_USER = "info@efb.ae"
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+
+DEFAULT_FROM_EMAIL = "Excellence Financing Broker <info@efb.ae>"
+SERVER_EMAIL = "Excellence Financing Broker <info@efb.ae>"

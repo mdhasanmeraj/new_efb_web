@@ -41,19 +41,7 @@ class UIInteractionLog(models.Model):
         return f"{self.event_type} on {self.page_url} by {self.user_session_id}"
 
 
-class ContactUsLead(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    phone = models.CharField(max_length=50)
-    message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        verbose_name = "lead from contact us form"
-        verbose_name_plural = "leads from contact us form"
-
-    def __str__(self):
-        return f"{self.name} - {self.email}"
 
 
 class NewsletterSubscriber(models.Model):
@@ -63,3 +51,63 @@ class NewsletterSubscriber(models.Model):
 
     def __str__(self):
         return self.email
+
+
+# ==========================================================
+# BDP Guide Enquiry Lead
+# ==========================================================
+
+class EnquiryLead(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    message = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Enquiry Lead"
+        verbose_name_plural = "Enquiry Leads"
+
+    def __str__(self):
+        return f"{self.name} ({self.email})"
+
+
+# ==========================================================
+# Free Consultation Lead
+# ==========================================================
+
+class ConsultationLead(models.Model):
+    FINANCIAL_SEGMENTS = [
+    ("Personal Loan", "Personal Loan"),
+    ("Business Loan", "Business Loan"),
+    ("Business Account", "Business Account"),
+    ("Mortgage", "Mortgage"),
+    ("Credit Card", "Credit Card"),
+]
+
+    name = models.CharField(max_length=255)
+
+    email = models.EmailField()
+
+    phone = models.CharField(max_length=30)
+
+    financial_segment = models.CharField(
+        max_length=100,
+        choices=FINANCIAL_SEGMENTS
+    )
+
+    monthly_salary = models.DecimalField(
+        max_digits=12,
+        decimal_places=2
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Consultation Lead"
+        verbose_name_plural = "Consultation Leads"
+
+    def __str__(self):
+        return f"{self.name} - {self.financial_segment}"

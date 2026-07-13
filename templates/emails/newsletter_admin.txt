@@ -1,0 +1,7 @@
+New Newsletter Subscription
+
+Email:
+{{ subscriber.email }}
+
+Subscribed On:
+{{ subscriber.subscribed_at }}

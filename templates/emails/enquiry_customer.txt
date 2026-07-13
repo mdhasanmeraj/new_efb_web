@@ -1,0 +1,20 @@
+We've Received Your Enquiry | Excellence Financing Broker
+
+Dear {{ lead.name }},
+
+Thank you for contacting Excellence Financing Broker.
+
+We have received your enquiry.
+
+One of our experts will review your request and contact you shortly to discuss the best solution for your needs.
+
+Need immediate assistance?
+
+WhatsApp:
+https://wa.me/971525263838?text=I%20need%20instant%20help
+
+Thank you for choosing Excellence Financing Broker.
+
+Warm Regards,
+
+Excellence Financing Broker

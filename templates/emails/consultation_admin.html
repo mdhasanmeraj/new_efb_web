@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body style="font-family:Arial,sans-serif;line-height:1.6;">
+
+    <h2>New Free Consultation Request</h2>
+
+    <p>A new consultation request has been submitted.</p>
+
+    <table cellpadding="8" cellspacing="0" border="1">
+
+        <tr>
+            <td><strong>Name</strong></td>
+            <td>{{ lead.name }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Email</strong></td>
+            <td>{{ lead.email }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Phone</strong></td>
+            <td>{{ lead.phone }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Financial Segment</strong></td>
+            <td>{{ lead.financial_segment }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Monthly Salary</strong></td>
+            <td>AED {{ lead.monthly_salary }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Date</strong></td>
+            <td>{{ lead.created_at }}</td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

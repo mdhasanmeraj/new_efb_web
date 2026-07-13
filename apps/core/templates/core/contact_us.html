@@ -301,6 +301,30 @@
         transform: translateY(-1px);
     }
 
+    .glass-submit-btn {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+    }
+
+    .glass-submit-btn:disabled {
+
+        opacity: .7;
+        cursor: not-allowed;
+
+    }
+
+    .btn-loader {
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+    }
+
     /* Glassmorphic Success Pop-up Styles */
     .glass-popup-overlay {
         position: fixed;
@@ -821,6 +845,38 @@
         color: #b08d4a;
     }
 
+    .newsletter-loader {
+
+        width: 18px;
+
+        height: 18px;
+
+        border: 2px solid rgba(255, 255, 255, .3);
+
+        border-top-color: white;
+
+        border-radius: 50%;
+
+        display: inline-block;
+
+        animation: newsletterSpin .8s linear infinite;
+
+        margin-right: 8px;
+
+        vertical-align: middle;
+
+    }
+
+    @keyframes newsletterSpin {
+
+        to {
+
+            transform: rotate(360deg);
+
+        }
+
+    }
+
     /* --- Mobile Compatibility Enhancements --- */
     @media (max-width: 992px) {
         .hero {
@@ -1018,7 +1074,7 @@
                     <div class="card">
                         <i class="fa-solid fa-building-user"></i>
                         <h3>Office Address</h3>
-                        <p>Office 302, Floor 3, Al Riffa Plaza,<br>Bur Dubai, UAE</p>
+                        <p>Dubai, UAE</p>
                     </div>
                     <div class="card">
                         <i class="fa-solid fa-calendar-check"></i>
@@ -1032,8 +1088,8 @@
                 <div class="advisory-card">
                     <i class="fa-solid fa-handshake-angle mb-5" style="font-size: 3.5rem; color: var(--gold);"></i>
                     <h2>Free 1:1 Advisory</h2>
-                    <p>Schedule a complimentary diagnostic consultation with an expert financial advisor to evaluate
-                        your portfolios and fast-track your wealth journey.</p>
+                    <p>Talk to our expert about your financial needs and explore the best options for you.
+                    </p>
                     <button class="advisory-btn" id="openAdvisoryBtn">Schedule Free Session</button>
                 </div>
             </div>
@@ -1478,10 +1534,14 @@
         <div class="container">
             <h2>Subscribe for Updates</h2>
             <p>Stay updated with latest financial trends and our exclusive services.</p>
-            <form class="subscribe-form" id="subForm">
+            <form class="subscribe-form" id="subForm" method="POST" action="{% url 'core:subscribe_newsletter' %}">
+
+                {% csrf_token %}
                 <div class="subscribe-form-row">
-                    <input type="email" placeholder="Your Email Address" required>
-                    <button type="submit">SUBSCRIBE</button>
+                    <input type="email" name="email" id="newsletterEmail" placeholder="Your Email Address" required>
+                    <button type="submit" id="newsletterBtn">
+                        SUBSCRIBE
+                    </button>
                 </div>
                 <div class="privacy-consent">
                     <input type="checkbox" id="privacyPolicy" required>
@@ -1498,14 +1558,16 @@
     <div class="glass-modal-box">
         <span class="glass-close-btn" id="closeAdvisoryModal">&times;</span>
         <h3>Book Free Session</h3>
-        <form id="advisoryForm">
+        <form id="advisoryForm" method="POST" action="{% url 'core:submit_consultation' %}">
+            {% csrf_token %}
             <div class="glass-form-group">
                 <label for="advName">Name *</label>
-                <input type="text" id="advName" class="glass-input" placeholder="Enter your full name" required>
+                <input type="text" id="advName" class="glass-input" name="name" placeholder="Enter your full name"
+                    required>
             </div>
             <div class="glass-form-group">
                 <label for="advService">Service *</label>
-                <select id="advService" class="glass-select" required>
+                <select id="advService" name="financial_segment" class="glass-select" required>
                     <option value="" disabled selected>Select a Service</option>
                     <option value="Personal Loan">Personal Loan</option>
                     <option value="Business Loan">Business Loan</option>
@@ -1516,20 +1578,39 @@
             </div>
             <div class="glass-form-group">
                 <label for="advPhone">Mobile Number *</label>
-                <input type="tel" id="advPhone" class="glass-input" placeholder="971XXXXXXXXX" required>
+                <input type="tel" id="advPhone" name="phone" class="glass-input" placeholder="971XXXXXXXXX" required>
                 <p id="phoneErrorMsg" class="text-xs text-rose-400 mt-1.5 hidden"><i
-                        class="fa-solid fa-triangle-exclamation mr-1"></i>Mobile number must start with 971 (e.g.,
-                    971525263838).</p>
+                        class="fa-solid fa-triangle-exclamation mr-1"></i>Mobile number must start with +971 (e.g.,
+                    +971525263838).</p>
             </div>
             <div class="glass-form-group">
                 <label for="advEmail">Email address *</label>
-                <input type="email" id="advEmail" class="glass-input" placeholder="name@domain.com" required>
+                <input type="email" id="advEmail" name="email" class="glass-input" placeholder="name@domain.com"
+                    required>
+            </div>
+
+            <div class="glass-form-group">
+                <label for="advSalary">Monthly Salary *</label>
+
+                <input type="number" id="advSalary" name="monthly_salary" class="glass-input"
+                    placeholder="Enter your monthly salary" required>
             </div>
             <div class="glass-disclaimer">
                 By clicking this, You are Agree with our <a href="#" class="privacy-link">Privacy policy</a> and <a
                     href="#" class="privacy-link">Terms & Conditions</a>
             </div>
-            <button type="submit" class="glass-submit-btn">SUBMIT REQUEST</button>
+            <button type="submit" class="glass-submit-btn" id="consultationSubmitBtn">
+
+                <span class="btn-text">
+                    SUBMIT REQUEST
+                </span>
+
+                <span class="btn-loader" style="display:none;">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Submitting...
+                </span>
+
+            </button>
         </form>
     </div>
 </div>
@@ -1549,13 +1630,31 @@
 
 <!-- Success Modal -->
 <div class="modal" id="modal">
+
     <div class="modal-box">
-        <i class="fa-solid fa-circle-check" style="font-size: 50px; color: var(--gold); margin-bottom: 20px;"></i>
-        <h3>Successfully Subscribed!</h3>
-        <p style="margin-top: 10px; color: #666;">Thank you for joining our community.</p>
-        <button onclick="document.getElementById('modal').style.display='none'"
-            style="margin-top: 25px; background: var(--navy); color: white; border: none; padding: 10px 30px; border-radius: 4px; cursor: pointer;">Close</button>
+
+        <i id="newsletterModalIcon" class="fa-solid fa-circle-check"
+            style="font-size:50px;color:var(--gold);margin-bottom:20px;">
+        </i>
+
+        <h3 id="newsletterModalTitle">
+            Successfully Subscribed!
+        </h3>
+
+        <p id="newsletterModalMessage" style="margin-top:10px;color:#666;">
+
+            Thank you for joining our community.
+
+        </p>
+
+        <button onclick="document.getElementById('modal').style.display='none'">
+
+            Close
+
+        </button>
+
     </div>
+
 </div>
 
 {% endblock %}
@@ -1568,6 +1667,11 @@
     const openAdvisoryBtn = document.getElementById('openAdvisoryBtn');
     const closeAdvisoryModal = document.getElementById('closeAdvisoryModal');
     const advisoryForm = document.getElementById('advisoryForm');
+    const submitBtn = document.getElementById("consultationSubmitBtn");
+
+    const btnText = submitBtn.querySelector(".btn-text");
+
+    const btnLoader = submitBtn.querySelector(".btn-loader");
     const phoneInput = document.getElementById('advPhone');
     const phoneError = document.getElementById('phoneErrorMsg');
 
@@ -1602,36 +1706,215 @@
     });
 
     // Handle Form Submit & Validation
-    advisoryForm.addEventListener('submit', function (e) {
+    // ==========================================================
+    // Consultation Form Submission
+    // ==========================================================
+
+    advisoryForm.addEventListener("submit", async function (e) {
+
         e.preventDefault();
-        const phoneVal = phoneInput.value.trim();
-
-        // Must start with 971 followed only by digits (minimum 7 and maximum 11 digits after prefix)
-        const uaeRegex = /^971\d{7,11}$/;
-
-        if (!uaeRegex.test(phoneVal)) {
-            phoneError.classList.remove('hidden');
-            phoneInput.style.borderColor = '#fb7185'; // Rose color indicator
-            phoneInput.focus();
+        if (submitBtn.disabled) {
             return;
         }
 
-        // Reset styling
-        phoneError.classList.add('hidden');
-        phoneInput.style.borderColor = '';
+        const phoneVal = phoneInput.value.trim();
 
-        // Transition modals
-        advisoryModal.classList.remove('show');
-        advisorySuccessPopup.classList.add('show');
+        // Accepts:
+        // +9715XXXXXXXX
+        // 05XXXXXXXX
+        const uaeRegex = /^(\+9715\d{8}|05\d{8})$/;
 
-        advisoryForm.reset();
+        if (!uaeRegex.test(phoneVal)) {
+
+            phoneError.classList.remove("hidden");
+
+            phoneInput.style.borderColor = "#fb7185";
+
+            phoneInput.focus();
+
+            return;
+
+        }
+
+        phoneError.classList.add("hidden");
+
+        phoneInput.style.borderColor = "";
+
+        const formData = new FormData(advisoryForm);
+        submitBtn.disabled = true;
+
+        btnText.style.display = "none";
+
+        btnLoader.style.display = "flex";
+
+        const csrfToken = advisoryForm.querySelector(
+            '[name=csrfmiddlewaretoken]'
+        ).value;
+
+        try {
+
+            const response = await fetch(advisoryForm.action, {
+
+                method: "POST",
+
+                headers: {
+
+                    "X-CSRFToken": csrfToken,
+
+                },
+
+                body: formData,
+
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+
+                advisoryModal.classList.remove("show");
+
+                advisorySuccessPopup.classList.add("show");
+
+                advisoryForm.reset();
+
+                submitBtn.disabled = false;
+
+                btnLoader.style.display = "none";
+
+                btnText.style.display = "inline";
+
+            }
+
+            else {
+                submitBtn.disabled = false;
+
+                btnLoader.style.display = "none";
+
+                btnText.style.display = "inline";
+
+                alert("Please correct the highlighted errors.");
+
+                console.log(data.errors);
+
+            }
+
+        }
+
+        catch (error) {
+            submitBtn.disabled = false;
+
+            btnLoader.style.display = "none";
+
+            btnText.style.display = "inline";
+
+            console.error(error);
+
+            alert("Something went wrong. Please try again.");
+
+        }
+
     });
 
     // Newsletter form handling
-    document.getElementById('subForm').addEventListener('submit', function (e) {
+    const newsletterForm = document.getElementById("subForm");
+
+    const newsletterBtn = document.getElementById("newsletterBtn");
+
+    newsletterForm.addEventListener("submit", async function (e) {
+
         e.preventDefault();
-        document.getElementById('modal').style.display = 'flex';
-        this.reset();
+
+        newsletterBtn.disabled = true;
+
+        newsletterBtn.innerHTML = `
+        <span class="newsletter-loader"></span>
+        SUBSCRIBING...
+    `;
+
+        const formData = new FormData(newsletterForm);
+
+        const csrf = newsletterForm.querySelector(
+            '[name=csrfmiddlewaretoken]'
+        ).value;
+
+        try {
+
+            const response = await fetch(newsletterForm.action, {
+
+                method: "POST",
+
+                headers: {
+                    "X-CSRFToken": csrf
+                },
+
+                body: formData
+
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+
+                showNewsletterModal(
+
+                    "success",
+
+                    "Successfully Subscribed!",
+
+                    "Thank you for joining our newsletter."
+
+                );
+
+                newsletterForm.reset();
+
+            }
+
+            else if (data.already_exists) {
+
+                showNewsletterModal(
+
+                    "info",
+
+                    "Already Subscribed",
+
+                    "This email address is already subscribed."
+
+                );
+
+            }
+
+            else {
+
+                console.log(data.errors);
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            showNewsletterModal(
+
+                "error",
+
+                "Server Error",
+
+                "Please try again after some time."
+
+            );
+
+        }
+
+        finally {
+
+            newsletterBtn.disabled = false;
+
+            newsletterBtn.innerHTML = "SUBSCRIBE";
+
+        }
+
     });
 
     // Close modal on click outside
@@ -1666,6 +1949,51 @@
         document.getElementById('ratingImage').style.transform = 'none';
         document.getElementById('ratingContent').style.opacity = '1';
         document.getElementById('ratingContent').style.transform = 'none';
+    }
+
+
+    function showNewsletterModal(type, title, message) {
+
+        const modal = document.getElementById("modal");
+
+        const icon = document.getElementById("newsletterModalIcon");
+
+        const heading = document.getElementById("newsletterModalTitle");
+
+        const body = document.getElementById("newsletterModalMessage");
+
+        heading.textContent = title;
+
+        body.textContent = message;
+
+        icon.className = "fa-solid";
+
+        if (type === "success") {
+
+            icon.classList.add("fa-circle-check");
+
+            icon.style.color = "#22c55e";
+
+        }
+
+        else if (type === "info") {
+
+            icon.classList.add("fa-circle-info");
+
+            icon.style.color = "#f59e0b";
+
+        }
+
+        else {
+
+            icon.classList.add("fa-circle-xmark");
+
+            icon.style.color = "#ef4444";
+
+        }
+
+        modal.style.display = "flex";
+
     }
 </script>
 {% endblock %}

@@ -5,10 +5,25 @@ from django.template.loader import render_to_string
 import io
 import json
 import logging
+from django.db import IntegrityError
 from xhtml2pdf import pisa
 
-from .models import LoanQuotationLead, CalculatorAnalytics, UIInteractionLog, ContactUsLead, NewsletterSubscriber
-from .forms import LoanQuotationLeadForm, ContactUsLeadForm, NewsletterSubscriberForm
+from .models import (
+    LoanQuotationLead,
+    CalculatorAnalytics,
+    UIInteractionLog,
+    NewsletterSubscriber,
+    EnquiryLead,
+    ConsultationLead,
+)
+from .forms import (
+    LoanQuotationLeadForm,
+    NewsletterSubscriberForm,
+    EnquiryLeadForm,
+    ConsultationLeadForm,
+)
+
+from .emails import send_html_email
 
 logger = logging.getLogger(__name__)
 
@@ -242,22 +257,221 @@ def track_ui_movement(request):
         return JsonResponse({'success': False, 'error': str(e)}, status=400)
 
 
-@require_POST
-def submit_contact_us(request):
-    form = ContactUsLeadForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return JsonResponse({'success': True})
-    return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+
 
 
 @require_POST
 def subscribe_newsletter(request):
+
+    email = request.POST.get("email", "").strip().lower()
+
+    # -----------------------------------
+    # Already subscribed?
+    # -----------------------------------
+
+    if NewsletterSubscriber.objects.filter(email__iexact=email).exists():
+
+        return JsonResponse({
+
+            "success": False,
+            "already_exists": True
+
+        })
+
     form = NewsletterSubscriberForm(request.POST)
+
     if form.is_valid():
-        form.save()
-        return JsonResponse({'success': True})
-    return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+
+        subscriber = form.save()
+
+        # -----------------------------------
+        # Email to Admin
+        # -----------------------------------
+
+        send_html_email(
+
+            subject="New Newsletter Subscription",
+
+            template_name="emails/newsletter_admin.html",
+
+            context={
+
+                "subscriber": subscriber,
+
+            },
+
+            recipient_list=["info@efb.ae"]
+
+        )
+
+        # -----------------------------------
+        # Welcome Email
+        # -----------------------------------
+
+        send_html_email(
+
+            subject="Welcome to EFB Newsletter",
+
+            template_name="emails/newsletter_customer.html",
+
+            context={
+
+                "subscriber": subscriber,
+
+            },
+
+            recipient_list=[subscriber.email]
+
+        )
+
+        return JsonResponse({
+
+            "success": True
+
+        })
+
+    return JsonResponse({
+
+        "success": False,
+        "errors": form.errors
+
+    }, status=400)
 
 
-    
+@require_POST
+def submit_enquiry(request):
+
+    form = EnquiryLeadForm(request.POST)
+
+    if form.is_valid():
+
+        enquiry = form.save()
+
+        # -----------------------------
+        # Email to Admin
+        # -----------------------------
+
+        send_html_email(
+
+            subject="New Enquiry",
+
+            template_name="emails/enquiry_admin.html",
+
+            context={
+
+                "lead": enquiry,
+
+            },
+
+            recipient_list=["info@efb.ae"],
+
+            reply_to=[enquiry.email],
+
+        )
+
+        # -----------------------------
+        # Confirmation Email
+        # -----------------------------
+
+        send_html_email(
+
+            subject="We've received your enquiry",
+
+            template_name="emails/enquiry_customer.html",
+
+            context={
+
+                "lead": enquiry,
+
+            },
+
+            recipient_list=[enquiry.email],
+
+        )
+
+        return JsonResponse({
+
+            "success": True
+
+        })
+
+    return JsonResponse({
+
+        "success": False,
+
+        "errors": form.errors,
+
+    }, status=400)
+
+
+# ==========================================================
+# Consultation Form
+# Used by:
+# - Contact Us Page
+# - FAQ Page
+# ==========================================================
+
+@require_POST
+def submit_consultation(request):
+
+    form = ConsultationLeadForm(request.POST)
+
+    if form.is_valid():
+
+        consultation = form.save()
+
+        # ---------------------------------
+        # Email to Admin
+        # ---------------------------------
+
+        send_html_email(
+
+            subject="New Free Consultation Request",
+
+            template_name="emails/consultation_admin.html",
+
+            context={
+
+                "lead": consultation,
+
+            },
+
+            recipient_list=["info@efb.ae"],
+
+            reply_to=[consultation.email],
+
+        )
+
+        # ---------------------------------
+        # Confirmation Email
+        # ---------------------------------
+
+        send_html_email(
+
+            subject="We've received your consultation request",
+
+            template_name="emails/consultation_customer.html",
+
+            context={
+
+                "lead": consultation,
+
+            },
+
+            recipient_list=[consultation.email],
+
+        )
+
+        return JsonResponse({
+
+            "success": True
+
+        })
+
+    return JsonResponse({
+
+        "success": False,
+
+        "errors": form.errors,
+
+    }, status=400)    
