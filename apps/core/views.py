@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_POST
 from django.template.loader import render_to_string
-import io
 import json
 import logging
 from django.db import IntegrityError
-from xhtml2pdf import pisa
+from weasyprint import HTML
+from django.conf import settings
 
 from .models import (
     LoanQuotationLead,
@@ -161,14 +161,9 @@ def generate_loan_quotation(request):
                 'principal_percent': principal_percent,
                 'interest_percent': interest_percent,
             }
-            html_string = render_to_string('pdf/loan_quotation.html', context)
-            
-            result = io.BytesIO()
-            pdf = pisa.pisaDocument(io.BytesIO(html_string.encode("UTF-8")), result, link_callback=fetch_resources)
-            if not pdf.err:
-                pdf_bytes = result.getvalue()
-            else:
-                raise Exception("Error generating PDF")
+            html_string = render_to_string("pdf/loan_quotation.html", context)
+
+            pdf_bytes = HTML(string=html_string, base_url=request.build_absolute_uri("/")).write_pdf()
 
             safe_name = "".join([c if c.isalnum() else "_" for c in lead.name])
             response = HttpResponse(pdf_bytes, content_type='application/pdf')
