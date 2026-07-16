@@ -119,6 +119,45 @@
 </style>
 {% endblock %}
 
+{% block title %}
+BDP - FAQ | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the BDP Referral Program?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The BDP Referral Program allows partners to refer customers looking for financial solutions and earn referral benefits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can become a BDP partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Individuals, businesses, and professionals interested in referring customers for financial services can join the program."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the referral process work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Referral Partners submit referrals through the program process and receive updates regarding successful customer applications."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col">

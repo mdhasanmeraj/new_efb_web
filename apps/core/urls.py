@@ -1,5 +1,7 @@
 from django.urls import path, re_path
 from . import views
+from django.views.generic import TemplateView
+
 
 app_name = 'core'
 
@@ -24,5 +26,6 @@ urlpatterns = [
     re_path(r'^download-guide/(?P<filename>[\w\s\.\-_%]+)/?$', views.download_guide, name='download_guide'),
     path("submit-enquiry/",views.submit_enquiry,name="submit_enquiry",),
     path("submit-consultation/",views.submit_consultation,name="submit_consultation",),
+    path("robots.txt",TemplateView.as_view(template_name="robots.txt",content_type="text/plain",),name="robots_txt", ),
 
 ]

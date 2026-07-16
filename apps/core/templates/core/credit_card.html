@@ -186,6 +186,52 @@
 <script src="https://cdn.tailwindcss.com"></script>
 {% endblock %}
 
+{% block title %}
+Credit Card | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name":"Credit Card Consultancy UAE",
+  "description":"Credit card advisory services helping UAE residents find the right card for their needs.",
+  "provider": {
+    "@type": "FinancialService",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  }
+}
+</script>
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Credit Card Consultancy UAE",
+  "description": "Excellence Financing Broker provides credit card consultancy services in UAE, helping customers find suitable credit card solutions with competitive benefits and features.",
+  "provider": {
+    "@type": "FinancialService",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae",
+    "logo": "https://efb.ae/static/images/EFB_logo-removebg-preview.png"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "category": "Credit Card Services"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- 1st Section: Header -->
 <section class="page-banner">

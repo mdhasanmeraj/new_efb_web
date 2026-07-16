@@ -154,7 +154,39 @@
 <script src="https://cdn.tailwindcss.com"></script>
 {% endblock %}
 
+{% block title %}
+Personal Loan | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name":"Personal Loan Consultancy UAE",
+  "description":"Personal loan advisory services helping UAE customers find suitable financing options.",
+   "provider":{ 
+    "@type": "FinancialService",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  }
+}
+</script>
+{% endblock %}
+
+{% block meta_description %}
+Get fast personal loans in UAE with competitive rates and expert financial guidance.
+{% endblock %}
+
+{% block meta_keywords %}
+Personal Loan, Best Personal Loan Guidance, Minimum Interest in Personal loan
+{% endblock %}
 {% block content %}
+
 <!-- 1st Section: Header Banner -->
 <section class="page-banner">
     <div class="page-banner-bg"

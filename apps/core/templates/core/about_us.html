@@ -97,6 +97,43 @@
 <script src="https://cdn.tailwindcss.com"></script>
 {% endblock %}
 
+
+{% block title %}
+About Us | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Excellence Financing Broker",
+  "url": "https://efb.ae",
+  "logo": "https://efb.ae/static/images/EFB_logo-removebg-preview.png",
+  "description": "Excellence Financing Broker is a UAE-based financial consultancy company providing mortgage, personal loan, business loan, credit card, and business banking solutions.",
+  "foundingDate": "2009",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AE"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+971525263838",
+    "contactType": "customer service",
+    "areaServed": "AE",
+    "availableLanguage": [
+      "English"
+    ]
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61585197215653",
+    "https://www.instagram.com/efb.ae/",
+    "https://www.linkedin.com/company/excellencefinancingbroker/"
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- 1st Section: Header Banner -->
 <section class="page-banner">

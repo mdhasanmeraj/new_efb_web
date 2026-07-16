@@ -222,6 +222,30 @@
 <script src="https://cdn.tailwindcss.com"></script>
 {% endblock %}
 
+{% block title %}
+Business Loan | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+   "name":"Business Loan Consultancy UAE",
+ "description":"Business financing solutions for companies and entrepreneurs in UAE.",
+  "provider": {
+    "@type": "FinancialService",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 

@@ -58,6 +58,41 @@
 
 {% endblock %}
 
+{% block title %}
+Our Leaders | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Excellence Financing Broker",
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Leader Name",
+      "jobTitle": " Founder annd Managing Director",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Excellence Financing Broker"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Leader Name",
+      "jobTitle": "Operation Head",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Excellence Financing Broker"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+
 {% block content %}
 
 <body1 class="bg-[#F9FBFC] text-slate-800 font-sans min-h-screen flex flex-col justify-between">
@@ -113,14 +148,14 @@
 
             <!-- Leader 1 -->
             <div
-                class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
+                class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow  lg:col-start-2">
                 <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                     <!-- Clean styled placeholder since real photos aren't loaded -->
                     <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
                     </div>
-                    <img src="{% static 'images/shiv-sir1.jpg' %}" alt="Shiv Sir"
+                    <img src="{% static 'images/Shiv-sir-1.png' %}" alt="Shiv Sir"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Hassan+Al-Mansoori';">
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Shiv+Sunder+Sareen';">
                 </div>
                 <div class="p-6 flex flex-col justify-between flex-grow">
                     <div>
@@ -140,12 +175,12 @@
                             class="hover:text-uaeGold p-2 transition-colors duration-200" title="Email Shiv">
                             <i class="fa-regular fa-envelope text-lg"></i>
                         </a>
-                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
-                            title="Follow on Instagram">
+                        <a href="https://www.instagram.com/efb.ae/?hl=en"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Follow on Instagram">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
-                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
-                            title="Connect on LinkedIn">
+                        <a href="https://www.linkedin.com/company/excellencefinancingbroker/"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Connect on LinkedIn">
                             <i class="fa-brands fa-linkedin-in text-lg"></i>
                         </a>
                     </div>
@@ -160,7 +195,7 @@
                     </div>
                     <img src="{% static 'images/pawan-sir1.png' %}" alt="Pawan Sir"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Sarah+Jenkins';">
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Pawan+Sekhri';">
 
                     <!-- <span
                         class="absolute top-4 right-4 bg-uaeNavy/80 backdrop-blur-sm text-uaeGold border border-uaeGold/30 text-xs font-semibold uppercase px-3 py-1 rounded tracking-wider z-20">
@@ -172,7 +207,7 @@
                         <h3
                             class="text-xl font-serif font-semibold text-uaeNavy group-hover:text-uaeGold transition-colors">
                             Pawan Sekhri</h3>
-                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Head of Sales</p>
+                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Operations Head</p>
                         <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
                             Sarah directs high-net-worth individual asset management and cross-border legacy wealth
                             creation with precision from our Dubai financial center base.
@@ -184,12 +219,12 @@
                             class="hover:text-uaeGold p-2 transition-colors duration-200" title="Email Pawan">
                             <i class="fa-regular fa-envelope text-lg"></i>
                         </a>
-                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
-                            title="Follow on Instagram">
+                        <a href="https://www.instagram.com/efb.ae/?hl=en"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Follow on Instagram">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
-                        <a href="#" class="hover:text-uaeGold p-2 transition-colors duration-200"
-                            title="Connect on LinkedIn">
+                        <a href="https://www.linkedin.com/company/excellencefinancingbroker/"
+                            class="hover:text-uaeGold p-2 transition-colors duration-200" title="Connect on LinkedIn">
                             <i class="fa-brands fa-linkedin-in text-lg"></i>
                         </a>
                     </div>
@@ -197,31 +232,31 @@
             </div>
 
             <!-- Leader 3 -->
-            <div
+            <!-- <div
                 class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
                 <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
                     </div>
-                    <img src="{% static 'images/lalitsir1.png' %}" alt="Sonal"
+                    <img src="{% static 'images/lalitsir1.png' %}" alt="Lalit  Sir"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Tariq+Al-Sayegh';">
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Lalit+Kumar-Bidhuri';"> 
 
-                    <!-- <span
+                     <span
                         class="absolute top-4 right-4 bg-uaeNavy/80 backdrop-blur-sm text-uaeGold border border-uaeGold/30 text-xs font-semibold uppercase px-3 py-1 rounded tracking-wider z-20">
                         Abu Dhabi Office
-                    </span> -->
+                    </span> 
                 </div>
                 <div class="p-6 flex flex-col justify-between flex-grow">
                     <div>
                         <h3
                             class="text-xl font-serif font-semibold text-uaeNavy group-hover:text-uaeGold transition-colors">
                             Lalit Kumar</h3>
-                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Operations Head
+                        <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Sales Head
                         </p>
-                        <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
+                        <p class="text-xs text-slate-500 line-clamp-3 mb-6">
                             Tariq has facilitated over $4B in MENA infrastructure, technology, and real estate
                             placements, providing vital structural advice to GCC family offices.
-                        </p> -->
+                        </p> 
                     </div>
                     <div
                         class="pt-4 border-t border-slate-100 flex items-center justify-around text-slate-400 group-hover:text-uaeNavy transition-all">
@@ -239,22 +274,22 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Leader 4 -->
-            <div
+            <!-- <div
                 class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group gold-glow">
                 <div class="relative overflow-hidden aspect-[4/5] bg-slate-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-uaeNavy/90 via-uaeNavy/30 to-transparent z-10">
                     </div>
-                    <img src="{% static 'images/mai-hu-hasan.jpg' %}" alt="Elena Rostova"
+                    <img src="{% static 'images/mai-hu-hasan.jpg' %}" alt="Md Hasan Meraj"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Elena+Rostova';">
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x500/0f1e36/ffffff?text=Md+Hasan-Meraj';">
 
-                    <!-- <span
+                    <span
                         class="absolute top-4 right-4 bg-uaeNavy/80 backdrop-blur-sm text-uaeGold border border-uaeGold/30 text-xs font-semibold uppercase px-3 py-1 rounded tracking-wider z-20">
                         Dubai Office
-                    </span> -->
+                    </span>
                 </div>
                 <div class="p-6 flex flex-col justify-between flex-grow">
                     <div>
@@ -263,10 +298,10 @@
                             Md Hasan Meraj</h3>
                         <p class="text-sm font-medium text-uaeGoldDark tracking-wide mb-3">Data Analyst
                         </p>
-                        <!-- <p class="text-xs text-slate-500 line-clamp-3 mb-6">
+                        <p class="text-xs text-slate-500 line-clamp-3 mb-6">
                             Elena ensures all strategic initiatives adhere to DFSA, ADGM, and global institutional
                             regulations while safeguarding ethical partnership values.
-                        </p> -->
+                        </p>
                     </div>
                     <div
                         class="pt-4 border-t border-slate-100 flex items-center justify-around text-slate-400 group-hover:text-uaeNavy transition-all">
@@ -284,7 +319,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </main>

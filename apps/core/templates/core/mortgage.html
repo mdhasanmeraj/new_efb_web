@@ -218,6 +218,30 @@
 
 {% endblock %}
 
+{% block title %}
+Mortgage | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Mortgage Loan Consultancy UAE",
+  "description": "Expert mortgage loan consultancy services in UAE helping residents and investors find suitable home financing solutions.",
+  "provider": {
+    "@type": "FinancialService",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <!-- 1st Section: Header Banner -->

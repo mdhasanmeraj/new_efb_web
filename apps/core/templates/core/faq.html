@@ -95,6 +95,45 @@
 
 {% endblock %}
 
+{% block title %}
+FAQs | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Excellence Financing Broker provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Excellence Financing Broker provides consultancy services for mortgage loans, personal loans, business loans, credit cards, and business banking solutions in UAE."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I apply for a loan in UAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can contact Excellence Financing Broker for professional guidance and assistance with selecting suitable financing options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Excellence Financing Broker work with UAE banks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Excellence Financing Broker assists customers by connecting them with suitable banking and financial solutions available in UAE."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <body1 class="bg-efbCream text-efbNavy font-sans leading-relaxed selection:bg-efbGold selection:text-efbNavy">

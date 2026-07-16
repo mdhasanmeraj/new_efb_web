@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+
 {% block extra_css %}
 <style>
     .material-symbols-outlined {
@@ -195,6 +197,46 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 {% endblock %}
+
+{% block title %}
+Home | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "FinancialService",
+    "LocalBusiness"
+  ],
+  "name": "Excellence Financing Broker",
+  "url": "https://efb.ae/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://efb.ae/static/images/EFB_logo-removebg-preview.png"
+  },
+  "image": "https://efb.ae/static/images/squared_efb_logo_copy-removebg-preview.png",
+  "description": "Trusted financing broker in UAE offering mortgage, personal loan, business loan, business account and credit card consultancy.",
+  "telephone": "+971525263838",
+  "email": "info@efb.ae",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AE"
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61585197215653",
+    "https://www.instagram.com/efb.ae/",
+    "https://www.linkedin.com/company/excellencefinancingbroker/"
+  ]
+}
+</script>
+{% endblock %}
+
 
 {% block content %}
 <!-- Section 1: Hero Slider -->

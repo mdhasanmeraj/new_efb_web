@@ -30,9 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     # Local Apps
     'core',
+    
 ]
 
 MIDDLEWARE = [
@@ -47,6 +49,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {

@@ -143,6 +143,33 @@
 
 {% endblock %}
 
+{% block title %}
+Business Account | Excellence Financing Broker
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Business Account Services UAE",
+  "description": "Excellence Financing Broker provides business account consultancy services in UAE, helping companies and entrepreneurs find suitable corporate banking solutions for their business needs.",
+  "provider": {
+    "@type": "FinancialService",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae",
+    "logo": "https://efb.ae/static/images/EFB_logo-removebg-preview.png"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "category": "Business Banking Services",
+  "serviceType": "Corporate Bank Account Consultancy"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <!-- 1st Section: Header Banner -->

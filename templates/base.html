@@ -6,6 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Excellence Financing Broker{% endblock %}</title>
+
+    <meta name="description"
+        content="{% block meta_description %}Trusted financing broker in the UAE offering expert consultancy for mortgages, personal loans, business loans, and credit card solutions.{% endblock %}">
+
+    <meta name="keywords"
+        content="{% block meta_keywords %}Mortgage UAE, Personal Loan UAE, Business Loan UAE, Business Account UAE, Credit Card UAE{% endblock %}">
+
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Excellence Financing Broker">
+    <meta name="theme-color" content="#0c1c2a">
+    <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
+    <meta property="og:title"
+        content="{% block og_title %}{% block title2 %}Excellence Financing Broker{% endblock %}{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}{% block meta_description2 %}Trusted financing broker in UAE{% endblock %}{% endblock %}">
+    <meta property="og:image"
+        content="{% block og_image %}https://efb.ae/static/images/EFB_logo-removebg-preview.png{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <link rel="icon" href="{% static 'images/favicon/favicon.ico' %}">
+
+    <link rel="icon" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+
+    <link rel="icon" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+
+    <link rel="apple-touch-icon" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+
+    <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
     <!-- Global Fonts: Newsreader & Manrope -->
     <link
         href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap"
@@ -23,6 +52,8 @@
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/loan_calculator.css' %}">
+
+
     <style>
         body {
             font-family: "Manrope", sans-serif !important;
@@ -149,6 +180,8 @@
         }
     </style>
     {% block extra_css %}{% endblock %}
+
+    {% block structured_data %}{% endblock %}
 </head>
 
 <body class="bg-white text-slate-900 overflow-x-hidden">
