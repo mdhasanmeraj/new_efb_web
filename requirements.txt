@@ -3,4 +3,4 @@ django-environ
 whitenoise[brotli]
 psycopg2-binary
 gunicorn
-xhtml2pdf
+weasyprint

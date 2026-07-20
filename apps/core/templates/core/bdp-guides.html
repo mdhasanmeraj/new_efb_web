@@ -128,6 +128,35 @@
 BDP - Guides | Excellence Financing Broker
 {% endblock %}
 
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "BDP Financial Guides",
+  "description": "Educational guides and resources from Excellence Financing Broker helping partners and customers understand UAE financial solutions.",
+  "url": "https://efb.ae/bdp-guides/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Excellence Financing Broker",
+    "url": "https://efb.ae"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "BDP Guides",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Financial Guide",
+        "url": "https://efb.ae/bdp-guides/"
+      }
+    ]
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <body

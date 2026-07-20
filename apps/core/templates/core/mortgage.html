@@ -90,7 +90,7 @@
     .navy-gradient-section {
         position: relative;
         background: linear-gradient(to right, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.95) 100%),
-        url('{% static ' images/holding-home.avif' %}');
+        url("{% static 'images/holding-home.avif' %}");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -105,7 +105,7 @@
 
     /* Custom dark background for Key Benefits section */
     .black-blend-benefits-bg {
-        background: linear-gradient(135deg, #111827 25%, #1e293b 50%, #111827 70%);
+        background: linear-gradient(135deg, #0c1425 25%, #0b1b35 50%, #0a2355 70%);
         position: relative;
     }
 
@@ -213,6 +213,18 @@
         position: relative;
         z-index: 10;
     }
+
+    /* Gradient CTA button */
+    .btn-pop1 {
+        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-pop1:hover {
+        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+        transform: scale(1.04) translateY(-2px);
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -245,179 +257,334 @@ Mortgage | Excellence Financing Broker
 {% block content %}
 
 <!-- 1st Section: Header Banner -->
+
 <section class="page-banner">
+
     <div class="page-banner-bg"
-        style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('{% static 'images/mortgage-card-bg.avif' %}');">
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('{% static 'images/mortgage-card-bg.jpg' %}');">
+
     </div>
+
     <div class="page-banner-content page-banner-animation">
+
         <h1 class="page-banner-title">Mortgage</h1>
+
         <p class="page-banner-subtitle">
+
             Our consultants understands the importance of maintaining a long lasting business relationships with clients
+
             to deliver specific solutions.
+
         </p>
 
+
+
         <div class="flex flex-wrap justify-center gap-6 mb-10 text-white font-bold tracking-widest text-sm">
+
             <span class="flex items-center gap-2"><i data-lucide="home" class="text-blue-400"></i> TAILORED
+
                 SOLUTIONS</span>
+
             <span class="flex items-center gap-2"><i data-lucide="key" class="text-blue-400"></i> FAST APPROVAL</span>
+
             <span class="flex items-center gap-2"><i data-lucide="percent" class="text-blue-400"></i> MARKET-LEADING
+
                 RATES</span>
+
         </div>
 
+
+
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
+
             <a href="{% url 'core:about_us' %}"
                 class="btn-pop inline-block px-12 py-4 bg-[#0099cc] text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-2xl">
+
                 About Us
+
             </a>
+
+
 
             <a href="{% url 'core:contact_us' %}"
                 class="btn-pop1 inline-block px-12 py-4 text-white font-bold rounded-sm uppercase text-sm tracking-widest shadow-2xl">
+
                 Contact Us
+
             </a>
+
         </div>
+
     </div>
+
 </section>
+
+
 
 <!-- 2nd Section: Overview – Dark theme matching Personal Loan -->
+
 <section class="overview-section py-20 px-6">
+
     <div class="vertical-marquee-container">
+
         <div class="marquee-text">15+ years of trust and values</div>
+
     </div>
+
+
 
     <!-- Decorative home SVG watermark -->
+
     <div class="handshake-bg">
+
         <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
             <path d="M100 30 L160 80 L160 170 L40 170 L40 80 Z" stroke="#d4af37" stroke-width="2"
                 stroke-linejoin="round" />
+
             <path d="M80 170 L80 120 L120 120 L120 170" stroke="#d4af37" stroke-width="2" stroke-linejoin="round" />
+
             <path d="M100 30 L180 100" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" />
+
             <path d="M100 30 L20 100" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" />
+
             <circle cx="100" cy="100" r="80" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" />
+
         </svg>
+
     </div>
+
+
 
     <div class="max-w-6xl mx-auto relative z-10">
+
         <div class="text-center mb-16">
+
             <h2 class="text-blue-400 font-bold tracking-widest uppercase mb-2">Property Financing</h2>
+
             <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Overview</h3>
+
             <p class="text-slate-300 text-lg max-w-4xl mx-auto leading-relaxed">
+
                 A mortgage, known locally as a home loan, is a financial agreement where a bank or financial institution
+
                 provides funds to purchase property. The property serves as collateral until the loan is fully repaid.
+
             </p>
+
         </div>
+
+
 
         <!-- Box-Type Cards Grid -->
+
         <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
             <!-- Card 1: Eligibility -->
+
             <div
                 class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+
                 <button
                     class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
                     onclick="toggleAccordion(this)">
+
                     <span class="flex items-center gap-3">
+
                         <i data-lucide="user-check" class="text-blue-400 w-5 h-5"></i>
+
                         Who is Eligible?
+
                     </span>
+
                     <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+
                 </button>
+
                 <div class="accordion-content">
+
                     <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+
                         Eligibility criteria vary among lenders but generally prioritize financial stability and stable
+
                         local employment history:
+
                         <ul class="list-disc ml-5 mt-3 space-y-1">
+
                             <li>Both UAE nationals and expatriates can apply.</li>
+
                             <li>Age requirements: Usually between 21 and 65 years.</li>
+
                             <li>Minimum monthly salary starting at AED 15,000 for expats.</li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Card 2: Property Types -->
+
             <div
                 class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+
                 <button
                     class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
                     onclick="toggleAccordion(this)">
+
                     <span class="flex items-center gap-3">
+
                         <i data-lucide="building" class="text-blue-400 w-5 h-5"></i>
+
                         Properties Financed
+
                     </span>
+
                     <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+
                 </button>
+
                 <div class="accordion-content">
+
                     <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+
                         UAE lenders finance a wide range of verified real estate products in recognized freehold
+
                         developments:
+
                         <ul class="list-disc ml-5 mt-3 space-y-1">
+
                             <li>Ready apartments, penthouses, and private duplexes.</li>
+
                             <li>Villas and residential townhouses.</li>
+
                             <li>Selected commercial retail spaces and corporate offices.</li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Card 3: Borrowing Capacity -->
+
             <div
                 class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+
                 <button
                     class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
                     onclick="toggleAccordion(this)">
+
                     <span class="flex items-center gap-3">
+
                         <i data-lucide="wallet" class="text-blue-400 w-5 h-5"></i>
+
                         Borrowing Capacity
+
                     </span>
+
                     <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+
                 </button>
+
                 <div class="accordion-content">
+
                     <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+
                         The ultimate mortgage amount depends on monthly debt obligations, income size, and individual
+
                         profile:
+
                         <ul class="list-disc ml-5 mt-3 space-y-1">
+
                             <li>Loans up to AED 15 million are widely available for expatriates.</li>
+
                             <li>Subject to valuation assessment of the target property.</li>
+
                             <li>Flexibility depending on the partner banking channels.</li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Card 4: Down Payment -->
+
             <div
                 class="accordion-item border border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all backdrop-blur-md bg-white/5">
+
                 <button
                     class="w-full flex items-center justify-between p-6 bg-transparent text-left font-semibold text-white"
                     onclick="toggleAccordion(this)">
+
                     <span class="flex items-center gap-3">
+
                         <i data-lucide="piggy-bank" class="text-blue-400 w-5 h-5"></i>
+
                         Required Down Payment
+
                     </span>
+
                     <i data-lucide="chevron-down" class="accordion-chevron transition-transform text-blue-400"></i>
+
                 </button>
+
                 <div class="accordion-content">
+
                     <div class="p-6 text-slate-300 leading-relaxed border-t border-slate-700">
+
                         Central Bank guidelines dictate minimum equity contribution brackets according to buyer
+
                         nationality:
+
                         <ul class="list-disc ml-5 mt-3 space-y-1">
+
                             <li><span class="font-bold text-white">For UAE Nationals:</span> A down payment of 20% is
+
                                 typical.</li>
+
                             <li><span class="font-bold text-white">For Expatriates:</span> Down payment requirement of
+
                                 25% to 30%.</li>
+
                             <li>Reduced downpayment options available under special bank portfolios.</li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
+
 
         <div class="mt-12 p-6 bg-white/5 border-l-4 border-blue-400 rounded-r-lg italic text-slate-300">
-            "Before proceeding with a mortgage, it's advisable to consult with a financial advisor or thoroughly
-            research to ensure it aligns with your financial situation and long-term goals."
-        </div>
-    </div>
-</section>
 
+            "Before proceeding with a mortgage, it's advisable to consult with a financial advisor or thoroughly
+
+            research to ensure it aligns with your financial situation and long-term goals."
+
+        </div>
+
+    </div>
+
+</section>
 <!-- 3rd Section: High-Impact Call to Action -->
 <section class="navy-gradient-section py-32 px-6 text-center text-white">
     <div
@@ -430,9 +597,9 @@ Mortgage | Excellence Financing Broker
             Get instant Mortgage for your urgent needs without any collateral.
         </p>
         <a href="{% url 'core:contact_us' %}"
-            class="arrow-btn group inline-flex items-center gap-4 px-14 py-6 btn-gradient-navy text-white font-black rounded-full btn-pop shadow-2xl transition-all text-lg uppercase tracking-widest">
+            class="arrow-btn group inline-flex items-center gap-3 px-10 py-5  text-white font-bold rounded-full btn-pop1 shadow-2xl transition-all">
             Contact Us to know more
-            <i data-lucide="arrow-right" class="w-7 h-7 transition-transform"></i>
+            <i data-lucide="arrow-right" class="w-6 h-6 transition-transform"></i>
         </a>
     </div>
 </section>
@@ -441,11 +608,11 @@ Mortgage | Excellence Financing Broker
 <div id="scroll-animation-zone" class="relative overflow-hidden black-blend-benefits-bg pt-28 pb-36">
 
     <!-- Background Asset 1: Dirhams at Top-Left -->
-    <img src="{% static 'images/bundle-dirham1.png' %}" alt="UAE Dirhams Stack Sketch"
+    <img src="{% static 'images/bundle-dirham1.jpg' %}" alt="UAE Dirhams Stack Sketch"
         class="sketch-background-asset top-6 left-6 w-[280px] md:w-[480px] opacity-40 hover:opacity-60 transition-opacity duration-700">
 
     <!-- Background Asset 2: Home at Bottom-Right with Golden Filter -->
-    <img src="{% static 'images/complex-home.png' %}" alt="Dream Home Sketch"
+    <img src="{% static 'images/complex-home.jpg' %}" alt="Dream Home Sketch"
         class="sketch-background-asset home-sketch-asset bottom-6 right-6 w-[280px] md:w-[480px]">
 
     <!-- Interactive Animated Vector Beam overlays -->
@@ -705,13 +872,12 @@ Mortgage | Excellence Financing Broker
 
 <!-- 5th Section: Digital Strategy & Pillars – matching Personal Loan's strategy section -->
 <section id="strategy-section" class="py-24 px-4 bg-white relative overflow-hidden relative-host">
-    <!-- Globe animation at bottom right, overlapping -->
-    <div id="globe-overlap-container"></div>
+
 
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-16">
         <div class="relative reveal-on-scroll">
             <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-100 rounded-full z-0"></div>
-            <img src="{% static 'images/about.webp' %}" alt="Mortgage Consultation"
+            <img src="{% static 'images/about.jpg' %}" alt="Mortgage Consultation"
                 class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px]">
 
             <div

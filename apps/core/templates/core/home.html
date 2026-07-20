@@ -64,11 +64,21 @@
 
     /* Section 6 Sticky BG */
     .sticky-bg-section {
-        background-image: linear-gradient(rgba(12, 28, 42, 0.9), rgba(12, 28, 42, 0.9)),
-        url("{% static 'images/buildings-image.avif' %}");
-        background-attachment: fixed;
+        background-image: linear-gradient(rgba(12, 28, 42, .9), rgba(12, 28, 42, .9)),
+        url("{% static 'images/buildings-image.jpg' %}");
         background-size: cover;
         background-position: center;
+        background-attachment: fixed;
+    }
+
+    @media (max-width:768px) {
+
+        .sticky-bg-section {
+
+            background-attachment: scroll;
+
+        }
+
     }
 
     /* STRICTLY Section 6: Gold Wipe Effect */
@@ -168,7 +178,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: url("{% static 'images/skyscrappers-bg.png' %}") no-repeat bottom center;
+        background: url("{% static 'images/skyscrappers-bg.jpg' %}") no-repeat bottom center;
         background-size: contain;
         opacity: 0.80;
         pointer-events: none;
@@ -240,7 +250,7 @@ Home | Excellence Financing Broker
 
 {% block content %}
 <!-- Section 1: Hero Slider -->
-<section class="relative h-screen bg-primary overflow-hidden" x-data="{ active: 0, slides: 3 }"
+<section class="relative min-h-[100svh] bg-primary overflow-hidden" x-data="{ active: 0, slides: 3 }"
     x-init="setInterval(() => active = (active + 1) % slides, 6000)">
     <div class="hero-slide absolute inset-0 items-center justify-center px-6 text-center"
         :class="{ 'active': active === 0 }">
@@ -251,12 +261,14 @@ Home | Excellence Financing Broker
         <div class="max-w-4xl mx-auto w-full relative z-10">
             <span class="inline-block text-gold-light font-bold tracking-[.3em] uppercase text-xs mb-6">15+ Years of
                 Trust in UAE</span>
-            <h1 class="font-headline text-5xl md:text-8xl text-white mb-8 leading-tight">Elevating Your <br /><span
-                    class="text-gradient-gold">Financial Legacy.</span></h1>
-            <p class="text-slate-300 text-lg md:text-xl mb-12">As the UAE’s premier financing advisory, we bridge
+            <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl text-white mb-8 leading-tight">Elevating Your
+                <br /><span class="text-gradient-gold">Financial Legacy.</span>
+            </h1>
+            <p class="text-slate-300 text-base sm:text-lg md:text-xl mb-12">As the UAE’s premier financing advisory, we
+                bridge
                 the gap between your ambitions and the region’s leading financial institutions.</p>
             <a href="#services"
-                class="gold-gradient text-white px-10 py-5 rounded-xl font-bold uppercase tracking-widest hover:scale-105 transition-all">Explore
+                class="gold-gradient text-white px-7 py-4 sm:px-10 sm:py-5 rounded-xl font-bold uppercase tracking-widest hover:scale-105 transition-all">Explore
                 Solutions</a>
         </div>
     </div>
@@ -264,7 +276,7 @@ Home | Excellence Financing Broker
     <div class="hero-slide absolute inset-0 items-center justify-center px-6 text-center"
         :class="{ 'active': active === 1 }">
         <div class="absolute inset-0 z-0">
-            <img src="{% static 'images/banner-2.avif' %}" class="w-full h-full object-cover opacity-30">
+            <img src="{% static 'images/banner-2.jpg' %}" class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 bg-primary/70"></div>
         </div>
         <div class="max-w-4xl mx-auto w-full relative z-10">
@@ -283,7 +295,7 @@ Home | Excellence Financing Broker
                 partner and leverage our infrastructure to grow your earnings from your social network referrals.
             </p>
             <a href="{% url 'core:become_partner' %}"
-                class="bg-white text-primary px-10 py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-gold-light hover:text-white transition-all">Know
+                class="bg-white text-primary px-7 py-4 sm:px-10 sm:py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-gold-light hover:text-white transition-all">Know
                 More</a>
         </div>
     </div>
@@ -354,28 +366,28 @@ Home | Excellence Financing Broker
 
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 relative z-10">
         <div
-            class="pop-out-card p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
+            class="pop-out-card p-6 sm:p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
             <span class="material-symbols-outlined text-gold-light text-4xl mb-4">history_edu</span>
             <h4 class="text-lg font-bold mb-3">Extensive Years Of Experience</h4>
             <p class="text-slate-300 text-sm">When it comes to finance trust & experience becomes vital. We work
                 connect with right source to get your work done.</p>
         </div>
         <div
-            class="pop-out-card p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
+            class="pop-out-card p-6 sm:p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
             <span class="material-symbols-outlined text-gold-light text-4xl mb-4">local_offer</span>
             <h4 class="text-lg font-bold mb-3">Best Offers</h4>
             <p class="text-slate-300 text-sm">We provide best offers to every individual seeking financial help from
                 various banks in U.A.E.</p>
         </div>
         <div
-            class="pop-out-card p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
+            class="pop-out-card p-6 sm:p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
             <span class="material-symbols-outlined text-gold-light text-4xl mb-4">group</span>
             <h4 class="text-lg font-bold mb-3">Trusted by 5000+ Clients</h4>
             <p class="text-slate-300 text-sm">We have serviced over 5000 customers successfully, as we understand
                 finance & complete financial services.</p>
         </div>
         <div
-            class="pop-out-card p-8 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
+            class="pop-out-card p-6 sm:p-8bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 cursor-default text-white">
             <span class="material-symbols-outlined text-gold-light text-4xl mb-4">bolt</span>
             <h4 class="text-lg font-bold mb-3">Fast Feature Delivery</h4>
             <p class="text-slate-300 text-sm">We take a keen interest in fulfilling the requirements of people
@@ -385,7 +397,7 @@ Home | Excellence Financing Broker
 </section>
 
 <!-- Section 3: Guidance & Stacking Services -->
-<section id="services" class="py-32 bg-white relative">
+<section id="services" class="py-20 md:py-32 bg-white relative">
     <div class="absolute inset-0 pointer-events-none opacity-[0.03] overflow-hidden">
         <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="url(#grid)"></path>
@@ -416,8 +428,8 @@ Home | Excellence Financing Broker
 
         <div class="relative">
             <div
-                class="stacking-card group relative bg-primary text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden h-[350px] flex flex-col justify-between mb-12">
-                <img src="{% static 'images/mortgage-card-bg.avif' %}"
+                class="stacking-card group relative bg-primary text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between mb-12">
+                <img src="{% static 'images/mortgage-card-bg.jpg' %}"
                     class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700">
                 <div class="relative z-10">
                     <div class="flex justify-between items-start mb-6">
@@ -426,12 +438,13 @@ Home | Excellence Financing Broker
                             class="text-5xl font-headline text-white/10 group-hover:text-white/20 transition-colors">01</span>
                     </div>
                     <h4 class="text-4xl font-headline mb-4">Mortgage Loan</h4>
-                    <p class="text-slate-300 max-w-sm text-lg">Tailored property financing for residents and
+                    <p class="text-slate-300 max-w-sm text-base sm:text-lg">Tailored property financing for residents
+                        and
                         investors with the best rates in the UAE.</p>
                 </div>
                 <div class="relative z-10 flex items-center justify-between">
                     <a href="{% url 'core:mortgage' %}"
-                        class="bg-gold-light/20 hover:bg-gold-light text-white px-6 py-3 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
+                        class="bg-gold-light/20 hover:bg-gold-light text-white px-5 py-3 sm:px-6 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
                         More</button>
                     </a>
                     <a href="{% url 'core:mortgage' %}"
@@ -442,8 +455,8 @@ Home | Excellence Financing Broker
             </div>
 
             <div
-                class="stacking-card group relative bg-slate-900 text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden h-[350px] flex flex-col justify-between mb-12">
-                <img src="{% static 'images/personal-loan-card-bg.png' %}"
+                class="stacking-card group relative bg-slate-900 text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between mb-12">
+                <img src="{% static 'images/personal-loan-card-bg.jpg' %}"
                     class="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:scale-110 transition-transform duration-700">
                 <div class="relative z-10">
                     <div class="flex justify-between items-start mb-6">
@@ -451,14 +464,15 @@ Home | Excellence Financing Broker
                         <span
                             class="text-5xl font-headline text-white/10 group-hover:text-white/20 transition-colors">02</span>
                     </div>
-                    <h4 class="text-4xl font-headline mb-4">Personal Loan</h4>
-                    <p class="text-slate-300 max-w-sm text-lg">Flexible personal financing solutions designed for
+                    <h4 class="text-3xl sm:text-4xl font-headline mb-4">Personal Loan</h4>
+                    <p class="text-slate-300 max-w-sm text-base sm:text-lg">Flexible personal financing solutions
+                        designed for
                         your lifestyle and immediate needs.</p>
                 </div>
                 <div class="relative z-10 flex items-center justify-between">
                     <a href="{% url 'core:personal_loan' %}">
                         <button
-                            class="bg-gold-light/20 hover:bg-gold-light text-white px-6 py-3 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
+                            class="bg-gold-light/20 hover:bg-gold-light text-white px-5 py-3 sm:px-6 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
                             More</button></a>
 
                     <a href="{% url 'core:personal_loan' %}"
@@ -470,7 +484,7 @@ Home | Excellence Financing Broker
             </div>
 
             <div
-                class="stacking-card group relative bg-gold text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden h-[350px] flex flex-col justify-between mb-12">
+                class="stacking-card group relative bg-gold text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between mb-12">
                 <img src="{% static 'images/credit_card_image.jpg' %}"
                     class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700">
                 <div class="relative z-10">
@@ -479,13 +493,14 @@ Home | Excellence Financing Broker
                         <span
                             class="text-5xl font-headline text-white/10 group-hover:text-white/20 transition-colors">03</span>
                     </div>
-                    <h4 class="text-4xl font-headline mb-4">Credit Card</h4>
-                    <p class="text-white/90 max-w-sm text-lg">Premium credit cards with exclusive rewards, low
+                    <h4 class="text-3xl sm:text-4xl font-headline mb-4">Credit Card</h4>
+                    <p class="text-white/90 max-w-sm text-base sm:text-lg">Premium credit cards with exclusive rewards,
+                        low
                         interest, and global benefits.</p>
                 </div>
                 <div class="relative z-10 flex items-center justify-between">
                     <a href="{% url 'core:credit_card' %}"
-                        class="bg-white/10 hover:bg-white text-white hover:text-gold px-6 py-3 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
+                        class="bg-white/10 hover:bg-white text-white hover:text-gold px-5 py-3 sm:px-6 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
                         More</a>
                     <a href="{% url 'core:credit_card' %}"
                         class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group arrow-btn">
@@ -495,7 +510,7 @@ Home | Excellence Financing Broker
             </div>
 
             <div
-                class="stacking-card group relative bg-slate-800 text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden h-[350px] flex flex-col justify-between mb-12">
+                class="stacking-card group relative bg-slate-800 text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between mb-12">
                 <img src="{% static 'images/sp-image-bg.avif' %}"
                     class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700">
                 <div class="relative z-10">
@@ -504,13 +519,14 @@ Home | Excellence Financing Broker
                         <span
                             class="text-5xl font-headline text-white/10 group-hover:text-white/20 transition-colors">04</span>
                     </div>
-                    <h4 class="text-4xl font-headline mb-4">Business Loan</h4>
-                    <p class="text-slate-300 max-w-sm text-lg">Fuel your corporate growth with specialized business
+                    <h4 class="text-3xl sm:text-4xl font-headline mb-4">Business Loan</h4>
+                    <p class="text-slate-300 max-w-sm text-base sm:text-lg">Fuel your corporate growth with specialized
+                        business
                         credit lines and term loans.</p>
                 </div>
                 <div class="relative z-10 flex items-center justify-between">
                     <a href="{% url 'core:business_loan' %}"
-                        class="bg-gold-light/20 hover:bg-gold-light text-white px-6 py-3 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
+                        class="bg-gold-light/20 hover:bg-gold-light text-white px-5 py-3 sm:px-6 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
                         More</a>
                     <a href="{% url 'core:business_loan' %}"
                         class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group arrow-btn">
@@ -520,8 +536,8 @@ Home | Excellence Financing Broker
             </div>
 
             <div
-                class="stacking-card group relative bg-primary text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden h-[350px] flex flex-col justify-between">
-                <img src="{% static 'images/holding_UAE_notes.png' %}"
+                class="stacking-card group relative bg-primary text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between">
+                <img src="{% static 'images/holding_UAE_notes.jpg' %}"
                     class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700">
                 <div class="relative z-10">
                     <div class="flex justify-between items-start mb-6">
@@ -529,13 +545,14 @@ Home | Excellence Financing Broker
                         <span
                             class="text-5xl font-headline text-white/10 group-hover:text-white/20 transition-colors">05</span>
                     </div>
-                    <h4 class="text-4xl font-headline mb-4">Business Account</h4>
-                    <p class="text-slate-300 max-w-sm text-lg">Streamline your operations with powerful corporate
+                    <h4 class="text-3xl sm:text-4xl font-headline mb-4">Business Account</h4>
+                    <p class="text-slate-300 max-w-sm text-base sm:text-lg">Streamline your operations with powerful
+                        corporate
                         bank accounts tailored for UAE businesses.</p>
                 </div>
                 <div class="relative z-10 flex items-center justify-between">
                     <a href="{% url 'core:business_account' %}"
-                        class="bg-gold-light/20 hover:bg-gold-light text-white px-6 py-3 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
+                        class="bg-gold-light/20 hover:bg-gold-light text-white px-5 py-3 sm:px-6 rounded-full transition-all text-xs font-bold tracking-widest uppercase">Learn
                         More</a>
                     <a href="{% url 'core:business_account' %}"
                         class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group arrow-btn">
@@ -548,11 +565,12 @@ Home | Excellence Financing Broker
 </section>
 
 <!-- Section 4: About Excellence & Stats -->
-<section id="about" class="py-32 bg-primary text-white overflow-hidden relative">
+<section id="about" class="py-20 md:py-32 bg-primary text-white overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
         <div>
             <h2 class="text-gold-light font-bold uppercase tracking-[.3em] text-xs mb-4">Core Identity</h2>
-            <h3 class="font-headline text-5xl mb-8 leading-tight">About Excellence <br /> Financing Broker</h3>
+            <h3 class="font-headline text-4xl md:text-5xl mb-8 leading-tight">About Excellence <br /> Financing Broker
+            </h3>
             <div class="space-y-6 text-slate-300">
                 <p>EXCELLENCE FINANCING BROKER works as a financial advisor to support customers with the best
                     financial products suited to their needs.</p>
@@ -565,37 +583,37 @@ Home | Excellence Financing Broker
         <div class="grid grid-cols-1 gap-12" id="stats-trigger">
             <div class="bg-white/5 p-10 rounded-3xl border border-white/10 flex justify-between items-center group">
                 <div>
-                    <p class="text-6xl font-headline text-gold-light mb-2"><span class="counter"
+                    <p class="text-4xl sm:text-6xl font-headline text-gold-light mb-2"><span class="counter"
                             data-target="15">0</span> +</p>
                     <p class="uppercase tracking-widest text-[10px] font-bold">Years of Trust</p>
                 </div>
                 <span
-                    class="material-symbols-outlined text-5xl opacity-10 group-hover:opacity-40 transition-opacity">verified</span>
+                    class="material-symbols-outlined text-4xl md:text-5xl opacity-10 group-hover:opacity-40 transition-opacity">verified</span>
             </div>
             <div class="bg-white/5 p-10 rounded-3xl border border-white/10 flex justify-between items-center group">
                 <div>
-                    <p class="text-6xl font-headline text-gold-light mb-2"><span class="counter"
+                    <p class="text-4xl sm:text-6xl font-headline text-gold-light mb-2"><span class="counter"
                             data-target="5000">0</span> +</p>
                     <p class="uppercase tracking-widest text-[10px] font-bold">Clients Served</p>
                 </div>
                 <span
-                    class="material-symbols-outlined text-5xl opacity-10 group-hover:opacity-40 transition-opacity">group</span>
+                    class="material-symbols-outlined text-4xl md:text-5xl opacity-10 group-hover:opacity-40 transition-opacity">group</span>
             </div>
             <div class="bg-white/5 p-10 rounded-3xl border border-white/10 flex justify-between items-center group">
                 <div>
-                    <p class="text-6xl font-headline text-gold-light mb-2"><span class="counter"
+                    <p class="text-4xl sm:text-6xl font-headline text-gold-light mb-2"><span class="counter"
                             data-target="95">0</span> %</p>
                     <p class="uppercase tracking-widest text-[10px] font-bold">Minimal Paperwork</p>
                 </div>
                 <span
-                    class="material-symbols-outlined text-5xl opacity-10 group-hover:opacity-40 transition-opacity">description</span>
+                    class="material-symbols-outlined text-4xl md:text-5xl opacity-10 group-hover:opacity-40 transition-opacity">description</span>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Section 5: Solutions & Features -->
-<section class="section-5 py-32 bg-surface">
+<section class="section-5 py-20 md:py-32 bg-surface">
 
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
         <div class="lg:sticky lg:top-32 h-fit">
@@ -627,11 +645,11 @@ Home | Excellence Financing Broker
         </div>
 
         <div class="relative">
-            <div class="stacking-card bg-white p-12 rounded-3xl shadow-xl border border-slate-100 min-h-[400px] mb-12"
+            <div class="stacking-card bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-slate-100 min-h-[400px] mb-12"
                 style="top: 120px;">
                 <div class="flex justify-between items-start mb-8">
                     <h4 class="text-3xl font-headline font-bold">Quick Approvals</h4>
-                    <span class="text-5xl font-headline text-slate-100">01</span>
+                    <span class="text-4xl md:text-5xl font-headline text-slate-100">01</span>
                 </div>
                 <p class="text-slate-500 mb-6 italic">We ascertain our client’s financial to determine whether they
                     should seek investments weighted toward preservation of capital.</p>
@@ -639,11 +657,11 @@ Home | Excellence Financing Broker
                     businesses by creating long-term, trusted relationships that are backed by an exceptional
                     service experience.</p>
             </div>
-            <div class="stacking-card bg-white p-12 rounded-3xl shadow-xl border border-slate-100 min-h-[400px] mb-12"
+            <div class="stacking-card bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-slate-100 min-h-[400px] mb-12"
                 style="top: 140px;">
                 <div class="flex justify-between items-start mb-8">
                     <h4 class="text-3xl font-headline font-bold">Competitive Interest Rates</h4>
-                    <span class="text-5xl font-headline text-slate-100">02</span>
+                    <span class="text-4xl md:text-5xl font-headline text-slate-100">02</span>
                 </div>
                 <p class="text-slate-500 mb-6 italic">We prepare for your meeting by identifying key milestones or
                     events that have happened since we last met to see if they’re well positioned.</p>
@@ -651,11 +669,11 @@ Home | Excellence Financing Broker
                     businesses by creating long-term, trusted relationships that are backed by an exceptional
                     service experience.</p>
             </div>
-            <div class="stacking-card bg-white p-12 rounded-3xl shadow-xl border border-slate-100 min-h-[400px]"
+            <div class="stacking-card bg-white p-8 sm:p-12 rounded-3xl shadow-xl border border-slate-100 min-h-[400px]"
                 style="top: 160px;">
                 <div class="flex justify-between items-start mb-8">
                     <h4 class="text-3xl font-headline font-bold">Trusted Banking Partnerships</h4>
-                    <span class="text-5xl font-headline text-slate-100">03</span>
+                    <span class="text-4xl md:text-5xl font-headline text-slate-100">03</span>
                 </div>
                 <p class="text-slate-500 mb-6 italic">We will provide recommendations in sensible investment choices
                     that will help our clients meet their long term goals or fund their retirement.</p>
@@ -668,7 +686,7 @@ Home | Excellence Financing Broker
 </section>
 
 <!-- Section 6: Plan Beyond Numbers -->
-<section class="sticky-bg-section py-32 relative text-white">
+<section class="sticky-bg-section py-20 md:py-32 relative text-white">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-20">
             <h2 class="font-headline text-5xl mb-6">Looking beyond numbers to create a plan!</h2>
@@ -677,25 +695,25 @@ Home | Excellence Financing Broker
         </div>
 
         <div class="grid md:grid-cols-4 gap-6">
-            <div class="section-6-gold-wipe p-10 backdrop-blur-md rounded-[2rem] group">
+            <div class="section-6-gold-wipe p-6 sm:p-7 sm:p-10 backdrop-blur-md rounded-[2rem] group">
                 <span class="text-gold-light font-headline text-4xl mb-6 block">01.</span>
                 <h4 class="text-xl font-bold mb-6">Smarter Financing, Better Future</h4>
                 <p class="text-sm text-slate-300">We help individuals and businesses access the best loan and
                     financial solutions, ensuring growth with secure and transparent funding options.</p>
             </div>
-            <div class="section-6-gold-wipe p-10 backdrop-blur-md rounded-[2rem] group">
+            <div class="section-6-gold-wipe p-6 sm:p-7 sm:p-10 backdrop-blur-md rounded-[2rem] group">
                 <span class="text-gold-light font-headline text-4xl mb-6 block">02.</span>
                 <h4 class="text-xl font-bold mb-6">Your Success, Our Commitment</h4>
                 <p class="text-sm text-slate-300">With 15+ years of expertise, we provide strategic financial
                     guidance to help you make informed decisions and achieve long-term financial stability.</p>
             </div>
-            <div class="section-6-gold-wipe p-10 backdrop-blur-md rounded-[2rem] group">
+            <div class="section-6-gold-wipe p-6 sm:p-7 sm:p-10 backdrop-blur-md rounded-[2rem] group">
                 <span class="text-gold-light font-headline text-4xl mb-6 block">03.</span>
                 <h4 class="text-xl font-bold mb-6">Building Strong Financial Partnerships</h4>
                 <p class="text-sm text-slate-300">We work closely with trusted banking partners to secure the most
                     competitive interest rates and tailored financial solutions for your needs.</p>
             </div>
-            <div class="section-6-gold-wipe p-10 backdrop-blur-md rounded-[2rem] group">
+            <div class="section-6-gold-wipe p-6 sm:p-7 sm:p-10 backdrop-blur-md rounded-[2rem] group">
                 <span class="text-gold-light font-headline text-4xl mb-6 block">04.</span>
                 <h4 class="text-xl font-bold mb-6">Transparency & Trust in Every Step</h4>
                 <p class="text-sm text-slate-300">From application to approval, we ensure seamless, hassle-free
