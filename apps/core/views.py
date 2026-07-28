@@ -67,6 +67,21 @@ def our_leaders(request):
 def bdp_faq(request):
     return render(request, 'core/bdp-faq.html')    
 
+def terms_and_conditions(request):
+    return render(request, 'core/terms_and_conditions.html')
+
+def privacy_cookies_policy(request):
+    return render(request, 'core/privacy_cookies_policy.html')
+
+def disclaimer(request):
+    return render(request, 'core/disclaimer.html')
+
+def bdp_terms_and_conditions(request):
+    return render(request, 'core/bdp_terms_and_conditions.html')
+
+def bdp_privacy_policy(request):
+    return render(request, 'core/bdp_privacy_policy.html')
+
 def custom_404(request, exception=None):
     return render(request, '404.html', status=404)
 

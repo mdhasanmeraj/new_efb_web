@@ -1,169 +1,13 @@
 {% load static %}
-<style>
-    :root {
-        --efb-blue: #0056b3;
-        --efb-red: #e31e24;
-        --efb-dark: #0f172a;
-        /* Deeper professional navy */
-    }
 
 
-
-    .footer-bg {
-        background-color: var(--efb-dark);
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Improved "lubta" style background watermark */
-    .watermark-container {
-        position: absolute;
-        bottom: -50px;
-        right: -20px;
-        display: flex;
-        align-items: center;
-        opacity: 0.04;
-        pointer-events: none;
-        user-select: none;
-        z-index: 0;
-    }
-
-    .watermark-text {
-        font-size: 18rem;
-        font-weight: 800;
-        color: white;
-        line-height: 1;
-        margin-right: 20px;
-    }
-
-    .watermark-logo {
-        height: 250px;
-        filter: brightness(0) invert(1);
-    }
-
-    .footer-content {
-        position: relative;
-        z-index: 10;
-    }
-
-    .footer-heading {
-        color: white;
-        font-weight: 700;
-        font-size: 1.1rem;
-        letter-spacing: 0.025em;
-        text-transform: uppercase;
-        position: relative;
-        padding-bottom: 12px;
-        margin-bottom: 24px;
-    }
-
-    .footer-heading::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 40px;
-        height: 3px;
-        background-color: var(--efb-red);
-    }
-
-    .link-item {
-        color: #94a3b8;
-        /* slate-400 */
-        transition: all 0.2s ease-in-out;
-        font-size: 0.95rem;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .link-item:hover {
-        color: white;
-        transform: translateX(4px);
-    }
-
-    .social-icon {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        /* Modern slightly rounded look */
-        background: rgba(255, 255, 255, 0.05);
-        color: #cbd5e1;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Transitions for SVG paths inside icons */
-    .social-icon svg path {
-        transition: fill 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Custom Hover Backgrounds for Specific Social Media Brands */
-
-    /* X (formerly Twitter) Brand Hover styling */
-    /* .social-icon-x:hover {
-        background-color: #ffffff !important;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
-    }
-
-    .social-icon-x:hover svg path {
-        fill: #000000 !important;
-    } */
-
-    /* Facebook Brand Hover styling */
-    .social-icon-facebook:hover {
-        background-color: #1877F2 !important;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(24, 119, 242, 0.3);
-    }
-
-    .social-icon-facebook:hover svg path {
-        fill: #ffffff !important;
-    }
-
-    /* Instagram Sunset Gradient Brand Hover styling */
-    .social-icon-instagram:hover {
-        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(220, 39, 67, 0.3);
-    }
-
-    .social-icon-instagram:hover svg path {
-        fill: #ffffff !important;
-    }
-
-    /* LinkedIn Corporate Blue Brand Hover styling */
-    .social-icon-linkedin:hover {
-        background-color: #0077B5 !important;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(0, 119, 181, 0.3);
-    }
-
-    .social-icon-linkedin:hover svg path {
-        fill: #ffffff !important;
-    }
-
-    /* Google Clean White Brand Hover styling (keeping Multi-Colored paths as is) */
-    .social-icon-google:hover {
-        background-color: #ffffff !important;
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
-    }
-
-    /* Specific X logo adjustment if needed */
-    .fa-x-twitter {
-        font-size: 1.1rem;
-    }
-</style>
 
 <footer class="footer-bg text-white pt-20 pb-10">
     <!-- Background Watermark  -->
     <div class="watermark-container">
         <span class="watermark-text">EFB</span>
-        <img src="{% static 'images/EFB_logo-removebg-preview.png' %}" alt="" class="watermark-logo"
-            onerror="this.style.display='none'">
+        <img src="{% static 'images/EFB_logo-removebg-preview.png' %}" alt="" class="watermark-logo" class="h-14 w-auto"
+            loading="lazy" decoding="async" onerror="this.style.display='none'">
     </div>
 
     <div class="max-w-7xl mx-auto px-6 footer-content">
@@ -174,7 +18,7 @@
                 <a href="/" class="inline-block transition-opacity hover:opacity-90">
                     <div class="bg-white p-3 rounded-xl shadow-sm">
                         <img src="{% static 'images/EFB_logo-removebg-preview.png' %}" alt="Excellence Financing Broker"
-                            class="h-14 w-auto">
+                            class="h-14 w-auto" loading="lazy" decoding="async">
                     </div>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed font-medium">
@@ -251,10 +95,11 @@
                 <ul class="space-y-4">
                     <li><a href="{% url 'core:contact_us' %}" class="link-item">Contact Us</a></li>
                     <li><a href="{% url 'core:about_us' %}" class="link-item">About Us</a></li>
-                    <li><a href="{% url 'core:home' %}" class="link-item">Privacy Policy</a></li>
-                    <li><a href="{% url 'core:home' %}" class="link-item">Terms and Conditions</a></li>
+                    <li><a href="{% url 'core:privacy_cookies_policy' %}" class="link-item">Privacy & Cookies Policy</a></li>
+                    <li><a href="{% url 'core:terms_and_conditions' %}" class="link-item">Terms and Conditions</a></li>
                     <li><a href="{% url 'core:faq' %}" class="link-item">FAQs</a></li>
                     <li><a href="{% url 'core:our_leaders' %}" class="link-item">Our Leaders</a></li>
+                    <li><a href="{% url 'core:disclaimer' %}" class="link-item">Disclaimer</a></li>
                 </ul>
             </div>
 
@@ -278,6 +123,8 @@
                     <li><a href="https://app.efb.ae" class="link-item">Login to CRM</a></li>
                     <li><a href="{% url 'core:bdp_guides' %}" class="link-item">BDP Guides</a></li>
                     <li><a href="{% url 'core:bdp_faq' %}" class="link-item">BDP's FAQs</a></li>
+                    <li><a href="{% url 'core:bdp_terms_and_conditions' %}" class="link-item">Terms and Conditions - BDP</a></li>
+                    <li><a href="{% url 'core:bdp_privacy_policy' %}" class="link-item">Privacy Policy - BDP</a></li>
                 </ul>
             </div>
 
@@ -301,5 +148,10 @@
 </footer>
 
 <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", function () {
+        const year = document.getElementById("year");
+        if (year) {
+            year.textContent = new Date().getFullYear();
+        }
+    });
 </script>

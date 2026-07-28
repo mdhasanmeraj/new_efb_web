@@ -1,0 +1,724 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .legal-content-container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+    }
+
+    .toc-sticky {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        padding-right: 1rem;
+    }
+
+    /* Scrollbar customization for TOC */
+    .toc-sticky::-webkit-scrollbar {
+        width: 4px;
+    }
+    .toc-sticky::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .toc-sticky::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .toc-sticky::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .toc-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        color: #94a3b8; /* slate-400 */
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-link:hover {
+        color: #e9c176; /* gold */
+        background: rgba(233, 193, 118, 0.05);
+        padding-left: 1.25rem;
+    }
+
+    .toc-link.active {
+        color: #e9c176;
+        background: rgba(233, 193, 118, 0.08);
+        border-left-color: #e9c176;
+        font-weight: 700;
+    }
+
+    .legal-section {
+        scroll-margin-top: 110px;
+        transition: opacity 0.3s ease;
+    }
+
+    .premium-legal-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-blur: md;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        transition: border-color 0.3s ease;
+    }
+
+    .premium-legal-card:hover {
+        border-color: rgba(233, 193, 118, 0.2);
+    }
+
+    @media (max-width: 1024px) {
+        .legal-content-container {
+            grid-template-columns: 1fr;
+        }
+        .toc-column {
+            display: none;
+        }
+    }
+
+    .legal-heading {
+        font-family: 'Newsreader', serif;
+        color: #ffffff;
+        font-weight: 700;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+Privacy & Cookies Policy | Excellence Financing Broker
+{% endblock %}
+
+{% block content %}
+<!-- Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(12, 28, 42, 0.85), rgba(12, 28, 42, 0.85)), url('{% static 'images/about-us-header.jpg' %}');">
+    </div>
+    <div class="page-banner-content page-banner-animation px-6">
+        <h1 class="page-banner-title text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4">
+            Privacy & Cookies Policy
+        </h1>
+        <p class="page-banner-subtitle text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            How Excellence Financing Broker collects, uses, and protects your personal data and handles cookies.
+        </p>
+        <div class="w-24 h-1 bg-[#e9c176] mx-auto mt-6 rounded-full"></div>
+    </div>
+</section>
+
+<!-- Content Area -->
+<section class="bg-[#0c1c2a] text-slate-300 py-20 px-6 relative overflow-hidden">
+    <!-- Background Gradient Circles -->
+    <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-0 w-96 h-96 bg-amber-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Download Bar / Last Updated Card -->
+        <div class="premium-legal-card p-6 md:p-8 mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-amber-500/10 text-[#e9c176] rounded-xl flex items-center justify-center">
+                    <i data-lucide="calendar" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Last Updated</p>
+                    <p class="text-lg font-bold text-white">30 July 2026</p>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="{% url 'core:download_guide' filename='Privacy_&_Cookies_Policy.pdf' %}"
+                class="partner-btn relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all select-none">
+                <i data-lucide="download" class="w-5 h-5"></i>
+                Download Privacy & Cookies Policy (PDF)
+            </a>
+        </div>
+
+        <div class="legal-content-container">
+            <!-- Navigation Index Sidebar -->
+            <div class="toc-column">
+                <div class="toc-sticky">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index</h3>
+                    <nav class="space-y-1">
+                        <p class="text-xs font-bold text-[#e9c176] uppercase tracking-wider px-4 pt-2 pb-1">Privacy Policy</p>
+                        <a href="#intro" class="toc-link"><span class="text-xs">01</span> Introduction</a>
+                        <a href="#whoweare" class="toc-link"><span class="text-xs">02</span> Who We Are</a>
+                        <a href="#scope" class="toc-link"><span class="text-xs">03</span> Scope of Policy</a>
+                        <a href="#collect" class="toc-link"><span class="text-xs">04</span> Info We Collect</a>
+                        <a href="#basis" class="toc-link"><span class="text-xs">05</span> Legal Basis</a>
+                        <a href="#howuse" class="toc-link"><span class="text-xs">06</span> How We Use Info</a>
+                        <a href="#sharing" class="toc-link"><span class="text-xs">07</span> Sharing of Data</a>
+                        <a href="#transfers" class="toc-link"><span class="text-xs">08</span> Cross-Border</a>
+                        <a href="#retention" class="toc-link"><span class="text-xs">09</span> Data Retention</a>
+                        <a href="#security" class="toc-link"><span class="text-xs">10</span> Data Security</a>
+                        <a href="#rights" class="toc-link"><span class="text-xs">11</span> Your Rights</a>
+                        <a href="#children" class="toc-link"><span class="text-xs">12</span> Children's Privacy</a>
+                        <a href="#marketing" class="toc-link"><span class="text-xs">13</span> Marketing</a>
+                        <a href="#cookies-ref" class="toc-link"><span class="text-xs">14</span> Cookies Ref</a>
+                        <a href="#breach" class="toc-link"><span class="text-xs">15</span> Data Breach</a>
+                        <a href="#changes" class="toc-link"><span class="text-xs">16</span> Changes to Policy</a>
+                        <a href="#contact" class="toc-link"><span class="text-xs">17</span> Contact Us</a>
+                        
+                        <p class="text-xs font-bold text-[#e9c176] uppercase tracking-wider px-4 pt-4 pb-1">Cookie Policy</p>
+                        <a href="#c-intro" class="toc-link"><span class="text-xs">C1</span> Introduction</a>
+                        <a href="#c-what" class="toc-link"><span class="text-xs">C2</span> What Are Cookies</a>
+                        <a href="#c-types" class="toc-link"><span class="text-xs">C3</span> Cookie Types</a>
+                        <a href="#c-third" class="toc-link"><span class="text-xs">C4</span> Third-Party</a>
+                        <a href="#c-manage" class="toc-link"><span class="text-xs">C5</span> Managing Cookies</a>
+                        <a href="#c-changes" class="toc-link"><span class="text-xs">C6</span> Policy Changes</a>
+                        <a href="#c-contact" class="toc-link"><span class="text-xs">C7</span> Contact Cookie</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="space-y-12">
+                
+                <!-- PRIVACY POLICY SECTION -->
+                <div class="border-b border-slate-800 pb-4">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest font-mono">Part I</h2>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white font-headline mt-1">PRIVACY POLICY</h1>
+                </div>
+
+                <!-- 1. Introduction -->
+                <div id="intro" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">1.</span> Introduction
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Excellence Financing Broker ("EFB", "we", "us", or "our") respects your privacy and is committed to protecting the personal data you share with us. This Privacy Policy explains what personal data we collect through our website <a href="https://efb.ae" class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website") and in connection with any consultancy services you engage us to provide, why we collect it, how we use and share it, and the choices and rights available to you.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        This Policy applies to visitors, enquirers, and users of the Website and forms part of our commitment to comply with the UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data ("PDPL") and other applicable UAE laws.
+                    </p>
+                </div>
+
+                <!-- 2. Who We Are -->
+                <div id="whoweare" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">2.</span> Who We Are
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Excellence Financing Broker is a company registered in Dubai, United Arab Emirates, licensed by the Dubai Department of Economy and Tourism (formerly the Dubai Department of Economic Development) under Trade License No. 869539, with VAT Registration Number (TRN) 100526925100003.
+                    </p>
+                    <p class="leading-relaxed font-semibold text-white">
+                        Registered Office: Al Abbas Building 306/18, Block-2, Khaled Bin Waleed Road, Bur Dubai, Dubai, United Arab Emirates.
+                    </p>
+                    <p class="leading-relaxed">
+                        For all data protection matters, you may contact us at: <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>
+                    </p>
+                </div>
+
+                <!-- 3. Scope of This Policy -->
+                <div id="scope" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">3.</span> Scope of This Policy
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We are an independent financial brokerage and consultancy company. We connect customers with licensed banks and financial institutions in the UAE in relation to Personal Loans, Business Loans, Credit Cards, Mortgages, and Business Accounts, and we may provide professional financial consultancy services for a fee. We do not provide loans or financial products ourselves, and this Policy describes only the personal data we, EFB, collect and process as part of our brokerage and consultancy activities.
+                    </p>
+                </div>
+
+                <!-- 4. Information We Collect -->
+                <div id="collect" class="legal-section premium-legal-card p-8 md:p-10 space-y-6">
+                    <div>
+                        <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                            <span class="text-[#e9c176]">4.</span> Information We Collect
+                        </h2>
+                        <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                        <p class="leading-relaxed mb-4">
+                            We collect the following categories of personal data directly from you when you interact with our website or engage our services:
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-3">
+                            <h3 class="font-bold text-white flex items-center gap-2">
+                                <i data-lucide="user" class="text-[#e9c176] w-5 h-5"></i>
+                                Enquiry & Consultation Forms
+                            </h3>
+                            <ul class="space-y-2 text-sm pl-4 list-disc">
+                                <li>Name</li>
+                                <li>Email address</li>
+                                <li>Phone number</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-3">
+                            <h3 class="font-bold text-white flex items-center gap-2">
+                                <i data-lucide="briefcase" class="text-[#e9c176] w-5 h-5"></i>
+                                Business Enquiries
+                            </h3>
+                            <ul class="space-y-2 text-sm pl-4 list-disc">
+                                <li>Company name</li>
+                                <li>Contact person's name</li>
+                                <li>Email address</li>
+                                <li>Phone number</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-4">
+                        <h3 class="font-bold text-white flex items-center gap-2">
+                            <i data-lucide="mail-open" class="text-[#e9c176] w-5 h-5"></i>
+                            Newsletter Sign-Up & Billing Information
+                        </h3>
+                        <p class="text-sm leading-relaxed">
+                            For Newsletter, we collect your <strong>Email address</strong>. 
+                            If you engage our paid consultancy services, we will also collect information necessary to deliver and invoice those services, such as billing name and contact details, the scope and fee for the engagement, and confirmation of payment.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-4">
+                        <h3 class="font-bold text-white flex items-center gap-2">
+                            <i data-lucide="cpu" class="text-[#e9c176] w-5 h-5"></i>
+                            Passive / Technical Information
+                        </h3>
+                        <p class="text-sm leading-relaxed">
+                            When you browse our website, certain technical information is collected automatically through cookies and similar technologies, including:
+                        </p>
+                        <ul class="space-y-2 text-sm pl-4 list-disc">
+                            <li>IP address</li>
+                            <li>Browser type and version</li>
+                            <li>Device information</li>
+                            <li>Cookie identifiers and browsing activity on the Website</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Legal Basis for Processing -->
+                <div id="basis" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">5.</span> Legal Basis for Processing
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We process your personal data on the basis of your consent. By submitting a form on our website (enquiry, consultation request, or newsletter sign-up) or engaging our consultancy services, you consent to our collection and use of your personal data as described in this Policy. Where you engage our paid consultancy services, we also process the billing and engagement information described in Section 4 as necessary to perform that engagement with you.
+                    </p>
+                    <p class="leading-relaxed">
+                        You may withdraw your consent at any time as set out in Section 11 (Your Rights) and Section 13 (Marketing Communications) below.
+                    </p>
+                </div>
+
+                <!-- 6. How We Use Your Information -->
+                <div id="howuse" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">6.</span> How We Use Your Information
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed mb-2">
+                        We use the personal data we collect to:
+                    </p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Respond to your enquiry and connect you with relevant partner banks and financial institutions.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Arrange and manage consultations you request, including your free initial consultation.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Deliver, manage, and invoice any paid consultancy services you engage us to provide.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Send you the newsletter and promotional communications you have signed up for or consented to receive.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Operate, maintain, and improve the Website, including through analytics.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Comply with applicable legal, regulatory, or tax obligations, including invoicing and accounting records.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Resolve disputes and enforce our Terms & Conditions.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 7. Sharing of Personal Data -->
+                <div id="sharing" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">7.</span> Sharing of Personal Data
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We do not sell your personal data. We may share your personal data with the following categories of recipients:
+                    </p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Partner banks and financial institutions</strong> — only after you have consented, so that they may assess and process your enquiry.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Website hosting providers</strong> — to store and operate the Website.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Email service providers</strong> — to send transactional and marketing communications.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Analytics providers</strong> (including Google Analytics and Google Tag Manager) — to help us understand Website usage.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Marketing providers</strong> (including Meta Pixel) — to help us measure and improve our marketing.</span>
+                        </li>
+                    </ul>
+                    <p class="leading-relaxed mt-4">
+                        We do not share your personal data with any other third party except as required by law, regulation, or a valid order of a competent UAE authority.
+                    </p>
+                </div>
+
+                <!-- 8. Cross-Border Data Transfers -->
+                <div id="transfers" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">8.</span> Cross-Border Data Transfers
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Some of the third-party providers referred to above, including Google Analytics, Google Tag Manager, and Meta Pixel, may process technical information on servers located outside the United Arab Emirates. Where this occurs, we take reasonable steps to ensure such providers maintain appropriate safeguards for your personal data, consistent with the requirements of the PDPL.
+                    </p>
+                </div>
+
+                <!-- 9. Data Retention -->
+                <div id="retention" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">9.</span> Data Retention
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We retain your personal data only for as long as necessary to provide our services to you, to comply with applicable legal or contractual obligations, to resolve disputes, or until you request deletion of your data, where such deletion is legally permissible.
+                    </p>
+                    <p class="leading-relaxed">
+                        Where we are required to retain certain records for legal, regulatory, or audit purposes, we will retain that data only for as long as required for that purpose. In particular, as a VAT-registered business, invoices and related financial records connected to any consultancy fee we charge you are retained for the minimum period required under UAE tax law.
+                    </p>
+                </div>
+
+                <!-- 10. Data Security -->
+                <div id="security" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">10.</span> Data Security
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We take appropriate technical and organizational measures, in line with industry-standard practices, to protect your personal data against unauthorized access, loss, misuse, or disclosure. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.
+                    </p>
+                </div>
+
+                <!-- 11. Your Rights -->
+                <div id="rights" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">11.</span> Your Rights
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed mb-2">
+                        Subject to applicable law, you may have the right to:
+                    </p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Access the personal data we hold about you.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Request correction of inaccurate or incomplete personal data.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Request deletion of your personal data, where legally permissible.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Object to or request restriction of certain processing.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span>Withdraw your consent at any time, without affecting the lawfulness of processing carried out before withdrawal.</span>
+                        </li>
+                    </ul>
+                    <p class="leading-relaxed mt-4">
+                        To exercise any of these rights, please contact us at <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>. We will respond to your request within a reasonable time and in accordance with applicable law. Please note that we may be unable to delete billing or invoicing records that we are legally required to retain, as described in Section 9.
+                    </p>
+                </div>
+
+                <!-- 12. Children's Privacy -->
+                <div id="children" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">12.</span> Children's Privacy
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Our services are intended for individuals who are 18 years of age or older. We do not knowingly collect personal data from anyone under the age of 18. If we become aware that we have inadvertently collected such data, we will take reasonable steps to delete it.
+                    </p>
+                </div>
+
+                <!-- 13. Marketing Communications -->
+                <div id="marketing" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">13.</span> Marketing Communications
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        By submitting an enquiry through our website, you consent to being contacted by us via phone, email, SMS, and WhatsApp regarding your enquiry and related financial services, including our newsletter and promotional communications. You may opt out of promotional communications at any time by using the unsubscribe link in our emails or by contacting us at <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>.
+                    </p>
+                </div>
+
+                <!-- 14. Cookies Reference -->
+                <div id="cookies-ref" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">14.</span> Cookies Policy Reference
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Our website uses cookies and similar technologies, including necessary, analytics, and marketing cookies. For full details of the cookies we use, their purpose, and how you can manage them, please refer to <a href="#c-intro" class="text-[#e9c176] hover:underline">Part II: Cookie Policy</a> below.
+                    </p>
+                </div>
+
+                <!-- 15. Data Breach Notification -->
+                <div id="breach" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">15.</span> Data Breach Notification
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        In the event of a personal data breach that is likely to result in a risk to your rights and freedoms, we will notify affected individuals and, where required under applicable law, the relevant UAE data protection authority, without undue delay.
+                    </p>
+                </div>
+
+                <!-- 16. Changes to This Policy -->
+                <div id="changes" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">16.</span> Changes to This Policy
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We may update this Privacy Policy from time to time to reflect changes in our practices, our fees, or applicable law. The updated version will be posted on this page with a revised "Last Updated" date. Your continued use of the Website following any changes constitutes your acceptance of the updated Policy.
+                    </p>
+                </div>
+
+                <!-- 17. Contact Us and Complaints -->
+                <div id="contact" class="legal-section premium-legal-card p-8 md:p-10 space-y-6">
+                    <div>
+                        <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                            <span class="text-[#e9c176]">17.</span> Contact Us and Complaints
+                        </h2>
+                        <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                        <p class="leading-relaxed text-slate-300">
+                            If you have any questions, concerns, or complaints about this Privacy Policy or how we handle your personal data, please contact us first at:
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
+                            <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-full flex items-center justify-center">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">General Enquiries</p>
+                                <a href="mailto:info@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">info@efb.ae</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
+                            <div class="w-12 h-12 bg-emerald-600/10 text-emerald-400 rounded-full flex items-center justify-center">
+                                <i data-lucide="shield" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Data Protection</p>
+                                <a href="mailto:support@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">support@efb.ae</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COOKIE POLICY SECTION -->
+                <div class="border-b border-slate-800 pb-4 pt-12">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest font-mono">Part II</h2>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white font-headline mt-1">COOKIE POLICY</h1>
+                </div>
+
+                <!-- C1. Introduction -->
+                <div id="c-intro" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">C1.</span> Introduction
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        This Cookie Policy explains how Excellence Financing Broker ("EFB", "we", "us", or "our") uses cookies and similar technologies on our website <a href="https://efb.ae" class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website"). It should be read together with our Privacy Policy.
+                    </p>
+                </div>
+
+                <!-- C2. What Are Cookies -->
+                <div id="c-what" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">C2.</span> What Are Cookies
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Cookies are small text files placed on your device when you visit a website. They are widely used to make websites function, to improve user experience, and to provide information to website owners about how their site is used.
+                    </p>
+                </div>
+
+                <!-- C3. Types of Cookies We Use -->
+                <div id="c-types" class="legal-section premium-legal-card p-8 md:p-10 space-y-6">
+                    <div>
+                        <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                            <span class="text-[#e9c176]">C3.</span> Types of Cookies We Use
+                        </h2>
+                        <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-3">
+                            <h3 class="font-bold text-white flex items-center gap-2">
+                                <i data-lucide="shield-check" class="text-[#e9c176] w-5 h-5"></i>
+                                Necessary Cookies
+                            </h3>
+                            <p class="text-sm leading-relaxed">
+                                Required for the Website to function properly, enabling core features like navigation and security.
+                            </p>
+                        </div>
+
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-3">
+                            <h3 class="font-bold text-white flex items-center gap-2">
+                                <i data-lucide="bar-chart-2" class="text-[#e9c176] w-5 h-5"></i>
+                                Analytics Cookies
+                            </h3>
+                            <p class="text-sm leading-relaxed">
+                                Help us understand how visitors interact with pages, track duration, and analyze source channels.
+                            </p>
+                        </div>
+
+                        <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-3">
+                            <h3 class="font-bold text-white flex items-center gap-2">
+                                <i data-lucide="megaphone" class="text-[#e9c176] w-5 h-5"></i>
+                                Marketing Cookies
+                            </h3>
+                            <p class="text-sm leading-relaxed">
+                                Used to measure the effectiveness of advertising campaigns and customize promotions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C4. Third-Party Services We Use -->
+                <div id="c-third" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">C4.</span> Third-Party Services We Use
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <ul class="space-y-4 pl-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Google Analytics</strong> — collects information about Website usage to help us understand visitor behavior.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Google Tag Manager</strong> — manages and deploys tags (including analytics tags) on the Website.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#e9c176] mt-1.5">•</span>
+                            <span><strong>Meta Pixel</strong> — helps us measure and improve the performance of our marketing activities.</span>
+                        </li>
+                    </ul>
+                    <p class="leading-relaxed mt-4 text-sm text-slate-400">
+                        These third-party providers may process certain technical information (such as your IP address, browser type, and device information) on servers located outside the United Arab Emirates, as described further in our Privacy Policy.
+                    </p>
+                </div>
+
+                <!-- C5. Managing Cookies -->
+                <div id="c-manage" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">C5.</span> Managing Cookies
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        A cookie consent banner or preference centre is not currently implemented on the Website. You can manage or disable cookies at any time through your browser settings. Most browsers allow you to view, delete, and block cookies, including cookies from specific websites. Please note that disabling certain cookies may affect the functionality of the Website or your experience using it.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        We recommend reviewing your browser's help documentation for instructions on managing cookies, or visiting the opt-out tools provided directly by Google and Meta for their respective services.
+                    </p>
+                </div>
+
+                <!-- C6. Changes to This Cookie Policy -->
+                <div id="c-changes" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">C6.</span> Changes to This Cookie Policy
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We may update this Cookie Policy from time to time to reflect changes in the cookies and technologies we use or applicable law. The updated version will be posted on this page with a revised "Last Updated" date.
+                    </p>
+                </div>
+
+                <!-- C7. Contact Us -->
+                <div id="c-contact" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">C7.</span> Contact Us
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        If you have any questions about this Cookie Policy, please contact us at:
+                    </p>
+                    <p class="leading-relaxed text-white font-bold">
+                        General enquiries: <a href="mailto:info@efb.ae" class="text-[#e9c176] hover:underline">info@efb.ae</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        const sections = document.querySelectorAll(".legal-section");
+        const navLinks = document.querySelectorAll(".toc-link");
+
+        function updateActiveLink() {
+            let currentActiveId = "";
+            const threshold = 150;
+
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < threshold) {
+                    currentActiveId = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentActiveId}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", updateActiveLink);
+        updateActiveLink();
+    });
+</script>
+{% endblock %}

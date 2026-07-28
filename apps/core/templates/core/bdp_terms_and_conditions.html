@@ -1,0 +1,722 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .legal-content-container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+    }
+
+    .toc-sticky {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        padding-right: 1rem;
+    }
+
+    /* Scrollbar customization for TOC */
+    .toc-sticky::-webkit-scrollbar {
+        width: 4px;
+    }
+    .toc-sticky::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .toc-sticky::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .toc-sticky::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .toc-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        color: #94a3b8; /* slate-400 */
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-link:hover {
+        color: #e9c176; /* gold */
+        background: rgba(233, 193, 118, 0.05);
+        padding-left: 1.25rem;
+    }
+
+    .toc-link.active {
+        color: #e9c176;
+        background: rgba(233, 193, 118, 0.08);
+        border-left-color: #e9c176;
+        font-weight: 700;
+    }
+
+    .legal-section {
+        scroll-margin-top: 110px;
+        transition: opacity 0.3s ease;
+    }
+
+    .premium-legal-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-blur: md;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        transition: border-color 0.3s ease;
+    }
+
+    .premium-legal-card:hover {
+        border-color: rgba(233, 193, 118, 0.2);
+    }
+
+    @media (max-width: 1024px) {
+        .legal-content-container {
+            grid-template-columns: 1fr;
+        }
+        .toc-column {
+            display: none;
+        }
+    }
+
+    .legal-heading {
+        font-family: 'Newsreader', serif;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    .legal-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+    }
+
+    .legal-table th, .legal-table td {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.75rem 1rem;
+        text-align: left;
+    }
+
+    .legal-table th {
+        background: rgba(233, 193, 118, 0.1);
+        color: #ffffff;
+        font-weight: 600;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+Business Development Partner (BDP) Terms & Conditions | Excellence Financing Broker
+{% endblock %}
+
+{% block content %}
+<!-- Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(12, 28, 42, 0.85), rgba(12, 28, 42, 0.85)), url('{% static 'images/about-us-header.jpg' %}');">
+    </div>
+    <div class="page-banner-content page-banner-animation px-6">
+        <h1 class="page-banner-title text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
+            BDP Terms & Conditions
+        </h1>
+        <p class="page-banner-subtitle text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Governing terms for Business Development Partners participating in the EFB Referral Program.
+        </p>
+        <div class="w-24 h-1 bg-[#e9c176] mx-auto mt-6 rounded-full"></div>
+    </div>
+</section>
+
+<!-- Content Area -->
+<section class="bg-[#0c1c2a] text-slate-300 py-20 px-6 relative overflow-hidden">
+    <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-0 w-96 h-96 bg-amber-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Download Bar / Last Updated Card -->
+        <div class="premium-legal-card p-6 md:p-8 mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-amber-500/10 text-[#e9c176] rounded-xl flex items-center justify-center">
+                    <i data-lucide="calendar" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Last Updated</p>
+                    <p class="text-lg font-bold text-white">27 July 2026</p>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="{% url 'core:download_guide' filename='EFB_BDP_Terms_and_Conditions.pdf' %}"
+                class="partner-btn relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all select-none">
+                <i data-lucide="download" class="w-5 h-5"></i>
+                Download BDP Terms & Conditions (PDF)
+            </a>
+        </div>
+
+        <div class="legal-content-container">
+            <!-- Navigation Index Sidebar -->
+            <div class="toc-column">
+                <div class="toc-sticky">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index</h3>
+                    <nav class="space-y-1">
+                        <a href="#definitions" class="toc-link"><span class="text-xs text-[#e9c176]">01</span> Definitions</a>
+                        <a href="#relationship" class="toc-link"><span class="text-xs text-[#e9c176]">02</span> Nature of Relation</a>
+                        <a href="#role" class="toc-link"><span class="text-xs text-[#e9c176]">03</span> Role & Prohibited</a>
+                        <a href="#eligibility" class="toc-link"><span class="text-xs text-[#e9c176]">04</span> Onboarding</a>
+                        <a href="#referrals" class="toc-link"><span class="text-xs text-[#e9c176]">05</span> Consent & Referral</a>
+                        <a href="#crm" class="toc-link"><span class="text-xs text-[#e9c176]">06</span> CRM Compliance</a>
+                        <a href="#payouts" class="toc-link"><span class="text-xs text-[#e9c176]">07</span> Payouts & Earnings</a>
+                        <a href="#tiers" class="toc-link"><span class="text-xs text-[#e9c176]">08</span> Performance Tiers</a>
+                        <a href="#subbdp" class="toc-link"><span class="text-xs text-[#e9c176]">09</span> Sub-BDP Program</a>
+                        <a href="#clawback" class="toc-link"><span class="text-xs text-[#e9c176]">10</span> Clawback</a>
+                        <a href="#ethics" class="toc-link"><span class="text-xs text-[#e9c176]">11</span> Ethics & Fraud</a>
+                        <a href="#dataprotect" class="toc-link"><span class="text-xs text-[#e9c176]">12</span> Data Obligations</a>
+                        <a href="#taxes" class="toc-link"><span class="text-xs text-[#e9c176]">13</span> Taxes & VAT</a>
+                        <a href="#termination" class="toc-link"><span class="text-xs text-[#e9c176]">14</span> Term & End</a>
+                        <a href="#dispute" class="toc-link"><span class="text-xs text-[#e9c176]">15</span> Governing Law</a>
+                        <a href="#liability" class="toc-link"><span class="text-xs text-[#e9c176]">16</span> Liability & Indemnity</a>
+                        <a href="#general" class="toc-link"><span class="text-xs text-[#e9c176]">17</span> General Terms</a>
+                        <a href="#acceptance" class="toc-link"><span class="text-xs text-[#e9c176]">18</span> Acceptance</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="space-y-12">
+                
+                <!-- Notice -->
+                <div class="bg-amber-500/5 border-l-4 border-[#e9c176] p-6 rounded-r-xl">
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base">
+                        These Terms & Conditions govern the engagement of individuals or entities who register as Business Development Partners ("BDP", "you", "your") with Excellence Financing Broker ("EFB", "Company", "we", "us", "our").
+                    </p>
+                </div>
+
+                <!-- 1. Definitions and Interpretation -->
+                <div id="definitions" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">1.</span> Definitions and Interpretation
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <ul class="space-y-3">
+                        <li><strong>"AECB"</strong> means Al Etihad Credit Bureau, the UAE's federally mandated credit information company.</li>
+                        <li><strong>"CDD"</strong> means the due diligence and identity verification process referred to in Section 4.</li>
+                        <li><strong>"Commission"</strong> means the performance-based payout described in Section 7.</li>
+                        <li><strong>"CRM"</strong> means the EFB customer relationship management platform used to submit, track, and manage Referrals and BDP activity.</li>
+                        <li><strong>"Customer"</strong> means an individual or business entity who is the subject of a Referral and who is, or may become, a customer of a Financial Institution.</li>
+                        <li><strong>"Disbursal"</strong> means the release of approved funds, or activation of an approved facility, by a Financial Institution.</li>
+                        <li><strong>"Financial Institution"</strong> means a licensed bank, finance house, or lender that EFB works with from time to time.</li>
+                        <li><strong>"Partner ID"</strong> means the unique identifier issued to an approved BDP upon successful onboarding.</li>
+                        <li><strong>"Personal Data"</strong> has the meaning given to it in the EFB Privacy Policy.</li>
+                        <li><strong>"Referral"</strong> means a Customer whose details are submitted by a BDP through the CRM.</li>
+                        <li><strong>"Sub-BDP"</strong> means a BDP onboarded into the Program by an existing BDP under Section 9.</li>
+                        <li><strong>"Applicable Law"</strong> means the federal laws of the United Arab Emirates and, where relevant, the laws and regulations of the Emirate in which EFB is licensed.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Nature of the Relationship -->
+                <div id="relationship" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">2.</span> Nature of the Relationship
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        2.1 The BDP is engaged by EFB as an independent referral partner on a principal-to-principal basis. This Agreement does not create, and must not be construed to create, any of the following:
+                    </p>
+                    <ul class="space-y-2 pl-4 list-disc">
+                        <li>An employment relationship of any kind, whether under Federal Decree-Law No. 33 of 2021 (UAE Labour Law) or otherwise.</li>
+                        <li>An agency relationship — the BDP has no authority to act, negotiate, sign, or make representations on behalf of EFB or any Financial Institution.</li>
+                        <li>A representative relationship — the BDP must not describe itself as a representative of EFB or of any Financial Institution.</li>
+                        <li>A partnership, joint venture, or similar arrangement in the legal sense, notwithstanding use of the word "Partner" as a Program label.</li>
+                        <li>A Direct Sales Agent ("DSA") or Sub-DSA arrangement of any kind. The BDP is not appointed, registered, or held out by EFB as a DSA or Sub-DSA of EFB or of any Financial Institution.</li>
+                    </ul>
+                    <p class="leading-relaxed">
+                        2.2 The BDP acts solely on its own behalf and at its own risk. Nothing the BDP says or does binds EFB or any Financial Institution, and the BDP has no authority to give any legal, financial, or regulatory assurance to any Customer.
+                    </p>
+                    <p class="leading-relaxed">
+                        2.3 Requirements in this Agreement relating to CRM usage, reporting, training, or process compliance are conditions of participation in the Program. They do not, individually or collectively, alter the independent nature of the relationship described in this Section 2.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        2.4 The BDP is solely responsible for its own tax position, any business registration, insurance, and compliance with any law applicable to its own activities.
+                    </p>
+                </div>
+
+                <!-- 3. Role, Scope of Services, and Prohibited Conduct -->
+                <div id="role" class="legal-section premium-legal-card p-8 md:p-10 space-y-6">
+                    <div>
+                        <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                            <span class="text-[#e9c176]">3.</span> Role, Scope of Services, and Prohibited Conduct
+                        </h2>
+                        <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-white text-lg">3.1 What EFB Does</h3>
+                        <p class="leading-relaxed">
+                            EFB provides referral coordination and consultancy support services connecting individuals seeking financial products with participating Financial Institutions. For the avoidance of doubt:
+                        </p>
+                        <ul class="space-y-2 pl-4 list-disc text-sm">
+                            <li>EFB is not a lender and does not itself provide any credit, loan, or finance facility.</li>
+                            <li>EFB does not approve, sanction, or guarantee approval of any application.</li>
+                            <li>All final lending, credit, and pricing decisions rest solely and exclusively with the relevant Financial Institution.</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-white text-lg">3.2 Permitted BDP Activities</h3>
+                        <p class="leading-relaxed">
+                            The BDP's role is limited to:
+                        </p>
+                        <ul class="space-y-2 pl-4 list-disc text-sm">
+                            <li>Identifying individuals within the BDP's own personal or professional network who may have a genuine interest in a financial product.</li>
+                            <li>Submitting basic Referral details through the CRM in accordance with Section 5.</li>
+                            <li>Providing reasonable coordination assistance (e.g. helping a Referral locate a requested document) only where and as directed by EFB.</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-red-400 text-lg">3.3 Prohibited Conduct</h3>
+                        <p class="leading-relaxed text-sm">
+                            The BDP must not, under any circumstances:
+                        </p>
+                        <ul class="space-y-2 pl-4 list-disc text-sm text-red-300">
+                            <li>Approve, sanction, or purport to approve any finance facility, or state or imply that approval is guaranteed.</li>
+                            <li>Quote, promise, or negotiate any specific profit rate, interest rate, fee, or repayment term.</li>
+                            <li>Demand, collect, or accept any payment, deposit, or fee of any kind from a customer.</li>
+                            <li>Request or accept OTPs, PINs, passwords, or any other confidential banking credential from customer.</li>
+                            <li>Represent or hold itself out as an employee, agent, representative, partner, or Sub-DSA of EFB or of any Financial Institution.</li>
+                            <li>Submit forged, altered, or misleading documents on behalf of a Customer.</li>
+                            <li>Make any claim prohibited under Section 11 (Compliance & Ethical Conduct).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. Eligibility & Onboarding -->
+                <div id="eligibility" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">4.</span> Eligibility & Onboarding
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        4.1 To register as a BDP, an applicant must:
+                    </p>
+                    <ul class="space-y-2 pl-4 list-disc">
+                        <li>Be at least 18 years of age.</li>
+                        <li>Hold a valid IDENTITY DOCUMENT.</li>
+                        <li>Hold an active UAE bank account in the BDP's own name for receipt of Commission.</li>
+                        <li>Complete the onboarding process.</li>
+                    </ul>
+                    <p class="leading-relaxed">
+                        4.2 EFB may, at its sole discretion, approve, reject, or decline to activate any BDP application, and is not required to give reasons for doing so.
+                    </p>
+                    <p class="leading-relaxed font-semibold">
+                        4.3 Completion of EFB's onboarding orientation is a mandatory prerequisite to activation of a Partner ID.
+                    </p>
+                </div>
+
+                <!-- 5. Referral Submission & Consent Responsibility -->
+                <div id="referrals" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">5.</span> Referral Submission & Consent Responsibility
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        5.1 Before submitting any Referral's personal details to EFB through the CRM or any other channel, the BDP must obtain that individual's clear permission for:
+                    </p>
+                    <ul class="space-y-2 pl-6 list-alpha">
+                        <li>The BDP sharing the individual's basic contact and enquiry details with EFB.</li>
+                        <li>EFB, or those acting on EFB's behalf, contacting the individual about financial products.</li>
+                        <li>EFB processing that individual's data as described in the EFB Privacy Policy.</li>
+                    </ul>
+                    <p class="leading-relaxed">
+                        5.2 By submitting a Referral through the CRM, the BDP represents and warrants to EFB that the permission described in Section 5.1 has been obtained from that individual.
+                    </p>
+                    <p class="leading-relaxed">
+                        5.3 EFB is entitled to rely on the representation and warranty in Section 5.2 and is not required to independently verify that permission before contacting a Referral or otherwise acting on a submission.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        5.4 If EFB becomes aware that a Referral did not give the required permission, or that a Referral has withdrawn permission, EFB may cease processing that individual's data, decline to pay any Commission connected with that Referral, and treat the matter as a compliance issue under Section 11.
+                    </p>
+                    <p class="leading-relaxed font-semibold">
+                        5.5 The BDP must not submit details of any individual under the age of 18, and must not submit a Referral's sensitive documents (Emirates ID, passport, salary certificate, bank statements, etc.).
+                    </p>
+                </div>
+
+                <!-- 6. CRM Usage & Process Compliance -->
+                <div id="crm" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">6.</span> CRM Usage & Process Compliance
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        6.1 All Referrals must be submitted exclusively through the official EFB CRM. EFB is not responsible for any Referral submitted or communicated through any other channel.
+                    </p>
+                    <p class="leading-relaxed">
+                        6.2 The BDP must submit only the categories of Referral data the CRM requests at each stage, and must not submit additional or unnecessary personal data.
+                    </p>
+                    <p class="leading-relaxed">
+                        6.3 Lead ownership, attribution, and Commission calculation are determined solely by the records held in the CRM. The BDP is responsible for checking that Referral submissions and CRM records are accurate.
+                    </p>
+                    <p class="leading-relaxed">
+                        6.4 The BDP's CRM login credentials are personal to the BDP and must not be shared with any other person.
+                    </p>
+                </div>
+
+                <!-- 7. Payouts & Earnings -->
+                <div id="payouts" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">7.</span> Payouts & Earnings
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        7.1 Commission is performance-based and becomes payable only upon successful Disbursal of the relevant finance facility by a Financial Institution. No salary, retainer, or guaranteed minimum income is payable under this Agreement.
+                    </p>
+                    
+                    <p class="leading-relaxed">
+                        7.2 Subject to Section 8 (Tier Structure) and to variation under Section 7.6, the current product-wise Commission structure is:
+                    </p>
+
+                    <table class="legal-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Commission Payout</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Personal Finance</td>
+                                <td>0.80% of the disbursed amount</td>
+                            </tr>
+                            <tr>
+                                <td>Credit Cards</td>
+                                <td>AED 500 per activated card</td>
+                            </tr>
+                            <tr>
+                                <td>Business Finance</td>
+                                <td>0.50% of the finance amount</td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage / Home Finance</td>
+                                <td>0.35% of the finance amount</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="leading-relaxed">
+                        7.3 Commission is provisional until final settlement and remains subject to Section 10 (Claw back & Adjustment).
+                    </p>
+                    <p class="leading-relaxed">
+                        7.4 Commission is processed as soon as possible following confirmed Disbursal by the Financial Institution, and is paid to the BDP's registered UAE IBAN on profile.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        7.5 EFB deducts UAE VAT at the prevailing Federal Tax Authority rate (currently 5%) from Commission payouts where applicable. All payouts are inclusive of VAT. The net Commission amount will be transferred after the applicable VAT deduction.
+                    </p>
+                    <p class="leading-relaxed">
+                        7.6 EFB may amend the Commission structure, tiers, or incentive slabs any time by notice through the CRM or the BDP's registered contact details.
+                    </p>
+                </div>
+
+                <!-- 8. Performance Tier Structure -->
+                <div id="tiers" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">8.</span> Performance Tier Structure
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        8.1 Tiers are calculated by reference to successful Disbursals within the applicable evaluation period:
+                    </p>
+
+                    <table class="legal-table text-sm">
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Criteria (Successful Disbursals)</th>
+                                <th>Reward / Incentive Override</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Silver</td>
+                                <td>1–10 successful Disbursals</td>
+                                <td>Standard Commission rates (Section 7.2)</td>
+                            </tr>
+                            <tr>
+                                <td>Gold</td>
+                                <td>11–20 successful Disbursals</td>
+                                <td>Additional 5% override above standard Commission</td>
+                            </tr>
+                            <tr>
+                                <td>Diamond</td>
+                                <td>21+ successful Disbursals</td>
+                                <td>Additional 10% override above standard Commission</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 9. Sub-BDP Program -->
+                <div id="subbdp" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">9.</span> Sub-BDP Program
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        9.1 The Program allows an existing BDP to onboard further individuals as Sub-BDPs. This is a professional referral network structure. It is not a multi-level marketing scheme, and no BDP earns income solely for recruiting another individual — all override income under this Section is tied to the recruited Sub-BDP's own successfully disbursed business, as set out below.
+                    </p>
+                    <p class="leading-relaxed">
+                        9.2 An existing BDP who onboards a new Sub-BDP is entitled to a 5% override on that Sub-BDP's Commission earnings, calculated and paid only once the Sub-BDP's own Commission has become payable under Section 7.
+                    </p>
+                    <p class="leading-relaxed">
+                        9.3 A BDP may additionally qualify for a monthly incentive based on the number of Active Sub-BDPs onboarded in that calendar month, where an Active Sub-BDP is a Sub-BDP who has sourced a matured business case meeting EFB's eligibility criteria for payout:
+                    </p>
+                    <ul class="space-y-2 pl-4 list-disc text-sm">
+                        <li><strong>1–5 Active Sub-BDPs:</strong> AED 50 per Active Sub-BDP</li>
+                        <li><strong>6 or more Active Sub-BDPs:</strong> AED 100 per Active Sub-BDP</li>
+                    </ul>
+                    <p class="leading-relaxed text-sm text-slate-400 mt-2">
+                        9.4 Sub-BDP incentives are calculated monthly and processed on the 5th day of the following calendar month. The recruited Sub-BDP must have been newly registered with EFB at the time of onboarding.
+                    </p>
+                    <p class="leading-relaxed font-semibold">
+                        9.5 No income is guaranteed under this Section. All override and incentive payments are contingent, performance-based, and may be modified, suspended, or discontinued by EFB at its discretion in accordance with Section 7.6.
+                    </p>
+                </div>
+
+                <!-- 10. Claw back & Adjustment -->
+                <div id="clawback" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">10.</span> Claw back & Adjustment
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        10.1 EFB may withhold, adjust, or recover ("Claw back") a Commission payout, including a Sub-BDP override, where:
+                    </p>
+                    <ul class="space-y-2 pl-4 list-disc text-sm">
+                        <li>A Financial Institution reverses, cancels, or reduces the underlying Disbursal.</li>
+                        <li>The finance facility is subject to early settlement or early default within the review period applicable to the relevant Financial Institution.</li>
+                        <li>The case is found to involve misrepresentation, fraud, a failed CDD check, or a breach of Section 5 (Referral Consent).</li>
+                        <li>The Commission was calculated or paid in error.</li>
+                    </ul>
+                    <p class="leading-relaxed">
+                        10.2 A Claw back may be applied by offsetting future Commission otherwise payable to the BDP, or, where no future Commission is available for offset, recovered directly from the BDP.
+                    </p>
+                    <p class="leading-relaxed">
+                        10.3 A BDP who disputes a Claw back may raise the matter by sending mail to <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a> within 15 working Days. EFB will review the CRM records and the relevant Financial Institution's records and provide a final decision within 7 working days of the dispute being raised.
+                    </p>
+                </div>
+
+                <!-- 11. Compliance & Ethical Conduct -->
+                <div id="ethics" class="legal-section premium-legal-card p-8 md:p-10 space-y-6">
+                    <div>
+                        <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                            <span class="text-[#e9c176]">11.</span> Compliance & Ethical Conduct
+                        </h2>
+                        <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-white text-lg">11.1 Anti-Mis-Selling</h3>
+                        <p class="leading-relaxed text-sm">
+                            The BDP must not make any false, misleading, or unsubstantiated claim to a Customer, including claims of guaranteed approval, no credit-check requirement, instant disbursal without verification, or any implied government endorsement of EFB or its Program.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-white text-lg">11.2 Fraud Prevention</h3>
+                        <p class="leading-relaxed text-sm">
+                            EFB operates a zero-tolerance approach to fraud, forgery, and data manipulation. Where a file submitted by a BDP is identified as fraudulent, forged, or manipulated by a Financial Institution, EFB may immediately terminate the BDP's Partner ID, forfeit pending Commission, and pursue such civil or criminal remedies as may be available under Applicable Law.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-white text-lg">11.3 Ethical Conduct</h3>
+                        <p class="leading-relaxed text-sm">
+                            The BDP must not impersonate a bank official, EFB employee, or government representative; must not claim any "special approval" authority; and must not misuse the EFB name, brand, or logo.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-white text-lg">11.4 Monitoring & Audit</h3>
+                        <p class="leading-relaxed text-sm">
+                            EFB may audit, review, and verify any file, application, or CRM record for compliance purposes, and may request supporting documentation from the BDP at any stage. EFB may suspend a Partner ID during an active compliance investigation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 12. Data Protection & Confidentiality (BDP Obligations) -->
+                <div id="dataprotect" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">12.</span> Data Protection & Confidentiality (BDP Obligations)
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        12.1 The BDP's obligations regarding Referral consent are set out in Section 5. This Section 12 sets out the BDP's further data handling obligations.
+                    </p>
+                    <p class="leading-relaxed">
+                        12.2 The BDP must not request or retain OTPs, PINs, passwords, or other confidential banking credentials under any circumstances.
+                    </p>
+                    <p class="leading-relaxed">
+                        12.3 On termination of this Agreement, the BDP must cease using and, where technically applicable, delete any Customer or Referral personal data in the BDP's possession outside the CRM.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        12.5 This Section 12 should be read together with, and does not limit, the EFB Privacy Policy, which governs EFB's own processing of personal data as a data controller.
+                    </p>
+                </div>
+
+                <!-- 13. Taxes & Statutory Compliance -->
+                <div id="taxes" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">13.</span> Taxes & Statutory Compliance
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        13.1 The BDP is solely responsible for determining and meeting its own UAE VAT registration obligations.
+                    </p>
+                    <p class="leading-relaxed">
+                        13.2 Where the BDP is VAT-registered, the BDP must provide EFB with a valid Tax Invoice in respect of Commission earned, in the form required under Applicable Law.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        13.3 The BDP is solely responsible for its own compliance with Federal Decree-Law No. 47 of 2022 (Corporate Tax) and any other tax law applicable to its earnings under this Agreement. EFB does not provide tax advice and recommends the BDP obtain independent professional advice.
+                    </p>
+                </div>
+
+                <!-- 14. Term & Termination -->
+                <div id="termination" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">14.</span> Term & Termination
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        14.1 This Agreement takes effect on the date the BDP's Partner ID is activated and continues until terminated in accordance with this Section 14. Either party may terminate this Agreement at any time by giving 7 days notice.
+                    </p>
+                    <p class="leading-relaxed">
+                        14.2 EFB may suspend or terminate this Agreement immediately and without notice where the BDP:
+                    </p>
+                    <ul class="space-y-2 pl-4 list-disc text-sm">
+                        <li>Breaches this Agreement or any EFB policy referred to in it.</li>
+                        <li>Engages in misrepresentation, fraud, forgery, or coercive conduct toward a customer.</li>
+                        <li>Makes a false or misleading claim of the kind described in Section 11.1.</li>
+                        <li>Exposes EFB or a Financial Institution to material legal, regulatory, or reputational risk.</li>
+                    </ul>
+                    <p class="leading-relaxed mt-2 text-sm text-slate-400">
+                        14.3 On termination, the BDP remains entitled only to Commission for business that was genuinely sourced, sanctioned, and disbursed prior to the termination date, subject always to Section 10 (Clawback). No Commission is payable in respect of pending, rejected, or clawed-back cases.
+                    </p>
+                    <p class="leading-relaxed">
+                        14.4 Sections 2, 5, 10, 11, 12, 13, 15, and 16 survive termination of this Agreement.
+                    </p>
+                </div>
+
+                <!-- 15. Governing Law & Dispute Resolution -->
+                <div id="dispute" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">15.</span> Governing Law & Dispute Resolution
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        15.1 This Agreement is governed by the laws of the United Arab Emirates as applied in the Emirate of Dubai.
+                    </p>
+                    <p class="leading-relaxed font-semibold">
+                        15.2 Any dispute concerning a Commission amount or Clawback should first be raised with support at <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>. EFB will review records and aim to decide within 7 working days.
+                    </p>
+                    <p class="leading-relaxed">
+                        15.3 Any dispute arising out of or in connection with this Agreement that is not resolved under Section 15.2 shall be referred to and finally resolved by UAE arbitration administered with the seat and venue of arbitration in Dubai, United Arab Emirates, conducted in the English language. The arbitral award shall be final and binding on the parties.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        15.4 Nothing in this Section 15 prevents either party from seeking interim or injunctive relief from the competent courts of Dubai in appropriate circumstances.
+                    </p>
+                </div>
+
+                <!-- 16. Limitation of Liability & Indemnity -->
+                <div id="liability" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">16.</span> Limitation of Liability & Indemnity
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        16.1 EFB is not liable for any rejection, delay, or modification of terms by a Financial Institution; any final credit, pricing, or approval decision made by a Financial Institution; or any indirect, incidental, or consequential loss, including loss of anticipated earnings.
+                    </p>
+                    <p class="leading-relaxed">
+                        16.2 The BDP indemnifies and holds EFB harmless against any claim, loss, fine, or liability arising from: (a) the BDP's breach of Section 5 (Referral Consent); (b) the BDP's fraud, misrepresentation, or unauthorized conduct; or (c) the BDP's breach of Section 12 (Data Protection & Confidentiality).
+                    </p>
+                </div>
+
+                <!-- 17. General -->
+                <div id="general" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">17.</span> General
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        17.1 Entire Agreement: This Agreement, together with the EFB Privacy Policy, constitutes the entire agreement between the parties regarding the Program and supersedes all prior discussions.
+                    </p>
+                    <p class="leading-relaxed">
+                        17.2 Amendment: EFB may update this Agreement from time to time by notice through the CRM or the BDP's registered contact details. Continued participation in the Program constitutes acceptance of the updated Agreement.
+                    </p>
+                    <p class="leading-relaxed">
+                        17.3 Assignment: The BDP may not assign or transfer this Agreement or any right under it without EFB's prior written consent.
+                    </p>
+                    <p class="leading-relaxed">
+                        17.4 Severability: If any provision of this Agreement is held invalid or unenforceable, the remaining provisions continue in full force and effect.
+                    </p>
+                    <p class="leading-relaxed">
+                        17.5 No Waiver: A failure by either party to enforce a provision of this Agreement is not a waiver of that provision.
+                    </p>
+                    <p class="leading-relaxed text-sm text-slate-400">
+                        17.6 Language: This Agreement is issued in English. The English version prevails over any translation.
+                    </p>
+                </div>
+
+                <!-- 18. Acceptance & Declaration -->
+                <div id="acceptance" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">18.</span> Acceptance & Declaration
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed font-semibold">
+                        By clicking "Agree", completing registration, or continuing to access the EFB CRM, the BDP confirms that they have read, understood, and accepted this Agreement in full, and agree to comply with it together with all EFB policies referred to in it.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        const sections = document.querySelectorAll(".legal-section");
+        const navLinks = document.querySelectorAll(".toc-link");
+
+        function updateActiveLink() {
+            let currentActiveId = "";
+            const threshold = 150;
+
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < threshold) {
+                    currentActiveId = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentActiveId}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", updateActiveLink);
+        updateActiveLink();
+    });
+</script>
+{% endblock %}

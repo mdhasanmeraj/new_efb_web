@@ -21,6 +21,11 @@ class StaticViewSitemap(Sitemap):
             "core:our_leaders",
             "core:bdp_guides",
             "core:bdp_faq",
+            "core:terms_and_conditions",
+            "core:privacy_cookies_policy",
+            "core:disclaimer",
+            "core:bdp_terms_and_conditions",
+            "core:bdp_privacy_policy",
         ]
 
     def location(self, item):

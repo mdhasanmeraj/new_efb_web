@@ -1,0 +1,265 @@
+--- PAGE 1 ---
+ 
+ 
+EXCELLENCE FINANCING BROKER ("EFB") 
+BUSINESS DEVELOPMENT PARTNER (BDP) TERMS & CONDITIONS 
+Last Updated: 27/07/2026  
+ 
+These Terms & Conditions ("Terms", "Agreement") govern the engagement of individuals or entities 
+who register as Business Development Partners ("BDP", "you", "your") with Excellence Financing Broker 
+("EFB", "Company", "we", "us", "our") in connection with the EFB Business Development Partner 
+Program (the "Program") operated through the EFB customer relationship management platform (the 
+"CRM") at app.efb.ae and any successor platform. 
+By completing registration, submitting onboarding documentation, accessing the CRM, or continuing to 
+participate in the Program, you confirm that you have read, understood, and agree to be bound by these 
+Terms. 
+1. Definitions and Interpretation 
+● "AECB" means Al Etihad Credit Bureau, the UAE's federally mandated credit information 
+company. 
+● "CDD" means the due diligence and identity verification process referred to in Section 4. 
+● "Commission" means the performance-based payout described in Section 7. 
+● "CRM" means the EFB customer relationship management platform used to submit, track, and 
+manage Referrals and BDP activity. 
+● "Customer" means an individual or business entity who is the subject of a Referral and who is, 
+or may become, a customer of a Financial Institution. 
+● "Disbursal" means the release of approved funds, or activation of an approved facility, by a 
+Financial Institution. 
+● "Financial Institution" means a licensed bank, finance house, or lender that EFB works with 
+from time to time. 
+● "Partner ID" means the unique identifier issued to an approved BDP upon successful 
+onboarding. 
+● "Personal Data" has the meaning given to it in the EFB Privacy Policy. 
+● "Referral" means a Customer whose details are submitted by a BDP through the CRM. 
+● "Sub-BDP" means a BDP onboarded into the Program by an existing BDP under Section 9. 
+● "Applicable Law" means the federal laws of the United Arab Emirates and, where relevant, the 
+laws and regulations of the Emirate in which EFB is licensed. --- PAGE 2 ---
+Drafting Note: Keep this glossary aligned with the Privacy Policy and Program document glossaries — all three 
+should share identical definitions for shared terms. 
+2. Nature of the Relationship 
+2.1 The BDP is engaged by EFB as an independent referral partner on a principal-to-principal basis. This 
+Agreement does not create, and must not be construed to create, any of the following: 
+● an employment relationship of any kind, whether under Federal Decree-Law No. 33 of 2021 
+(UAE Labour Law) or otherwise; 
+● an agency relationship — the BDP has no authority to act, negotiate, sign, or make 
+representations on behalf of EFB or any Financial Institution; 
+● a representative relationship — the BDP must not describe itself as a representative of EFB or of 
+any Financial Institution; 
+● a partnership, joint venture, or similar arrangement in the legal sense, notwithstanding use of 
+the word "Partner" as a Program label; or 
+● a Direct Sales Agent ("DSA") or Sub-DSA arrangement of any kind. The BDP is not appointed, 
+registered, or held out by EFB as a DSA or Sub-DSA of EFB or of any Financial Institution. 
+2.2 The BDP acts solely on its own behalf and at its own risk. Nothing the BDP says or does binds EFB or 
+any Financial Institution, and the BDP has no authority to give any legal, financial, or regulatory 
+assurance to any Customer. 
+2.3 Requirements in this Agreement relating to CRM usage, reporting, training, or process compliance 
+are conditions of participation in the Program. They do not, individually or collectively, alter the 
+independent nature of the relationship described in this Section 2. 
+2.4 The BDP is solely responsible for its own tax position, any business registration, insurance, and 
+compliance with any law applicable to its own activities. 
+3. Role, Scope of Services, and Prohibited Conduct 
+3.1 What EFB Does 
+3.1 EFB provides referral coordination and consultancy support services connecting individuals seeking 
+financial products with participating Financial Institutions. For the avoidance of doubt: 
+● EFB is not a lender and does not itself provide any credit, loan, or finance facility; 
+● EFB does not approve, sanction, or guarantee approval of any application; and 
+● all final lending, credit, and pricing decisions rest solely and exclusively with the relevant 
+Financial Institution. 
+3.2 Permitted BDP Activities 
+3.2 The BDP's role is limited to: 
+● identifying individuals within the BDP's own personal or professional network who may have a 
+genuine interest in a financial product; --- PAGE 3 ---
+● submitting basic Referral details through the CRM in accordance with Section 5; and 
+● providing reasonable coordination assistance (e.g. helping a Referral locate a requested 
+document) only where and as directed by EFB. 
+3.3 Prohibited Conduct 
+3.3 The BDP must not, under any circumstances: 
+● approve, sanction, or purport to approve any finance facility, or state or imply that approval is 
+guaranteed; 
+● quote, promise, or negotiate any specific profit rate, interest rate, fee, or repayment term; 
+● demand, collect, or accept any payment, deposit, or fee of any kind from a customer; 
+● request or accept OTPs, PINs, passwords, or any other confidential banking credential from 
+customer; 
+● represent or hold itself out as an employee, agent, representative, partner, or Sub-DSA of EFB or 
+of any Financial Institution; 
+● submit forged, altered, or misleading documents on behalf of a Customer; or 
+● make any claim prohibited under Section 11 (Compliance & Ethical Conduct). 
+4. Eligibility & Onboarding 
+4.1 To register as a BDP, an applicant must: 
+● be at least 18 years of age; 
+● hold a valid IDENTITY DOCUMENT 
+● hold an active UAE bank account in the BDP's own name for receipt of Commission; and 
+● complete the onboarding process. 
+4.2 EFB may, at its sole discretion, approve, reject, or decline to activate any BDP application, and is not 
+required to give reasons for doing so, save where Applicable Law provides otherwise. 
+4.3 Completion of EFB's onboarding orientation is a mandatory prerequisite to activation of a Partner ID. 
+5. Referral Submission & Consent Responsibility 
+5.1 Before submitting any Referral's personal details to EFB through the CRM or any other channel, the 
+BDP must obtain that individual's clear permission for: (a) the BDP sharing the individual's basic contact 
+and enquiry details with EFB; (b) EFB, or those acting on EFB's behalf, contacting the individual about 
+financial products; and (c) EFB processing that individual's data as described in the EFB Privacy Policy. 
+5.2 By submitting a Referral through the CRM, the BDP represents and warrants to EFB that the 
+permission described in Section 5.1 has been obtained from that individual. 
+5.3 EFB is entitled to rely on the representation and warranty in Section 5.2 and is not required to 
+independently verify that permission before contacting a Referral or otherwise acting on a submission. --- PAGE 4 ---
+5.4 If EFB becomes aware that a Referral did not give the required permission, or that a Referral has 
+withdrawn permission, EFB may cease processing that individual's data, decline to pay any Commission 
+connected with that Referral, and treat the matter as a compliance issue under Section 11. 
+5.5 The BDP must not submit details of any individual under the age of 18, and must not submit a 
+Referral's sensitive documents (Emirates ID, passport, salary certificate, bank statements, etc.)  
+6. CRM Usage & Process Compliance 
+6.1 All Referrals must be submitted exclusively through the official EFB CRM. EFB is not responsible for 
+any Referral submitted or communicated through any other channel. 
+6.2 The BDP must submit only the categories of Referral data the CRM requests at each stage, and must 
+not submit additional or unnecessary personal data. 
+6.3 Lead ownership, attribution, and Commission calculation are determined solely by the records held 
+in the CRM. The BDP is responsible for checking that Referral submissions and CRM records are 
+accurate. 
+6.4 The BDP's CRM login credentials are personal to the BDP and must not be shared with any other 
+person. 
+7. Payouts & Earnings 
+7.1 Commission is performance-based and becomes payable only upon successful Disbursal of the 
+relevant finance facility by a Financial Institution. No salary, retainer, or guaranteed minimum income is 
+payable under this Agreement. 
+7.2 Subject to Section 8 (Tier Structure) and to variation under Section 7.6, the current product-wise 
+Commission structure is: 
+Product Commission 
+Personal Finance 0.80% of the disbursed amount 
+Credit Cards AED 500 per activated card 
+Business Finance 0.50% of the finance amount 
+Mortgage / Home Finance 0.35% of the finance amount 
+ 
+7.3 Commission is provisional until final settlement and remains subject to Section 10 (Claw back & 
+Adjustment). 
+7.4 Commission is processed as soon as possible following confirmed Disbursal by the Financial 
+Institution, and is paid to the BDP's registered UAE IBAN on profile. 
+7.5 EFB deducts UAE VAT at the prevailing Federal Tax Authority rate (currently 5%) from Commission 
+payouts where applicable. All payouts are inclusive of VAT. The net Commission amount will be 
+transferred after the applicable VAT deduction. 
+7.6 EFB may amend the Commission structure, tiers, or incentive slabs any time by notice through the 
+CRM or the BDP's registered contact details.  --- PAGE 5 ---
+8. Performance Tier Structure 
+8.1 Tiers are calculated by reference to successful Disbursals within the applicable evaluation period: 
+Tier Criteria Reward 
+Silver 1–10 successful Disbursals Standard Commission rates (Section 
+7.2) 
+Gold 11–20 successful Disbursals Additional 5% override above 
+standard Commission 
+Diamond 21+ successful Disbursals Additional 10% override above 
+standard Commission 
+9. Sub-BDP Program 
+9.1 The Program allows an existing BDP to onboard further individuals as Sub-BDPs. This is a professional 
+referral network structure. It is not a multi-level marketing scheme, and no BDP earns income solely for 
+recruiting another individual — all override income under this Section is tied to the recruited Sub-BDP's 
+own successfully disbursed business, as set out below. 
+9.2 An existing BDP who onboards a new Sub-BDP is entitled to a 5% override on that Sub-BDP's 
+Commission earnings, calculated and paid only once the Sub-BDP's own Commission has become 
+payable under Section 7. 
+9.3 A BDP may additionally qualify for a monthly incentive based on the number of Active Sub-BDPs 
+onboarded in that calendar month, where an Active Sub-BDP is a Sub-BDP who has sourced a matured 
+business case meeting EFB's eligibility criteria for payout: 
+● 1–5 Active Sub-BDPs: AED 50 per Active Sub-BDP 
+● 6 or more Active Sub-BDPs: AED 100 per Active Sub-BDP 
+ 
+9.4 Sub-BDP incentives are calculated monthly and processed on the 5th day of the following calendar 
+month. The recruited Sub-BDP must have been newly registered with EFB at the time of onboarding. 
+9.5 No income is guaranteed under this Section. All override and incentive payments are contingent, 
+performance-based, and may be modified, suspended, or discontinued by EFB at its discretion in 
+accordance with Section 7.6. 
+10. Claw back & Adjustment 
+10.1 EFB may withhold, adjust, or recover ("Claw back") a Commission payout, including a Sub-BDP 
+override, where: 
+● a Financial Institution reverses, cancels, or reduces the underlying Disbursal; 
+● the finance facility is subject to early settlement or early default within the review period 
+applicable to the relevant Financial Institution; --- PAGE 6 ---
+● the case is found to involve misrepresentation, fraud, a failed CDD check, or a breach of Section 
+5 (Referral Consent); or 
+● the Commission was calculated or paid in error. 
+10.2 A Claw back may be applied by offsetting future Commission otherwise payable to the BDP, or, 
+where no future Commission is available for offset, recovered directly from the BDP. 
+10.3 A BDP who disputes a Claw back may raise the matter by sending mail to support@efb.ae within 
+15 working Days. EFB will review the CRM records and the relevant Financial Institution's records and 
+provide a final decision within 7 working days of the dispute being raised, consistent with Section 16.2. 
+11. Compliance & Ethical Conduct 
+11.1 Anti-Mis-Selling 
+11.1 The BDP must not make any false, misleading, or unsubstantiated claim to a Customer, including 
+claims of guaranteed approval, no credit-check requirement, instant disbursal without verification, or 
+any implied government endorsement of EFB or its Program. 
+11.2 Fraud Prevention 
+11.2 EFB operates a zero-tolerance approach to fraud, forgery, and data manipulation. Where a file 
+submitted by a BDP is identified as fraudulent, forged, or manipulated by a Financial Institution, EFB may 
+immediately terminate the BDP's Partner ID, forfeit pending Commission, and pursue such civil or 
+criminal remedies as may be available under Applicable Law. 
+11.3 Ethical Conduct 
+11.3 The BDP must not impersonate a bank official, EFB employee, or government representative; must 
+not claim any "special approval" authority; and must not misuse the EFB name, brand, or logo. 
+11.4 Monitoring & Audit 
+11.4 EFB may audit, review, and verify any file, application, or CRM record for compliance purposes, and 
+may request supporting documentation from the BDP at any stage. EFB may suspend a Partner ID during 
+an active compliance investigation. 
+12. Data Protection & Confidentiality (BDP Obligations)  
+12.1 The BDP's obligations regarding Referral consent are set out in Section 5. This Section 12 sets out 
+the BDP's further data handling obligations. 
+12.2 The BDP must not request or retain OTPs, PINs, passwords, or other confidential banking 
+credentials under any circumstances. 
+12.3 On termination of this Agreement, the BDP must cease using and, where technically applicable, 
+delete any Customer or Referral personal data in the BDP's possession outside the CRM. 
+12.5 This Section 12 should be read together with, and does not limit, the EFB Privacy Policy, which 
+governs EFB's own processing of personal data as a data controller. --- PAGE 7 ---
+13. Taxes & Statutory Compliance 
+13.1 The BDP is solely responsible for determining and meeting its own UAE VAT registration 
+obligations.  
+13.2 Where the BDP is VAT-registered, the BDP must provide EFB with a valid Tax Invoice in respect of 
+Commission earned, in the form required under Applicable Law. 
+13.3 The BDP is solely responsible for its own compliance with Federal Decree-Law No. 47 of 2022 
+(Corporate Tax) and any other tax law applicable to its earnings under this Agreement. EFB does not 
+provide tax advice and recommends the BDP obtain independent professional advice. 
+14. Term & Termination 
+14.1 This Agreement takes effect on the date the BDP's Partner ID is activated and continues until 
+terminated in accordance with this Section 14. Either party may terminate this Agreement at any time 
+by giving 7 days notice. 
+14.2 EFB may suspend or terminate this Agreement immediately and without notice where the BDP: 
+● breaches this Agreement or any EFB policy referred to in it; 
+● engages in misrepresentation, fraud, forgery, or coercive conduct toward a customer; 
+● makes a false or misleading claim of the kind described in Section 11.1; or 
+● exposes EFB or a Financial Institution to material legal, regulatory, or reputational risk. 
+14.3 On termination, the BDP remains entitled only to Commission for business that was genuinely 
+sourced, sanctioned, and disbursed prior to the termination date, subject always to Section 10 
+(Clawback). No Commission is payable in respect of pending, rejected, or clawed-back cases. 
+14.4 Sections 2, 5, 10, 11, 12, 13, 15, and 16 survive termination of this Agreement. 
+15. Governing Law & Dispute Resolution 
+15.1 This Agreement is governed by the federal laws of the United Arab Emirates as applied in the 
+Emirate of Dubai. 
+15.2 Any dispute concerning a Commission amount or Clawback should first be raised with the BDP's at 
+support@efb.ae. EFB will review the relevant CRM records and Financial Institution records and aim to 
+provide a decision within 7 working days, without prejudice to either party's rights under Section 15.3. 
+15.3 Any dispute arising out of or in connection with this Agreement that is not resolved under Section 
+15.2 shall be referred to and finally resolved by UAE arbitration administered with the seat and venue of 
+arbitration in Dubai, United Arab Emirates, conducted in the English language. The arbitral award shall 
+be final and binding on the parties. 
+15.4 Nothing in this Section 15 prevents either party from seeking interim or injunctive relief from the 
+competent courts of Dubai in appropriate circumstances. --- PAGE 8 ---
+16. Limitation of Liability & Indemnity 
+16.1 EFB is not liable for any rejection, delay, or modification of terms by a Financial Institution; any final 
+credit, pricing, or approval decision made by a Financial Institution; or any indirect, incidental, or 
+consequential loss, including loss of anticipated earnings. 
+16.2 The BDP indemnifies and holds EFB harmless against any claim, loss, fine, or liability arising from: 
+(a) the BDP's breach of Section 5 (Referral Consent); (b) the BDP's fraud, misrepresentation, or 
+unauthorized conduct; or (c) the BDP's breach of Section 12 (Data Protection & Confidentiality). 
+17. General 
+17.1 Entire Agreement: This Agreement, together with the EFB Privacy Policy and any Program 
+document referred to in it, constitutes the entire agreement between the parties regarding the Program 
+and supersedes all prior discussions on the subject. 
+17.2 Amendment: EFB may update this Agreement from time to time by notice through the CRM or the 
+BDP's registered contact details. Continued participation in the Program after such notice constitutes 
+acceptance of the updated Agreement. 
+17.3 Assignment: The BDP may not assign or transfer this Agreement or any right under it without EFB's 
+prior written consent. EFB may assign this Agreement to an affiliate or successor entity. 
+17.4 Severability: If any provision of this Agreement is held invalid or unenforceable, the remaining 
+provisions continue in full force and effect. 
+17.5 No Waiver: A failure by either party to enforce a provision of this Agreement is not a waiver of that 
+provision. 
+17.6 Language: This Agreement is issued in English. The English version prevails over any translation. 
+18. Acceptance & Declaration 
+By clicking "Agree", completing registration, or continuing to access the EFB CRM, the BDP confirms that 
+they have read, understood, and accepted this Agreement in full, and agree to comply with it together 
+with all EFB policies referred to in it. 

@@ -278,3 +278,39 @@ h1 {
 .btn-pop:hover {
     transform: scale(1.05);
 }
+
+/* ==========================================================================
+   Mobile Performance Overrides (Category 5)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Reduce expensive backdrop filters */
+    .navbar, .dropdown-menu, .glass-modal-box, .glass-popup-box, .glass-card, [class*="backdrop-blur"] {
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+    }
+
+    /* Disable infinite heavy animations to save battery/GPU */
+    .page-banner-bg, 
+    .marquee-text, 
+    .handshake-bg, 
+    .floating-card, 
+    .glow-circle {
+        animation: none !important;
+    }
+
+    /* Disable background-attachment: fixed (notoriously slow on mobile Safari) */
+    .navy-gradient-section,
+    .page-banner-bg,
+    .parallax-bg {
+        background-attachment: scroll !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -94,7 +94,7 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 </style>
-<script src="https://cdn.tailwindcss.com"></script>
+
 {% endblock %}
 
 
@@ -321,12 +321,11 @@ About Us | Excellence Financing Broker
     lucide.createIcons();
 
     const observerOptions = { threshold: 0.1 };
-    const revealObserver = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active-reveal');
-            } else {
-                entry.target.classList.remove('active-reveal');
+                obs.unobserve(entry.target);
             }
         });
     }, observerOptions);

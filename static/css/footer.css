@@ -1,0 +1,200 @@
+:root {
+    --efb-blue: #0056b3;
+    --efb-red: #e31e24;
+    --efb-dark: #0f172a;
+    /* Deeper professional navy */
+}
+
+
+
+.footer-bg {
+    background-color: var(--efb-dark);
+    position: relative;
+    overflow: hidden;
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Improved "lubta" style background watermark */
+.watermark-container {
+    position: absolute;
+    bottom: -50px;
+    right: -20px;
+    display: flex;
+    align-items: center;
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.watermark-text {
+    font-size: clamp(7rem, 18vw, 18rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    margin-right: 20px;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.watermark-logo {
+    height: 250px;
+    filter: brightness(0) invert(1);
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+.footer-content {
+    position: relative;
+    z-index: 10;
+}
+
+.footer-heading {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--efb-red);
+}
+
+.link-item {
+    color: #94a3b8;
+    /* slate-400 */
+    transition: all 0.2s ease-in-out;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.link-item {
+    color: #94a3b8;
+    transition:
+        color .2s ease,
+        transform .2s ease;
+
+    display: inline-flex;
+    align-items: center;
+
+    transform: translateZ(0);
+}
+
+.link-item:hover {
+    color: white;
+    transform: translate3d(4px, 0, 0);
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, .05);
+
+    color: #cbd5e1;
+
+    transition:
+        background-color .3s,
+        transform .3s,
+        box-shadow .3s;
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Transitions for SVG paths inside icons */
+.social-icon svg path {
+    transition: fill 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Hover Backgrounds for Specific Social Media Brands */
+
+/* X (formerly Twitter) Brand Hover styling */
+/* .social-icon-x:hover {
+        background-color: #ffffff !important;
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icon-x:hover svg path {
+        fill: #000000 !important;
+    } */
+
+/* Facebook Brand Hover styling */
+.social-icon-facebook:hover {
+    background-color: #1877F2 !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(24, 119, 242, 0.3);
+}
+
+.social-icon-facebook:hover svg path {
+    fill: #ffffff !important;
+}
+
+/* Instagram Sunset Gradient Brand Hover styling */
+.social-icon-instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(220, 39, 67, 0.3);
+}
+
+.social-icon-instagram:hover svg path {
+    fill: #ffffff !important;
+}
+
+/* LinkedIn Corporate Blue Brand Hover styling */
+.social-icon-linkedin:hover {
+    background-color: #0077B5 !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 119, 181, 0.3);
+}
+
+.social-icon-linkedin:hover svg path {
+    fill: #ffffff !important;
+}
+
+/* Google Clean White Brand Hover styling (keeping Multi-Colored paths as is) */
+.social-icon-google:hover {
+    background-color: #ffffff !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+}
+
+/* Specific X logo adjustment if needed */
+.fa-x-twitter {
+    font-size: 1.1rem;
+}
+
+@media (hover: none) {
+
+    .social-icon:hover,
+    .link-item:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+}

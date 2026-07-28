@@ -44,11 +44,20 @@
         rel="stylesheet">
 
     <!-- Optional: Global FontAwesome or Icons if needed -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
 
     <!-- Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            rel="stylesheet" />
+    </noscript>
 
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -56,7 +65,12 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/loan_calculator.css' %}">
 
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <style>
         body {
             font-family: "Manrope", sans-serif !important;
@@ -212,11 +226,11 @@
 
     <!-- Floating UAE Loan Calculator Widget -->
     {% include 'core/partials/loan_calculator.html' %}
-
+    <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/loan_calculator.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+    <script src="{% static 'js/loan_calculator.js' %}" defer></script>
     {% block extra_js %}{% endblock %}
 </body>
 

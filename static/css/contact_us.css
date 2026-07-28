@@ -1,0 +1,1139 @@
+:root {
+    --navy: #0c1c3c;
+    --navy-fade: #003366;
+    /* Faded Navy for Section 6 */
+    --gold: #c5a059;
+    --text: #333333;
+    --light-grey: #f8f9fb;
+    --border: #e1e4e8;
+    --white: #ffffff;
+    --whatsapp: #25D366;
+}
+
+
+/* --- 1st Section: Animated Hero CSS removed to use global page-banner class --- */
+
+/* --- 2nd Section: Contact Cards --- */
+.details-section {
+    padding: 100px 20px;
+    background: var(--light-grey);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--white);
+    padding: 40px 30px;
+    text-align: center;
+    border-bottom: 4px solid transparent;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-bottom-color: var(--gold);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.card i {
+    font-size: 30px;
+    color: var(--navy);
+    margin-bottom: 25px;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--navy);
+}
+
+.card p,
+.card a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: block;
+}
+
+/* --- STREAMING_CHUNK: Adding glassmorphism layout styles... --- */
+/* --- 2nd Section Custom Split Grid --- */
+.details-split-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.details-2x2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.advisory-card {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-fade) 100%);
+    color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid var(--gold);
+    box-shadow: 0 15px 35px rgba(12, 28, 60, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.advisory-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.advisory-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(197, 160, 89, 0.25);
+}
+
+.advisory-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.advisory-card p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.advisory-btn {
+    background: var(--gold);
+    color: var(--white);
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+}
+
+.advisory-btn:hover {
+    background: #b08d4a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 160, 89, 0.6);
+}
+
+/* Glassmorphic Modal & Overlay Styles */
+.glass-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 28, 60, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+@supports (-webkit-touch-callout:none) {
+
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+
+}
+
+.glass-modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.glass-modal-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    padding: 35px;
+    position: relative;
+    color: var(--white);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-modal-overlay.show .glass-modal-box {
+    transform: scale(1);
+}
+
+.glass-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.glass-close-btn:hover {
+    color: var(--gold);
+}
+
+.glass-modal-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.glass-form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.glass-form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+}
+
+.glass-input,
+.glass-select {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-input:focus,
+.glass-select:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(197, 160, 89, 0.4);
+}
+
+.glass-select option {
+    background: var(--navy);
+    color: white;
+}
+
+.glass-disclaimer {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.glass-disclaimer a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.glass-submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+}
+
+.glass-submit-btn:hover {
+    background: #b08d4a;
+    transform: translateY(-1px);
+}
+
+.glass-submit-btn {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.glass-submit-btn:disabled {
+
+    opacity: .7;
+    cursor: not-allowed;
+
+}
+
+.btn-loader {
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+/* Glassmorphic Success Pop-up Styles */
+.glass-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 28, 60, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.glass-popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.glass-popup-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-popup-overlay.show .glass-popup-box {
+    transform: scale(1);
+}
+
+.glass-popup-icon {
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.5));
+}
+
+/* --- 3rd Section: Sticky Image Background --- */
+.interaction-section {
+    padding: 120px 20px;
+    position: relative;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+        url("../images/contact-us-related.avif ") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.social-sticky-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.social-link:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: translateX(10px);
+}
+
+.whatsapp-col {
+    background: var(--navy);
+    color: var(--white);
+    padding: 60px 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.whatsapp-col h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.whatsapp-col p {
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--whatsapp);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- 4th Section: Map --- */
+.map-section {
+    height: 500px;
+    width: 100%;
+}
+
+/* --- STREAMING_CHUNK:Styling marquee elements... --- */
+/* --- Testimonials Marquee Section --- */
+.testimonials-section {
+    padding: 100px 0;
+    background-color: var(--light-grey);
+    overflow: hidden;
+    width: 100%;
+}
+
+.testimonials-section h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.testimonials-section p.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+    padding: 0 20px;
+}
+
+.marquee-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+/* Fade overlay effects for modern edge blending */
+.marquee-container::before,
+.marquee-container::after {
+    content: "";
+    height: 100%;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    top: 0;
+}
+
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--light-grey) 0%, rgba(248, 249, 251, 0) 100%);
+}
+
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--light-grey) 0%, rgba(248, 249, 251, 0) 100%);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 30px;
+    animation: scrollMarquee 70s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@supports (-webkit-touch-callout:none) {
+
+    .marquee-track {
+        animation: none;
+    }
+
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.review-card {
+    width: 420px;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(12, 28, 60, 0.04);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(12, 28, 60, 0.08);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviewer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: 2px solid var(--gold);
+}
+
+.reviewer-details h4 {
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.reviewer-details span {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.review-stars {
+    color: #ffc107;
+    font-size: 0.95rem;
+    display: flex;
+    gap: 2px;
+}
+
+.review-body p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    font-style: italic;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- 5th Section: Sticky Image Background --- */
+.rating-section {
+    padding: 120px 20px;
+    position: relative;
+    background: linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+    url("{% static 'images/reviews-bg.avif' %}") no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.rating-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: visible;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.image-container.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Pop-out effect on hover for the image container */
+.image-container:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.main-office-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.image-container:hover .main-office-img {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Jumping animation for the Rate Us card */
+@keyframes jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.overlap-card {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--gold);
+    color: var(--white);
+    padding: 25px 35px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: jump 2s infinite ease-in-out;
+    z-index: 5;
+}
+
+.overlap-card span {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stars {
+    color: #ffeb3b;
+    font-size: 1.2rem;
+}
+
+.rating-content-col {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 1.2s ease-out;
+}
+
+.rating-content-col.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.rating-content-col h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+}
+
+.rating-content-col p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.google-rate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.google-rate-btn:hover {
+    background: var(--gold);
+}
+
+/* --- 6th Section: Fade Navy Background --- */
+.subscribe-section {
+    padding: 100px 20px;
+    background-color: var(--navy-fade);
+    color: var(--white);
+    text-align: center;
+}
+
+.subscribe-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.subscribe-section p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 35px;
+}
+
+.subscribe-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.subscribe-form-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.subscribe-form input[type="email"] {
+    flex: 1;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.subscribe-form input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.subscribe-form button {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 0 40px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.subscribe-form button:hover {
+    background: #b08d4a;
+}
+
+/* Privacy Policy Consent styling */
+.privacy-consent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    text-align: left;
+}
+
+.privacy-consent input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+
+.privacy-consent label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.privacy-link {
+    color: var(--gold);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+    color: #b08d4a;
+}
+
+.newsletter-loader {
+
+    width: 18px;
+
+    height: 18px;
+
+    border: 2px solid rgba(255, 255, 255, .3);
+
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+    animation: newsletterSpin .8s linear infinite;
+
+    margin-right: 8px;
+
+    vertical-align: middle;
+
+}
+
+@keyframes newsletterSpin {
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* --- Mobile Compatibility Enhancements --- */
+@media (max-width: 992px) {
+    .hero {
+        height: 400px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .details-section {
+        padding: 60px 20px;
+    }
+
+    .details-split-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .two-col,
+    .rating-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .interaction-section,
+    .rating-section {
+        padding: 60px 20px;
+        background-attachment: scroll;
+        /* Better performance on mobile */
+    }
+
+    .social-sticky-col {
+        order: 2;
+    }
+
+    .whatsapp-col {
+        order: 1;
+        padding: 40px 20px;
+    }
+
+    /* Image Section Mobile Fixes */
+    .image-container {
+        transform: translateX(0);
+        opacity: 1;
+        margin-bottom: 40px;
+    }
+
+    .rating-content-col {
+        transform: translateX(0);
+        opacity: 1;
+        text-align: center;
+    }
+
+    .rating-content-col h2 {
+        font-size: 2rem;
+    }
+
+    .main-office-img {
+        height: 300px;
+    }
+
+    .overlap-card {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        margin: -40px auto 0;
+        width: 80%;
+        animation: jump 2s infinite ease-in-out;
+    }
+
+    .subscribe-section {
+        padding: 60px 20px;
+    }
+
+    .subscribe-form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .subscribe-form button {
+        padding: 18px;
+        width: 100%;
+    }
+
+    .privacy-consent {
+        justify-content: flex-start;
+    }
+
+    /* Marquee Mobile Overrides */
+    .testimonials-section h2 {
+        font-size: 2rem;
+    }
+
+    .review-card {
+        width: 320px;
+        padding: 20px;
+    }
+
+    .marquee-container::before,
+    .marquee-container::after {
+        width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    .whatsapp-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.9rem;
+        padding: 15px 20px;
+    }
+
+    .social-link {
+        padding: 12px 20px;
+    }
+
+    .modal-box {
+        padding: 30px 20px;
+        margin: 0 20px;
+    }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 28, 60, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background: white;
+    padding: 50px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    color: var(--text);
+}
+
+
+/* ==========================================================
+   iOS Safari Performance Fixes Only
+   ========================================================== */
+
+@supports (-webkit-touch-callout: none) {
+
+    /* Remove expensive fixed backgrounds */
+    .interaction-section,
+    .rating-section {
+        background-attachment: scroll !important;
+    }
+
+    /* Disable expensive blur rendering */
+    .glass-modal-overlay,
+    .glass-popup-overlay {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(12, 28, 60, .85);
+    }
+
+    .glass-modal-box,
+    .glass-popup-box {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(12, 28, 60, .96);
+    }
+
+    /* Remove costly hover animations */
+    .card:hover,
+    .review-card:hover,
+    .image-container:hover,
+    .social-link:hover,
+    .whatsapp-btn:hover,
+    .google-rate-btn:hover,
+    .advisory-btn:hover {
+
+        transform: none !important;
+    }
+
+    /* Disable marquee animation */
+    .marquee-track {
+        animation: none !important;
+    }
+
+    .marquee-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+
+    .review-card {
+        scroll-snap-align: start;
+    }
+
+    /* Stop jumping animation */
+    .overlap-card {
+        animation: none !important;
+    }
+
+    /* Faster scrolling */
+    .image-container,
+    .rating-content-col {
+        transition: none !important;
+    }
+
+}
+
+@supports (-webkit-touch-callout: none) {
+
+    .details-section,
+    .interaction-section,
+    .map-section,
+    .testimonials-section,
+    .rating-section,
+    .subscribe-section {
+
+        content-visibility: auto;
+        contain-intrinsic-size: 800px;
+    }
+
+}
+
+@supports (-webkit-touch-callout: none) {
+
+    .card,
+    .review-card,
+    .social-link,
+    .advisory-card {
+
+        will-change: auto;
+        transform: translateZ(0);
+    }
+
+}

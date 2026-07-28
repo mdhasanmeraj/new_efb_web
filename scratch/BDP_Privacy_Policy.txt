@@ -1,0 +1,161 @@
+--- PAGE 1 ---
+EXCELLENCE FINANCING BROKER ("EFB") 
+PRIVACY POLICY 
+Last Updated: 27/07/2026 
+Status: In Review 
+ 
+Excellence Financing Broker ("EFB", "Company", "we", "us", "our") provides referral and consultancy 
+support services that connect individuals seeking financial products with participating Financial 
+Institutions. EFB is not a lender, does not approve or guarantee any finance facility. We may charge a 
+service fee only after the Customer has confirmed that they wish to engage our consultancy services. 
+Any applicable service fee will be clearly communicated and agreed upon by the Customer before it is 
+charged. 
+This Policy explains how we collect, use, share, store, and protect personal data belonging to visitors, 
+Customers, Business Development Partners ("BDPs"), and Sub-BDPs who interact with EFB's website and 
+CRM platform at app.efb.ae (together, "Users", "you"). This Policy should be read together with the EFB 
+Business Development Partner Terms & Conditions, which governs the separate contractual relationship 
+between EFB and BDPs. 
+1. Definitions 
+● "Personal Data" means any information relating to an identified or identifiable natural person. 
+● "Data Subject" means the individual to whom Personal Data relates. 
+● "Controller" means the party that determines the purposes and means of processing Personal 
+Data. 
+● "Processor" means a party that processes Personal Data on behalf of, and under the 
+instructions of, a Controller. 
+● "User" means any visitor, Customer, BDP, or Sub-BDP interacting with EFB's website or CRM. 
+● "Customer" means an individual or business entity seeking a financial product through EFB, 
+including a Referral. 
+● "Referral" means a Customer whose details are submitted to EFB by a BDP, as described in 
+Section 2.1. 
+● "BDP" / "Sub-BDP" means an independent referral partner registered on the EFB platform, as 
+defined in the EFB Business Development Partner Terms & Conditions. 
+● "Financial Institution" means a licensed bank, finance house, or lender that EFB works with 
+from time to time. 
+● "CRM" means the EFB customer relationship management platform at app.efb.ae. 
+● "Applicable Law" means the federal laws of the United Arab Emirates, including Federal Decree-
+Law No. 45 of 2021 on the Protection of Personal Data, and, where relevant, the laws and 
+regulations of the Emirate in which EFB is licensed. --- PAGE 2 ---
+Drafting Note: This glossary mirrors the BDP Terms & Conditions glossary for shared terms (Customer, Referral, 
+BDP, Financial Institution, CRM) so the two documents interpret consistently. 
+2. Information We Collect 
+2.1 Information Relating to Customers and Referrals 
+2.1 Where an individual is submitted to EFB as a Referral, or otherwise applies for a financial product, 
+EFB may collect the Customer's basic contact information and any personal, identity, financial, or 
+supporting documents reasonably required to assess eligibility, verify identity, comply with applicable 
+legal and regulatory requirements, and process the application with the relevant Financial Institution. 
+2.2 Information Relating to BDPs and Sub-BDPs 
+ EFB collects, from BDPs and Sub-BDPs directly: 
+● name, contact details, and professional information provided at registration; 
+● Bank account/IBAN details for Commission payment; 
+● VAT registration details, where applicable; 
+● CRM login credentials and platform activity logs; and 
+● referral hierarchy, performance, and incentive data generated through participation in the 
+Program. 
+2.3 Information Collected Automatically 
+2.3  When Users interact with our website or CRM, we may automatically collect: 
+● authentication logs where is used; --- NO THIRD PARTY VERIFICATION SERVICE 
+● CRM usage timestamps and activity records; and 
+● cookies and similar tracking technologies, as described in Section 9. 
+3. Purpose of Data Collection 
+ We may collect and process Personal Data to: 
+● process financial product referrals and coordinate applications with Financial Institutions; 
+● verify identity and carry out EFB's internal due diligence prior to submitting a case to a Financial 
+Institution; 
+● operate and maintain the CRM, including lead tracking and case status updates; 
+● calculate and process BDP Commission payments; 
+4. Consent & Authorization 
+4.1 Where a User is submitted to EFB as a Referral by a BDP, the BDP is contractually responsible for 
+obtaining that individual's permission before submission, as set out in Section 5 of the EFB Business --- PAGE 3 ---
+Development Partner Terms & Conditions. EFB relies on the BDP's representation that this permission 
+has been obtained, and does not independently verify that permission before making initial contact. 
+4.2 When EFB's team makes contact with a Referral, the purpose of the contact will be explained and 
+the individual will have the opportunity to decline any further processing of their data by EFB at that 
+point. 
+4.3 By registering as a BDP and submitting personal data to EFB (including their own), a BDP consents to 
+the processing of that data as described in this Policy and in the BDP Terms & Conditions. 
+4.4 Consent to receive communications from EFB may be withdrawn at any time by contacting EFB using 
+the details in Section 14. EFB will act on a withdrawal request as soon as reasonably practicable, subject 
+to any processing EFB is required or entitled to continue under Applicable Law (for example, records 
+connected to a completed transaction). 
+4.5 Where an individual is referred to EFB by a Business Development Partner ("BDP"), EFB may contact 
+that individual for the purpose of verifying their interest in EFB's services or the referred financial 
+product, provided such communication is made in accordance with Applicable Law and regulatory 
+requirements. The BDP represents and warrants that it has obtained the individual's permission to share 
+their information with EFB before making the referral. 
+5. Sharing of Information 
+5.1 We share Personal Data only with: 
+● Financial Institutions, for the purpose of processing and assessing a referred application; 
+● Technology, hosting, and CRM service providers who store data on our behalf as Server 
+Processors, under written terms limiting their use of the data to providing services to EFB; and 
+● UAE regulatory authorities, law enforcement, or courts, where EFB is legally required to disclose 
+information. 
+5.2 We do not share Personal Data to third parties for marketing purposes. 
+6. Data Storage & Retention 
+6.1 Personal Data is stored on servers with access controls and technical safeguards appropriate to the 
+sensitivity of the data, as described in Section 7. 
+6.2 We retain Personal Data only for as long as reasonably necessary to fulfil the purposes described in 
+Section 3, including the periods needed to complete a finance application, respond to a regulatory audit, 
+or resolve a legal dispute. 
+6.3 Where Personal Data is transferred or stored outside the United Arab Emirates, EFB will do so only in 
+accordance with the cross-border transfer requirements of Federal Decree-Law No. 45 of 2021.  
+7. Data Security Measures --- PAGE 4 ---
+7.1 We implement reasonable technical and organizational measures designed to protect Personal Data, 
+which may include: 
+● role-based access control, limiting file visibility to authorized personnel; 
+● encryption of document uploads and data transfers; 
+● audit logging of data access within the CRM; and 
+● periodic internal review of access controls and security practices. 
+7.2 No digital system can be guaranteed to be completely secure. By providing Personal Data to EFB, 
+Users acknowledge the inherent risks of digital data transmission and storage. 
+8. Confidentiality Obligations of BDPs 
+8.1 BDPs and Sub-BDPs are separately bound by confidentiality and data-handling obligations under 
+Section 12 of the EFB Business Development Partner Terms & Conditions, including restrictions on 
+storing, reusing, or sharing Customer and Referral data outside the CRM. 
+8.2 A breach of those obligations may be treated as a breach of this Policy and may result in the 
+consequences described in the BDP Terms & Conditions, including suspension or termination of a 
+Partner ID. 
+9. Cookies & Tracking 
+9.1 We use cookies and similar technologies to operate and improve our website and CRM, including to 
+remember User preferences, analyze usage patterns, and support platform security. 
+9.2 Users may disable cookies through their browser settings. Doing so may limit access to certain 
+secure areas of the EFB platform. 
+10. User Rights (Data Subject Rights) 
+10.1 Subject to Applicable Law, a Data Subject may: 
+● request access to the Personal Data EFB holds about them; 
+● request correction of inaccurate or incomplete Personal Data; 
+● withdraw consent to marketing or promotional communications at any time; 
+● request deletion of their Personal Data, subject to any retention EFB is required or entitled to 
+maintain under Applicable Law (see Section 6.2); and 
+● lodge a complaint with support@efb.ae, as the details mentioned in Section 14. 
+10.2 Requests under this Section may be submitted to support@efb.ae. EFB will respond within a 
+reasonable time and in accordance with Applicable Law. 
+11. Children's Privacy --- PAGE 5 ---
+11.1 EFB does not knowingly collect or process Personal Data relating to individuals under 18 years of 
+age. BDPs are separately required not to submit a Referral under the age of 18 (see Section 5.5 of the 
+BDP Terms & Conditions). 
+11.2 If EFB identifies that it holds Personal Data relating to a minor, that data will be deleted, save 
+where retention is required by Applicable Law. 
+12. Third-Party Links 
+12.1 Our website and CRM may contain links to Financial Institution portals or other third-party 
+websites. EFB is not responsible for the privacy practices or content of those external sites, and this 
+Policy does not apply to them. 
+13. Changes to This Policy 
+13.1 EFB may update this Policy from time to time to reflect changes in Applicable Law or in EFB's own 
+practices. The updated version will be posted on the EFB website and/or CRM. Continued use of the 
+platform after an update constitutes acceptance of the revised Policy. 
+14. Grievance & Compliance Office 
+For privacy concerns, data requests, or complaints, please contact: 
+Excellence Financing Broker — Data Protection & Compliance Office 
+Email: support@efb.ae 
+Address: Dubai, UAE 
+14.1 We aim to acknowledge privacy-related complaints promptly and to resolve them within 15 to 30 
+working days. This timeline applies to privacy and data-protection matters specifically, and is separate 
+from the commission-dispute timeline in Section 16.2 of the BDP Terms & Conditions. 
+15. Governing Law & Jurisdiction 
+15.1 This Policy is governed by the federal laws of the United Arab Emirates. 
+15.2 Subject to Section 15.3, any dispute arising under this Policy between EFB and a User who is not a 
+BDP shall be subject to the exclusive jurisdiction of the competent courts. 
+15.3 Where a dispute under this Policy arises between EFB and a BDP or Sub-BDP, that dispute is instead 
+subject to the dispute resolution mechanism set out in the EFB Business Development Partner Terms & 
+Conditions (internal review, followed by arbitration in Dubai). 
+ 

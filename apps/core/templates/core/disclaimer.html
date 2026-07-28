@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .legal-content-container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+    }
+
+    .toc-sticky {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        padding-right: 1rem;
+    }
+
+    /* Scrollbar customization for TOC */
+    .toc-sticky::-webkit-scrollbar {
+        width: 4px;
+    }
+    .toc-sticky::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .toc-sticky::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .toc-sticky::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .toc-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        color: #94a3b8; /* slate-400 */
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        border-left: 2px solid transparent;
+    }
+
+    .toc-link:hover {
+        color: #e9c176; /* gold */
+        background: rgba(233, 193, 118, 0.05);
+        padding-left: 1.25rem;
+    }
+
+    .toc-link.active {
+        color: #e9c176;
+        background: rgba(233, 193, 118, 0.08);
+        border-left-color: #e9c176;
+        font-weight: 700;
+    }
+
+    .legal-section {
+        scroll-margin-top: 110px;
+        transition: opacity 0.3s ease;
+    }
+
+    .premium-legal-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-blur: md;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        transition: border-color 0.3s ease;
+    }
+
+    .premium-legal-card:hover {
+        border-color: rgba(233, 193, 118, 0.2);
+    }
+
+    @media (max-width: 1024px) {
+        .legal-content-container {
+            grid-template-columns: 1fr;
+        }
+        .toc-column {
+            display: none;
+        }
+    }
+
+    .legal-heading {
+        font-family: 'Newsreader', serif;
+        color: #ffffff;
+        font-weight: 700;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+Disclaimer | Excellence Financing Broker
+{% endblock %}
+
+{% block content %}
+<!-- Header Banner -->
+<section class="page-banner">
+    <div class="page-banner-bg"
+        style="background-image: linear-gradient(rgba(12, 28, 42, 0.85), rgba(12, 28, 42, 0.85)), url('{% static 'images/about-us-header.jpg' %}');">
+    </div>
+    <div class="page-banner-content page-banner-animation px-6">
+        <h1 class="page-banner-title text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4">
+            Disclaimer
+        </h1>
+        <p class="page-banner-subtitle text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Important information governing the nature of our financial services, tools, and calculators.
+        </p>
+        <div class="w-24 h-1 bg-[#e9c176] mx-auto mt-6 rounded-full"></div>
+    </div>
+</section>
+
+<!-- Content Area -->
+<section class="bg-[#0c1c2a] text-slate-300 py-20 px-6 relative overflow-hidden">
+    <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-0 w-96 h-96 bg-amber-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Download Bar / Last Updated Card -->
+        <div class="premium-legal-card p-6 md:p-8 mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-amber-500/10 text-[#e9c176] rounded-xl flex items-center justify-center">
+                    <i data-lucide="calendar" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Last Updated</p>
+                    <p class="text-lg font-bold text-white">30 July 2026</p>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <a href="{% url 'core:download_guide' filename='Disclaimer_EFB.pdf' %}"
+                class="partner-btn relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all select-none">
+                <i data-lucide="download" class="w-5 h-5"></i>
+                Download Disclaimer (PDF)
+            </a>
+        </div>
+
+        <div class="legal-content-container">
+            <!-- Navigation Index Sidebar -->
+            <div class="toc-column">
+                <div class="toc-sticky">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index</h3>
+                    <nav class="space-y-1">
+                        <a href="#general" class="toc-link"><span class="text-xs text-[#e9c176]">01</span> General Info</a>
+                        <a href="#noadvice" class="toc-link"><span class="text-xs text-[#e9c176]">02</span> No Advice</a>
+                        <a href="#role" class="toc-link"><span class="text-xs text-[#e9c176]">03</span> Our Role</a>
+                        <a href="#fees" class="toc-link"><span class="text-xs text-[#e9c176]">04</span> Fees & Services</a>
+                        <a href="#noguarantee" class="toc-link"><span class="text-xs text-[#e9c176]">05</span> No Guarantee</a>
+                        <a href="#calculators" class="toc-link"><span class="text-xs text-[#e9c176]">06</span> Calculators</a>
+                        <a href="#noliability" class="toc-link"><span class="text-xs text-[#e9c176]">07</span> Bank Decisions</a>
+                        <a href="#accuracy" class="toc-link"><span class="text-xs text-[#e9c176]">08</span> Info Accuracy</a>
+                        <a href="#links" class="toc-link"><span class="text-xs text-[#e9c176]">09</span> Third-Party Links</a>
+                        <a href="#contact" class="toc-link"><span class="text-xs text-[#e9c176]">10</span> Contact Us</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="space-y-12">
+                
+                <!-- 1. General Information Only -->
+                <div id="general" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">1.</span> General Information Only
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        The content published on the website <a href="https://efb.ae" class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website") by Excellence Financing Broker ("EFB", "we", "us", or "our"), including all articles, guides, and calculators, is provided for general informational purposes only. It is not intended to be exhaustive or to address your specific circumstances.
+                    </p>
+                </div>
+
+                <!-- 2. No Financial Advice -->
+                <div id="noadvice" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">2.</span> No Financial Advice
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Nothing published on the Website constitutes financial, legal, tax, or investment advice. Where you separately engage our paid consultancy services, any advice provided is limited to the specific scope of that engagement, as communicated to you before the service begins. You should seek independent professional advice before making any financial decision.
+                    </p>
+                </div>
+
+                <!-- 3. Our Role and Regulatory Status -->
+                <div id="role" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">3.</span> Our Role and Regulatory Status
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed mb-4">
+                        EFB is an independent financial brokerage and consultancy company. We are not a bank and do not provide loans or other financial products ourselves. We connect customers with licensed banks and financial institutions in the UAE.
+                    </p>
+                    <div class="bg-amber-500/5 border-l-4 border-amber-500/50 p-4 rounded-r-xl">
+                        <p class="text-sm leading-relaxed text-slate-300">
+                            EFB is licensed by the Dubai Department of Economy and Tourism (formerly the Dubai Department of Economic Development) under Trade License No. 869539. EFB is not licensed or regulated by the Central Bank of the UAE.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Consultancy Services and Fees -->
+                <div id="fees" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">4.</span> Consultancy Services and Fees
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Our initial consultation is provided free of charge. If you choose to proceed with our professional financial consultancy services beyond that initial consultation, a consultancy or service fee may apply, depending on the nature and scope of the services provided. Any applicable fee is always communicated to and agreed with you before the paid service begins; no hidden charges are applied.
+                    </p>
+                </div>
+
+                <!-- 5. No Guarantee of Approval -->
+                <div id="noguarantee" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">5.</span> No Guarantee of Approval, Whether or Not a Fee Is Charged
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        We do not approve or reject any application and do not guarantee that any enquiry, or any paid consultancy engagement, will result in loan or credit approval. Payment of a consultancy or service fee does not, under any circumstance, guarantee loan approval, credit approval, mortgage approval, or approval of any other financial product. Final approval, interest rates, fees, and terms are determined solely by the relevant bank or financial institution, at its sole discretion.
+                    </p>
+                </div>
+
+                <!-- 6. Calculators Provide Estimates Only -->
+                <div id="calculators" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">6.</span> Calculators Provide Estimates Only
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        Any calculators available on the Website (such as loan or mortgage calculators) are provided for illustrative purposes only and produce estimates based on the information you enter. They do not constitute a quote, offer, or guarantee of any kind, and actual rates, fees, and terms offered by a bank may differ.
+                    </p>
+                </div>
+
+                <!-- 7. No Liability for Bank Decisions -->
+                <div id="noliability" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">7.</span> No Liability for Bank Decisions
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        EFB is not responsible or liable for any decision, delay, rejection, or outcome resulting from a partner bank's or financial institution's own assessment of your application, whether or not you have engaged our paid consultancy services. Any such decision rests solely with that bank or institution.
+                    </p>
+                </div>
+
+                <!-- 8. Accuracy of Information -->
+                <div id="accuracy" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">8.</span> Accuracy of Information
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        While we take reasonable care to ensure that information published on the Website is accurate at the time of publication, we make no warranty, express or implied, as to its completeness, accuracy, or currency, and information may change without notice.
+                    </p>
+                </div>
+
+                <!-- 9. Third-Party Links -->
+                <div id="links" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
+                    <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                        <span class="text-[#e9c176]">9.</span> Third-Party Links
+                    </h2>
+                    <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                    <p class="leading-relaxed">
+                        The Website may contain links to third-party websites, including partner banks. We are not responsible for the content or practices of any linked third-party website, and inclusion of a link does not imply endorsement.
+                    </p>
+                </div>
+
+                <!-- 10. Contact Us -->
+                <div id="contact" class="legal-section premium-legal-card p-8 md:p-10 space-y-6">
+                    <div>
+                        <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
+                            <span class="text-[#e9c176]">10.</span> Contact Us
+                        </h2>
+                        <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
+                        <p class="leading-relaxed text-slate-300">
+                            If you have any questions about this Disclaimer, including our fees, please contact us at:
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
+                            <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-full flex items-center justify-center">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">General Enquiries</p>
+                                <a href="mailto:info@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">info@efb.ae</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
+                            <div class="w-12 h-12 bg-emerald-600/10 text-emerald-400 rounded-full flex items-center justify-center">
+                                <i data-lucide="help-circle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Support</p>
+                                <a href="mailto:support@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">support@efb.ae</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        const sections = document.querySelectorAll(".legal-section");
+        const navLinks = document.querySelectorAll(".toc-link");
+
+        function updateActiveLink() {
+            let currentActiveId = "";
+            const threshold = 150;
+
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < threshold) {
+                    currentActiveId = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentActiveId}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", updateActiveLink);
+        updateActiveLink();
+    });
+</script>
+{% endblock %}

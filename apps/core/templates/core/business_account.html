@@ -2,144 +2,11 @@
 {% load static %}
 
 {% block extra_css %}
-<title>Business Solutions | Excellence Financing Broker</title>
 
 <!-- Lucide Icons -->
 
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
-    }
+<link rel="stylesheet" href="{% static 'css/business_account.css' %}">
 
-    /* Reveal Animation Styles */
-    .reveal {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-
-
-    /* Accordion Functionality Styles */
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-    }
-
-    .accordion-item.active .accordion-content {
-        max-height: 800px;
-    }
-
-    .accordion-item.active i,
-    .accordion-item.active svg {
-        transform: rotate(180deg);
-    }
-
-    .overview-section {
-        position: relative;
-        background: #0f172a;
-        overflow: hidden;
-    }
-
-    .vertical-marquee-container {
-        position: absolute;
-        left: 10px;
-        bottom: 0;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-    }
-
-    .marquee-text {
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        white-space: nowrap;
-        font-size: 5rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        color: transparent;
-        -webkit-text-stroke: 1.5px #d4af37;
-        opacity: 0.3;
-        animation: scrollUp 15s linear infinite;
-    }
-
-    @keyframes scrollUp {
-        0% {
-            transform: translateY(100%);
-        }
-
-        100% {
-            transform: translateY(-100%);
-        }
-    }
-
-    .handshake-bg {
-        position: absolute;
-        right: -2%;
-        top: 5%;
-        width: 35%;
-        max-width: 450px;
-        opacity: 0.15;
-        pointer-events: none;
-        z-index: 0;
-        transform-origin: top right;
-        animation: subtleNod 6s ease-in-out infinite;
-    }
-
-    @keyframes subtleNod {
-
-        0%,
-        100% {
-            transform: rotate(0deg) scale(1);
-        }
-
-        50% {
-            transform: rotate(-3deg) scale(1.05);
-        }
-    }
-
-    .navy-gradient-section {
-        position: relative;
-        background: linear-gradient(to right, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 1) 100%),
-        url("{% static 'images/head-down.jpg' %}");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        background-blend-mode: multiply;
-    }
-
-    .arrow-btn:hover i {
-        transform: translateX(8px);
-        transition: transform 0.3s ease;
-    }
-
-    .relative-host {
-        position: relative;
-    }
-
-    /* Gradient CTA button */
-    .btn-pop1 {
-        background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn-pop1:hover {
-        background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
-        box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
-        transform: scale(1.04) translateY(-2px);
-</style>
-
-<script src="https://cdn.tailwindcss.com"></script>
 
 {% endblock %}
 
@@ -645,12 +512,11 @@ Business Account | Excellence Financing Broker
             threshold: 0.15
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                } else {
-                    entry.target.classList.remove('active');
+                    obs.unobserve(entry.target);
                 }
             });
         }, observerOptions);

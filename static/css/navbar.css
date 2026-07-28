@@ -1,0 +1,213 @@
+    /* Ultra-Premium Glass Island Shimmer Background */
+    .shining-nav {
+        background: linear-gradient(135deg,
+                rgba(11, 15, 25, 0.8) 0%,
+                rgba(23, 31, 50, 0.85) 40%,
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(23, 31, 50, 0.85) 60%,
+                rgba(11, 15, 25, 0.8) 100%);
+
+        background-size: 250% 100%;
+
+        animation: premiumShine 2.5s ease-out forwards;
+
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+
+    @keyframes premiumShine {
+        0% {
+            background-position: 250% 0;
+        }
+
+        100% {
+            background-position: -250% 0;
+        }
+    }
+
+    .glowing-border {
+
+        border: 1.5px solid transparent;
+
+        background-image:
+
+            linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)),
+
+            linear-gradient(90deg, rgba(239, 68, 68, 0.25), rgba(59, 130, 246, 0.35), rgba(239, 68, 68, 0.25));
+
+        background-origin: border-box;
+
+        background-clip: padding-box, border-box;
+
+    }
+
+    /* Modern Active/Hover Underline effect for the links */
+    .nav-link-effect {
+        position: relative;
+    }
+
+    .nav-link-effect::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-link-effect:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* Refined, high-end Partner Button */
+    .partner-btn {
+        background: linear-gradient(270deg,
+                #d4af37,
+                #f59e0b,
+                #ef4444,
+                #f59e0b,
+                #d4af37);
+        background-size: 400% 400%;
+        animation: partnerGradient 8s ease infinite;
+        box-shadow:
+            0 0 12px rgba(212, 175, 55, 0.3),
+            0 4px 12px rgba(0, 0, 0, 0.25);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .partner-btn:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 0 25px rgba(212, 175, 55, 0.6),
+            0 0 40px rgba(59, 130, 246, 0.3);
+    }
+
+    @keyframes partnerGradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .ios-device .shining-nav {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .ios-device .shining-nav {
+        animation: none;
+    }
+
+    .ios-device .partner-btn {
+        animation: none;
+    }
+
+    /* ===========================
+   iOS Optimization - Partner Button
+=========================== */
+
+    .ios-device .partner-btn {
+        transition:
+            transform .4s cubic-bezier(.16, 1, .3, 1),
+            box-shadow .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    /* ===========================
+   iOS Optimization - Navbar Shadow
+=========================== */
+
+    .ios-device .shining-nav {
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, .22);
+    }
+
+    /* ===========================
+   iOS GPU Optimization
+=========================== */
+
+    .ios-device .shining-nav {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    /* ===========================
+   iOS Drawer Animation
+=========================== */
+
+    .ios-device #mobile-drawer {
+        transform: translate3d(-100%, 0, 0);
+        will-change: transform;
+    }
+
+    .ios-device #mobile-drawer:not(.-translate-x-full) {
+        transform: translate3d(0, 0, 0);
+    }
+
+    /* ===========================
+   iOS Overlay
+=========================== */
+
+    .ios-device #mobile-overlay {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(0, 0, 0, .65);
+    }
+
+    /* ===========================
+   iOS Touch Optimization
+=========================== */
+
+    .ios-device a,
+    .ios-device button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ===========================
+   iOS Scrolling
+=========================== */
+
+    .ios-device body {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ===========================
+   iOS Hover Optimization
+=========================== */
+
+    .ios-device .nav-link-effect::after {
+        display: none;
+    }
+
+    /* ===========================
+   iOS Drawer Scroll
+=========================== */
+
+    .ios-device #mobile-drawer {
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ===========================
+   iOS Accessibility
+=========================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .ios-device * {
+            animation: none !important;
+            transition: none !important;
+        }
+
+    }
