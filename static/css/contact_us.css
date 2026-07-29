@@ -631,7 +631,7 @@
     padding: 120px 20px;
     position: relative;
     background: linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
-    url("{% static 'images/reviews-bg.avif' %}") no-repeat center center fixed;
+        url("../images/reviews-bg.avif") no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
 }
