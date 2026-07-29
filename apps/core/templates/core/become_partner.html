@@ -475,6 +475,19 @@
     .premium-shimmer:hover::after {
         left: 140%;
     }
+
+    @media (max-width: 767px) {
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        section {
+            overflow-x: hidden;
+        }
+    }
 </style>
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -599,7 +612,7 @@ Become-Partner| Excellence Financing Broker
             style="left: 15%; bottom: -10%; animation-delay: 10s;">monetization_on</span>
     </div>
 
-    <div class="max-w-7xl mx-auto px-8 relative z-20 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-20 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
 
         <div class="lg:col-span-3">
             <span
@@ -612,9 +625,8 @@ Become-Partner| Excellence Financing Broker
                     Partner with the Premier!
                 </span>
                 <span class="block text-5xl md:text-7xl lg:text-8xl mb-2">EFB's</span>
-                <span class="block text-4xl md:text-6xl lg:text-7xl whitespace-nowrap">
-                    BDP Referral Program
-                </span>
+                <span class="block text-[1.75rem] sm:text-4xl md:text-6xl lg:text-7xl whitespace-nowrap leading-tight">
+                    BDP Referral Program </span>
             </h1>
 
             <p class="text-gray-300 text-lg md:text-2xl max-w-2xl mb-12 font-light leading-relaxed">
@@ -1214,8 +1226,9 @@ Become-Partner| Excellence Financing Broker
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div class="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-white/20 shadow-inner">
-                        <p class="text-slate-300 text-sm mb-2 uppercase tracking-wide text-nowrap">SUB-BDP REFERRAL
-                            COMMISSION</p>
+                        <p
+                            class="text-slate-300 text-sm mb-2 uppercase tracking-wide whitespace-normal sm:whitespace-nowrap leading-tight text-center">
+                            SUB-BDP REFERRAL COMMISSION</p>
                         <p class="text-6xl font-black text-accent drop-shadow-lg">5%</p>
                         <p class="text-blue-100 mt-2 font-medium">of every Sub-BDP payout</p>
                         <p class="text-xs text-white/60 mt-4 leading-relaxed italic">Refer a Sub-BDP. When they

@@ -6,7 +6,6 @@
 
 <script>
     tailwind.config = {
-        darkMode: 'class',
         theme: {
             extend: {
                 colors: {
@@ -89,12 +88,12 @@
         border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
-    .dark .glass-container {
+    /* .dark .glass-container {
         background: rgba(15, 23, 42, 0.55);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border: 1px solid rgba(255, 255, 255, 0.05);
-    }
+    } */
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
@@ -105,18 +104,18 @@
         background: #f1f1f1;
     }
 
-    .dark ::-webkit-scrollbar-track {
+    /* .dark ::-webkit-scrollbar-track {
         background: #1e293b;
-    }
+    } */
 
     ::-webkit-scrollbar-thumb {
         background: #cbd5e1;
         border-radius: 4px;
     }
 
-    .dark ::-webkit-scrollbar-thumb {
+    /* .dark ::-webkit-scrollbar-thumb {
         background: #475569;
-    }
+    } */
 
     ::-webkit-scrollbar-thumb:hover {
         background: #94a3b8;
@@ -159,26 +158,18 @@ BDP - Guides | Excellence Financing Broker
 
 {% block content %}
 
-<body
-    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col selection:bg-efbBlue selection:text-white relative">
+<body <body
+    class="bg-slate-50 text-slate-800 min-h-screen flex flex-col selection:bg-efbBlue selection:text-white relative">
 
-    <!-- Floating Theme Toggle Action -->
-    <button id="theme-toggle"
-        class="fixed top-6 right-6 z-50 p-3 rounded-xl text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-xl hover:scale-105 transition-all focus:outline-none"
-        aria-label="Toggle dark mode">
-        <i id="theme-icon-light" class="fa-solid fa-sun hidden"></i>
-        <i id="theme-icon-dark" class="fa-solid fa-moon"></i>
-    </button>
+
 
     <section
-        class="relative overflow-hidden pt-20 pb-24 border-b border-slate-150 dark:border-slate-850 transition-colors duration-300 min-h-[85vh] flex items-center bg-cover bg-center font-sans"
+        class="relative overflow-hidden pt-20 pb-24 border-b border-slate-150 transition-colors duration-300 min-h-[85vh] flex items-center bg-cover bg-center font-sans"
         style="background-image: url('{% static 'images/reviews-bg.avif' %}');">
         <!-- Overlay without harsh white colors for natural dark & light transitions -->
-        <div
-            class="absolute inset-0 bg-slate-100/90 dark:bg-slate-950/90 backdrop-blur-[2px] transition-colors duration-300">
+        <div class="absolute inset-0 bg-slate-100/90 backdrop-blur-[2px] transition-colors duration-300">
         </div>
-        <div
-            class="absolute inset-0 bg-gradient-to-tr from-slate-100 dark:from-slate-950 via-slate-100/80 dark:via-slate-950/85 to-transparent">
+        <div class="absolute inset-0 bg-gradient-to-tr from-slate-100 via-slate-100/80 to-transparent">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -196,33 +187,30 @@ BDP - Guides | Excellence Financing Broker
                         <div>
                             <div class="flex items-center gap-1.5">
                                 <span
-                                    class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-efbBlue to-blue-800 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">EXCELLENCE</span>
+                                    class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-efbBlue to-blue-800 bg-clip-text text-transparent">EXCELLENCE</span>
                                 <span
-                                    class="text-[10px] font-bold text-efbRed px-1.5 py-0.5 rounded bg-efbRed-light dark:bg-red-950/40 border border-efbRed/20">BDP</span>
+                                    class="text-[10px] font-bold text-efbRed px-1.5 py-0.5 rounded bg-efbRed-light border border-efbRed/20">BDP</span>
                             </div>
                             <span
-                                class="text-[9px] font-bold tracking-[0.2em] text-slate-400 dark:text-slate-500 block -mt-1 uppercase">Financing
+                                class="text-[9px] font-bold tracking-[0.2em] text-slate-400 block -mt-1 uppercase">Financing
                                 Broker</span>
                         </div>
                     </div>
 
                     <div
-                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-200/50 dark:border-blue-900/50">
+                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200/50">
                         <span class="w-2 h-2 rounded-full bg-efbBlue animate-pulse"></span>
-                        <span
-                            class="text-xs font-semibold uppercase tracking-wider text-efbBlue dark:text-blue-400">Official
+                        <span class="text-xs font-semibold uppercase tracking-wider text-efbBlue">Official
                             Partner Library</span>
                     </div>
 
-                    <h1
-                        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
                         BDP Referral Program <br>
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-efbBlue to-blue-500 dark:from-blue-400 dark:to-cyan-300">Resource
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-efbBlue to-blue-500">Resource
                             Center</span>
                     </h1>
 
-                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
                         Everything you need to understand the BDP Referral Program—from enrollment to payouts. Browse
                         our official premium documentation below, evaluate active payouts, and download critical guide
                         resources to begin monetizing your professional network.
@@ -234,27 +222,27 @@ BDP - Guides | Excellence Financing Broker
                             Browse Guides <i class="fa-solid fa-download ml-2 text-sm"></i>
                         </a>
                         <a href="#faq"
-                            class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-slate-700 dark:text-slate-200 bg-slate-250 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl transition-all">
+                            class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-slate-700 bg-slate-250 hover:bg-slate-300 border border-slate-200 rounded-xl transition-all">
                             Read FAQs
                         </a>
                     </div>
 
                     <!-- Live indicators -->
-                    <div class="flex items-center gap-6 pt-4 border-t border-slate-200/60 dark:border-slate-800">
+                    <div class="flex items-center gap-6 pt-4 border-t border-slate-200/60">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-cloud-arrow-down text-efbBlue text-lg"></i>
                             <div>
-                                <!-- <span class="block text-sm font-bold text-slate-800 dark:text-slate-200"
+                                <!-- <span class="block text-sm font-bold text-slate-800"
                                     id="total-downloads-count">21.3k+</span>
-                                <span class="block text-xs text-slate-500 dark:text-slate-400">Total Downloads</span> -->
+                                <span class="block text-xs text-slate-500">Total Downloads</span> -->
                             </div>
                         </div>
-                        <div class="w-px h-8 bg-slate-200 dark:bg-slate-800"></div>
+                        <div class="w-px h-8 bg-slate-200"></div>
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-users text-green-500 text-lg"></i>
                             <div>
-                                <!-- <span class="block text-sm font-bold text-slate-800 dark:text-slate-200">2,500+</span>
-                                <span class="block text-xs text-slate-500 dark:text-slate-400">Active BDP Members</span> -->
+                                <!-- <span class="block text-sm font-bold text-slate-800">2,500+</span>
+                                <span class="block text-xs text-slate-500">Active BDP Members</span> -->
                             </div>
                         </div>
                     </div>
@@ -267,22 +255,20 @@ BDP - Guides | Excellence Financing Broker
                         <div
                             class="absolute inset-0 bg-gradient-to-tr from-efbBlue/10 to-efbRed/10 rounded-full animate-pulse">
                         </div>
-                        <div
-                            class="absolute inset-4 border-2 border-dashed border-slate-300 dark:border-slate-800 rounded-full">
+                        <div class="absolute inset-4 border-2 border-dashed border-slate-300 rounded-full">
                         </div>
 
                         <!-- Core graphic representing files -->
                         <div
-                            class="absolute inset-12 bg-slate-50/95 dark:bg-slate-800/95 rounded-3xl shadow-2xl border border-slate-250 dark:border-slate-700 flex flex-col justify-between p-6 overflow-hidden">
-                            <div
-                                class="flex items-center justify-between border-b border-slate-200 dark:border-slate-750 pb-3">
+                            class="absolute inset-12 bg-slate-50/95 rounded-3xl shadow-2xl border border-slate-250 flex flex-col justify-between p-6 overflow-hidden">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                                 <div class="flex items-center gap-2">
                                     <span class="w-3 h-3 rounded-full bg-red-500"></span>
                                     <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
                                     <span class="w-3 h-3 rounded-full bg-green-500"></span>
                                 </div>
                                 <span
-                                    class="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">BDP_GUIDE_VAULT</span>
+                                    class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">BDP_GUIDE_VAULT</span>
                             </div>
 
                             <div class="flex flex-col items-center justify-center py-6 space-y-4">
@@ -296,25 +282,24 @@ BDP - Guides | Excellence Financing Broker
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <p class="font-bold text-slate-800 dark:text-slate-100 text-sm">BDP Information
+                                    <p class="font-bold text-slate-800 text-sm">BDP Information
                                         Hub
                                     </p>
                                     <p class="text-xs text-slate-400"> Verified Documents</p>
                                 </div>
                             </div>
 
-                            <div
-                                class="bg-slate-100 dark:bg-slate-900/60 rounded-xl p-3 flex items-center justify-between">
+                            <div class="bg-slate-100 rounded-xl p-3 flex items-center justify-between">
                                 <span class="text-xs text-slate-500 flex items-center gap-1.5">
                                     <i class="fa-solid fa-network-wired text-efbBlue"></i> Program Payouts
                                 </span>
                                 <span
-                                    class="text-xs font-bold text-efbBlue dark:text-blue-400 bg-blue-100 dark:bg-blue-950/80 px-2 py-0.5 rounded-full">Instant</span>
+                                    class="text-xs font-bold text-efbBlue bg-blue-100 px-2 py-0.5 rounded-full">Instant</span>
                             </div>
                         </div>
 
                         <!-- Floating Micro-widgets -->
-                        <div class="absolute top-4 left-4 bg-slate-50/95 dark:bg-slate-800/95 px-3.5 py-2 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-750 flex items-center gap-2.5 animate-bounce"
+                        <div class="absolute top-4 left-4 bg-slate-50/95 px-3.5 py-2 rounded-2xl shadow-lg border border-slate-200 flex items-center gap-2.5 animate-bounce"
                             style="animation-duration: 4s;">
                             <span
                                 class="flex items-center justify-center w-8 h-8 rounded-full bg-green-500/10 text-green-600">
@@ -322,12 +307,12 @@ BDP - Guides | Excellence Financing Broker
                             </span>
                             <div>
                                 <p class="text-[10px] text-slate-400 font-medium">Payout Structure</p>
-                                <p class="text-xs font-bold text-slate-800 dark:text-slate-100">3-Tier Earnings
+                                <p class="text-xs font-bold text-slate-800">3-Tier Earnings
                                 </p>
                             </div>
                         </div>
 
-                        <div class="absolute bottom-6 right-2 bg-slate-50/95 dark:bg-slate-800/95 px-3.5 py-2.5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-750 flex items-center gap-2.5 animate-bounce"
+                        <div class="absolute bottom-6 right-2 bg-slate-50/95 px-3.5 py-2.5 rounded-2xl shadow-lg border border-slate-200 flex items-center gap-2.5 animate-bounce"
                             style="animation-duration: 5s;">
                             <span
                                 class="flex items-center justify-center w-8 h-8 rounded-full bg-efbRed/10 text-efbRed">
@@ -335,7 +320,7 @@ BDP - Guides | Excellence Financing Broker
                             </span>
                             <div>
                                 <p class="text-[10px] text-slate-400 font-medium">Sub-BDP Referral</p>
-                                <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Earn 5% on their
+                                <p class="text-xs font-bold text-slate-800">Earn 5% on their
                                     successful referral
                                 </p>
                             </div>
@@ -432,11 +417,9 @@ BDP - Guides | Excellence Financing Broker
 
     <section id="guides-hub" class="py-24 relative overflow-hidden transition-colors duration-300 font-sans">
         <!-- Colorful blur points in background behind the Glass section -->
-        <div
-            class="absolute top-20 left-10 w-80 h-80 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none">
+        <div class="absolute top-20 left-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none">
         </div>
-        <div
-            class="absolute bottom-10 right-10 w-96 h-96 bg-efbRed/10 dark:bg-efbRed/5 rounded-full blur-3xl pointer-events-none">
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-efbRed/10 rounded-full blur-3xl pointer-events-none">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -448,9 +431,9 @@ BDP - Guides | Excellence Financing Broker
                     <div class="space-y-3">
                         <span class="text-xs font-bold uppercase tracking-wider text-efbBlue">BDP Official
                             Library</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Program
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Program
                             Guidelines & Verified Downloads</h2>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-xl">
+                        <p class="text-slate-600 text-sm sm:text-base max-w-xl">
                             Filter and search through our verified database of manuals. Each file is complete and ready
                             for deployment.
                         </p>
@@ -463,17 +446,17 @@ BDP - Guides | Excellence Financing Broker
                             All Guides
                         </button>
                         <button
-                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill"
+                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 bg-white/70 text-slate-600 hover:border-efbBlue transition-all filter-pill"
                             data-category="overview">
                             Overviews
                         </button>
                         <button
-                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill"
+                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 bg-white/70 text-slate-600 hover:border-efbBlue transition-all filter-pill"
                             data-category="payout">
                             Payouts
                         </button>
                         <button
-                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill"
+                            class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 bg-white/70 text-slate-600 hover:border-efbBlue transition-all filter-pill"
                             data-category="enrollment">
                             Enrollments
                         </button>
@@ -482,7 +465,7 @@ BDP - Guides | Excellence Financing Broker
 
                 <!-- Search and Controls Bar -->
                 <div
-                    class="bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 mb-8 flex flex-col md:flex-row items-center gap-4 justify-between transition-colors">
+                    class="bg-white/80 border border-slate-200 rounded-2xl p-5 mb-8 flex flex-col md:flex-row items-center gap-4 justify-between transition-colors">
                     <div class="relative w-full md:max-w-md">
                         <div
                             class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -490,14 +473,14 @@ BDP - Guides | Excellence Financing Broker
                         </div>
                         <input type="text" id="guide-search"
                             placeholder="Search guides by title, keywords, or details..."
-                            class="w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue focus:border-efbBlue text-sm transition-all shadow-sm">
+                            class="w-full pl-10 pr-4 py-3 bg-white text-slate-800 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue focus:border-efbBlue text-sm transition-all shadow-sm">
                     </div>
-                    <div class="flex items-center gap-4 text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <div class="flex items-center gap-4 text-xs font-medium text-slate-500">
                         <span id="results-count"
-                            class="bg-blue-50/70 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">Showing
+                            class="bg-blue-50/70 px-3 py-1.5 rounded-lg border border-slate-200">Showing
                             5 guides</span>
                         <button id="reset-filters"
-                            class="hover:text-efbBlue dark:hover:text-blue-400 transition-colors font-semibold hidden flex items-center gap-1.5">
+                            class="hover:text-efbBlue transition-colors font-semibold hidden flex items-center gap-1.5">
                             <i class="fa-solid fa-rotate"></i> Reset filters
                         </button>
                     </div>
@@ -510,13 +493,13 @@ BDP - Guides | Excellence Financing Broker
 
                 <!-- Empty Results Template -->
                 <div id="no-results"
-                    class="hidden text-center py-16 bg-white/40 dark:bg-slate-800/20 rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 max-w-md mx-auto space-y-4">
+                    class="hidden text-center py-16 bg-white/40 rounded-3xl border border-dashed border-slate-300 max-w-md mx-auto space-y-4">
                     <div
-                        class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-slate-450 mx-auto">
+                        class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-slate-450 mx-auto">
                         <i class="fa-solid fa-folder-open text-2xl"></i>
                     </div>
-                    <h3 class="text-base font-bold text-slate-900 dark:text-white">No matching resources</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+                    <h3 class="text-base font-bold text-slate-900">No matching resources</h3>
+                    <p class="text-xs text-slate-500 max-w-xs mx-auto">
                         We couldn't find any guides that matched your search terms. Try searching for "Payouts",
                         "enrollment", or resetting your filters.
                     </p>
@@ -530,15 +513,15 @@ BDP - Guides | Excellence Financing Broker
     </section>
 
     <section id="faq"
-        class="py-20 bg-slate-50 dark:bg-slate-900/40 border-t border-b border-slate-200 dark:border-slate-800/60 transition-colors duration-300 font-sans">
+        class="py-20 bg-slate-50 border-t border-b border-slate-200 transition-colors duration-300 font-sans">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
                 <span
-                    class="text-xs font-bold uppercase tracking-wider text-efbBlue bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1.5 rounded-full border border-efbBlue/10">Clarifying
+                    class="text-xs font-bold uppercase tracking-wider text-efbBlue bg-blue-50 px-3.5 py-1.5 rounded-full border border-efbBlue/10">Clarifying
                     Doubts</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Frequently Asked
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Frequently Asked
                     Questions</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+                <p class="text-slate-500 text-xs sm:text-sm">
                     Everything you need to know about payouts, eligibility, program details, and manual download setups.
                 </p>
             </div>
@@ -547,19 +530,19 @@ BDP - Guides | Excellence Financing Broker
             <div class="space-y-4" id="faq-accordion-group">
                 <!-- FAQ Item 1 -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    class="bg-white rounded-2xl shadow-sm border border-slate-200 transition-colors duration-300 overflow-hidden">
                     <button
                         class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
                         aria-expanded="false">
-                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">How do I join
+                        <span class="text-sm sm:text-base font-bold text-slate-800">How do I join
                             the BDP Program?</span>
                         <span
-                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            class="ml-4 flex-shrink-0 text-slate-450 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 transition-all duration-200">
                             <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
                         </span>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
-                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+                    <div class="accordion-content px-6 bg-slate-50/50">
+                        <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-2">
                             <p>To register, visit the Excellence Financing Broker partner page (available via <a
                                     href="https://app.efb.ae/auth/become-partner" target="_blank"
                                     class="text-efbBlue hover:underline font-semibold">app.efb.ae/auth/become-partner</a>)
@@ -572,19 +555,19 @@ BDP - Guides | Excellence Financing Broker
 
                 <!-- FAQ Item 2 -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    class="bg-white rounded-2xl shadow-sm border border-slate-200 transition-colors duration-300 overflow-hidden">
                     <button
                         class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
                         aria-expanded="false">
-                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">Who is eligible
+                        <span class="text-sm sm:text-base font-bold text-slate-800">Who is eligible
                             for the BDP Referral Program?</span>
                         <span
-                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            class="ml-4 flex-shrink-0 text-slate-450 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 transition-all duration-200">
                             <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
                         </span>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
-                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+                    <div class="accordion-content px-6 bg-slate-50/50">
+                        <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-2">
                             <p>The EFB BDP Program is open to everyone residing in the UAE. Requirement criteria are
                                 basic:</p>
                             <ul class="list-disc pl-5 space-y-1">
@@ -598,19 +581,19 @@ BDP - Guides | Excellence Financing Broker
 
                 <!-- FAQ Item 3 -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    class="bg-white rounded-2xl shadow-sm border border-slate-200 transition-colors duration-300 overflow-hidden">
                     <button
                         class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
                         aria-expanded="false">
-                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">How are
+                        <span class="text-sm sm:text-base font-bold text-slate-800">How are
                             payouts calculated?</span>
                         <span
-                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            class="ml-4 flex-shrink-0 text-slate-450 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 transition-all duration-200">
                             <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
                         </span>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
-                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+                    <div class="accordion-content px-6 bg-slate-50/50">
+                        <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-2">
                             <p>Payouts follow a lucrative standard payout structure based on finalized
                                 disbursements:</p>
                             <ul class="list-disc pl-5 space-y-1">
@@ -628,19 +611,19 @@ BDP - Guides | Excellence Financing Broker
 
                 <!-- FAQ Item 4 -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    class="bg-white rounded-2xl shadow-sm border border-slate-200 transition-colors duration-300 overflow-hidden">
                     <button
                         class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
                         aria-expanded="false">
-                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">When do payouts
+                        <span class="text-sm sm:text-base font-bold text-slate-800">When do payouts
                             happen?</span>
                         <span
-                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            class="ml-4 flex-shrink-0 text-slate-450 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 transition-all duration-200">
                             <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
                         </span>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
-                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <div class="accordion-content px-6 bg-slate-50/50">
+                        <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                             Standard disbursements are tracked inside your CRM workspace and validated dynamically upon
                             successful completion. Monthly campaigns and volume-slab bonuses are accumulated and paid
                             directly on every 5th of the succeeding month.
@@ -650,19 +633,19 @@ BDP - Guides | Excellence Financing Broker
 
                 <!-- FAQ Item 5 -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300 overflow-hidden">
+                    class="bg-white rounded-2xl shadow-sm border border-slate-200 transition-colors duration-300 overflow-hidden">
                     <button
                         class="accordion-trigger w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-1 focus:ring-efbBlue focus:rounded-2xl"
                         aria-expanded="false">
-                        <span class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">Can I track
+                        <span class="text-sm sm:text-base font-bold text-slate-800">Can I track
                             Sub-BDP referrals?</span>
                         <span
-                            class="ml-4 flex-shrink-0 text-slate-450 dark:text-slate-500 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-900 transition-all duration-200">
+                            class="ml-4 flex-shrink-0 text-slate-450 flex items-center justify-center w-8 h-8 rounded-full bg-slate-50 transition-all duration-200">
                             <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
                         </span>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50/50 dark:bg-slate-800/40">
-                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <div class="accordion-content px-6 bg-slate-50/50">
+                        <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                             Yes! EFB offers a multi-tier referral multiplier. When your referred partners join, they
                             become your Sub-BDP. You earn 5% of your Sub-BDP's payouts on every successful disbursement
                             they perform. Additionally, you earn monthly bonus payouts of up to AED 100 per active
@@ -675,17 +658,17 @@ BDP - Guides | Excellence Financing Broker
             <!-- More FAQs Button at Bottom Extreme Left -->
             <div class="flex justify-start mt-8">
                 <a href="{% url 'core:bdp_faq' %}"
-                    class="inline-flex items-center gap-2 text-sm font-bold text-efbBlue dark:text-blue-400 hover:text-efbBlue-dark dark:hover:text-blue-300 transition-colors group">
+                    class="inline-flex items-center gap-2 text-sm font-bold text-efbBlue hover:text-efbBlue-dark transition-colors group">
                     More FAQs <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="help-section" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300 font-sans">
+    <section id="help-section" class="py-20 bg-white transition-colors duration-300 font-sans">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-                class="bg-gradient-to-r from-efbBlue to-efbBlue-slate dark:from-slate-800 dark:to-slate-900/80 rounded-3xl p-8 sm:p-12 shadow-xl shadow-efbBlue/10 border border-slate-100 dark:border-slate-800 relative overflow-hidden text-white">
+                class="bg-gradient-to-r from-efbBlue to-efbBlue-slate rounded-3xl p-8 sm:p-12 shadow-xl shadow-efbBlue/10 border border-slate-100 relative overflow-hidden text-white">
                 <div class="absolute -right-16 -top-16 w-60 h-60 bg-white/5 rounded-full pointer-events-none"></div>
                 <div class="absolute -left-16 -bottom-16 w-60 h-60 bg-blue-500/10 rounded-full pointer-events-none">
                 </div>
@@ -733,8 +716,8 @@ BDP - Guides | Excellence Financing Broker
 
                     <!-- Contact Form Card -->
                     <div
-                        class="lg:col-span-5 bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-850 text-slate-800 dark:text-slate-100">
-                        <h3 class="text-base font-bold mb-4 dark:text-white flex items-center gap-2">
+                        class="lg:col-span-5 bg-slate-50 rounded-2xl p-6 shadow-xl border border-slate-200 text-slate-800">
+                        <h3 class="text-base font-bold mb-4 flex items-center gap-2">
                             <i class="fa-regular fa-envelope text-efbBlue"></i> Quick Inquiry
                         </h3>
                         <form id="contact-support-form" class="space-y-3" onsubmit="handleFormSubmit(event)">
@@ -743,20 +726,20 @@ BDP - Guides | Excellence Financing Broker
                                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
                                     for="user-name">Your Full Name</label>
                                 <input type="text" id="user-name" name="name" required placeholder="Hasan Bin Mohammad"
-                                    class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
+                                    class="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
                                     for="user-email">Email Address</label>
                                 <input type="email" id="user-email" name="email" required placeholder="name@email.ae"
-                                    class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
+                                    class="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1"
                                     for="user-message">Inquiry Message</label>
                                 <textarea id="user-message" name="message" rows="3" required
                                     placeholder="How do payout structures operate for business accounts..."
-                                    class="w-full px-3.5 py-2.5 text-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue resize-none"></textarea>
+                                    class="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-efbBlue resize-none"></textarea>
                             </div>
                             <button type="submit"
                                 class="w-full py-3 bg-gradient-to-r from-efbBlue to-blue-600 text-white font-semibold text-xs rounded-xl hover:opacity-95 shadow transition-all">
@@ -783,71 +766,66 @@ BDP - Guides | Excellence Financing Broker
     <div id="download-modal"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
         <div
-            class="bg-white dark:bg-slate-850 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-700 flex flex-col">
+            class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 flex flex-col">
             <!-- Modal Header -->
-            <div
-                class="p-6 border-b border-slate-100 dark:border-slate-700/60 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
+            <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
                 <div class="flex items-center gap-3">
-                    <span
-                        class="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/40 text-efbRed flex items-center justify-center">
+                    <span class="w-10 h-10 rounded-xl bg-red-100 text-efbRed flex items-center justify-center">
                         <i class="fa-solid fa-file-pdf text-lg"></i>
                     </span>
                     <div>
                         <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">PREVIEW FILE
                             RESOURCE</span>
-                        <h3 id="modal-file-title"
-                            class="font-extrabold text-sm text-slate-800 dark:text-slate-100 leading-tight">BDP Guide
+                        <h3 id="modal-file-title" class="font-extrabold text-sm text-slate-800 leading-tight">BDP Guide
                         </h3>
                     </div>
                 </div>
                 <button onclick="closeModal()"
-                    class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-600 transition-all text-slate-400 hover:text-slate-600 dark:hover:text-slate-100">
+                    class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-all text-slate-400 hover:text-slate-600">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
 
             <!-- Modal Content / Simulation Details -->
-            <div class="p-6 space-y-4 text-slate-850 dark:text-slate-200">
-                <p id="modal-file-desc" class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            <div class="p-6 space-y-4 text-slate-850">
+                <p id="modal-file-desc" class="text-xs text-slate-500 leading-relaxed">
                     Description of the guide.
                 </p>
 
                 <!-- Information stats table -->
-                <div
-                    class="grid grid-cols-3 gap-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <div class="grid grid-cols-3 gap-3 bg-slate-50 rounded-2xl p-4 border border-slate-200">
                     <div>
                         <span class="block text-[10px] text-slate-400 font-bold uppercase">FILE SIZE</span>
-                        <span id="modal-file-size" class="text-xs font-bold text-slate-700 dark:text-slate-200">2.4
+                        <span id="modal-file-size" class="text-xs font-bold text-slate-700">2.4
                             MB</span>
                     </div>
                     <div>
                         <span class="block text-[10px] text-slate-400 font-bold uppercase">FORMAT</span>
-                        <span class="text-xs font-bold text-slate-700 dark:text-slate-200">PDF Document</span>
+                        <span class="text-xs font-bold text-slate-700">PDF Document</span>
                     </div>
                     <div>
                         <span class="block text-[10px] text-slate-400 font-bold uppercase">READ TIME</span>
-                        <span id="modal-file-time" class="text-xs font-bold text-slate-700 dark:text-slate-200">5
+                        <span id="modal-file-time" class="text-xs font-bold text-slate-700">5
                             Mins</span>
                     </div>
                 </div>
 
                 <!-- Verified Verbatim Path Placeholder badge -->
-                <div
-                    class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-xl border border-blue-100 dark:border-blue-900/40">
-                    <span class="block text-[9px] text-blue-500 dark:text-blue-400 font-bold uppercase">VERBATIM
+                <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+                    <span class="block text-[9px] text-blue-500  font-bold uppercase">VERBATIM
                         REFERENCED FILE</span>
                     <span id="modal-file-path"
-                        class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-300 select-all block mt-0.5">path_placeholder.pdf</span>
+                        class="text-xs font-mono font-semibold text-blue-600 select-all block mt-0.5">path_placeholder.pdf</span>
                 </div>
 
                 <!-- Simulation progress widget -->
                 <div id="download-progress-container" class="hidden space-y-2">
-                    <div class="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500">
                         <span class="flex items-center gap-1.5"><i
                                 class="fa-solid fa-spinner animate-spin text-efbBlue"></i> Preparing document...</span>
                         <span id="download-progress-val">0%</span>
                     </div>
-                    <div class="w-full bg-slate-100 dark:bg-slate-900 rounded-full h-2 overflow-hidden">
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
                         <div id="download-progress-bar"
                             class="bg-gradient-to-r from-efbBlue to-blue-500 h-full w-0 transition-all"></div>
                     </div>
@@ -855,10 +833,9 @@ BDP - Guides | Excellence Financing Broker
             </div>
 
             <!-- Modal Footer -->
-            <div
-                class="p-6 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-end gap-3 bg-slate-50/50 dark:bg-slate-800/20">
+            <div class="p-6 border-t border-slate-100 flex items-center justify-end gap-3 bg-slate-50/50">
                 <button onclick="closeModal()"
-                    class="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl text-slate-600 dark:text-slate-300 text-xs font-semibold transition-all">
+                    class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-600 text-xs font-semibold transition-all">
                     Cancel
                 </button>
                 <button id="modal-download-btn"
@@ -943,45 +920,45 @@ BDP - Guides | Excellence Financing Broker
         let activeDownloadId = null;
 
         window.addEventListener('load', () => {
-            initializeTheme();
+            // initializeTheme();
             renderGuides();
             setupAccordions();
             setupScrollToTop();
             setupSearchAndFilters();
         });
 
-        function initializeTheme() {
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeIconLight = document.getElementById('theme-icon-light');
-            const themeIconDark = document.getElementById('theme-icon-dark');
+        // function initializeTheme() {
+        //     const themeToggleBtn = document.getElementById('theme-toggle');
+        //     const themeIconLight = document.getElementById('theme-icon-light');
+        //     const themeIconDark = document.getElementById('theme-icon-dark');
 
-            // Set dark theme as default or trace storage preference
-            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                themeIconLight.classList.remove('hidden');
-                themeIconDark.classList.add('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                themeIconLight.classList.add('hidden');
-                themeIconDark.classList.remove('hidden');
-            }
+        //     // Set dark theme as default or trace storage preference
+        //     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        //         document.documentElement.classList.add('dark');
+        //         themeIconLight.classList.remove('hidden');
+        //         themeIconDark.classList.add('hidden');
+        //     } else {
+        //         document.documentElement.classList.remove('dark');
+        //         themeIconLight.classList.add('hidden');
+        //         themeIconDark.classList.remove('hidden');
+        //     }
 
-            themeToggleBtn.addEventListener('click', () => {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                    themeIconLight.classList.add('hidden');
-                    themeIconDark.classList.remove('hidden');
-                    showToast('Switched to Light Mode', 'info');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                    themeIconLight.classList.remove('hidden');
-                    themeIconDark.classList.add('hidden');
-                    showToast('Switched to Dark Mode', 'info');
-                }
-            });
-        }
+        //     themeToggleBtn.addEventListener('click', () => {
+        //         if (document.documentElement.classList.contains('dark')) {
+        //             document.documentElement.classList.remove('dark');
+        //             localStorage.setItem('color-theme', 'light');
+        //             themeIconLight.classList.add('hidden');
+        //             themeIconDark.classList.remove('hidden');
+        //             showToast('Switched to Light Mode', 'info');
+        //         } else {
+        //             document.documentElement.classList.add('dark');
+        //             localStorage.setItem('color-theme', 'dark');
+        //             themeIconLight.classList.remove('hidden');
+        //             themeIconDark.classList.add('hidden');
+        //             showToast('Switched to Dark Mode', 'info');
+        //         }
+        //     });
+        // }
 
         function renderGuides() {
             const grid = document.getElementById('guides-grid');
@@ -1014,15 +991,15 @@ BDP - Guides | Excellence Financing Broker
 
             grid.innerHTML = filtered.map(guide => {
                 return `
-                <div class="bg-white/95 dark:bg-slate-800/95 p-6 rounded-3xl shadow-md hover:shadow-xl border border-slate-200/60 dark:border-slate-700/85 hover:border-efbBlue/30 dark:hover:border-blue-400/30 transform hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white/95 p-6 rounded-3xl shadow-md hover:shadow-xl border border-slate-200/60 hover:border-efbBlue/30 transform hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
                     <div class="space-y-4">
                         <!-- Card Header details -->
                         <div class="flex items-center justify-between">
-                            <span class="flex items-center justify-center w-11 h-11 rounded-2xl bg-red-50 dark:bg-red-950/40 text-efbRed group-hover:scale-110 transition-transform">
+                            <span class="flex items-center justify-center w-11 h-11 rounded-2xl bg-red-50 text-efbRed group-hover:scale-110 transition-transform">
                                 <i class="fa-regular fa-file-pdf text-xl"></i>
                             </span>
                             <div class="flex items-center gap-2 text-[10px] font-bold text-slate-400">
-                                <span class="bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded-md border border-slate-200 dark:border-slate-800 uppercase tracking-wider">${guide.fileType.split(' ')[0]}</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded-md border border-slate-200 uppercase tracking-wider">${guide.fileType.split(' ')[0]}</span>
                                 <span>&bull;</span>
                                 <span>${guide.fileSize}</span>
                             </div>
@@ -1030,24 +1007,24 @@ BDP - Guides | Excellence Financing Broker
 
                         <!-- Card Content -->
                         <div class="space-y-2">
-                            <h3 class="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-efbBlue dark:group-hover:text-blue-400 transition-colors leading-snug">${guide.title}</h3>
-                            <p class="text-xs text-slate-550 dark:text-slate-400 leading-relaxed line-clamp-3">${guide.description}</p>
+                            <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-efbBlue transition-colors leading-snug">${guide.title}</h3>
+                            <p class="text-xs text-slate-550 leading-relaxed line-clamp-3">${guide.description}</p>
                         </div>
                     </div>
 
                     <!-- Meta specifications & actions -->
-                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-700/60 space-y-4">
+                    <div class="mt-6 pt-5 border-t border-slate-100 space-y-4">
                         <div class="flex items-center justify-between text-[11px] font-medium text-slate-400">
                             <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> ${guide.readingTime} read</span>
                             <span class="flex items-center gap-1"><i class="fa-regular fa-calendar-check"></i> ${guide.lastUpdated}</span>
                         </div>
 
-                        <div class="bg-slate-50/70 dark:bg-slate-900/60 p-2.5 rounded-xl flex items-center justify-between border border-slate-200/60 dark:border-slate-850 text-[10px] font-semibold text-slate-400">
+                        <div class="bg-slate-50/70 p-2.5 rounded-xl flex items-center justify-between border border-slate-200/60 text-[10px] font-semibold text-slate-400">
                             <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-down text-efbBlue"></i> Downloads:</span>
-                            <span class="text-slate-700 dark:text-slate-300 font-bold" id="dl-count-${guide.id}">${guide.downloadCount.toLocaleString()}</span>
+                            <span class="text-slate-700 font-bold" id="dl-count-${guide.id}">${guide.downloadCount.toLocaleString()}</span>
                         </div>
 
-                        <button onclick="triggerDownloadModal('${guide.id}')" class="w-full inline-flex items-center justify-center px-4 py-3 bg-slate-50 hover:bg-efbBlue dark:bg-slate-900 dark:hover:bg-efbBlue text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200 dark:border-slate-700 hover:border-efbBlue hover:shadow-lg hover:shadow-efbBlue/15 font-bold text-xs rounded-xl transition-all">
+                        <button onclick="triggerDownloadModal('${guide.id}')" class="w-full inline-flex items-center justify-center px-4 py-3 bg-slate-50 hover:bg-efbBlue text-slate-700 hover:text-white border border-slate-200 hover:border-efbBlue hover:shadow-lg hover:shadow-efbBlue/15 font-bold text-xs rounded-xl transition-all">
                             Download Guide <i class="fa-solid fa-arrow-down ml-2 text-[10px]"></i>
                         </button>
                     </div>
@@ -1071,7 +1048,7 @@ BDP - Guides | Excellence Financing Broker
 
                 const allPills = categoryFilterContainer.querySelectorAll('.filter-pill');
                 allPills.forEach(pill => {
-                    pill.className = "px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill";
+                    pill.className = "px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350  bg-white/70 text-slate-600 hover:border-efbBlue transition-all filter-pill";
                 });
 
                 clickedButton.className = "px-4 py-2 rounded-xl text-xs font-bold border border-efbBlue bg-efbBlue text-white hover:opacity-90 transition-all filter-pill";
@@ -1093,7 +1070,7 @@ BDP - Guides | Excellence Financing Broker
                 if (pill.getAttribute('data-category') === 'all') {
                     pill.className = "px-4 py-2 rounded-xl text-xs font-bold border border-efbBlue bg-efbBlue text-white hover:opacity-90 transition-all filter-pill";
                 } else {
-                    pill.className = "px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:border-efbBlue dark:hover:border-blue-400 transition-all filter-pill";
+                    pill.className = "px-4 py-2 rounded-xl text-xs font-semibold border border-slate-350 bg-white/70 text-slate-600 hover:border-efbBlue transition-all filter-pill";
                 }
             });
 
@@ -1171,7 +1148,7 @@ BDP - Guides | Excellence Financing Broker
 
             progressContainer.classList.remove('hidden');
             confirmBtn.disabled = true;
-            confirmBtn.className = "px-5 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-450 dark:text-slate-500 rounded-xl text-xs font-bold cursor-not-allowed flex items-center gap-2";
+            confirmBtn.className = "px-5 py-2.5 bg-slate-200 text-slate-450 rounded-xl text-xs font-bold cursor-not-allowed flex items-center gap-2";
             confirmBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Downloading...`;
 
             let progress = 0;
@@ -1210,7 +1187,7 @@ BDP - Guides | Excellence Financing Broker
             const container = document.getElementById('toast-container');
 
             const toast = document.createElement('div');
-            toast.className = "flex items-center gap-3 p-4 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-750 pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300 max-w-sm";
+            toast.className = "flex items-center gap-3 p-4 bg-white text-slate-800 rounded-2xl shadow-xl border border-slate-100 pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300 max-w-sm";
 
             let icon = '<i class="fa-solid fa-info text-blue-500"></i>';
             if (type === 'success') {

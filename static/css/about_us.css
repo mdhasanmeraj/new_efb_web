@@ -1,0 +1,192 @@
+:root {
+    --efb-blue: #0056b3;
+    --efb-red: #d32f2f;
+    --efb-dark: #1a1a1a;
+}
+
+
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+
+
+.slide-from-left {
+    animation: slideInCenter 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes slideInCenter {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Section 2: Persistent Scroll Animations */
+.reveal-left {
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.reveal-right {
+    transform: translateX(150px);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.active-reveal {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Section 3: Gradient Cards */
+.efb-gradient-card {
+    background: linear-gradient(135deg, var(--efb-blue) 0%, var(--efb-red) 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.efb-gradient-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Section 4: Pop-out Bullet Points */
+.pop-out-item {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    border: 1px solid #e2e8f0;
+}
+
+.pop-out-item:hover {
+    transform: scale(1.05);
+    background-color: white;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--efb-blue);
+}
+
+.btn-royal {
+    background: var(--efb-blue);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+}
+
+.btn-royal:hover {
+    background: var(--efb-red);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* ==========================================================
+   iOS Safari Performance Optimizations
+   ========================================================== */
+
+@supports (-webkit-touch-callout: none) {
+
+    /* Disable expensive reveal animations */
+
+    .reveal-left,
+    .reveal-right {
+
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+
+    }
+
+    .active-reveal {
+
+        opacity: 1 !important;
+        transform: none !important;
+
+    }
+
+    /* Disable hover effects */
+
+    .efb-gradient-card:hover,
+    .pop-out-item:hover,
+    .btn-royal:hover {
+
+        transform: none !important;
+        box-shadow: inherit !important;
+
+    }
+
+    /* Remove ping animation */
+
+    .animate-ping {
+
+        animation: none !important;
+
+    }
+
+    /* Reduce huge shadows */
+
+    .efb-gradient-card {
+
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+
+    }
+
+    /* Faster rendering */
+
+    section {
+
+        content-visibility: auto;
+        contain-intrinsic-size: 900px;
+
+    }
+
+    /* Prevent unnecessary GPU repaint */
+
+    img,
+    .efb-gradient-card,
+    .pop-out-item {
+
+        transform: translateZ(0);
+        will-change: auto;
+
+    }
+
+}
+
+@supports (-webkit-touch-callout:none) {
+
+    img {
+
+        transition: none !important;
+
+    }
+
+    .grayscale:hover {
+
+        filter: grayscale(100%) !important;
+
+    }
+
+}
+
+@supports (-webkit-touch-callout:none) {
+
+    .shadow-2xl,
+    .shadow-xl {
+
+        box-shadow: 0 8px 18px rgba(0, 0, 0, .12) !important;
+
+    }
+
+}
