@@ -1,0 +1,74 @@
+<!-- Glassmorphism 1:1 Advisory Consultation Modal Form -->
+<div class="glass-modal-overlay" id="advisoryModal">
+    <div class="glass-modal-box">
+        <span class="glass-close-btn" id="closeAdvisoryModal">&times;</span>
+        <h3>Book Free Session</h3>
+        <form id="advisoryForm" method="POST" action="{% url 'core:submit_consultation' %}">
+            {% csrf_token %}
+            <div class="glass-form-group">
+                <label for="advName">Name *</label>
+                <input type="text" id="advName" class="glass-input" name="name" placeholder="Enter your full name"
+                    required>
+            </div>
+            <div class="glass-form-group">
+                <label for="advService">Service *</label>
+                <select id="advService" name="financial_segment" class="glass-select" required>
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Business Loan">Business Loan</option>
+                    <option value="Business Account">Business Account</option>
+                    <option value="Mortgage">Mortgage</option>
+                    <option value="Credit Card">Credit Card</option>
+                </select>
+            </div>
+            <div class="glass-form-group">
+                <label for="advPhone">Mobile Number *</label>
+                <input type="tel" id="advPhone" name="phone" class="glass-input" placeholder="+971XXXXXXXXX" required>
+                <p id="phoneErrorMsg" class="text-xs text-rose-400 mt-1.5 hidden"><i
+                        class="fa-solid fa-triangle-exclamation mr-1"></i>Mobile number must start with +971 (e.g.,
+                    +971525263838).</p>
+            </div>
+            <div class="glass-form-group">
+                <label for="advEmail">Email address *</label>
+                <input type="email" id="advEmail" name="email" class="glass-input" placeholder="name@domain.com"
+                    required>
+            </div>
+
+            <div class="glass-form-group">
+                <label for="advSalary">Monthly Salary *</label>
+
+                <input type="number" id="advSalary" name="monthly_salary" class="glass-input"
+                    placeholder="Enter your monthly salary" required>
+            </div>
+            <div class="glass-disclaimer">
+                By clicking this, You are Agree with our <a href="#" class="privacy-link">Privacy policy</a> and <a
+                    href="#" class="privacy-link">Terms & Conditions</a>
+            </div>
+            <button type="submit" class="glass-submit-btn" id="consultationSubmitBtn">
+
+                <span class="btn-text">
+                    SUBMIT REQUEST
+                </span>
+
+                <span class="btn-loader" style="display:none;">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Submitting...
+                </span>
+
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Glassmorphism Success Pop-up -->
+<div class="glass-popup-overlay" id="advisorySuccessPopup">
+    <div class="glass-popup-box">
+        <div class="glass-popup-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gold">Request Submitted!</h3>
+        <p class="mb-6 text-sm text-gray-200">Your advisory request has been submitted successfully. One of our expert
+            advisors will contact you shortly.</p>
+        <button class="glass-submit-btn" id="closeSuccessPopup">OKAY</button>
+    </div>
+</div>

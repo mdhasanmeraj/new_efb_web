@@ -21,13 +21,16 @@
     .toc-sticky::-webkit-scrollbar {
         width: 4px;
     }
+
     .toc-sticky::-webkit-scrollbar-track {
         background: transparent;
     }
+
     .toc-sticky::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
     }
+
     .toc-sticky::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.2);
     }
@@ -37,7 +40,8 @@
         align-items: center;
         gap: 0.75rem;
         padding: 0.6rem 1rem;
-        color: #94a3b8; /* slate-400 */
+        color: #94a3b8;
+        /* slate-400 */
         font-size: 0.9rem;
         font-weight: 500;
         border-radius: 8px;
@@ -46,7 +50,8 @@
     }
 
     .toc-link:hover {
-        color: #e9c176; /* gold */
+        color: #e9c176;
+        /* gold */
         background: rgba(233, 193, 118, 0.05);
         padding-left: 1.25rem;
     }
@@ -79,6 +84,7 @@
         .legal-content-container {
             grid-template-columns: 1fr;
         }
+
         .toc-column {
             display: none;
         }
@@ -134,7 +140,7 @@ Privacy & Cookies Policy | Excellence Financing Broker
 
             <!-- Download Button -->
             <a href="{% url 'core:download_guide' filename='Privacy_&_Cookies_Policy.pdf' %}"
-                class="partner-btn relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all select-none">
+                class="relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl select-none shadow-md">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 Download Privacy & Cookies Policy (PDF)
             </a>
@@ -144,9 +150,11 @@ Privacy & Cookies Policy | Excellence Financing Broker
             <!-- Navigation Index Sidebar -->
             <div class="toc-column">
                 <div class="toc-sticky">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index</h3>
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index
+                    </h3>
                     <nav class="space-y-1">
-                        <p class="text-xs font-bold text-[#e9c176] uppercase tracking-wider px-4 pt-2 pb-1">Privacy Policy</p>
+                        <p class="text-xs font-bold text-[#e9c176] uppercase tracking-wider px-4 pt-2 pb-1">Privacy
+                            Policy</p>
                         <a href="#intro" class="toc-link"><span class="text-xs">01</span> Introduction</a>
                         <a href="#whoweare" class="toc-link"><span class="text-xs">02</span> Who We Are</a>
                         <a href="#scope" class="toc-link"><span class="text-xs">03</span> Scope of Policy</a>
@@ -164,8 +172,9 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         <a href="#breach" class="toc-link"><span class="text-xs">15</span> Data Breach</a>
                         <a href="#changes" class="toc-link"><span class="text-xs">16</span> Changes to Policy</a>
                         <a href="#contact" class="toc-link"><span class="text-xs">17</span> Contact Us</a>
-                        
-                        <p class="text-xs font-bold text-[#e9c176] uppercase tracking-wider px-4 pt-4 pb-1">Cookie Policy</p>
+
+                        <p class="text-xs font-bold text-[#e9c176] uppercase tracking-wider px-4 pt-4 pb-1">Cookie
+                            Policy</p>
                         <a href="#c-intro" class="toc-link"><span class="text-xs">C1</span> Introduction</a>
                         <a href="#c-what" class="toc-link"><span class="text-xs">C2</span> What Are Cookies</a>
                         <a href="#c-types" class="toc-link"><span class="text-xs">C3</span> Cookie Types</a>
@@ -179,7 +188,7 @@ Privacy & Cookies Policy | Excellence Financing Broker
 
             <!-- Content Column -->
             <div class="space-y-12">
-                
+
                 <!-- PRIVACY POLICY SECTION -->
                 <div class="border-b border-slate-800 pb-4">
                     <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest font-mono">Part I</h2>
@@ -193,10 +202,17 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Excellence Financing Broker ("EFB", "we", "us", or "our") respects your privacy and is committed to protecting the personal data you share with us. This Privacy Policy explains what personal data we collect through our website <a href="https://efb.ae" class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website") and in connection with any consultancy services you engage us to provide, why we collect it, how we use and share it, and the choices and rights available to you.
+                        Excellence Financing Broker ("EFB", "we", "us", or "our") respects your privacy and is committed
+                        to protecting the personal data you share with us. This Privacy Policy explains what personal
+                        data we collect through our website <a href="https://efb.ae"
+                            class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website") and in connection
+                        with any consultancy services you engage us to provide, why we collect it, how we use and share
+                        it, and the choices and rights available to you.
                     </p>
                     <p class="leading-relaxed text-sm text-slate-400">
-                        This Policy applies to visitors, enquirers, and users of the Website and forms part of our commitment to comply with the UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data ("PDPL") and other applicable UAE laws.
+                        This Policy applies to visitors, enquirers, and users of the Website and forms part of our
+                        commitment to comply with the UAE Federal Decree-Law No. 45 of 2021 on the Protection of
+                        Personal Data ("PDPL") and other applicable UAE laws.
                     </p>
                 </div>
 
@@ -207,13 +223,17 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Excellence Financing Broker is a company registered in Dubai, United Arab Emirates, licensed by the Dubai Department of Economy and Tourism (formerly the Dubai Department of Economic Development) under Trade License No. 869539, with VAT Registration Number (TRN) 100526925100003.
+                        Excellence Financing Broker is a company registered in Dubai, United Arab Emirates, licensed by
+                        the Dubai Department of Economy and Tourism (formerly the Dubai Department of Economic
+                        Development) under Trade License No. 869539, with VAT Registration Number (TRN) 100526925100003.
                     </p>
                     <p class="leading-relaxed font-semibold text-white">
-                        Registered Office: Al Abbas Building 306/18, Block-2, Khaled Bin Waleed Road, Bur Dubai, Dubai, United Arab Emirates.
+                        Registered Office: Al Abbas Building 306/18, Block-2, Khaled Bin Waleed Road, Bur Dubai, Dubai,
+                        United Arab Emirates.
                     </p>
                     <p class="leading-relaxed">
-                        For all data protection matters, you may contact us at: <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>
+                        For all data protection matters, you may contact us at: <a href="mailto:support@efb.ae"
+                            class="text-[#e9c176] hover:underline">support@efb.ae</a>
                     </p>
                 </div>
 
@@ -224,7 +244,12 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We are an independent financial brokerage and consultancy company. We connect customers with licensed banks and financial institutions in the UAE in relation to Personal Loans, Business Loans, Credit Cards, Mortgages, and Business Accounts, and we may provide professional financial consultancy services for a fee. We do not provide loans or financial products ourselves, and this Policy describes only the personal data we, EFB, collect and process as part of our brokerage and consultancy activities.
+                        We are an independent financial brokerage and consultancy company. We connect customers with
+                        licensed banks and financial institutions in the UAE in relation to Personal Loans, Business
+                        Loans, Credit Cards, Mortgages, and Business Accounts, and we may provide professional financial
+                        consultancy services for a fee. We do not provide loans or financial products ourselves, and
+                        this Policy describes only the personal data we, EFB, collect and process as part of our
+                        brokerage and consultancy activities.
                     </p>
                 </div>
 
@@ -236,7 +261,8 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         </h2>
                         <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                         <p class="leading-relaxed mb-4">
-                            We collect the following categories of personal data directly from you when you interact with our website or engage our services:
+                            We collect the following categories of personal data directly from you when you interact
+                            with our website or engage our services:
                         </p>
                     </div>
 
@@ -273,8 +299,10 @@ Privacy & Cookies Policy | Excellence Financing Broker
                             Newsletter Sign-Up & Billing Information
                         </h3>
                         <p class="text-sm leading-relaxed">
-                            For Newsletter, we collect your <strong>Email address</strong>. 
-                            If you engage our paid consultancy services, we will also collect information necessary to deliver and invoice those services, such as billing name and contact details, the scope and fee for the engagement, and confirmation of payment.
+                            For Newsletter, we collect your <strong>Email address</strong>.
+                            If you engage our paid consultancy services, we will also collect information necessary to
+                            deliver and invoice those services, such as billing name and contact details, the scope and
+                            fee for the engagement, and confirmation of payment.
                         </p>
                     </div>
 
@@ -284,7 +312,8 @@ Privacy & Cookies Policy | Excellence Financing Broker
                             Passive / Technical Information
                         </h3>
                         <p class="text-sm leading-relaxed">
-                            When you browse our website, certain technical information is collected automatically through cookies and similar technologies, including:
+                            When you browse our website, certain technical information is collected automatically
+                            through cookies and similar technologies, including:
                         </p>
                         <ul class="space-y-2 text-sm pl-4 list-disc">
                             <li>IP address</li>
@@ -302,10 +331,15 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We process your personal data on the basis of your consent. By submitting a form on our website (enquiry, consultation request, or newsletter sign-up) or engaging our consultancy services, you consent to our collection and use of your personal data as described in this Policy. Where you engage our paid consultancy services, we also process the billing and engagement information described in Section 4 as necessary to perform that engagement with you.
+                        We process your personal data on the basis of your consent. By submitting a form on our website
+                        (enquiry, consultation request, or newsletter sign-up) or engaging our consultancy services, you
+                        consent to our collection and use of your personal data as described in this Policy. Where you
+                        engage our paid consultancy services, we also process the billing and engagement information
+                        described in Section 4 as necessary to perform that engagement with you.
                     </p>
                     <p class="leading-relaxed">
-                        You may withdraw your consent at any time as set out in Section 11 (Your Rights) and Section 13 (Marketing Communications) below.
+                        You may withdraw your consent at any time as set out in Section 11 (Your Rights) and Section 13
+                        (Marketing Communications) below.
                     </p>
                 </div>
 
@@ -321,19 +355,23 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     <ul class="space-y-3 pl-4">
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span>Respond to your enquiry and connect you with relevant partner banks and financial institutions.</span>
+                            <span>Respond to your enquiry and connect you with relevant partner banks and financial
+                                institutions.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span>Arrange and manage consultations you request, including your free initial consultation.</span>
+                            <span>Arrange and manage consultations you request, including your free initial
+                                consultation.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span>Deliver, manage, and invoice any paid consultancy services you engage us to provide.</span>
+                            <span>Deliver, manage, and invoice any paid consultancy services you engage us to
+                                provide.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span>Send you the newsletter and promotional communications you have signed up for or consented to receive.</span>
+                            <span>Send you the newsletter and promotional communications you have signed up for or
+                                consented to receive.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
@@ -341,7 +379,8 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span>Comply with applicable legal, regulatory, or tax obligations, including invoicing and accounting records.</span>
+                            <span>Comply with applicable legal, regulatory, or tax obligations, including invoicing and
+                                accounting records.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
@@ -357,12 +396,14 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We do not sell your personal data. We may share your personal data with the following categories of recipients:
+                        We do not sell your personal data. We may share your personal data with the following categories
+                        of recipients:
                     </p>
                     <ul class="space-y-3 pl-4">
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Partner banks and financial institutions</strong> — only after you have consented, so that they may assess and process your enquiry.</span>
+                            <span><strong>Partner banks and financial institutions</strong> — only after you have
+                                consented, so that they may assess and process your enquiry.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
@@ -370,19 +411,23 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Email service providers</strong> — to send transactional and marketing communications.</span>
+                            <span><strong>Email service providers</strong> — to send transactional and marketing
+                                communications.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Analytics providers</strong> (including Google Analytics and Google Tag Manager) — to help us understand Website usage.</span>
+                            <span><strong>Analytics providers</strong> (including Google Analytics and Google Tag
+                                Manager) — to help us understand Website usage.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Marketing providers</strong> (including Meta Pixel) — to help us measure and improve our marketing.</span>
+                            <span><strong>Marketing providers</strong> (including Meta Pixel) — to help us measure and
+                                improve our marketing.</span>
                         </li>
                     </ul>
                     <p class="leading-relaxed mt-4">
-                        We do not share your personal data with any other third party except as required by law, regulation, or a valid order of a competent UAE authority.
+                        We do not share your personal data with any other third party except as required by law,
+                        regulation, or a valid order of a competent UAE authority.
                     </p>
                 </div>
 
@@ -393,7 +438,10 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Some of the third-party providers referred to above, including Google Analytics, Google Tag Manager, and Meta Pixel, may process technical information on servers located outside the United Arab Emirates. Where this occurs, we take reasonable steps to ensure such providers maintain appropriate safeguards for your personal data, consistent with the requirements of the PDPL.
+                        Some of the third-party providers referred to above, including Google Analytics, Google Tag
+                        Manager, and Meta Pixel, may process technical information on servers located outside the United
+                        Arab Emirates. Where this occurs, we take reasonable steps to ensure such providers maintain
+                        appropriate safeguards for your personal data, consistent with the requirements of the PDPL.
                     </p>
                 </div>
 
@@ -404,10 +452,15 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We retain your personal data only for as long as necessary to provide our services to you, to comply with applicable legal or contractual obligations, to resolve disputes, or until you request deletion of your data, where such deletion is legally permissible.
+                        We retain your personal data only for as long as necessary to provide our services to you, to
+                        comply with applicable legal or contractual obligations, to resolve disputes, or until you
+                        request deletion of your data, where such deletion is legally permissible.
                     </p>
                     <p class="leading-relaxed">
-                        Where we are required to retain certain records for legal, regulatory, or audit purposes, we will retain that data only for as long as required for that purpose. In particular, as a VAT-registered business, invoices and related financial records connected to any consultancy fee we charge you are retained for the minimum period required under UAE tax law.
+                        Where we are required to retain certain records for legal, regulatory, or audit purposes, we
+                        will retain that data only for as long as required for that purpose. In particular, as a
+                        VAT-registered business, invoices and related financial records connected to any consultancy fee
+                        we charge you are retained for the minimum period required under UAE tax law.
                     </p>
                 </div>
 
@@ -418,7 +471,10 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We take appropriate technical and organizational measures, in line with industry-standard practices, to protect your personal data against unauthorized access, loss, misuse, or disclosure. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.
+                        We take appropriate technical and organizational measures, in line with industry-standard
+                        practices, to protect your personal data against unauthorized access, loss, misuse, or
+                        disclosure. However, no method of transmission over the internet or electronic storage is
+                        completely secure, and we cannot guarantee absolute security.
                     </p>
                 </div>
 
@@ -450,11 +506,16 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span>Withdraw your consent at any time, without affecting the lawfulness of processing carried out before withdrawal.</span>
+                            <span>Withdraw your consent at any time, without affecting the lawfulness of processing
+                                carried out before withdrawal.</span>
                         </li>
                     </ul>
                     <p class="leading-relaxed mt-4">
-                        To exercise any of these rights, please contact us at <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>. We will respond to your request within a reasonable time and in accordance with applicable law. Please note that we may be unable to delete billing or invoicing records that we are legally required to retain, as described in Section 9.
+                        To exercise any of these rights, please contact us at <a href="mailto:support@efb.ae"
+                            class="text-[#e9c176] hover:underline">support@efb.ae</a>. We will respond to your request
+                        within a reasonable time and in accordance with applicable law. Please note that we may be
+                        unable to delete billing or invoicing records that we are legally required to retain, as
+                        described in Section 9.
                     </p>
                 </div>
 
@@ -465,7 +526,9 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Our services are intended for individuals who are 18 years of age or older. We do not knowingly collect personal data from anyone under the age of 18. If we become aware that we have inadvertently collected such data, we will take reasonable steps to delete it.
+                        Our services are intended for individuals who are 18 years of age or older. We do not knowingly
+                        collect personal data from anyone under the age of 18. If we become aware that we have
+                        inadvertently collected such data, we will take reasonable steps to delete it.
                     </p>
                 </div>
 
@@ -476,7 +539,11 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        By submitting an enquiry through our website, you consent to being contacted by us via phone, email, SMS, and WhatsApp regarding your enquiry and related financial services, including our newsletter and promotional communications. You may opt out of promotional communications at any time by using the unsubscribe link in our emails or by contacting us at <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>.
+                        By submitting an enquiry through our website, you consent to being contacted by us via phone,
+                        email, SMS, and WhatsApp regarding your enquiry and related financial services, including our
+                        newsletter and promotional communications. You may opt out of promotional communications at any
+                        time by using the unsubscribe link in our emails or by contacting us at <a
+                            href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>.
                     </p>
                 </div>
 
@@ -487,7 +554,10 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Our website uses cookies and similar technologies, including necessary, analytics, and marketing cookies. For full details of the cookies we use, their purpose, and how you can manage them, please refer to <a href="#c-intro" class="text-[#e9c176] hover:underline">Part II: Cookie Policy</a> below.
+                        Our website uses cookies and similar technologies, including necessary, analytics, and marketing
+                        cookies. For full details of the cookies we use, their purpose, and how you can manage them,
+                        please refer to <a href="#c-intro" class="text-[#e9c176] hover:underline">Part II: Cookie
+                            Policy</a> below.
                     </p>
                 </div>
 
@@ -498,7 +568,9 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        In the event of a personal data breach that is likely to result in a risk to your rights and freedoms, we will notify affected individuals and, where required under applicable law, the relevant UAE data protection authority, without undue delay.
+                        In the event of a personal data breach that is likely to result in a risk to your rights and
+                        freedoms, we will notify affected individuals and, where required under applicable law, the
+                        relevant UAE data protection authority, without undue delay.
                     </p>
                 </div>
 
@@ -509,7 +581,10 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We may update this Privacy Policy from time to time to reflect changes in our practices, our fees, or applicable law. The updated version will be posted on this page with a revised "Last Updated" date. Your continued use of the Website following any changes constitutes your acceptance of the updated Policy.
+                        We may update this Privacy Policy from time to time to reflect changes in our practices, our
+                        fees, or applicable law. The updated version will be posted on this page with a revised "Last
+                        Updated" date. Your continued use of the Website following any changes constitutes your
+                        acceptance of the updated Policy.
                     </p>
                 </div>
 
@@ -521,28 +596,35 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         </h2>
                         <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                         <p class="leading-relaxed text-slate-300">
-                            If you have any questions, concerns, or complaints about this Privacy Policy or how we handle your personal data, please contact us first at:
+                            If you have any questions, concerns, or complaints about this Privacy Policy or how we
+                            handle your personal data, please contact us first at:
                         </p>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
-                            <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-full flex items-center justify-center">
+                            <div
+                                class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-full flex items-center justify-center">
                                 <i data-lucide="mail" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">General Enquiries</p>
-                                <a href="mailto:info@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">info@efb.ae</a>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">General Enquiries
+                                </p>
+                                <a href="mailto:info@efb.ae"
+                                    class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">info@efb.ae</a>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
-                            <div class="w-12 h-12 bg-emerald-600/10 text-emerald-400 rounded-full flex items-center justify-center">
+                            <div
+                                class="w-12 h-12 bg-emerald-600/10 text-emerald-400 rounded-full flex items-center justify-center">
                                 <i data-lucide="shield" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Data Protection</p>
-                                <a href="mailto:support@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">support@efb.ae</a>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Data Protection
+                                </p>
+                                <a href="mailto:support@efb.ae"
+                                    class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">support@efb.ae</a>
                             </div>
                         </div>
                     </div>
@@ -561,7 +643,10 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        This Cookie Policy explains how Excellence Financing Broker ("EFB", "we", "us", or "our") uses cookies and similar technologies on our website <a href="https://efb.ae" class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website"). It should be read together with our Privacy Policy.
+                        This Cookie Policy explains how Excellence Financing Broker ("EFB", "we", "us", or "our") uses
+                        cookies and similar technologies on our website <a href="https://efb.ae"
+                            class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website"). It should be read
+                        together with our Privacy Policy.
                     </p>
                 </div>
 
@@ -572,7 +657,9 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Cookies are small text files placed on your device when you visit a website. They are widely used to make websites function, to improve user experience, and to provide information to website owners about how their site is used.
+                        Cookies are small text files placed on your device when you visit a website. They are widely
+                        used to make websites function, to improve user experience, and to provide information to
+                        website owners about how their site is used.
                     </p>
                 </div>
 
@@ -592,7 +679,8 @@ Privacy & Cookies Policy | Excellence Financing Broker
                                 Necessary Cookies
                             </h3>
                             <p class="text-sm leading-relaxed">
-                                Required for the Website to function properly, enabling core features like navigation and security.
+                                Required for the Website to function properly, enabling core features like navigation
+                                and security.
                             </p>
                         </div>
 
@@ -602,7 +690,8 @@ Privacy & Cookies Policy | Excellence Financing Broker
                                 Analytics Cookies
                             </h3>
                             <p class="text-sm leading-relaxed">
-                                Help us understand how visitors interact with pages, track duration, and analyze source channels.
+                                Help us understand how visitors interact with pages, track duration, and analyze source
+                                channels.
                             </p>
                         </div>
 
@@ -627,19 +716,24 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     <ul class="space-y-4 pl-4">
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Google Analytics</strong> — collects information about Website usage to help us understand visitor behavior.</span>
+                            <span><strong>Google Analytics</strong> — collects information about Website usage to help
+                                us understand visitor behavior.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Google Tag Manager</strong> — manages and deploys tags (including analytics tags) on the Website.</span>
+                            <span><strong>Google Tag Manager</strong> — manages and deploys tags (including analytics
+                                tags) on the Website.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-[#e9c176] mt-1.5">•</span>
-                            <span><strong>Meta Pixel</strong> — helps us measure and improve the performance of our marketing activities.</span>
+                            <span><strong>Meta Pixel</strong> — helps us measure and improve the performance of our
+                                marketing activities.</span>
                         </li>
                     </ul>
                     <p class="leading-relaxed mt-4 text-sm text-slate-400">
-                        These third-party providers may process certain technical information (such as your IP address, browser type, and device information) on servers located outside the United Arab Emirates, as described further in our Privacy Policy.
+                        These third-party providers may process certain technical information (such as your IP address,
+                        browser type, and device information) on servers located outside the United Arab Emirates, as
+                        described further in our Privacy Policy.
                     </p>
                 </div>
 
@@ -650,10 +744,16 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        A cookie consent banner or preference centre is not currently implemented on the Website. You can manage or disable cookies at any time through your browser settings. Most browsers allow you to view, delete, and block cookies, including cookies from specific websites. Please note that disabling certain cookies may affect the functionality of the Website or your experience using it.
+                        A cookie consent banner or preference centre is not currently implemented on the Website. You
+                        can manage or disable cookies at any time through your browser settings. Most browsers allow you
+                        to view, delete, and block cookies, including cookies from specific websites. Please note that
+                        disabling certain cookies may affect the functionality of the Website or your experience using
+                        it.
                     </p>
                     <p class="leading-relaxed text-sm text-slate-400">
-                        We recommend reviewing your browser's help documentation for instructions on managing cookies, or visiting the opt-out tools provided directly by Google and Meta for their respective services.
+                        We recommend reviewing your browser's help documentation for instructions on managing cookies,
+                        or visiting the opt-out tools provided directly by Google and Meta for their respective
+                        services.
                     </p>
                 </div>
 
@@ -664,7 +764,9 @@ Privacy & Cookies Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We may update this Cookie Policy from time to time to reflect changes in the cookies and technologies we use or applicable law. The updated version will be posted on this page with a revised "Last Updated" date.
+                        We may update this Cookie Policy from time to time to reflect changes in the cookies and
+                        technologies we use or applicable law. The updated version will be posted on this page with a
+                        revised "Last Updated" date.
                     </p>
                 </div>
 
@@ -678,7 +780,8 @@ Privacy & Cookies Policy | Excellence Financing Broker
                         If you have any questions about this Cookie Policy, please contact us at:
                     </p>
                     <p class="leading-relaxed text-white font-bold">
-                        General enquiries: <a href="mailto:info@efb.ae" class="text-[#e9c176] hover:underline">info@efb.ae</a>
+                        General enquiries: <a href="mailto:info@efb.ae"
+                            class="text-[#e9c176] hover:underline">info@efb.ae</a>
                     </p>
                 </div>
 

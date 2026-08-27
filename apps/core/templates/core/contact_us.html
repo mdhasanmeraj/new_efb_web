@@ -31,7 +31,7 @@ Contact Us | Excellence Financing Broker
     </div>
 </section>
 
-<div class="container-fluid">
+<div class="container-fluid" id="advisory-section">
     <!-- 2nd Section: Contact Details & 1:1 Advisory Session -->
     <section class="details-section">
         <div class="container">
@@ -52,13 +52,14 @@ Contact Us | Excellence Financing Broker
                     <div class="card">
                         <i class="fa-solid fa-building-user"></i>
                         <h3>Office Address</h3>
-                        <p>Dubai, UAE</p>
+                        <p>Office No. 363, 3rd Floor, Goldans Sands 20, Khalid Bin Waleed Street, Bur Dubai, Dubai, UAE
+                        </p>
                     </div>
                     <div class="card">
                         <i class="fa-solid fa-calendar-check"></i>
                         <h3>Working Hours</h3>
-                        <p>Mon – Fri: 09:00 AM – 05:00 PM</p>
-                        <p>Sat - Sun: Closed</p>
+                        <p>Mon – Sat: 09:00 AM – 05:30 PM</p>
+                        <p>Sundays & National Holidays: Closed</p>
                     </div>
                 </div>
 
@@ -68,7 +69,7 @@ Contact Us | Excellence Financing Broker
                     <h2>Free 1:1 Advisory</h2>
                     <p>Talk to our expert about your financial needs and explore the best options for you.
                     </p>
-                    <button class="advisory-btn" id="openAdvisoryBtn">Schedule Free Session</button>
+                    <button type="button" class="advisory-btn free-consultancy-btn">Schedule Free Session</button>
                 </div>
             </div>
         </div>
@@ -160,8 +161,9 @@ Contact Us | Excellence Financing Broker
                     <div class="review-body">
                         <p>“My experience with Excellence Financial Broker has been nothing short of exceptional. From
                             the outset, their team demonstrated unparalleled professionalism and dedication, providing
-                            clear guidance at every stage of the loan process... In particular, I would like to commend
-                            Mr. Vishal Singh for his remarkable expertise and personal commitment.”</p>
+                            clear guidance at every stage of the loan process... In particular, I would like to
+                            recommend
+                            Personal loan team for their remarkable expertise and commitment.”</p>
                     </div>
                 </div>
 
@@ -208,7 +210,7 @@ Contact Us | Excellence Financing Broker
                     <div class="review-body">
                         <p>"My experience with Excellence Financial Broker was truly exceptional. From start to finish,
                             their team guided me through every step of the loan process with meticulous attention to
-                            detail. Special recognition goes to Mr. Vishal Singh, whose expertise and personal
+                            detail. Special recognition goes to Personal loan team, whose expertise and personal
                             dedication made a significant difference."</p>
                     </div>
                 </div>
@@ -232,7 +234,7 @@ Contact Us | Excellence Financing Broker
                     <div class="review-body">
                         <p>“Wonderful service, I have tried many banks directly and got rejected before reaching out to
                             this team, and they set everything up for me, thanks for the wonderful customer service,
-                            especially Mr. Vidul Arora for the outstanding service.”</p>
+                            especially Personal loan team for the outstanding service.”</p>
                     </div>
                 </div>
 
@@ -481,7 +483,7 @@ Contact Us | Excellence Financing Broker
             <div class="rating-grid">
                 <div class="image-container" id="ratingImage">
                     <!-- Using image from provided screenshots context logic -->
-                    <img src="{% static 'images/efb-search.jpg' %}" alt="EFB Office" class="main-office-img"
+                    <img src="{% static 'images/efb-search.avif' %}" alt="EFB Office" class="main-office-img"
                         loading="lazy" decoding="async">
                     <div class="overlap-card">
                         <span>Rate Us:</span>
@@ -499,8 +501,7 @@ Contact Us | Excellence Financing Broker
                     <p>At Excellence Financing Broker, we strive for excellence in every client interaction. If we've
                         helped you secure your financial future, please share your experience with others on Google
                         Business page.</p>
-                    <a href="https://www.google.com/search?q=EXCELLENCE+FINANCING+BROKER+Reviews" target="_blank"
-                        class="google-rate-btn">
+                    <a href="https://g.page/r/CX2JELLNbWGFEAI/review" target="_blank" class="google-rate-btn">
                         <i class="fa-brands fa-google"></i> Rate Us on Google
                     </a>
                 </div>
@@ -533,7 +534,7 @@ Contact Us | Excellence Financing Broker
 </div>
 
 <!-- Glassmorphism 1:1 Advisory Consultation Modal Form -->
-<div class="glass-modal-overlay" id="advisoryModal">
+<!-- <div class="glass-modal-overlay" id="advisoryModal">
     <div class="glass-modal-box">
         <span class="glass-close-btn" id="closeAdvisoryModal">&times;</span>
         <h3>Book Free Session</h3>
@@ -557,7 +558,7 @@ Contact Us | Excellence Financing Broker
             </div>
             <div class="glass-form-group">
                 <label for="advPhone">Mobile Number *</label>
-                <input type="tel" id="advPhone" name="phone" class="glass-input" placeholder="971XXXXXXXXX" required>
+                <input type="tel" id="advPhone" name="phone" class="glass-input" placeholder="+971XXXXXXXXX" required>
                 <p id="phoneErrorMsg" class="text-xs text-rose-400 mt-1.5 hidden"><i
                         class="fa-solid fa-triangle-exclamation mr-1"></i>Mobile number must start with +971 (e.g.,
                     +971525263838).</p>
@@ -592,10 +593,10 @@ Contact Us | Excellence Financing Broker
             </button>
         </form>
     </div>
-</div>
+</div>-->
 
 <!-- Glassmorphism Success Pop-up -->
-<div class="glass-popup-overlay" id="advisorySuccessPopup">
+<!--<div class="glass-popup-overlay" id="advisorySuccessPopup">
     <div class="glass-popup-box">
         <div class="glass-popup-icon">
             <i class="fa-solid fa-circle-check"></i>
@@ -605,7 +606,7 @@ Contact Us | Excellence Financing Broker
             advisors will contact you shortly.</p>
         <button class="glass-submit-btn" id="closeSuccessPopup">OKAY</button>
     </div>
-</div>
+</div>-->
 
 <!-- Success Modal -->
 <div class="modal" id="modal">
@@ -641,158 +642,158 @@ Contact Us | Excellence Financing Broker
 {% block extra_js %}
 
 <script>
-    // 1:1 Advisory Modal Handlers
-    const advisoryModal = document.getElementById('advisoryModal');
-    const openAdvisoryBtn = document.getElementById('openAdvisoryBtn');
-    const closeAdvisoryModal = document.getElementById('closeAdvisoryModal');
-    const advisoryForm = document.getElementById('advisoryForm');
-    const submitBtn = document.getElementById("consultationSubmitBtn");
+    // // 1:1 Advisory Modal Handlers
+    // const advisoryModal = document.getElementById('advisoryModal');
+    // const openAdvisoryBtn = document.getElementById('openAdvisoryBtn');
+    // const closeAdvisoryModal = document.getElementById('closeAdvisoryModal');
+    // const advisoryForm = document.getElementById('advisoryForm');
+    // const submitBtn = document.getElementById("consultationSubmitBtn");
 
-    const btnText = submitBtn.querySelector(".btn-text");
+    // const btnText = submitBtn.querySelector(".btn-text");
 
-    const btnLoader = submitBtn.querySelector(".btn-loader");
-    const phoneInput = document.getElementById('advPhone');
-    const phoneError = document.getElementById('phoneErrorMsg');
+    // const btnLoader = submitBtn.querySelector(".btn-loader");
+    // const phoneInput = document.getElementById('advPhone');
+    // const phoneError = document.getElementById('phoneErrorMsg');
 
-    // Glass Success Popup Handlers
-    const advisorySuccessPopup = document.getElementById('advisorySuccessPopup');
-    const closeSuccessPopup = document.getElementById('closeSuccessPopup');
+    // // Glass Success Popup Handlers
+    // const advisorySuccessPopup = document.getElementById('advisorySuccessPopup');
+    // const closeSuccessPopup = document.getElementById('closeSuccessPopup');
 
-    openAdvisoryBtn.addEventListener('click', () => {
-        advisoryModal.classList.add('show');
-    });
+    // openAdvisoryBtn.addEventListener('click', () => {
+    //     advisoryModal.classList.add('show');
+    // });
 
-    closeAdvisoryModal.addEventListener('click', () => {
-        advisoryModal.classList.remove('show');
-        phoneError.classList.add('hidden');
-        phoneInput.classList.remove('border-red-500');
-    });
+    // closeAdvisoryModal.addEventListener('click', () => {
+    //     advisoryModal.classList.remove('show');
+    //     phoneError.classList.add('hidden');
+    //     phoneInput.classList.remove('border-red-500');
+    // });
 
-    closeSuccessPopup.addEventListener('click', () => {
-        advisorySuccessPopup.classList.remove('show');
-    });
+    // closeSuccessPopup.addEventListener('click', () => {
+    //     advisorySuccessPopup.classList.remove('show');
+    // });
 
-    // Close overlays when clicking outside the boxes
-    window.addEventListener('click', function (event) {
-        if (event.target === advisoryModal) {
-            advisoryModal.classList.remove('show');
-            phoneError.classList.add('hidden');
-            phoneInput.classList.remove('border-red-500');
-        }
-        if (event.target === advisorySuccessPopup) {
-            advisorySuccessPopup.classList.remove('show');
-        }
-    });
+    // // Close overlays when clicking outside the boxes
+    // window.addEventListener('click', function (event) {
+    //     if (event.target === advisoryModal) {
+    //         advisoryModal.classList.remove('show');
+    //         phoneError.classList.add('hidden');
+    //         phoneInput.classList.remove('border-red-500');
+    //     }
+    //     if (event.target === advisorySuccessPopup) {
+    //         advisorySuccessPopup.classList.remove('show');
+    //     }
+    // });
 
-    // Handle Form Submit & Validation
-    // ==========================================================
-    // Consultation Form Submission
-    // ==========================================================
+    // // Handle Form Submit & Validation
+    // // ==========================================================
+    // // Consultation Form Submission
+    // // ==========================================================
 
-    advisoryForm.addEventListener("submit", async function (e) {
+    // advisoryForm.addEventListener("submit", async function (e) {
 
-        e.preventDefault();
-        if (submitBtn.disabled) {
-            return;
-        }
+    //     e.preventDefault();
+    //     if (submitBtn.disabled) {
+    //         return;
+    //     }
 
-        const phoneVal = phoneInput.value.trim();
+    //     const phoneVal = phoneInput.value.trim();
 
-        // Accepts:
-        // +9715XXXXXXXX
-        // 05XXXXXXXX
-        const uaeRegex = /^(\+9715\d{8}|05\d{8})$/;
+    //     // Accepts:
+    //     // +9715XXXXXXXX
+    //     // 05XXXXXXXX
+    //     const uaeRegex = /^(\+9715\d{8}|05\d{8})$/;
 
-        if (!uaeRegex.test(phoneVal)) {
+    //     if (!uaeRegex.test(phoneVal)) {
 
-            phoneError.classList.remove("hidden");
+    //         phoneError.classList.remove("hidden");
 
-            phoneInput.style.borderColor = "#fb7185";
+    //         phoneInput.style.borderColor = "#fb7185";
 
-            phoneInput.focus();
+    //         phoneInput.focus();
 
-            return;
+    //         return;
 
-        }
+    //     }
 
-        phoneError.classList.add("hidden");
+    //     phoneError.classList.add("hidden");
 
-        phoneInput.style.borderColor = "";
+    //     phoneInput.style.borderColor = "";
 
-        const formData = new FormData(advisoryForm);
-        submitBtn.disabled = true;
+    //     const formData = new FormData(advisoryForm);
+    //     submitBtn.disabled = true;
 
-        btnText.style.display = "none";
+    //     btnText.style.display = "none";
 
-        btnLoader.style.display = "flex";
+    //     btnLoader.style.display = "flex";
 
-        const csrfToken = advisoryForm.querySelector(
-            '[name=csrfmiddlewaretoken]'
-        ).value;
+    //     const csrfToken = advisoryForm.querySelector(
+    //         '[name=csrfmiddlewaretoken]'
+    //     ).value;
 
-        try {
+    //     try {
 
-            const response = await fetch(advisoryForm.action, {
+    //         const response = await fetch(advisoryForm.action, {
 
-                method: "POST",
+    //             method: "POST",
 
-                headers: {
+    //             headers: {
 
-                    "X-CSRFToken": csrfToken,
+    //                 "X-CSRFToken": csrfToken,
 
-                },
+    //             },
 
-                body: formData,
+    //             body: formData,
 
-            });
+    //         });
 
-            const data = await response.json();
+    //         const data = await response.json();
 
-            if (data.success) {
+    //         if (data.success) {
 
-                advisoryModal.classList.remove("show");
+    //             advisoryModal.classList.remove("show");
 
-                advisorySuccessPopup.classList.add("show");
+    //             advisorySuccessPopup.classList.add("show");
 
-                advisoryForm.reset();
+    //             advisoryForm.reset();
 
-                submitBtn.disabled = false;
+    //             submitBtn.disabled = false;
 
-                btnLoader.style.display = "none";
+    //             btnLoader.style.display = "none";
 
-                btnText.style.display = "inline";
+    //             btnText.style.display = "inline";
 
-            }
+    //         }
 
-            else {
-                submitBtn.disabled = false;
+    //         else {
+    //             submitBtn.disabled = false;
 
-                btnLoader.style.display = "none";
+    //             btnLoader.style.display = "none";
 
-                btnText.style.display = "inline";
+    //             btnText.style.display = "inline";
 
-                alert("Please correct the highlighted errors.");
+    //             alert("Please correct the highlighted errors.");
 
-                console.log(data.errors);
+    //             console.log(data.errors);
 
-            }
+    //         }
 
-        }
+    //     }
 
-        catch (error) {
-            submitBtn.disabled = false;
+    //     catch (error) {
+    //         submitBtn.disabled = false;
 
-            btnLoader.style.display = "none";
+    //         btnLoader.style.display = "none";
 
-            btnText.style.display = "inline";
+    //         btnText.style.display = "inline";
 
-            console.error(error);
+    //         console.error(error);
 
-            alert("Something went wrong. Please try again.");
+    //         alert("Something went wrong. Please try again.");
 
-        }
+    //     }
 
-    });
+    // });
 
     // Newsletter form handling
     const newsletterForm = document.getElementById("subForm");

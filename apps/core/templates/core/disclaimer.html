@@ -21,13 +21,16 @@
     .toc-sticky::-webkit-scrollbar {
         width: 4px;
     }
+
     .toc-sticky::-webkit-scrollbar-track {
         background: transparent;
     }
+
     .toc-sticky::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
     }
+
     .toc-sticky::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.2);
     }
@@ -37,7 +40,8 @@
         align-items: center;
         gap: 0.75rem;
         padding: 0.6rem 1rem;
-        color: #94a3b8; /* slate-400 */
+        color: #94a3b8;
+        /* slate-400 */
         font-size: 0.9rem;
         font-weight: 500;
         border-radius: 8px;
@@ -46,7 +50,8 @@
     }
 
     .toc-link:hover {
-        color: #e9c176; /* gold */
+        color: #e9c176;
+        /* gold */
         background: rgba(233, 193, 118, 0.05);
         padding-left: 1.25rem;
     }
@@ -79,6 +84,7 @@
         .legal-content-container {
             grid-template-columns: 1fr;
         }
+
         .toc-column {
             display: none;
         }
@@ -133,7 +139,7 @@ Disclaimer | Excellence Financing Broker
 
             <!-- Download Button -->
             <a href="{% url 'core:download_guide' filename='Disclaimer_EFB.pdf' %}"
-                class="partner-btn relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all select-none">
+                class="relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl select-none shadow-md">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 Download Disclaimer (PDF)
             </a>
@@ -143,25 +149,35 @@ Disclaimer | Excellence Financing Broker
             <!-- Navigation Index Sidebar -->
             <div class="toc-column">
                 <div class="toc-sticky">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index</h3>
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index
+                    </h3>
                     <nav class="space-y-1">
-                        <a href="#general" class="toc-link"><span class="text-xs text-[#e9c176]">01</span> General Info</a>
-                        <a href="#noadvice" class="toc-link"><span class="text-xs text-[#e9c176]">02</span> No Advice</a>
+                        <a href="#general" class="toc-link"><span class="text-xs text-[#e9c176]">01</span> General
+                            Info</a>
+                        <a href="#noadvice" class="toc-link"><span class="text-xs text-[#e9c176]">02</span> No
+                            Advice</a>
                         <a href="#role" class="toc-link"><span class="text-xs text-[#e9c176]">03</span> Our Role</a>
-                        <a href="#fees" class="toc-link"><span class="text-xs text-[#e9c176]">04</span> Fees & Services</a>
-                        <a href="#noguarantee" class="toc-link"><span class="text-xs text-[#e9c176]">05</span> No Guarantee</a>
-                        <a href="#calculators" class="toc-link"><span class="text-xs text-[#e9c176]">06</span> Calculators</a>
-                        <a href="#noliability" class="toc-link"><span class="text-xs text-[#e9c176]">07</span> Bank Decisions</a>
-                        <a href="#accuracy" class="toc-link"><span class="text-xs text-[#e9c176]">08</span> Info Accuracy</a>
-                        <a href="#links" class="toc-link"><span class="text-xs text-[#e9c176]">09</span> Third-Party Links</a>
-                        <a href="#contact" class="toc-link"><span class="text-xs text-[#e9c176]">10</span> Contact Us</a>
+                        <a href="#fees" class="toc-link"><span class="text-xs text-[#e9c176]">04</span> Fees &
+                            Services</a>
+                        <a href="#noguarantee" class="toc-link"><span class="text-xs text-[#e9c176]">05</span> No
+                            Guarantee</a>
+                        <a href="#calculators" class="toc-link"><span class="text-xs text-[#e9c176]">06</span>
+                            Calculators</a>
+                        <a href="#noliability" class="toc-link"><span class="text-xs text-[#e9c176]">07</span> Bank
+                            Decisions</a>
+                        <a href="#accuracy" class="toc-link"><span class="text-xs text-[#e9c176]">08</span> Info
+                            Accuracy</a>
+                        <a href="#links" class="toc-link"><span class="text-xs text-[#e9c176]">09</span> Third-Party
+                            Links</a>
+                        <a href="#contact" class="toc-link"><span class="text-xs text-[#e9c176]">10</span> Contact
+                            Us</a>
                     </nav>
                 </div>
             </div>
 
             <!-- Content Column -->
             <div class="space-y-12">
-                
+
                 <!-- 1. General Information Only -->
                 <div id="general" class="legal-section premium-legal-card p-8 md:p-10 space-y-4">
                     <h2 class="legal-heading text-2xl md:text-3xl flex items-center gap-3">
@@ -169,7 +185,11 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        The content published on the website <a href="https://efb.ae" class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website") by Excellence Financing Broker ("EFB", "we", "us", or "our"), including all articles, guides, and calculators, is provided for general informational purposes only. It is not intended to be exhaustive or to address your specific circumstances.
+                        The content published on the website <a href="https://efb.ae"
+                            class="text-[#e9c176] hover:underline">https://efb.ae</a> (the "Website") by Excellence
+                        Financing Broker ("EFB", "we", "us", or "our"), including all articles, guides, and calculators,
+                        is provided for general informational purposes only. It is not intended to be exhaustive or to
+                        address your specific circumstances.
                     </p>
                 </div>
 
@@ -180,7 +200,10 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Nothing published on the Website constitutes financial, legal, tax, or investment advice. Where you separately engage our paid consultancy services, any advice provided is limited to the specific scope of that engagement, as communicated to you before the service begins. You should seek independent professional advice before making any financial decision.
+                        Nothing published on the Website constitutes financial, legal, tax, or investment advice. Where
+                        you separately engage our paid consultancy services, any advice provided is limited to the
+                        specific scope of that engagement, as communicated to you before the service begins. You should
+                        seek independent professional advice before making any financial decision.
                     </p>
                 </div>
 
@@ -191,11 +214,15 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed mb-4">
-                        EFB is an independent financial brokerage and consultancy company. We are not a bank and do not provide loans or other financial products ourselves. We connect customers with licensed banks and financial institutions in the UAE.
+                        EFB is an independent financial brokerage and consultancy company. We are not a bank and do not
+                        provide loans or other financial products ourselves. We connect customers with licensed banks
+                        and financial institutions in the UAE.
                     </p>
                     <div class="bg-amber-500/5 border-l-4 border-amber-500/50 p-4 rounded-r-xl">
                         <p class="text-sm leading-relaxed text-slate-300">
-                            EFB is licensed by the Dubai Department of Economy and Tourism (formerly the Dubai Department of Economic Development) under Trade License No. 869539. EFB is not licensed or regulated by the Central Bank of the UAE.
+                            EFB is licensed by the Dubai Department of Economy and Tourism (formerly the Dubai
+                            Department of Economic Development) under Trade License No. 869539. EFB is not licensed or
+                            regulated by the Central Bank of the UAE.
                         </p>
                     </div>
                 </div>
@@ -207,7 +234,11 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Our initial consultation is provided free of charge. If you choose to proceed with our professional financial consultancy services beyond that initial consultation, a consultancy or service fee may apply, depending on the nature and scope of the services provided. Any applicable fee is always communicated to and agreed with you before the paid service begins; no hidden charges are applied.
+                        Our initial consultation is provided free of charge. If you choose to proceed with our
+                        professional financial consultancy services beyond that initial consultation, a consultancy or
+                        service fee may apply, depending on the nature and scope of the services provided. Any
+                        applicable fee is always communicated to and agreed with you before the paid service begins; no
+                        hidden charges are applied.
                     </p>
                 </div>
 
@@ -218,7 +249,12 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        We do not approve or reject any application and do not guarantee that any enquiry, or any paid consultancy engagement, will result in loan or credit approval. Payment of a consultancy or service fee does not, under any circumstance, guarantee loan approval, credit approval, mortgage approval, or approval of any other financial product. Final approval, interest rates, fees, and terms are determined solely by the relevant bank or financial institution, at its sole discretion.
+                        We do not approve or reject any application and do not guarantee that any enquiry, or any paid
+                        consultancy engagement, will result in loan or credit approval. Payment of a consultancy or
+                        service fee does not, under any circumstance, guarantee loan approval, credit approval, mortgage
+                        approval, or approval of any other financial product. Final approval, interest rates, fees, and
+                        terms are determined solely by the relevant bank or financial institution, at its sole
+                        discretion.
                     </p>
                 </div>
 
@@ -229,7 +265,10 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        Any calculators available on the Website (such as loan or mortgage calculators) are provided for illustrative purposes only and produce estimates based on the information you enter. They do not constitute a quote, offer, or guarantee of any kind, and actual rates, fees, and terms offered by a bank may differ.
+                        Any calculators available on the Website (such as loan or mortgage calculators) are provided for
+                        illustrative purposes only and produce estimates based on the information you enter. They do not
+                        constitute a quote, offer, or guarantee of any kind, and actual rates, fees, and terms offered
+                        by a bank may differ.
                     </p>
                 </div>
 
@@ -240,7 +279,10 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        EFB is not responsible or liable for any decision, delay, rejection, or outcome resulting from a partner bank's or financial institution's own assessment of your application, whether or not you have engaged our paid consultancy services. Any such decision rests solely with that bank or institution.
+                        EFB is not responsible or liable for any decision, delay, rejection, or outcome resulting from a
+                        partner bank's or financial institution's own assessment of your application, whether or not you
+                        have engaged our paid consultancy services. Any such decision rests solely with that bank or
+                        institution.
                     </p>
                 </div>
 
@@ -251,7 +293,9 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        While we take reasonable care to ensure that information published on the Website is accurate at the time of publication, we make no warranty, express or implied, as to its completeness, accuracy, or currency, and information may change without notice.
+                        While we take reasonable care to ensure that information published on the Website is accurate at
+                        the time of publication, we make no warranty, express or implied, as to its completeness,
+                        accuracy, or currency, and information may change without notice.
                     </p>
                 </div>
 
@@ -262,7 +306,9 @@ Disclaimer | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        The Website may contain links to third-party websites, including partner banks. We are not responsible for the content or practices of any linked third-party website, and inclusion of a link does not imply endorsement.
+                        The Website may contain links to third-party websites, including partner banks. We are not
+                        responsible for the content or practices of any linked third-party website, and inclusion of a
+                        link does not imply endorsement.
                     </p>
                 </div>
 
@@ -280,22 +326,27 @@ Disclaimer | Excellence Financing Broker
 
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
-                            <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-full flex items-center justify-center">
+                            <div
+                                class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-full flex items-center justify-center">
                                 <i data-lucide="mail" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">General Enquiries</p>
-                                <a href="mailto:info@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">info@efb.ae</a>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">General Enquiries
+                                </p>
+                                <a href="mailto:info@efb.ae"
+                                    class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">info@efb.ae</a>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-850">
-                            <div class="w-12 h-12 bg-emerald-600/10 text-emerald-400 rounded-full flex items-center justify-center">
+                            <div
+                                class="w-12 h-12 bg-emerald-600/10 text-emerald-400 rounded-full flex items-center justify-center">
                                 <i data-lucide="help-circle" class="w-6 h-6"></i>
                             </div>
                             <div>
                                 <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Support</p>
-                                <a href="mailto:support@efb.ae" class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">support@efb.ae</a>
+                                <a href="mailto:support@efb.ae"
+                                    class="text-lg font-bold text-white hover:text-[#e9c176] transition-colors">support@efb.ae</a>
                             </div>
                         </div>
                     </div>

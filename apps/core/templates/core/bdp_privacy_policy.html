@@ -21,13 +21,16 @@
     .toc-sticky::-webkit-scrollbar {
         width: 4px;
     }
+
     .toc-sticky::-webkit-scrollbar-track {
         background: transparent;
     }
+
     .toc-sticky::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
     }
+
     .toc-sticky::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.2);
     }
@@ -37,7 +40,8 @@
         align-items: center;
         gap: 0.75rem;
         padding: 0.6rem 1rem;
-        color: #94a3b8; /* slate-400 */
+        color: #94a3b8;
+        /* slate-400 */
         font-size: 0.9rem;
         font-weight: 500;
         border-radius: 8px;
@@ -46,7 +50,8 @@
     }
 
     .toc-link:hover {
-        color: #e9c176; /* gold */
+        color: #e9c176;
+        /* gold */
         background: rgba(233, 193, 118, 0.05);
         padding-left: 1.25rem;
     }
@@ -79,6 +84,7 @@
         .legal-content-container {
             grid-template-columns: 1fr;
         }
+
         .toc-column {
             display: none;
         }
@@ -107,7 +113,8 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
             BDP Privacy Policy
         </h1>
         <p class="page-banner-subtitle text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Privacy policy governing personal data processing for EFB visitors, customers, and Business Development Partners.
+            Privacy policy governing personal data processing for EFB visitors, customers, and Business Development
+            Partners.
         </p>
         <div class="w-24 h-1 bg-[#e9c176] mx-auto mt-6 rounded-full"></div>
     </div>
@@ -133,7 +140,7 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
 
             <!-- Download Button -->
             <a href="{% url 'core:download_guide' filename='BDP_Privacy_Policy.pdf' %}"
-                class="partner-btn relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold rounded-xl transition-all select-none">
+                class="relative inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl select-none shadow-md">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 Download BDP Privacy Policy (PDF)
             </a>
@@ -143,22 +150,35 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
             <!-- Navigation Index Sidebar -->
             <div class="toc-column">
                 <div class="toc-sticky">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index</h3>
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 px-4">Navigation Index
+                    </h3>
                     <nav class="space-y-1">
-                        <a href="#definitions" class="toc-link"><span class="text-xs text-[#e9c176]">01</span> Definitions</a>
-                        <a href="#collect" class="toc-link"><span class="text-xs text-[#e9c176]">02</span> Info We Collect</a>
+                        <a href="#definitions" class="toc-link"><span class="text-xs text-[#e9c176]">01</span>
+                            Definitions</a>
+                        <a href="#collect" class="toc-link"><span class="text-xs text-[#e9c176]">02</span> Info We
+                            Collect</a>
                         <a href="#purpose" class="toc-link"><span class="text-xs text-[#e9c176]">03</span> Purpose</a>
                         <a href="#consent" class="toc-link"><span class="text-xs text-[#e9c176]">04</span> Consent</a>
-                        <a href="#sharing" class="toc-link"><span class="text-xs text-[#e9c176]">05</span> Data Sharing</a>
-                        <a href="#storage" class="toc-link"><span class="text-xs text-[#e9c176]">06</span> Storage & Retention</a>
-                        <a href="#security" class="toc-link"><span class="text-xs text-[#e9c176]">07</span> Data Security</a>
-                        <a href="#confidentiality" class="toc-link"><span class="text-xs text-[#e9c176]">08</span> BDP Obligations</a>
-                        <a href="#cookies" class="toc-link"><span class="text-xs text-[#e9c176]">09</span> Cookies & Tracking</a>
-                        <a href="#rights" class="toc-link"><span class="text-xs text-[#e9c176]">10</span> User Rights</a>
-                        <a href="#children" class="toc-link"><span class="text-xs text-[#e9c176]">11</span> Children's Privacy</a>
-                        <a href="#links" class="toc-link"><span class="text-xs text-[#e9c176]">12</span> Third-Party Links</a>
-                        <a href="#changes" class="toc-link"><span class="text-xs text-[#e9c176]">13</span> Changes to Policy</a>
-                        <a href="#office" class="toc-link"><span class="text-xs text-[#e9c176]">14</span> Grievance Office</a>
+                        <a href="#sharing" class="toc-link"><span class="text-xs text-[#e9c176]">05</span> Data
+                            Sharing</a>
+                        <a href="#storage" class="toc-link"><span class="text-xs text-[#e9c176]">06</span> Storage &
+                            Retention</a>
+                        <a href="#security" class="toc-link"><span class="text-xs text-[#e9c176]">07</span> Data
+                            Security</a>
+                        <a href="#confidentiality" class="toc-link"><span class="text-xs text-[#e9c176]">08</span> BDP
+                            Obligations</a>
+                        <a href="#cookies" class="toc-link"><span class="text-xs text-[#e9c176]">09</span> Cookies &
+                            Tracking</a>
+                        <a href="#rights" class="toc-link"><span class="text-xs text-[#e9c176]">10</span> User
+                            Rights</a>
+                        <a href="#children" class="toc-link"><span class="text-xs text-[#e9c176]">11</span> Children's
+                            Privacy</a>
+                        <a href="#links" class="toc-link"><span class="text-xs text-[#e9c176]">12</span> Third-Party
+                            Links</a>
+                        <a href="#changes" class="toc-link"><span class="text-xs text-[#e9c176]">13</span> Changes to
+                            Policy</a>
+                        <a href="#office" class="toc-link"><span class="text-xs text-[#e9c176]">14</span> Grievance
+                            Office</a>
                         <a href="#law" class="toc-link"><span class="text-xs text-[#e9c176]">15</span> Governing Law</a>
                     </nav>
                 </div>
@@ -166,11 +186,14 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
 
             <!-- Content Column -->
             <div class="space-y-12">
-                
+
                 <!-- Notice -->
                 <div class="bg-amber-500/5 border-l-4 border-[#e9c176] p-6 rounded-r-xl">
                     <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                        Excellence Financing Broker ("EFB", "Company", "we", "us", "our") provides referral and consultancy support services that connect individuals seeking financial products with participating Financial Institutions. EFB is not a lender, does not approve or guarantee any finance facility.
+                        Excellence Financing Broker ("EFB", "Company", "we", "us", "our") provides referral and
+                        consultancy support services that connect individuals seeking financial products with
+                        participating Financial Institutions. EFB is not a lender, does not approve or guarantee any
+                        finance facility.
                     </p>
                 </div>
 
@@ -181,17 +204,28 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <ul class="space-y-3">
-                        <li><strong>"Personal Data"</strong> means any information relating to an identified or identifiable natural person.</li>
+                        <li><strong>"Personal Data"</strong> means any information relating to an identified or
+                            identifiable natural person.</li>
                         <li><strong>"Data Subject"</strong> means the individual to whom Personal Data relates.</li>
-                        <li><strong>"Controller"</strong> means the party that determines the purposes and means of processing Personal Data.</li>
-                        <li><strong>"Processor"</strong> means a party that processes Personal Data on behalf of, and under the instructions of, a Controller.</li>
-                        <li><strong>"User"</strong> means any visitor, Customer, BDP, or Sub-BDP interacting with EFB's website or CRM.</li>
-                        <li><strong>"Customer"</strong> means an individual or business entity seeking a financial product through EFB, including a Referral.</li>
-                        <li><strong>"Referral"</strong> means a Customer whose details are submitted to EFB by a BDP, as described in Section 2.1.</li>
-                        <li><strong>"BDP" / "Sub-BDP"</strong> means an independent referral partner registered on the EFB platform, as defined in the EFB Business Development Partner Terms & Conditions.</li>
-                        <li><strong>"Financial Institution"</strong> means a licensed bank, finance house, or lender that EFB works with from time to time.</li>
-                        <li><strong>"CRM"</strong> means the EFB customer relationship management platform at app.efb.ae.</li>
-                        <li><strong>"Applicable Law"</strong> means the federal laws of the United Arab Emirates, including Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data, and, where relevant, the laws and regulations of the Emirate in which EFB is licensed.</li>
+                        <li><strong>"Controller"</strong> means the party that determines the purposes and means of
+                            processing Personal Data.</li>
+                        <li><strong>"Processor"</strong> means a party that processes Personal Data on behalf of, and
+                            under the instructions of, a Controller.</li>
+                        <li><strong>"User"</strong> means any visitor, Customer, BDP, or Sub-BDP interacting with EFB's
+                            website or CRM.</li>
+                        <li><strong>"Customer"</strong> means an individual or business entity seeking a financial
+                            product through EFB, including a Referral.</li>
+                        <li><strong>"Referral"</strong> means a Customer whose details are submitted to EFB by a BDP, as
+                            described in Section 2.1.</li>
+                        <li><strong>"BDP" / "Sub-BDP"</strong> means an independent referral partner registered on the
+                            EFB platform, as defined in the EFB Business Development Partner Terms & Conditions.</li>
+                        <li><strong>"Financial Institution"</strong> means a licensed bank, finance house, or lender
+                            that EFB works with from time to time.</li>
+                        <li><strong>"CRM"</strong> means the EFB customer relationship management platform at
+                            app.efb.ae.</li>
+                        <li><strong>"Applicable Law"</strong> means the federal laws of the United Arab Emirates,
+                            including Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data, and, where
+                            relevant, the laws and regulations of the Emirate in which EFB is licensed.</li>
                     </ul>
                 </div>
 
@@ -205,9 +239,14 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </div>
 
                     <div class="space-y-4">
-                        <h3 class="font-bold text-white text-lg">2.1 Information Relating to Customers and Referrals</h3>
+                        <h3 class="font-bold text-white text-lg">2.1 Information Relating to Customers and Referrals
+                        </h3>
                         <p class="leading-relaxed text-sm">
-                            Where an individual is submitted to EFB as a Referral, or otherwise applies for a financial product, EFB may collect the Customer's basic contact information and any personal, identity, financial, or supporting documents reasonably required to assess eligibility, verify identity, comply with applicable legal and regulatory requirements, and process the application with the relevant Financial Institution.
+                            Where an individual is submitted to EFB as a Referral, or otherwise applies for a financial
+                            product, EFB may collect the Customer's basic contact information and any personal,
+                            identity, financial, or supporting documents reasonably required to assess eligibility,
+                            verify identity, comply with applicable legal and regulatory requirements, and process the
+                            application with the relevant Financial Institution.
                         </p>
                     </div>
 
@@ -221,7 +260,8 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                             <li>Bank account / IBAN details for Commission payment.</li>
                             <li>VAT registration details, where applicable.</li>
                             <li>CRM login credentials and platform activity logs.</li>
-                            <li>Referral hierarchy, performance, and incentive data generated through participation in the Program.</li>
+                            <li>Referral hierarchy, performance, and incentive data generated through participation in
+                                the Program.</li>
                         </ul>
                     </div>
 
@@ -248,8 +288,10 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                         We may collect and process Personal Data to:
                     </p>
                     <ul class="space-y-2 pl-4 list-disc text-sm">
-                        <li>Process financial product referrals and coordinate applications with Financial Institutions.</li>
-                        <li>Verify identity and carry out EFB's internal due diligence prior to submitting a case to a Financial Institution.</li>
+                        <li>Process financial product referrals and coordinate applications with Financial Institutions.
+                        </li>
+                        <li>Verify identity and carry out EFB's internal due diligence prior to submitting a case to a
+                            Financial Institution.</li>
                         <li>Operate and maintain the CRM, including lead tracking and case status updates.</li>
                         <li>Calculate and process BDP Commission payments.</li>
                     </ul>
@@ -262,19 +304,27 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        4.1 Where a User is submitted to EFB as a Referral by a BDP, the BDP is contractually responsible for obtaining that individual's permission before submission. EFB relies on the BDP's representation that this permission has been obtained.
+                        4.1 Where a User is submitted to EFB as a Referral by a BDP, the BDP is contractually
+                        responsible for obtaining that individual's permission before submission. EFB relies on the
+                        BDP's representation that this permission has been obtained.
                     </p>
                     <p class="leading-relaxed font-semibold">
-                        4.2 When EFB's team makes contact with a Referral, the purpose of the contact will be explained and the individual will have the opportunity to decline any further processing of their data by EFB at that point.
+                        4.2 When EFB's team makes contact with a Referral, the purpose of the contact will be explained
+                        and the individual will have the opportunity to decline any further processing of their data by
+                        EFB at that point.
                     </p>
                     <p class="leading-relaxed">
-                        4.3 By registering as a BDP and submitting personal data to EFB, a BDP consents to the processing of that data as described in this Policy and in the BDP Terms & Conditions.
+                        4.3 By registering as a BDP and submitting personal data to EFB, a BDP consents to the
+                        processing of that data as described in this Policy and in the BDP Terms & Conditions.
                     </p>
                     <p class="leading-relaxed text-sm text-slate-400">
-                        4.4 Consent to receive communications from EFB may be withdrawn at any time by contacting EFB. EFB will act on a withdrawal request as soon as reasonably practicable.
+                        4.4 Consent to receive communications from EFB may be withdrawn at any time by contacting EFB.
+                        EFB will act on a withdrawal request as soon as reasonably practicable.
                     </p>
                     <p class="leading-relaxed">
-                        4.5 Where an individual is referred to EFB by a BDP, EFB may contact that individual for the purpose of verifying their interest. The BDP represents and warrants that it has obtained the individual's permission to share their information with EFB before making the referral.
+                        4.5 Where an individual is referred to EFB by a BDP, EFB may contact that individual for the
+                        purpose of verifying their interest. The BDP represents and warrants that it has obtained the
+                        individual's permission to share their information with EFB before making the referral.
                     </p>
                 </div>
 
@@ -288,9 +338,12 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                         5.1 We share Personal Data only with:
                     </p>
                     <ul class="space-y-2 pl-4 list-disc text-sm">
-                        <li>Financial Institutions, for the purpose of processing and assessing a referred application.</li>
-                        <li>Technology, hosting, and CRM service providers who store data on our behalf under written terms limiting their use of the data to providing services to EFB.</li>
-                        <li>UAE regulatory authorities, law enforcement, or courts, where EFB is legally required to disclose information.</li>
+                        <li>Financial Institutions, for the purpose of processing and assessing a referred application.
+                        </li>
+                        <li>Technology, hosting, and CRM service providers who store data on our behalf under written
+                            terms limiting their use of the data to providing services to EFB.</li>
+                        <li>UAE regulatory authorities, law enforcement, or courts, where EFB is legally required to
+                            disclose information.</li>
                     </ul>
                     <p class="leading-relaxed mt-2 font-semibold">
                         5.2 We do not share Personal Data to third parties for marketing purposes.
@@ -304,13 +357,18 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        6.1 Personal Data is stored on servers with access controls and technical safeguards appropriate to the sensitivity of the data.
+                        6.1 Personal Data is stored on servers with access controls and technical safeguards appropriate
+                        to the sensitivity of the data.
                     </p>
                     <p class="leading-relaxed">
-                        6.2 We retain Personal Data only for as long as reasonably necessary to fulfil the purposes described in Section 3, including the periods needed to complete a finance application, respond to a regulatory audit, or resolve a legal dispute.
+                        6.2 We retain Personal Data only for as long as reasonably necessary to fulfil the purposes
+                        described in Section 3, including the periods needed to complete a finance application, respond
+                        to a regulatory audit, or resolve a legal dispute.
                     </p>
                     <p class="leading-relaxed text-sm text-slate-400">
-                        6.3 Where Personal Data is transferred or stored outside the United Arab Emirates, EFB will do so only in accordance with the cross-border transfer requirements of Federal Decree-Law No. 45 of 2021.
+                        6.3 Where Personal Data is transferred or stored outside the United Arab Emirates, EFB will do
+                        so only in accordance with the cross-border transfer requirements of Federal Decree-Law No. 45
+                        of 2021.
                     </p>
                 </div>
 
@@ -321,7 +379,8 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        7.1 We implement reasonable technical and organizational measures designed to protect Personal Data, which may include:
+                        7.1 We implement reasonable technical and organizational measures designed to protect Personal
+                        Data, which may include:
                     </p>
                     <ul class="space-y-2 pl-4 list-disc text-sm">
                         <li>Role-based access control, limiting file visibility to authorized personnel.</li>
@@ -330,7 +389,8 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                         <li>Periodic internal review of access controls and security practices.</li>
                     </ul>
                     <p class="leading-relaxed text-sm text-slate-450 mt-2 font-semibold">
-                        7.2 No digital system can be guaranteed to be completely secure. By providing Personal Data to EFB, Users acknowledge the inherent risks of digital data transmission and storage.
+                        7.2 No digital system can be guaranteed to be completely secure. By providing Personal Data to
+                        EFB, Users acknowledge the inherent risks of digital data transmission and storage.
                     </p>
                 </div>
 
@@ -341,10 +401,14 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        8.1 BDPs and Sub-BDPs are separately bound by confidentiality and data-handling obligations under Section 12 of the EFB Business Development Partner Terms & Conditions, including restrictions on storing, reusing, or sharing Customer and Referral data outside the CRM.
+                        8.1 BDPs and Sub-BDPs are separately bound by confidentiality and data-handling obligations
+                        under Section 12 of the EFB Business Development Partner Terms & Conditions, including
+                        restrictions on storing, reusing, or sharing Customer and Referral data outside the CRM.
                     </p>
                     <p class="leading-relaxed font-semibold text-red-400">
-                        8.2 A breach of those obligations may be treated as a breach of this Policy and may result in the consequences described in the BDP Terms & Conditions, including suspension or termination of a Partner ID.
+                        8.2 A breach of those obligations may be treated as a breach of this Policy and may result in
+                        the consequences described in the BDP Terms & Conditions, including suspension or termination of
+                        a Partner ID.
                     </p>
                 </div>
 
@@ -355,10 +419,12 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        9.1 We use cookies and similar technologies to operate and improve our website and CRM, including to remember User preferences, analyze usage patterns, and support platform security.
+                        9.1 We use cookies and similar technologies to operate and improve our website and CRM,
+                        including to remember User preferences, analyze usage patterns, and support platform security.
                     </p>
                     <p class="leading-relaxed text-sm text-slate-400">
-                        9.2 Users may disable cookies through their browser settings. Doing so may limit access to certain secure areas of the EFB platform.
+                        9.2 Users may disable cookies through their browser settings. Doing so may limit access to
+                        certain secure areas of the EFB platform.
                     </p>
                 </div>
 
@@ -379,7 +445,9 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                         <li>Lodge a complaint with support.</li>
                     </ul>
                     <p class="leading-relaxed mt-2 text-sm">
-                        10.2 Requests under this Section may be submitted to <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a>. EFB will respond within a reasonable time and in accordance with Applicable Law.
+                        10.2 Requests under this Section may be submitted to <a href="mailto:support@efb.ae"
+                            class="text-[#e9c176] hover:underline">support@efb.ae</a>. EFB will respond within a
+                        reasonable time and in accordance with Applicable Law.
                     </p>
                 </div>
 
@@ -390,10 +458,12 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        11.1 EFB does not knowingly collect or process Personal Data relating to individuals under 18 years of age. BDPs are separately required not to submit a Referral under the age of 18.
+                        11.1 EFB does not knowingly collect or process Personal Data relating to individuals under 18
+                        years of age. BDPs are separately required not to submit a Referral under the age of 18.
                     </p>
                     <p class="leading-relaxed">
-                        11.2 If EFB identifies that it holds Personal Data relating to a minor, that data will be deleted, save where retention is required by Applicable Law.
+                        11.2 If EFB identifies that it holds Personal Data relating to a minor, that data will be
+                        deleted, save where retention is required by Applicable Law.
                     </p>
                 </div>
 
@@ -404,7 +474,9 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        12.1 Our website and CRM may contain links to Financial Institution portals or other third-party websites. EFB is not responsible for the privacy practices or content of those external sites, and this Policy does not apply to them.
+                        12.1 Our website and CRM may contain links to Financial Institution portals or other third-party
+                        websites. EFB is not responsible for the privacy practices or content of those external sites,
+                        and this Policy does not apply to them.
                     </p>
                 </div>
 
@@ -415,7 +487,9 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </h2>
                     <div class="h-0.5 bg-slate-800/80 w-16 mb-4"></div>
                     <p class="leading-relaxed">
-                        13.1 EFB may update this Policy from time to time to reflect changes in Applicable Law or in EFB's own practices. Continued use of the platform after an update constitutes acceptance of the revised Policy.
+                        13.1 EFB may update this Policy from time to time to reflect changes in Applicable Law or in
+                        EFB's own practices. Continued use of the platform after an update constitutes acceptance of the
+                        revised Policy.
                     </p>
                 </div>
 
@@ -432,13 +506,17 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                     </div>
 
                     <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-850 space-y-2">
-                        <p class="text-white font-bold">Excellence Financing Broker — Data Protection & Compliance Office</p>
-                        <p>Email: <a href="mailto:support@efb.ae" class="text-[#e9c176] hover:underline">support@efb.ae</a></p>
+                        <p class="text-white font-bold">Excellence Financing Broker — Data Protection & Compliance
+                            Office</p>
+                        <p>Email: <a href="mailto:support@efb.ae"
+                                class="text-[#e9c176] hover:underline">support@efb.ae</a></p>
                         <p>Address: Dubai, UAE</p>
                     </div>
 
                     <p class="leading-relaxed text-sm text-slate-400">
-                        14.1 We aim to acknowledge privacy-related complaints promptly and to resolve them within 15 to 30 working days. This timeline applies to privacy and data-protection matters specifically, and is separate from the commission-dispute timeline.
+                        14.1 We aim to acknowledge privacy-related complaints promptly and to resolve them within 15 to
+                        30 working days. This timeline applies to privacy and data-protection matters specifically, and
+                        is separate from the commission-dispute timeline.
                     </p>
                 </div>
 
@@ -452,10 +530,13 @@ Business Development Partner (BDP) Privacy Policy | Excellence Financing Broker
                         15.1 This Policy is governed by the federal laws of the United Arab Emirates.
                     </p>
                     <p class="leading-relaxed">
-                        15.2 Subject to Section 15.3, any dispute arising under this Policy between EFB and a User who is not a BDP shall be subject to the exclusive jurisdiction of the competent courts.
+                        15.2 Subject to Section 15.3, any dispute arising under this Policy between EFB and a User who
+                        is not a BDP shall be subject to the exclusive jurisdiction of the competent courts.
                     </p>
                     <p class="leading-relaxed font-semibold">
-                        15.3 Where a dispute under this Policy arises between EFB and a BDP or Sub-BDP, that dispute is instead subject to the dispute resolution mechanism set out in the EFB Business Development Partner Terms & Conditions (internal review, followed by arbitration in Dubai).
+                        15.3 Where a dispute under this Policy arises between EFB and a BDP or Sub-BDP, that dispute is
+                        instead subject to the dispute resolution mechanism set out in the EFB Business Development
+                        Partner Terms & Conditions (internal review, followed by arbitration in Dubai).
                     </p>
                 </div>
 

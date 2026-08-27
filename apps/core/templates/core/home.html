@@ -268,9 +268,19 @@ Home | Excellence Financing Broker
             <p class="text-slate-300 text-base sm:text-lg md:text-xl mb-12">As the UAE’s premier financing advisory, we
                 bridge
                 the gap between your ambitions and the region’s leading financial institutions.</p>
-            <a href="#services"
-                class="gold-gradient text-white px-7 py-4 sm:px-10 sm:py-5 rounded-xl font-bold uppercase tracking-widest hover:scale-105 transition-all">Explore
-                Solutions</a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full">
+
+                <a href="#services"
+                    class="gold-gradient text-white w-full sm:w-auto min-w-[220px] px-7 py-4 sm:px-10 sm:py-5 rounded-xl font-bold uppercase tracking-widest text-center hover:scale-105 transition-all">
+                    Explore Solutions
+                </a>
+
+                <button type="button"
+                    class="free-consultancy-btn w-full sm:w-auto min-w-[220px] px-7 py-4 sm:px-10 sm:py-5 rounded-xl font-bold uppercase tracking-widest text-center border-2 border-gold text-white hover:bg-gold hover:text-primary transition-all">
+                    Request Free Consultation
+                </button>
+
+            </div>
         </div>
     </div>
 
@@ -488,7 +498,7 @@ Home | Excellence Financing Broker
             </div>
 
             <div
-                class="stacking-card group relative bg-gold text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between mb-12">
+                class="stacking-card group relative bg-slate-900 text-white p-12 rounded-[2rem] shadow-2xl overflow-hidden min-h-[350px] lg:h-[350px] flex flex-col justify-between mb-12">
                 <img src="{% static 'images/credit_card_image.jpg' %}" loading="lazy" decoding="async"
                     class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700">
                 <div class="relative z-10">
@@ -629,7 +639,17 @@ Home | Excellence Financing Broker
                 process.</p>
 
             <div class="space-y-6 mb-12">
-                <h4 class="font-bold text-xl">Get a Free Consultation Today!</h4>
+                <button type="button" class="free-consultancy-btn inline-flex items-center justify-center
+           bg-gold text-white
+           px-6 py-3
+           rounded-lg
+           font-bold text-sm
+           uppercase tracking-wider
+           shadow-lg shadow-gold/20
+           hover:bg-gold-light hover:scale-105
+           transition-all duration-300">
+                    Get a Free Consultation Today!
+                </button>
                 <div class="flex gap-4 items-center">
                     <span class="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center"><span
                             class="material-symbols-outlined">speed</span></span>

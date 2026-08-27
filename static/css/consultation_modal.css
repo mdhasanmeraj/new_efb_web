@@ -1,0 +1,415 @@
+:root {
+    --navy: #0c1c3c;
+    --navy-fade: #003366;
+    --gold: #c5a059;
+    --text: #333333;
+    --white: #ffffff;
+}
+
+
+/* ==========================================================
+   Consultation Glassmorphism Modal
+   ========================================================== */
+
+.glass-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 28, 60, 0.65);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    padding: 20px;
+}
+
+.glass-modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+
+/* Modal Box */
+
+.glass-modal-box {
+    background: rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+    border-radius: 16px;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 35px;
+
+    position: relative;
+
+    color: var(--white);
+
+    transform: scale(0.9);
+
+    transition:
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-modal-overlay.show .glass-modal-box {
+    transform: scale(1);
+}
+
+
+/* Close Button */
+
+.glass-close-btn {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 1.8rem;
+
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+
+    line-height: 1;
+}
+
+.glass-close-btn:hover {
+    color: var(--gold);
+}
+
+
+/* Modal Heading */
+
+.glass-modal-box h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 1.8rem;
+
+    color: var(--gold);
+
+    margin-bottom: 25px;
+
+    text-align: center;
+}
+
+
+/* Form Groups */
+
+.glass-form-group {
+    margin-bottom: 18px;
+
+    text-align: left;
+}
+
+.glass-form-group label {
+    display: block;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    letter-spacing: 0.5px;
+}
+
+
+/* Inputs */
+
+.glass-modal-box .glass-input,
+.glass-modal-box .glass-select {
+    width: 100%;
+
+    padding: 12px 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 8px;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 0.95rem;
+
+    transition: all 0.3s ease;
+
+    box-sizing: border-box;
+}
+
+.glass-modal-box .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-modal-box .glass-input:focus,
+.glass-modal-box .glass-select:focus {
+    background: rgba(255, 255, 255, 0.15);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 12px rgba(197, 160, 89, 0.4);
+}
+
+.glass-modal-box .glass-select option {
+    background: var(--navy);
+
+    color: white;
+}
+
+
+/* Disclaimer */
+
+.glass-disclaimer {
+    font-size: 0.8rem;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    line-height: 1.4;
+
+    margin: 20px 0;
+
+    text-align: center;
+}
+
+.glass-disclaimer a {
+    color: var(--gold);
+
+    text-decoration: underline;
+}
+
+
+/* Privacy Link */
+
+.privacy-link {
+    color: var(--gold);
+
+    text-decoration: underline;
+
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+    color: #b08d4a;
+}
+
+
+/* Submit Button */
+
+.glass-submit-btn {
+    width: 100%;
+
+    background: var(--gold);
+
+    color: white;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+
+    box-shadow:
+        0 4px 15px rgba(197, 160, 89, 0.3);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.glass-submit-btn:hover {
+    background: #b08d4a;
+
+    transform: translateY(-1px);
+}
+
+.glass-submit-btn:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+/* Submit Button Loader */
+
+.btn-loader {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* ==========================================================
+   Consultation Success Popup
+   ========================================================== */
+
+.glass-popup-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(12, 28, 60, 0.75);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10001;
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+
+    padding: 20px;
+}
+
+.glass-popup-overlay.show {
+    display: flex;
+
+    opacity: 1;
+}
+
+
+/* Success Popup Box */
+
+.glass-popup-box {
+    background: rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.6);
+
+    border-radius: 16px;
+
+    width: 100%;
+    max-width: 400px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    color: white;
+
+    transform: scale(0.9);
+
+    transition:
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-popup-overlay.show .glass-popup-box {
+    transform: scale(1);
+}
+
+
+/* Success Icon */
+
+.glass-popup-icon {
+    font-size: 4rem;
+
+    color: var(--gold);
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(0 0 12px rgba(197, 160, 89, 0.5));
+}
+
+
+/* ==========================================================
+   Mobile Responsive
+   ========================================================== */
+
+@media (max-width: 480px) {
+
+    .glass-modal-box {
+        padding: 30px 20px;
+    }
+
+    .glass-popup-box {
+        padding: 30px 20px;
+    }
+
+}
+
+
+/* ==========================================================
+   iOS Safari Performance Fixes
+   ========================================================== */
+
+@supports (-webkit-touch-callout: none) {
+
+    /* Disable expensive blur rendering */
+
+    .glass-modal-overlay,
+    .glass-popup-overlay {
+        backdrop-filter: none !important;
+
+        -webkit-backdrop-filter: none !important;
+
+        background: rgba(12, 28, 60, 0.85);
+    }
+
+    .glass-modal-box,
+    .glass-popup-box {
+        backdrop-filter: none !important;
+
+        -webkit-backdrop-filter: none !important;
+
+        background: rgba(12, 28, 60, 0.96);
+    }
+
+}

@@ -64,11 +64,12 @@
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/loan_calculator.css' %}">
+    <link rel="stylesheet" href="{% static 'css/consultation_modal.css' %}">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Global CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <style>
@@ -210,6 +211,7 @@
     </main>
 
     {% include 'core/footer.html' %}
+    {% include 'core/partials/consultation_modal.html' %}
 
     <!-- Floating WhatsApp -->
     <div class="whatsapp-container">
@@ -231,6 +233,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="{% static 'js/main.js' %}" defer></script>
     <script src="{% static 'js/loan_calculator.js' %}" defer></script>
+    <script src="{% static 'js/consultation.js' %}" defer></script>
     {% block extra_js %}{% endblock %}
 </body>
 
