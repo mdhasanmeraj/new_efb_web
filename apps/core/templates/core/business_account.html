@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-
-<!-- Lucide Icons -->
-
-<link rel="stylesheet" href="{% static 'css/business_account.css' %}">
-
-
-{% endblock %}
 
 {% block title %}
-Business Account | Excellence Financing Broker
+Business Account UAE | Business Banking Consultancy | Excellence Financing Broker
+{% endblock %}
+
+{% block meta_description %}
+Get expert business account consultancy in the UAE with Excellence Financing Broker. We help businesses and
+entrepreneurs find suitable corporate banking solutions for their financial needs.
+{% endblock %}
+
+{% block meta_keywords %}
+Business Account UAE, Business Bank Account UAE, Corporate Bank Account UAE, Business Banking UAE, Business Account
+Consultancy, Corporate Banking Solutions UAE, Business Banking Consultant UAE, Excellence Financing Broker
+{% endblock %}
+
+{% block canonical %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'core:business_account' %}
+{% endblock %}
+
+{% block og_title %}
+Business Account UAE | Excellence Financing Broker
+{% endblock %}
+
+{% block og_description %}
+Expert business account consultancy in the UAE for companies and entrepreneurs looking for suitable corporate banking
+solutions.
+{% endblock %}
+
+{% block og_image %}
+{{ request.scheme }}://{{ request.get_host }}{% static 'images/EFB_logo-removebg-preview.png' %}
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/business_account.css' %}">
 {% endblock %}
 
 {% block structured_data %}

@@ -167,6 +167,30 @@
 Business Development Partner (BDP) Terms & Conditions | Excellence Financing Broker
 {% endblock %}
 
+{% block meta_description %}
+Read the Business Development Partner Terms & Conditions governing referrals, commissions, compliance, data protection,
+payouts, and participation in the Excellence Financing Broker referral program.
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Business Development Partner (BDP) Terms & Conditions",
+    "description": "Business Development Partner (BDP) Terms & Conditions for Excellence Financing Broker, covering referrals, commissions, compliance, data protection, payouts, termination, and program participation.",
+    "url": "{{ request.build_absolute_uri }}",
+    "isPartOf": {
+        "@type": "WebSite",
+        "name": "Excellence Financing Broker",
+        "url": "{{ request.scheme }}://{{ request.get_host }}/"
+    }
+}
+</script>
+{% endblock %}
+
+
+
 {% block content %}
 <!-- Header Banner -->
 <section class="page-banner">

@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block title %}
+About Us | Excellence Financing Broker
+{% endblock %}
+
+{% block meta_description %}
+Learn about Excellence Financing Broker, a trusted UAE financial consultancy helping individuals and businesses with
+personal loans, mortgages, business finance, credit cards, and tailored banking solutions.
+{% endblock %}
+
+
+{% block canonical %}
+https://efb.ae/about/
+{% endblock %}
+
 {% block extra_css %}
 
 <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
 
-{% endblock %}
-
-
-{% block title %}
-About Us | Excellence Financing Broker
 {% endblock %}
 
 {% block structured_data %}
@@ -20,7 +30,7 @@ About Us | Excellence Financing Broker
   "name": "Excellence Financing Broker",
   "url": "https://efb.ae",
   "logo": "https://efb.ae/static/images/EFB_logo-removebg-preview.png",
-  "description": "Excellence Financing Broker is a UAE-based financial consultancy company providing mortgage, personal loan, business loan, credit card, and business banking solutions.",
+  "description": "Excellence Financing Broker is a UAE-based financial consultancy company providing mortgage, personal loan, business loan, credit card, and business banking solutions. Get your free consultation today.",
   "foundingDate": "2019",
   "address": {
     "@type": "PostalAddress",

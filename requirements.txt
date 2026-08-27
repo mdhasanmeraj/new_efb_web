@@ -2,5 +2,5 @@ Django>=4.2,<5.0
 django-environ
 whitenoise[brotli]
 psycopg2-binary
-gunicorn
 weasyprint
+python-dotenv

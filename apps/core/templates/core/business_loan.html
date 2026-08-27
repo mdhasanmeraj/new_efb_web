@@ -1,23 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-
-<link rel="stylesheet" href="{% static 'css/business_loan.css' %}">
-
-{% endblock %}
 
 {% block title %}
-Business Loan | Excellence Financing Broker
+Business Loan UAE | Business Loan Consultancy | Excellence Financing Broker
 {% endblock %}
+
+{% block meta_description %}
+Find suitable business loan solutions in the UAE with Excellence Financing Broker. Get expert consultancy for business
+financing options for companies and entrepreneurs.
+{% endblock %}
+
+{% block meta_keywords %}
+Business Loan UAE, Business Loans UAE, Business Financing UAE, Business Loan Consultancy, Business Finance UAE, SME
+Business Loan UAE, Company Loan UAE, Business Funding UAE, Excellence Financing Broker
+{% endblock %}
+
+{% block canonical %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'core:business_loan' %}
+{% endblock %}
+
+{% block og_title %}
+Business Loan UAE | Excellence Financing Broker
+{% endblock %}
+
+{% block og_description %}
+Explore business financing solutions in the UAE with expert consultancy from Excellence Financing Broker for companies
+and entrepreneurs.
+{% endblock %}
+
+{% block og_image %}
+{{ request.scheme }}://{{ request.get_host }}{% static 'images/EFB_logo-removebg-preview.png' %}
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/business_loan.css' %}">
+{% endblock %}
+
 
 {% block structured_data %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FinancialProduct",
-   "name":"Business Loan Consultancy UAE",
- "description":"Business financing solutions for companies and entrepreneurs in UAE.",
+  "name": "Business Loan Consultancy UAE",
+  "description": "Best Business financing solutions for companies and entrepreneurs in UAE. Get your free consultation today.",
   "provider": {
     "@type": "FinancialService",
     "name": "Excellence Financing Broker",
@@ -30,6 +58,7 @@ Business Loan | Excellence Financing Broker
 }
 </script>
 {% endblock %}
+
 
 {% block content %}
 

@@ -2,17 +2,40 @@
 {% load static %}
 
 
-{% block extra_css %}
-
-
-
-
-<link rel="stylesheet" href="{% static 'css/contact_us.css' %}">
-
+{% block title %}
+Contact Us | Excellence Financing Broker UAE
 {% endblock %}
 
-{% block title %}
-Contact Us | Excellence Financing Broker
+{% block meta_description %}
+Contact Excellence Financing Broker in the UAE for expert guidance on personal loans, business loans, mortgages, credit
+cards, and business banking solutions.
+{% endblock %}
+
+{% block meta_keywords %}
+Contact Excellence Financing Broker, Financing Broker UAE, Financial Consultant UAE, Loan Consultant UAE, Mortgage
+Consultant UAE, Business Loan Consultant UAE, Financial Services UAE
+{% endblock %}
+
+{% block canonical %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'core:contact_us' %}
+{% endblock %}
+
+{% block og_title %}
+Contact Us | Excellence Financing Broker UAE
+{% endblock %}
+
+{% block og_description %}
+Get in touch with Excellence Financing Broker UAE for expert guidance on loans, mortgages, credit cards, and business
+financing solutions.
+{% endblock %}
+
+{% block og_image %}
+{{ request.scheme }}://{{ request.get_host }}{% static 'images/EFB_logo-removebg-preview.png' %}
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact_us.css' %}">
 {% endblock %}
 
 {% block content %}

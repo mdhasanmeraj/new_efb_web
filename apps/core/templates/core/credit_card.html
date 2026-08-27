@@ -1,14 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-
-<link rel="stylesheet" href="{% static 'css/credit_card.css' %}">
-
-{% endblock %}
 
 {% block title %}
-Credit Card | Excellence Financing Broker
+Credit Card UAE | Credit Card Consultancy | Excellence Financing Broker
+{% endblock %}
+
+{% block meta_description %}
+Find suitable credit card solutions in the UAE with Excellence Financing Broker. Get expert guidance on credit cards,
+benefits, features, and financing options tailored to your needs.
+{% endblock %}
+
+{% block meta_keywords %}
+Credit Card UAE, Credit Cards UAE, Credit Card Consultancy UAE, Best Credit Card UAE, Credit Card Consultant UAE, Credit
+Card Services UAE, Credit Card Solutions UAE, Excellence Financing Broker
+{% endblock %}
+
+{% block canonical %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'core:credit_card' %}
+{% endblock %}
+
+{% block og_title %}
+Credit Card UAE | Excellence Financing Broker
+{% endblock %}
+
+{% block og_description %}
+Get expert credit card consultancy in the UAE and explore suitable credit card solutions, benefits, and features with
+Excellence Financing Broker.
+{% endblock %}
+
+{% block og_image %}
+{{ request.scheme }}://{{ request.get_host }}{% static 'images/EFB_logo-removebg-preview.png' %}
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/credit_card.css' %}">
 {% endblock %}
 
 
@@ -33,6 +60,7 @@ Credit Card | Excellence Financing Broker
 }
 </script>
 {% endblock %}
+
 
 {% block content %}
 <!-- 1st Section: Header -->
